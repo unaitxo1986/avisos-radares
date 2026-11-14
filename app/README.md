@@ -8,6 +8,9 @@ Proyecto Gradle (Kotlin) con un módulo `:app`. Estado: **app vacía de la fase 
 - `versionCode` = número de ejecución del workflow, así que cada compilación es más nueva que la anterior.
 - Descarga en el móvil (sin iniciar sesión): https://github.com/unaitxo1986/avisos-radares/releases/download/latest/avisos-radares.apk
 
+## Instalar en el móvil (fases 1.4 y 1.5)
+Descargar el APK con el enlace anterior, permitir la instalación de apps desconocidas y abrirlo. En el Samsung hay que desactivar antes Auto Blocker (Ajustes > Seguridad y privacidad). Para actualizar basta instalar la nueva compilación encima: si Android la rechaza, la firma ha cambiado.
+
 ## Compilar en local
 Hace falta JDK 17 y el SDK de Android. Sin variables de firma, `assembleRelease` genera un APK sin firmar.
 `./gradlew testDebugUnitTest assembleDebug`
