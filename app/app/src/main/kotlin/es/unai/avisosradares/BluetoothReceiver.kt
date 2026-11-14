@@ -9,9 +9,10 @@ import android.os.Build
 
 /**
  * Recibe las conexiones y desconexiones Bluetooth (vías A y C de la fase 2).
- * Anota siempre lo que ve; según el ajuste, arranca o para el servicio de pruebas.
+ * Se usa de dos formas: declarado en el manifiesto (etiqueta "BT") y registrado en tiempo de ejecución
+ * desde [AppRadares] (etiqueta "BT-dinámico"), para comprobar cuál de los dos recibe los avisos.
  */
-class BluetoothReceiver : BroadcastReceiver() {
+class BluetoothReceiver(private val etiqueta: String = "BT") : BroadcastReceiver() {
 
     @SuppressLint("MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
@@ -28,22 +29,14 @@ class BluetoothReceiver : BroadcastReceiver() {
         }
 
         Registro.anota(
-            context, "BT",
+            context, etiqueta,
             (if (conectado) "CONECTADO " else "DESCONECTADO ") + nombre + " (" + direccion + ") | " + Diagnostico.estado(context)
         )
 
-        val ajustes = Ajustes(context)
-        val modo = ajustes.modoBluetooth
-        if (modo == Tipos.NINGUNO) return
-        if (ajustes.direccionCoche.isNotEmpty() && ajustes.direccionCoche != direccion) {
-            Registro.anota(context, "BT", "ignorado: no es el dispositivo elegido (${ajustes.nombreCoche})")
-            return
-        }
         if (conectado) {
-            ServicioPrueba.arrancar(context, modo, "Bluetooth")
+            ArranqueAutomatico.conectado(context, etiqueta, direccion)
         } else {
-            Registro.anota(context, "BT", "parando el servicio por desconexión")
-            context.stopService(Intent(context, ServicioPrueba::class.java))
+            ArranqueAutomatico.desconectado(context, etiqueta, direccion)
         }
     }
 

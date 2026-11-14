@@ -7,9 +7,13 @@ import android.app.ActivityManager
 import android.app.AlertDialog
 import android.bluetooth.BluetoothManager
 import android.content.ClipData
+import android.companion.AssociationRequest
+import android.companion.BluetoothDeviceFilter
+import android.companion.CompanionDeviceManager
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
+import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.graphics.Typeface
 import android.net.Uri
@@ -32,6 +36,10 @@ import java.util.Locale
  * Es una pantalla de diagnóstico provisional, no la pantalla final de la app.
  */
 class MainActivity : Activity() {
+
+    private companion object {
+        const val CODIGO_ASOCIAR = 42
+    }
 
     private lateinit var ajustes: Ajustes
     private lateinit var textoEstado: TextView
@@ -78,10 +86,19 @@ class MainActivity : Activity() {
             ServicioPrueba.arrancar(this, Tipos.UBICACION, "botón de la pantalla")
         }
         anade("Parar el servicio") { ServicioPrueba.parar(this) }
-        val ayudaRutina = TextView(this)
-        ayudaRutina.text = "Vía B: en Ajustes > Modos y rutinas crea una rutina con «Abrir app» y elige «Radares (arranque)»."
-        ayudaRutina.textSize = 12f
-        raiz.addView(ayudaRutina)
+        anade("Vía D: asociar el Bluetooth del coche (dispositivo compañero)") { asociarCompanero() }
+        anade("Vía D: comprobar asociaciones y activar la detección") { observarAsociaciones() }
+        val ayuda = TextView(this)
+        ayuda.text = "Qué hace cada modo:\n" +
+            "• Solo registrar: apunta en el registro cada conexión Bluetooth, sin arrancar nada.\n" +
+            "• Vía A: al conectarse el Bluetooth elegido, intenta arrancar el servicio de GPS (tipo ubicación).\n" +
+            "• Vía C: igual, pero con el servicio declarado como dispositivo conectado.\n" +
+            "• Vía B: rutina de Samsung (Ajustes > Modos y rutinas > «Abrir app» > «Radares (arranque)»).\n" +
+            "• Vía D: se asocia el dispositivo con Android una vez; Android avisa a la app cuando aparece o desaparece, " +
+            "aunque esté cerrada. Usa el modo elegido arriba (A o C) para decidir el tipo de servicio.\n" +
+            "En los modos A, C y D el servicio se para al desconectarse el dispositivo."
+        ayuda.textSize = 12f
+        raiz.addView(ayuda)
 
         // 3. Ventana y sonido
         raiz.addView(titulo("3. Ventana flotante y sonido (2.4 y 2.6)"))
@@ -223,6 +240,72 @@ class MainActivity : Activity() {
                 refrescar()
             }
             .show()
+    }
+
+    /** Vía D: pide a Android que asocie un dispositivo Bluetooth a la app (sale un cuadro del sistema). */
+    @SuppressLint("NewApi")
+    private fun asociarCompanero() {
+        if (Build.VERSION.SDK_INT < 31) {
+            aviso("Esta vía necesita Android 12 o superior.")
+            return
+        }
+        val gestor = getSystemService(Context.COMPANION_DEVICE_SERVICE) as CompanionDeviceManager
+        val peticion = AssociationRequest.Builder()
+            .addDeviceFilter(BluetoothDeviceFilter.Builder().build())
+            .build()
+        Registro.anota(this, "CDM", "pidiendo asociación: Android busca dispositivos Bluetooth")
+        gestor.associate(peticion, object : CompanionDeviceManager.Callback() {
+            @Suppress("OVERRIDE_DEPRECATION")
+            override fun onDeviceFound(chooserLauncher: IntentSender) {
+                try {
+                    startIntentSenderForResult(chooserLauncher, CODIGO_ASOCIAR, null, 0, 0, 0)
+                } catch (e: Throwable) {
+                    Registro.anota(this@MainActivity, "CDM", "ERROR al abrir el selector: ${e.javaClass.name}: ${e.message}")
+                }
+            }
+
+            override fun onFailure(error: CharSequence?) {
+                Registro.anota(this@MainActivity, "CDM", "la búsqueda ha fallado: $error")
+            }
+        }, null)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode != CODIGO_ASOCIAR) return
+        if (resultCode != RESULT_OK) {
+            Registro.anota(this, "CDM", "asociación cancelada o sin dispositivo elegido (código $resultCode)")
+        } else {
+            Registro.anota(this, "CDM", "dispositivo asociado")
+            observarAsociaciones()
+        }
+        refrescar()
+    }
+
+    /** Vía D: lista los dispositivos asociados y pide a Android que avise de su presencia. */
+    @SuppressLint("NewApi")
+    @Suppress("DEPRECATION")
+    private fun observarAsociaciones() {
+        if (Build.VERSION.SDK_INT < 31) {
+            aviso("Esta vía necesita Android 12 o superior.")
+            return
+        }
+        val gestor = getSystemService(Context.COMPANION_DEVICE_SERVICE) as CompanionDeviceManager
+        val direcciones = try {
+            gestor.associations
+        } catch (e: Throwable) {
+            Registro.anota(this, "CDM", "ERROR al leer las asociaciones: ${e.javaClass.name}: ${e.message}")
+            return
+        }
+        Registro.anota(this, "CDM", "asociaciones actuales: $direcciones")
+        for (direccion in direcciones) {
+            try {
+                gestor.startObservingDevicePresence(direccion)
+                Registro.anota(this, "CDM", "detección de presencia activada para $direccion")
+            } catch (e: Throwable) {
+                Registro.anota(this, "CDM", "ERROR al activar la detección de $direccion: ${e.javaClass.name}: ${e.message}")
+            }
+        }
     }
 
     private fun copiar(etiqueta: String, texto: String) {
