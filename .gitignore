@@ -1,0 +1,30 @@
+# Claves y secretos: nunca al repositorio
+*.jks
+*.keystore
+keystore.properties
+local.properties
+.env
+*.pem
+
+# Android / Gradle
+.gradle/
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.aab
+*.iml
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Sistema
+.DS_Store
+Thumbs.db
