@@ -19,7 +19,7 @@ class MainActivity : Activity() {
         val texto = TextView(this).apply {
             text = "Avisos de radares\n\n" +
                 etiquetaVersion(info.versionName ?: "?", codigo) + "\n\n" +
-                "App vacía de la fase 1"
+                "App vacía de la fase 1 (segunda compilación)"
             textSize = 20f
             gravity = Gravity.CENTER
             fitsSystemWindows = true
