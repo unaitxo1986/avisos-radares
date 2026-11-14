@@ -21,3 +21,4 @@ Hace falta JDK 17 y el SDK de Android. Sin variables de firma, `assembleRelease`
 - Arranque automático al conectar el Bluetooth del coche: no garantizado por la documentación, se decide con las pruebas de la fase 2.
 - La app lee `radares.json` y `estado.json` publicados por el proceso de datos; no interpreta fuentes originales.
 - El aviso se decide por carretera y sentido, no por rumbo de brújula (fase 4.3).
+- Secretos de firma configurados el 14/11/2026.
