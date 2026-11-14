@@ -61,7 +61,9 @@ jobs:
         run: |
           # Quita espacios y saltos de línea que se cuelan al pegar el secreto.
           printf '%s' "$KEYSTORE_BASE64" | tr -d '[:space:]' > "$RUNNER_TEMP/clave.b64"
-          echo "Longitud del secreto KEYSTORE_BASE64: $(wc -c < "$RUNNER_TEMP/clave.b64") caracteres"
+          LONG=$(wc -c < "$RUNNER_TEMP/clave.b64")
+          RAROS=$(tr -d 'A-Za-z0-9+/=' < "$RUNNER_TEMP/clave.b64" | wc -c)
+          echo "::notice::KEYSTORE_BASE64: $LONG caracteres, $RAROS fuera del alfabeto base64"
           if ! base64 -d "$RUNNER_TEMP/clave.b64" > "$RUNNER_TEMP/release.jks"; then
             echo "::error::KEYSTORE_BASE64 no es base64 válido (¿pegado incompleto o con caracteres de más?)"
             exit 1
