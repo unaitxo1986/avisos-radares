@@ -75,6 +75,7 @@ fun nombreSalidaAudio(tipo: Int): String = when (tipo) {
     7 -> "Bluetooth SCO"
     8 -> "Bluetooth A2DP"
     11, 22 -> "USB"
+    18 -> "telefonía"
     26, 27, 30 -> "Bluetooth LE"
     else -> "tipo $tipo"
 }

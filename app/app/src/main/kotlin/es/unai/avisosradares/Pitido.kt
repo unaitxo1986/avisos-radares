@@ -78,7 +78,9 @@ object Sonido {
             Handler(Looper.getMainLooper()).postDelayed({
                 val posicion = pista.playbackHeadPosition
                 val aviso = if (posicion == 0) " (¿silenciado por el sistema?)" else ""
-                Registro.anota(ctx, origen, "sonido: reproducidas $posicion de ${muestras.size} muestras$aviso")
+                val salida = pista.routedDevice
+                val destino = if (salida == null) "desconocida" else nombreSalidaAudio(salida.type) + " (" + salida.productName + ")"
+                Registro.anota(ctx, origen, "sonido: reproducidas $posicion de ${muestras.size} muestras, SALIDA USADA=$destino$aviso")
                 pista.release()
                 audio.abandonAudioFocusRequest(peticion)
             }, duracionMs + 300)
