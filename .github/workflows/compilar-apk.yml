@@ -56,8 +56,21 @@ jobs:
       - name: Restaurar la clave de firma
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
         run: |
-          echo "$KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.jks"
+          # Quita espacios y saltos de línea que se cuelan al pegar el secreto.
+          printf '%s' "$KEYSTORE_BASE64" | tr -d '[:space:]' > "$RUNNER_TEMP/clave.b64"
+          echo "Longitud del secreto KEYSTORE_BASE64: $(wc -c < "$RUNNER_TEMP/clave.b64") caracteres"
+          if ! base64 -d "$RUNNER_TEMP/clave.b64" > "$RUNNER_TEMP/release.jks"; then
+            echo "::error::KEYSTORE_BASE64 no es base64 válido (¿pegado incompleto o con caracteres de más?)"
+            exit 1
+          fi
+          rm -f "$RUNNER_TEMP/clave.b64"
+          if ! keytool -list -keystore "$RUNNER_TEMP/release.jks" -storepass "$KEYSTORE_PASSWORD" -alias "$KEY_ALIAS" > /dev/null 2>&1; then
+            echo "::error::La clave se decodifica pero no se abre: revisa KEYSTORE_PASSWORD y KEY_ALIAS, o el contenido de KEYSTORE_BASE64"
+            exit 1
+          fi
           echo "KEYSTORE_PATH=$RUNNER_TEMP/release.jks" >> "$GITHUB_ENV"
 
       - name: Compilar APK firmado
