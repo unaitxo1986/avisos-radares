@@ -9,23 +9,16 @@ import android.os.Build
 
 /**
  * Recibe las conexiones y desconexiones Bluetooth (vías A y C de la fase 2).
- * Anota siempre lo que ve; según el ajuste, arranca el servicio al conectarse y lo para al desconectarse.
- *
- * Hay dos copias en juego: la del manifiesto (la crea el sistema, incluso con la app cerrada) y otra
- * registrada en [AppRadares] mientras el proceso está vivo, que solo anota ([soloRegistrar]) para saber
- * si Android avisa a la app de las conexiones aunque el receptor del manifiesto no reciba nada.
+ * Se usa de dos formas: declarado en el manifiesto (etiqueta "BT") y registrado en tiempo de ejecución
+ * desde [AppRadares] (etiqueta "BT-dinámico"), para comprobar cuál de los dos recibe los avisos.
  */
-class BluetoothReceiver(private val soloRegistrar: Boolean) : BroadcastReceiver() {
-
-    /** El sistema crea el receptor del manifiesto con este constructor sin parámetros. */
-    constructor() : this(false)
+class BluetoothReceiver(private val etiqueta: String = "BT") : BroadcastReceiver() {
 
     @SuppressLint("MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
         val accion = intent.action ?: return
         if (accion != BluetoothDevice.ACTION_ACL_CONNECTED && accion != BluetoothDevice.ACTION_ACL_DISCONNECTED) return
         val conectado = accion == BluetoothDevice.ACTION_ACL_CONNECTED
-        val origen = if (soloRegistrar) "BT-dinámico" else "BT"
 
         val dispositivo = dispositivoDe(intent)
         val direccion = dispositivo?.address ?: "?"
@@ -36,24 +29,14 @@ class BluetoothReceiver(private val soloRegistrar: Boolean) : BroadcastReceiver(
         }
 
         Registro.anota(
-            context, origen,
+            context, etiqueta,
             (if (conectado) "CONECTADO " else "DESCONECTADO ") + nombre + " (" + direccion + ") | " + Diagnostico.estado(context)
         )
-        if (soloRegistrar) return
 
-        val ajustes = Ajustes(context)
-        val modo = ajustes.modoBluetooth
-        if (modo == Tipos.NINGUNO) return
-        if (ajustes.direccionCoche.isNotEmpty() && ajustes.direccionCoche != direccion) {
-            Registro.anota(context, origen, "ignorado: no es el dispositivo elegido (${ajustes.nombreCoche})")
-            return
-        }
         if (conectado) {
-            ServicioPrueba.arrancar(context, modo, "Bluetooth")
+            ArranqueAutomatico.conectado(context, etiqueta, direccion)
         } else {
-            val enMarcha = if (ServicioPrueba.enMarcha) "sí" else "no"
-            Registro.anota(context, origen, "desconexión del dispositivo elegido: servicio en marcha=$enMarcha, se pide pararlo")
-            ServicioPrueba.parar(context)
+            ArranqueAutomatico.desconectado(context, etiqueta, direccion)
         }
     }
 
