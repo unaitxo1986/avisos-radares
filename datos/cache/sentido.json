@@ -1,0 +1,1805 @@
+{
+"eus-a-1-390700-egino-irun": {
+"candidatas": 2,
+"destino_a_m": 64715,
+"margen_m": 11148,
+"origen": "destino",
+"punto": [
+42.864939,
+-2.252545
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 79,
+"sentido_km": null,
+"via": 193675077
+},
+"eus-a-1-390700-egino-madrid": {
+"candidatas": 2,
+"destino_a_m": 297734,
+"margen_m": 2789,
+"origen": "destino",
+"punto": [
+42.865105,
+-2.25258
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 260,
+"sentido_km": null,
+"via": 623897567
+},
+"eus-a-124-58015-leza-lo": {
+"candidatas": 2,
+"destino_a_m": 20848,
+"grupo": {
+"carretera": "A-124",
+"destino": "LOGRONO",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Araba"
+},
+"margen_m": 2660,
+"origen": "destino",
+"punto": [
+42.577082,
+-2.64671
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 67,
+"sentido_km": "creciente",
+"via": 601741039
+},
+"eus-a-124-58460-leza-vi": {
+"candidatas": 2,
+"destino_a_m": 30394,
+"grupo": {
+"carretera": "A-124",
+"destino": "VITORIAGASTEIZ",
+"n": 3,
+"sentido": "decreciente",
+"territorio": "Araba"
+},
+"margen_m": 721,
+"origen": "destino",
+"punto": [
+42.577542,
+-2.642506
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 281,
+"sentido_km": "decreciente",
+"via": 582024328
+},
+"eus-a-124-64300-laguardia-tra": {
+"candidatas": 2,
+"destino_a_m": 33701,
+"grupo": {
+"carretera": "A-124",
+"destino": "VITORIAGASTEIZ",
+"n": 3,
+"sentido": "decreciente",
+"territorio": "Araba"
+},
+"margen_m": 611,
+"origen": "destino",
+"punto": [
+42.553041,
+-2.582963
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 347,
+"sentido_km": "decreciente",
+"via": 405452832
+},
+"eus-a-124-68600-laguardia-vi": {
+"candidatas": 2,
+"destino_a_m": 36593,
+"grupo": {
+"carretera": "A-124",
+"destino": "VITORIAGASTEIZ",
+"n": 3,
+"sentido": "decreciente",
+"territorio": "Araba"
+},
+"margen_m": 770,
+"origen": "destino",
+"punto": [
+42.532709,
+-2.545233
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 303,
+"sentido_km": "decreciente",
+"via": 601741071
+},
+"eus-a-124-68700-laguardia-lo": {
+"candidatas": 2,
+"destino_a_m": 11236,
+"grupo": {
+"carretera": "A-124",
+"destino": "LOGRONO",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Araba"
+},
+"margen_m": 489,
+"origen": "destino",
+"punto": [
+42.531939,
+-2.54367
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 126,
+"sentido_km": "creciente",
+"via": 601741071
+},
+"eus-a-124-74510-laserna": {
+"candidatas": 2,
+"destino_a_m": 6567,
+"grupo": {
+"carretera": "A-124",
+"destino": "LOGRONO",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Araba"
+},
+"margen_m": 4175,
+"origen": "destino",
+"punto": [
+42.505327,
+-2.499543
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 142,
+"sentido_km": "creciente",
+"via": 579865292
+},
+"eus-a-15-148775-tunel-belabieta": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.161726,
+-2.006415
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 350,
+"sentido_km": null,
+"via": 1502344917
+},
+"eus-a-15-149700-inicio-tunel-belabieta": {
+"candidatas": 2,
+"destino_a_m": 17165,
+"grupo": {
+"carretera": "A-15",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 4,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 16073,
+"origen": "destino",
+"punto": [
+43.169441,
+-2.011777
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 338,
+"sentido_km": "creciente",
+"via": 41550073
+},
+"eus-a-15-152025-oindolar": {
+"candidatas": 2,
+"destino_a_m": 15304,
+"grupo": {
+"carretera": "A-15",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 4,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 21273,
+"origen": "destino",
+"punto": [
+43.188114,
+-2.02565
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 252,
+"sentido_km": "creciente",
+"via": 41550086
+},
+"eus-a-15-155525-curva-billabona": {
+"candidatas": 2,
+"destino_a_m": 14307,
+"grupo": {
+"carretera": "A-15",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 4,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 27892,
+"origen": "destino",
+"punto": [
+43.199738,
+-2.037082
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 3,
+"sentido_km": "creciente",
+"via": 164389299
+},
+"eus-a-15-158800-andoain-bif": {
+"candidatas": 2,
+"destino_a_m": 11393,
+"grupo": {
+"carretera": "A-15",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 4,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 827,
+"origen": "destino",
+"punto": [
+43.224557,
+-2.025561
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 15,
+"sentido_km": "creciente",
+"via": 26165233
+},
+"eus-a-625-365000-luiaondo": {
+"candidatas": 2,
+"destino_a_m": 39278,
+"margen_m": 7300,
+"origen": "destino",
+"punto": [
+43.103194,
+-2.998932
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 194,
+"sentido_km": "decreciente",
+"via": 491933513
+},
+"eus-a-625-365895-gardea": {
+"candidatas": 2,
+"destino_a_m": 17741,
+"margen_m": 1918,
+"origen": "destino",
+"punto": [
+43.109685,
+-2.995363
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 32,
+"sentido_km": "creciente",
+"via": 319586750
+},
+"eus-a-8-111500-fin-malmasin-ss": {
+"candidatas": 2,
+"destino_a_m": 74049,
+"grupo": {
+"carretera": "A-8",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 6,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 9637,
+"origen": "destino",
+"punto": [
+43.231338,
+-2.889962
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 100,
+"sentido_km": "decreciente",
+"via": 123327160
+},
+"eus-a-8-111500-inicio-malmasin-can": {
+"candidatas": 2,
+"destino_a_m": 97440,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 3064,
+"origen": "destino",
+"punto": [
+43.231498,
+-2.889887
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 280,
+"sentido_km": "creciente",
+"via": 316546183
+},
+"eus-a-8-112260-tunel-malmasin-can": {
+"candidatas": 2,
+"destino_a_m": 96660,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 4678,
+"origen": "destino",
+"punto": [
+43.23281,
+-2.899656
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 281,
+"sentido_km": "creciente",
+"via": 41435043
+},
+"eus-a-8-112300-tunel-malmasin-ss": {
+"candidatas": 2,
+"destino_a_m": 74811,
+"grupo": {
+"carretera": "A-8",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 6,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 8034,
+"origen": "destino",
+"punto": [
+43.232667,
+-2.899656
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 100,
+"sentido_km": "decreciente",
+"via": 41434714
+},
+"eus-a-8-113000-fin-malmasin-can": {
+"candidatas": 2,
+"destino_a_m": 95979,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 6079,
+"origen": "destino",
+"punto": [
+43.233731,
+-2.9082
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 272,
+"sentido_km": "creciente",
+"via": 59539071
+},
+"eus-a-8-113020-inicio-malmasin-ss": {
+"candidatas": 2,
+"destino_a_m": 75477,
+"grupo": {
+"carretera": "A-8",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 6,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 6628,
+"origen": "destino",
+"punto": [
+43.233544,
+-2.908202
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 92,
+"sentido_km": "decreciente",
+"via": 799404598
+},
+"eus-a-8-114880-miraflores": {
+"candidatas": 2,
+"destino_a_m": 76896,
+"grupo": {
+"carretera": "A-8",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 6,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 2897,
+"origen": "destino",
+"punto": [
+43.240457,
+-2.92701
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 157,
+"sentido_km": "decreciente",
+"via": 163727904
+},
+"eus-a-8-116670-errekalde": {
+"candidatas": 2,
+"destino_a_m": 93339,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 3652,
+"origen": "destino",
+"punto": [
+43.249395,
+-2.942943
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 325,
+"sentido_km": "creciente",
+"via": 307656564
+},
+"eus-a-8-117990-sabino-arana": {
+"candidatas": 2,
+"destino_a_m": 92609,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 6212,
+"origen": "destino",
+"punto": [
+43.257647,
+-2.953225
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 339,
+"sentido_km": "creciente",
+"via": 505502211
+},
+"eus-a-8-119430-monolito": {
+"candidatas": 2,
+"corregido": true,
+"destino_a_m": 91856,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 1380,
+"origen": "destino",
+"punto": [
+43.267396,
+-2.964345
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 155,
+"sentido_km": "creciente",
+"via": 27536774
+},
+"eus-a-8-119560-salida-balmaseda": {
+"candidatas": 2,
+"destino_a_m": 79650,
+"grupo": {
+"carretera": "A-8",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 6,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 6971,
+"origen": "destino",
+"punto": [
+43.268475,
+-2.965169
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 148,
+"sentido_km": "decreciente",
+"via": 854543418
+},
+"eus-a-8-120031-zorroza": {
+"candidatas": 2,
+"destino_a_m": 91651,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 2354,
+"origen": "destino",
+"punto": [
+43.271832,
+-2.967521
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 336,
+"sentido_km": "creciente",
+"via": 852187625
+},
+"eus-a-8-120530-zorroza-ss": {
+"candidatas": 2,
+"destino_a_m": 80199,
+"grupo": {
+"carretera": "A-8",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 6,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 5013,
+"origen": "destino",
+"punto": [
+43.274312,
+-2.972702
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 81,
+"sentido_km": "decreciente",
+"via": 62318907
+},
+"eus-a-8-121480-curvas-cruces": {
+"candidatas": 2,
+"destino_a_m": 90642,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 5318,
+"origen": "destino",
+"punto": [
+43.278268,
+-2.981264
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 307,
+"sentido_km": "creciente",
+"via": 604466188
+},
+"eus-a-8-123500-max-center": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.286674,
+-3.000618
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 121,
+"sentido_km": null,
+"via": 424068917
+},
+"eus-a-8-124400-recta-max-center": {
+"candidatas": 2,
+"destino_a_m": 88565,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 5549,
+"origen": "destino",
+"punto": [
+43.290937,
+-3.009805
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 301,
+"sentido_km": "creciente",
+"via": 27462987
+},
+"eus-a-8-134960-petronor": {
+"candidatas": 2,
+"destino_a_m": 81989,
+"grupo": {
+"carretera": "A-8",
+"destino": "CANTABRIA",
+"n": 10,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 6207,
+"origen": "destino",
+"punto": [
+43.337811,
+-3.105565
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 346,
+"sentido_km": "creciente",
+"via": 656906421
+},
+"eus-a-8-137100-pobena": {
+"candidatas": 2,
+"destino_a_m": 18044,
+"margen_m": 3789,
+"origen": "destino",
+"punto": [
+43.341572,
+-3.130118
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 86,
+"sentido_km": "decreciente",
+"via": 31983032
+},
+"eus-ap-1-145505-tunel-maltzaga": {
+"candidatas": 2,
+"destino_a_m": 39161,
+"margen_m": 14797,
+"origen": "destino",
+"punto": [
+43.192124,
+-2.433159
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 309,
+"sentido_km": "creciente",
+"via": 40501589
+},
+"eus-ap-1-145950-tunel-maltzaga-salida": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.194521,
+-2.435124
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 352,
+"sentido_km": null,
+"via": 25744324
+},
+"eus-ap-1-82300-arminon": {
+"candidatas": 2,
+"destino_a_m": 112192,
+"margen_m": 13643,
+"origen": "destino",
+"punto": [
+42.710647,
+-2.869436
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 37,
+"sentido_km": null,
+"via": 47452830
+},
+"eus-ap-68-270-buia": {
+"candidatas": 2,
+"destino_a_m": 3729,
+"grupo": {
+"carretera": "AP-68",
+"destino": "BILBAO",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 10096,
+"origen": "destino",
+"punto": [
+43.232783,
+-2.915045
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 334,
+"sentido_km": "decreciente",
+"via": 676841650
+},
+"eus-ap-68-29600-ziorroga": {
+"candidatas": 2,
+"destino_a_m": 219777,
+"grupo": {
+"carretera": "AP-68",
+"destino": "ZARAGOZA",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Araba"
+},
+"margen_m": 33588,
+"origen": "destino",
+"punto": [
+43.010389,
+-2.902241
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 153,
+"sentido_km": "creciente",
+"via": 135082213
+},
+"eus-ap-68-33000-altube": {
+"candidatas": 2,
+"destino_a_m": 30758,
+"grupo": {
+"carretera": "AP-68",
+"destino": "BILBAO",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Araba"
+},
+"margen_m": 8785,
+"origen": "destino",
+"punto": [
+42.990158,
+-2.872711
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 313,
+"sentido_km": "decreciente",
+"via": 285421222
+},
+"eus-ap-68-50500-subijana": {
+"candidatas": 2,
+"destino_a_m": 208041,
+"grupo": {
+"carretera": "AP-68",
+"destino": "ZARAGOZA",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Araba"
+},
+"margen_m": 29819,
+"origen": "destino",
+"punto": [
+42.852024,
+-2.893555
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 182,
+"sentido_km": "creciente",
+"via": 430925090
+},
+"eus-ap-68-51800-subijana-za-cabina": {
+"candidatas": 2,
+"destino_a_m": 207196,
+"grupo": {
+"carretera": "AP-68",
+"destino": "ZARAGOZA",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Araba"
+},
+"margen_m": 32829,
+"origen": "destino",
+"punto": [
+42.838618,
+-2.894439
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 177,
+"sentido_km": "creciente",
+"via": 494221048
+},
+"eus-ap-68-54070-subijana-bi-cabina": {
+"candidatas": 2,
+"destino_a_m": 49511,
+"grupo": {
+"carretera": "AP-68",
+"destino": "BILBAO",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Araba"
+},
+"margen_m": 38332,
+"origen": "destino",
+"punto": [
+42.818833,
+-2.894845
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 44,
+"sentido_km": "decreciente",
+"via": 768738454
+},
+"eus-ap-68-7400-arrigorriaga": {
+"candidatas": 2,
+"destino_a_m": 9737,
+"grupo": {
+"carretera": "AP-68",
+"destino": "BILBAO",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 9387,
+"origen": "destino",
+"punto": [
+43.179361,
+-2.899404
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 29,
+"sentido_km": "decreciente",
+"via": 91614062
+},
+"eus-ap-8-29298-aritzeta": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.294983,
+-2.058209
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 95,
+"sentido_km": null,
+"via": 48136444
+},
+"eus-ap-8-46025-curva-bedua-bi": {
+"candidatas": 2,
+"destino_a_m": 55642,
+"grupo": {
+"carretera": "AP-8",
+"destino": "BILBAO",
+"n": 4,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 17571,
+"origen": "destino",
+"punto": [
+43.277705,
+-2.248051
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 267,
+"sentido_km": "creciente",
+"via": 419083810
+},
+"eus-ap-8-46811-curvas-bedua": {
+"candidatas": 2,
+"destino_a_m": 40698,
+"grupo": {
+"carretera": "AP-8",
+"destino": "BEHOBIA",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 5012,
+"origen": "destino",
+"punto": [
+43.274903,
+-2.255328
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 11,
+"sentido_km": "decreciente",
+"via": 164786860
+},
+"eus-ap-8-55252-tunel-itziar": {
+"candidatas": 2,
+"destino_a_m": 48647,
+"grupo": {
+"carretera": "AP-8",
+"destino": "BILBAO",
+"n": 4,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 1782,
+"origen": "destino",
+"punto": [
+43.284598,
+-2.33485
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 270,
+"sentido_km": "creciente",
+"via": 4412541
+},
+"eus-ap-8-57250-istina": {
+"candidatas": 2,
+"destino_a_m": 46793,
+"grupo": {
+"carretera": "AP-8",
+"destino": "BILBAO",
+"n": 4,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 5792,
+"origen": "destino",
+"punto": [
+43.283911,
+-2.357667
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 210,
+"sentido_km": "creciente",
+"via": 25730387
+},
+"eus-ap-8-61000-mendaro": {
+"candidatas": 2,
+"destino_a_m": 44450,
+"grupo": {
+"carretera": "AP-8",
+"destino": "BILBAO",
+"n": 4,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 13516,
+"origen": "destino",
+"punto": [
+43.257215,
+-2.386118
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 250,
+"sentido_km": "creciente",
+"via": 25730891
+},
+"eus-ap-8-62464-mendaro-ss": {
+"candidatas": 2,
+"destino_a_m": 34217,
+"grupo": {
+"carretera": "AP-8",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 5373,
+"origen": "destino",
+"punto": [
+43.247722,
+-2.394046
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 15,
+"sentido_km": "decreciente",
+"via": 44717240
+},
+"eus-ap-8-63933-elgoibar": {
+"candidatas": 2,
+"destino_a_m": 35172,
+"grupo": {
+"carretera": "AP-8",
+"destino": "DONOSTIASANSEBASTIAN",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 2357,
+"origen": "destino",
+"punto": [
+43.236255,
+-2.401971
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 52,
+"sentido_km": "decreciente",
+"via": 44717240
+},
+"eus-ap-8-69700-maltzaga": {
+"candidatas": 2,
+"destino_a_m": 57036,
+"grupo": {
+"carretera": "AP-8",
+"destino": "BEHOBIA",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 3598,
+"origen": "destino",
+"punto": [
+43.196,
+-2.436057
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 51,
+"sentido_km": "decreciente",
+"via": 4952098
+},
+"eus-ap-8-77400-ermua": {
+"candidatas": 2,
+"destino_a_m": 35153,
+"margen_m": 13676,
+"origen": "destino",
+"punto": [
+43.17553,
+-2.518107
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 281,
+"sentido_km": "creciente",
+"via": 515455854
+},
+"eus-ap-8-79100-zaldibar": {
+"candidatas": 2,
+"destino_a_m": 47738,
+"margen_m": 12619,
+"origen": "destino",
+"punto": [
+43.171239,
+-2.535516
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 89,
+"sentido_km": "decreciente",
+"via": 750425653
+},
+"eus-bi-30-ramal-r-03-11120-kukularra-txorierri": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.303297,
+-2.962283
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 224,
+"sentido_km": null,
+"via": 25946798
+},
+"eus-bi-3234-45620-ibarrangelu": {
+"candidatas": 2,
+"destino_a_m": 381788,
+"margen_m": 190,
+"origen": "destino",
+"punto": [
+43.4066,
+-2.679843
+],
+"regla": "e",
+"resultado": "resuelto",
+"rumbo": 229,
+"sentido_km": null,
+"via": 230905468
+},
+"eus-bi-625-376300-arrankudiaga": {
+"candidatas": 2,
+"destino_a_m": 10398,
+"margen_m": 137,
+"origen": "destino",
+"punto": [
+43.170074,
+-2.920658
+],
+"regla": "e",
+"resultado": "resuelto",
+"rumbo": 178,
+"sentido_km": null,
+"via": 290747479
+},
+"eus-bi-633-36990-trabakua-tramo-1": {
+"motivo": "tipo tramo_extremo",
+"resultado": "no_aplica"
+},
+"eus-bi-633-39800-trabakua-tramo-2": {
+"motivo": "tipo tramo_extremo",
+"resultado": "no_aplica"
+},
+"eus-bi-637-10845-eroski-leioa": {
+"candidatas": 2,
+"destino_a_m": 3489,
+"grupo": {
+"carretera": "BI-637",
+"destino": "GETXO",
+"n": 2,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 4579,
+"origen": "destino",
+"punto": [
+43.320796,
+-2.977524
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 305,
+"sentido_km": "creciente",
+"via": 30039357
+},
+"eus-bi-637-13690-artatza": {
+"candidatas": 2,
+"destino_a_m": 9607,
+"grupo": {
+"carretera": "BI-637",
+"destino": "BILBAO",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 2932,
+"origen": "destino",
+"punto": [
+43.335004,
+-3.000502
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 205,
+"sentido_km": "decreciente",
+"via": 404869214
+},
+"eus-bi-637-14600-artea": {
+"candidatas": 2,
+"destino_a_m": 2208,
+"margen_m": 2683,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.343125,
+-2.995415
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 59,
+"sentido_km": "creciente",
+"via": 40152830
+},
+"eus-bi-637-15300-curva-pajaritos": {
+"candidatas": 2,
+"destino_a_m": 10604,
+"grupo": {
+"carretera": "BI-637",
+"destino": "BILBAO",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 3801,
+"origen": "destino",
+"punto": [
+43.347835,
+-2.994912
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 126,
+"sentido_km": "decreciente",
+"via": 1192499928
+},
+"eus-bi-637-9545-universidad": {
+"candidatas": 2,
+"destino_a_m": 4762,
+"grupo": {
+"carretera": "BI-637",
+"destino": "GETXO",
+"n": 2,
+"sentido": "creciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 2006,
+"origen": "destino",
+"punto": [
+43.313257,
+-2.965684
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 322,
+"sentido_km": "creciente",
+"via": 489092173
+},
+"eus-gi-11-1370-usurbil-madrid": {
+"candidatas": 2,
+"destino_a_m": 347756,
+"margen_m": 6772,
+"origen": "destino",
+"punto": [
+43.281608,
+-2.01858
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 3,
+"sentido_km": "creciente",
+"via": 26743121
+},
+"eus-gi-11-1700-usurbil-irun": {
+"candidatas": 2,
+"destino_a_m": 19507,
+"margen_m": 1553,
+"origen": "destino",
+"punto": [
+43.284983,
+-2.018625
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 349,
+"sentido_km": "creciente",
+"via": 1266206836
+},
+"eus-gi-20-10800-tunel-ayete": {
+"candidatas": 2,
+"destino_a_m": 76361,
+"grupo": {
+"carretera": "GI-20",
+"destino": "BILBAO",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 3135,
+"origen": "destino",
+"punto": [
+43.297433,
+-1.992924
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 249,
+"sentido_km": "creciente",
+"via": 1450999433
+},
+"eus-gi-20-4000-pasaia-bilbao": {
+"candidatas": 2,
+"destino_a_m": 81195,
+"grupo": {
+"carretera": "GI-20",
+"destino": "BILBAO",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 6078,
+"origen": "destino",
+"punto": [
+43.310471,
+-1.93401
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 278,
+"sentido_km": "creciente",
+"via": 690149531
+},
+"eus-gi-20-4200-pasaia": {
+"candidatas": 2,
+"destino_a_m": 14708,
+"margen_m": 2373,
+"origen": "destino",
+"punto": [
+43.310662,
+-1.937426
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 100,
+"sentido_km": "decreciente",
+"via": 25589994
+},
+"eus-gi-20-8100-la-salle": {
+"candidatas": 2,
+"destino_a_m": 78311,
+"grupo": {
+"carretera": "GI-20",
+"destino": "BILBAO",
+"n": 3,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 4756,
+"origen": "destino",
+"punto": [
+43.304559,
+-1.969618
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 203,
+"sentido_km": "creciente",
+"via": 164405991
+},
+"eus-gi-20-9-2-s-675-carlos-i": {
+"candidatas": 2,
+"destino_a_m": 2235,
+"margen_m": 5186,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.302705,
+-1.978539
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 350,
+"sentido_km": null,
+"via": 24012693
+},
+"eus-gi-3440-18045-hondarribia-santaengrazi": {
+"candidatas": 2,
+"destino_a_m": 3063,
+"margen_m": 300,
+"origen": "destino",
+"punto": [
+43.364264,
+-1.801571
+],
+"regla": "e",
+"resultado": "resuelto",
+"rumbo": 153,
+"sentido_km": "creciente",
+"via": 39990765
+},
+"eus-gi-3440-18500-hondarribia-biteri": {
+"candidatas": 2,
+"destino_a_m": 9440,
+"margen_m": 407,
+"origen": "destino",
+"punto": [
+43.362244,
+-1.797191
+],
+"regla": "e",
+"resultado": "resuelto",
+"rumbo": 105,
+"sentido_km": "creciente",
+"via": 40070441
+},
+"eus-gi-632-2670-ormaiztegi": {
+"candidatas": 2,
+"destino_a_m": 2904,
+"margen_m": 5054,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.046108,
+-2.238985
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 99,
+"sentido_km": null,
+"via": 27694629
+},
+"eus-gi-636-1220-tunel-molinao": {
+"candidatas": 2,
+"destino_a_m": 10685,
+"margen_m": 5676,
+"origen": "destino",
+"punto": [
+43.313694,
+-1.916457
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 37,
+"sentido_km": null,
+"via": 46251363
+},
+"eus-gi-636-13-288-hondarribia-amutalde": {
+"candidatas": 2,
+"destino_a_m": 1809,
+"margen_m": 179,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.347733,
+-1.800994
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 24,
+"sentido_km": null,
+"via": 235681173
+},
+"eus-n-1-407700-etxegarate": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+42.95481,
+-2.234385
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 307,
+"sentido_km": null,
+"via": 27554646
+},
+"eus-n-1-411400-idiazabal": {
+"candidatas": 2,
+"destino_a_m": 53195,
+"grupo": {
+"carretera": "N-1",
+"destino": "IRUN",
+"n": 2,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 3336,
+"origen": "destino",
+"punto": [
+42.987814,
+-2.235179
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 22,
+"sentido_km": "creciente",
+"via": 296512009
+},
+"eus-n-1-431035-alegia": {
+"candidatas": 2,
+"destino_a_m": 35906,
+"grupo": {
+"carretera": "N-1",
+"destino": "IRUN",
+"n": 2,
+"sentido": "creciente",
+"territorio": "Gipuzkoa"
+},
+"margen_m": 4203,
+"origen": "destino",
+"punto": [
+43.106682,
+-2.097544
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 357,
+"sentido_km": "creciente",
+"via": 27627490
+},
+"eus-n-1-432300-aldaba-txiki": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.115119,
+-2.092526
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 168,
+"sentido_km": null,
+"via": 27444936
+},
+"eus-n-1-446000-andoain-irun": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.21284,
+-2.029271
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 63,
+"sentido_km": null,
+"via": 1298771353
+},
+"eus-n-1-446000-andoain-vitoria": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.21284,
+-2.029271
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 63,
+"sentido_km": null,
+"via": 1298771353
+},
+"eus-n-1-448829-bazkardo": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.23597,
+-2.028979
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 334,
+"sentido_km": null,
+"via": 225948268
+},
+"eus-n-1-451219-lasarte": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+43.253368,
+-2.02208
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 107,
+"sentido_km": null,
+"via": 1312815732
+},
+"eus-n-104-356080-arkaute": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+42.857342,
+-2.615261
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 78,
+"sentido_km": null,
+"via": 502428754
+},
+"eus-n-240-16120-legutio": {
+"candidatas": 2,
+"destino_a_m": 39447,
+"margen_m": 8404,
+"origen": "destino",
+"punto": [
+42.978508,
+-2.644689
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 352,
+"sentido_km": null,
+"via": 200128354
+},
+"eus-n-240-32490-barazar": {
+"candidatas": 2,
+"destino_a_m": 24941,
+"grupo": {
+"carretera": "N-240",
+"destino": "BILBAO",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 404,
+"origen": "destino",
+"punto": [
+43.08878,
+-2.741225
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 284,
+"sentido_km": "decreciente",
+"via": 533455302
+},
+"eus-n-240-38430-alto-barazar": {
+"candidatas": 2,
+"destino_a_m": 28649,
+"grupo": {
+"carretera": "N-240",
+"destino": "BILBAO",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Bizkaia"
+},
+"margen_m": 2250,
+"origen": "destino",
+"punto": [
+43.064228,
+-2.710283
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 327,
+"sentido_km": "decreciente",
+"via": 236885606
+},
+"eus-n-622-11870-gopegi": {
+"candidatas": 2,
+"destino_a_m": 40049,
+"margen_m": 2977,
+"origen": "destino",
+"punto": [
+42.93142,
+-2.742333
+],
+"regla": "c",
+"resultado": "resuelto",
+"rumbo": 309,
+"sentido_km": "creciente",
+"via": 377703578
+},
+"eus-n-622-12200-letona": {
+"candidatas": 2,
+"destino_a_m": 11413,
+"grupo": {
+"carretera": "N-622",
+"destino": "VITORIAGASTEIZ",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Araba"
+},
+"margen_m": 1395,
+"origen": "destino",
+"punto": [
+42.933998,
+-2.745727
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 143,
+"sentido_km": "decreciente",
+"via": 214100334
+},
+"eus-n-622-15400-aiurdin": {
+"candidatas": 2,
+"destino_a_m": 13650,
+"grupo": {
+"carretera": "N-622",
+"destino": "VITORIAGASTEIZ",
+"n": 2,
+"sentido": "decreciente",
+"territorio": "Araba"
+},
+"margen_m": 5974,
+"origen": "destino",
+"punto": [
+42.942912,
+-2.776179
+],
+"regla": "b",
+"resultado": "resuelto",
+"rumbo": 126,
+"sentido_km": "decreciente",
+"via": 42753601
+},
+"eus-n-633-10280-derio": {
+"candidatas": 2,
+"destino_a_m": 5369,
+"margen_m": 7023,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.29083,
+-2.880723
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 162,
+"sentido_km": null,
+"via": 129116837
+},
+"eus-n-634-22634-foto-rojo-getaria": {
+"candidatas": 2,
+"destino_a_m": 59374,
+"margen_m": 277,
+"origen": "destino",
+"punto": [
+43.301923,
+-2.203483
+],
+"regla": "e",
+"resultado": "resuelto",
+"rumbo": 337,
+"sentido_km": null,
+"via": 27080783
+},
+"eus-n-637-10660-arrontegi": {
+"candidatas": 2,
+"destino_a_m": 3593,
+"margen_m": 3940,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.297593,
+-2.96671
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 37,
+"sentido_km": "creciente",
+"via": 117884119
+},
+"eus-n-637-11475-kukularra": {
+"candidatas": 2,
+"destino_a_m": 6004,
+"margen_m": 9687,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.301733,
+-2.960228
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 300,
+"sentido_km": "decreciente",
+"via": 22663831
+},
+"eus-n-637-8600-enlace-cruces": {
+"candidatas": 2,
+"motivo": "destino no localizable",
+"regla": null,
+"resultado": "ambos"
+},
+"eus-n-637-8900-bec": {
+"candidatas": 2,
+"destino_a_m": 5124,
+"margen_m": 1253,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.290723,
+-2.985461
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 197,
+"sentido_km": "decreciente",
+"via": 27652257
+},
+"eus-n-637-ramal-r-02-90-derio-loiu": {
+"candidatas": 2,
+"destino_a_m": 4921,
+"margen_m": 3916,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.286404,
+-2.892504
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 313,
+"sentido_km": null,
+"via": 25946597
+}
+}

@@ -1,0 +1,22 @@
+{
+"beasain":[{"lat":43.0473269,"lon":-2.2032868,"imp":0.5172,"cat":"boundary","tipo":"administrative","nombre":"Beasáin, Guipúzcoa, País Vasco, España"}],
+"behobia":[{"lat":43.3421588,"lon":-1.7608304,"imp":0.3107,"cat":"place","tipo":"suburb","nombre":"Behobia, Irún, Guipúzcoa, País Vasco, 20304, España"}],
+"berango":[{"lat":43.3628719,"lon":-2.9957746,"imp":0.4959,"cat":"boundary","tipo":"administrative","nombre":"Berango, Vizcaya, País Vasco, 48640, España"}],
+"bilbao":[{"lat":43.2630018,"lon":-2.9350039,"imp":0.6903,"cat":"boundary","tipo":"administrative","nombre":"Bilbao, Vizcaya, País Vasco, España"}],
+"cantabria":[{"lat":43.1595664,"lon":-4.0878382,"imp":0.6544,"cat":"boundary","tipo":"administrative","nombre":"Cantabria, España"},{"lat":43.1595664,"lon":-4.0878382,"imp":0.6544,"cat":"boundary","tipo":"administrative","nombre":"Cantabria, España"}],
+"donostia / san sebastián":[{"lat":43.3224219,"lon":-1.9838889,"imp":0.6747,"cat":"boundary","tipo":"administrative","nombre":"San Sebastián, Guipúzcoa, País Vasco, España"}],
+"erletxe":[{"lat":43.4434653,"lon":-2.7508958,"imp":0.0001,"cat":"building","tipo":"house","nombre":"Erletxe, Arane Gibelortzaga auzoa, Bermeo, Vizcaya, País Vasco, 48370, España"}],
+"getxo":[{"lat":43.3431164,"lon":-3.0078627,"imp":0.5594,"cat":"boundary","tipo":"administrative","nombre":"Guecho, Vizcaya, País Vasco, España"}],
+"getxo / barakaldo":[],
+"hondarribia":[{"lat":43.3624468,"lon":-1.7914309,"imp":0.5422,"cat":"boundary","tipo":"administrative","nombre":"Fuenterrabía, Guipúzcoa, País Vasco, 20280, España"}],
+"irun":[{"lat":43.3383176,"lon":-1.7888095,"imp":0.5712,"cat":"boundary","tipo":"administrative","nombre":"Irún, Guipúzcoa, País Vasco, España"}],
+"laga":[{"lat":43.4093183,"lon":-2.6554678,"imp":0.2975,"cat":"natural","tipo":"beach","nombre":"Laga, Lastarri, Ibarrangelu, Vizcaya, País Vasco, España"},{"lat":43.0915255,"lon":-7.3745188,"imp":0.1334,"cat":"place","tipo":"hamlet","nombre":"Laga, Suegos, Pol, Meira, Lugo, Galicia, 27279, España"},{"lat":44.9065789,"lon":1.9647932,"imp":0.1067,"cat":"natural","tipo":"wood","nombre":"Laga, Teyssieu, Figeac, Lot, Occitania, Francia metropolitana, 46190, Francia"},{"lat":45.6402694,"lon":3.6844795,"imp":0.0667,"cat":"place","tipo":"locality","nombre":"Laga, Le Bost de Dore, Bertignat, Ambert, Puy-de-Dôme, Auvergne-Rhône-Alpes, Fra"},{"lat":45.457644,"lon":3.812591,"imp":0.0667,"cat":"place","tipo":"locality","nombre":"Laga, Veillette, Saint-Just, Ambert, Puy-de-Dôme, Auvergne-Rhône-Alpes, Francia "}],
+"leioa":[{"lat":43.3271048,"lon":-2.9846079,"imp":0.5154,"cat":"boundary","tipo":"administrative","nombre":"Lejona, Vizcaya, País Vasco, 48940, España"}],
+"lezo":[{"lat":43.3212392,"lon":-1.8996138,"imp":0.4864,"cat":"boundary","tipo":"administrative","nombre":"Lezo, Guipúzcoa, País Vasco, España"}],
+"logroño":[{"lat":42.4661196,"lon":-2.4396676,"imp":0.6093,"cat":"boundary","tipo":"administrative","nombre":"Logroño, La Rioja, España"},{"lat":42.4581702,"lon":-2.4499219,"imp":0.1867,"cat":"place","tipo":"city","nombre":"Logroño, La Rioja, España"}],
+"loiu":[{"lat":43.3146947,"lon":-2.9393063,"imp":0.4968,"cat":"boundary","tipo":"administrative","nombre":"Lujua, Vizcaya, País Vasco, 48180, España"}],
+"madrid":[{"lat":40.416782,"lon":-3.703507,"imp":0.8187,"cat":"boundary","tipo":"administrative","nombre":"Madrid, Comunidad de Madrid, España"}],
+"san sebastian":[{"lat":43.3224219,"lon":-1.9838889,"imp":0.6747,"cat":"boundary","tipo":"administrative","nombre":"San Sebastián, Guipúzcoa, País Vasco, España"}],
+"vitoria - gasteiz":[{"lat":42.8505845,"lon":-2.66145,"imp":0.6379,"cat":"boundary","tipo":"administrative","nombre":"Vitoria, Cuadrilla de Vitoria, Álava, País Vasco, España"},{"lat":42.8465088,"lon":-2.6724025,"imp":0.6379,"cat":"place","tipo":"city","nombre":"Vitoria, Cuadrilla de Vitoria, Álava, País Vasco, 01001, España"}],
+"zaragoza":[{"lat":41.6915847,"lon":-0.9101268,"imp":0.6926,"cat":"boundary","tipo":"administrative","nombre":"Zaragoza, Aragón, España"},{"lat":41.6521342,"lon":-0.8809428,"imp":0.6926,"cat":"place","tipo":"city","nombre":"Zaragoza, Aragón, 50001, España"},{"lat":41.840047,"lon":-1.169509,"imp":0.6156,"cat":"boundary","tipo":"administrative","nombre":"Zaragoza, Aragón, España"},{"lat":41.700571,"lon":-0.909086,"imp":0.4018,"cat":"boundary","tipo":"administrative","nombre":"Zaragoza, Aragón, España"}]
+}
