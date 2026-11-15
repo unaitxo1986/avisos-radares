@@ -2,6 +2,7 @@ package es.unai.avisosradares
 
 import android.content.Context
 import android.media.AudioAttributes
+import android.media.AudioDeviceInfo
 import android.media.AudioFocusRequest
 import android.media.AudioFormat
 import android.media.AudioManager
@@ -72,6 +73,14 @@ object Sonido {
                 .setBufferSizeInBytes(muestras.size * 2)
                 .setTransferMode(AudioTrack.MODE_STATIC)
                 .build()
+            // Decisión de Unai (15/11): el aviso suena siempre en el altavoz del móvil, nunca por Bluetooth.
+            val altavoz = altavozDelMovil(audio)
+            if (altavoz == null) {
+                Registro.anota(ctx, origen, "sonido: este móvil no declara altavoz propio; sale por la salida que elija Android")
+            } else {
+                val aceptado = pista.setPreferredDevice(altavoz)
+                Registro.anota(ctx, origen, "sonido: salida forzada al altavoz del móvil, aceptado por Android=$aceptado")
+            }
             pista.write(muestras, 0, muestras.size)
             pista.play()
             val duracionMs = muestras.size * 1000L / MUESTREO
@@ -89,6 +98,9 @@ object Sonido {
             audio.abandonAudioFocusRequest(peticion)
         }
     }
+
+    private fun altavozDelMovil(audio: AudioManager): AudioDeviceInfo? =
+        audio.getDevices(AudioManager.GET_DEVICES_OUTPUTS).firstOrNull { it.type == AudioDeviceInfo.TYPE_BUILTIN_SPEAKER }
 
     private fun salidas(audio: AudioManager): String {
         val nombres = audio.getDevices(AudioManager.GET_DEVICES_OUTPUTS)
