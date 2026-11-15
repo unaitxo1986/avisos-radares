@@ -85,11 +85,22 @@ jobs:
           path: datos/cache/osm_aprox.json
           key: osm-aprox-v2-${{ github.run_id }}
           restore-keys: osm-aprox-v2-
-      - name: Tramo de aproximación (3.3, prueba con 11 radares vascos)
-        # Pide a OpenStreetMap un recuadro de 1,2 km por radar (caché en datos/cache/osm_aprox.json)
-        # y publica el resultado de cada uno como anotación.
+      - name: Tramo de aproximación (3.3, todos los radares resueltos)
+        # Un recuadro de 1,2 km por radar de OpenStreetMap (una petición por segundo; la respuesta cruda
+        # queda en la caché de Actions, así que repetir el cálculo no vuelve a descargar). Se corta con SIGINT
+        # a las 3 h 20 min por si acaso. Los 11 radares de la prueba 0.8 se anotan uno a uno.
         run: |
-          python3 -I datos/pipeline/calcular_aproximacion.py --radares salida-prueba/radares_crudos.json --prueba || echo "::warning title=Aproximación::falló (código $?)"
+          timeout -s INT 200m python3 -I datos/pipeline/calcular_aproximacion.py --radares salida-prueba/radares_crudos.json || echo "::warning title=Aproximación::cortado o con error (código $?)"
+          python3 - <<'PY'
+          import json, sys
+          sys.path.insert(0, ".")
+          from datos.pipeline.calcular_aproximacion import IDS_PRUEBA
+          a = json.load(open("datos/cache/aproximacion.json"))
+          for i in IDS_PRUEBA[:10]:
+              v = a.get(i)
+              if v:
+                  print(f"::notice title=Prueba {i[:40]}::{v['fiab']} largo={v.get('largo_m')} tunel={v.get('tunel_m')} cruces={v.get('cruces')} amb={v.get('ambiguos')} {'; '.join(v.get('motivos') or [])}")
+          PY
       - name: Resumen del resultado
         if: always()
         run: |

@@ -12,6 +12,7 @@ OpenStreetMap se guardan en `datos/cache/osm_aprox.json`; con --sin-red solo se 
 import argparse
 import json
 import os
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -60,6 +61,10 @@ def calcular(radares, sentido, serv, ids=None):
         except Pendiente as e:
             salida[r["id"]] = {"fiab": "dudosa", "puntos": None, "motivos": [f"falta en la caché: {e}"]}
             continue
+        except OSError as e:  # sin respuesta de OpenStreetMap: no se guarda en caché, se reintenta en la siguiente
+            salida[r["id"]] = {"fiab": "dudosa", "puntos": None,
+                               "motivos": [f"no se pudo descargar OpenStreetMap: {str(e)[:80]}"]}
+            continue
         salida[r["id"]] = aproximacion.construir(r, s, vias)
     return salida
 
@@ -91,11 +96,15 @@ def main(argv=None):
     destino.parent.mkdir(parents=True, exist_ok=True)
     destino.write_text(json.dumps(res, ensure_ascii=False, separators=(",", ":"), sort_keys=True) + "\n",
                        encoding="utf-8")
-    cuenta = Counter(v["fiab"] for v in res.values())
+    cuenta = Counter((i.split("-")[0], v["fiab"]) for i, v in res.items())
     linea = f"Aproximación de {len(res)} radares: {dict(cuenta)}; peticiones nuevas: {serv.peticiones}"
     print(linea)
     if os.environ.get("GITHUB_ACTIONS"):
         print(f"::notice title=Aproximación::{linea}")
+        motivos = Counter(re.sub(r"\d+", "N", m) for v in res.values() for m in (v.get("motivos") or []))
+        print(f"::notice title=Aproximación, motivos de dudosa::{dict(motivos)}")
+        print(f"::notice title=Aproximación, tamaño::{destino.stat().st_size} bytes; "
+              f"puntos totales: {sum(len(v['puntos']) for v in res.values() if v.get('puntos'))}")
         for id_, v in sorted(res.items()):
             if ids is not None and id_ not in ids:
                 continue

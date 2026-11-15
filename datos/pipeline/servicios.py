@@ -121,10 +121,17 @@ class Servicios:
             return self.osm_aprox.get(clave)
         if self.sin_red:
             raise Pendiente(f"osm_aprox {clave}")
-        dlat = math.degrees(RADIO_CAJA_APROX_M / 6371008.8)
-        dlon = dlat / math.cos(math.radians(lat))
-        bbox = f"{lon - dlon:.6f},{lat - dlat:.6f},{lon + dlon:.6f},{lat + dlat:.6f}"
-        datos = self._get(f"{URL_OSM}?bbox={bbox}")
+        # En zonas muy densas la API responde 400 (demasiados nodos): se reintenta con un recuadro menor.
+        for caja in (RADIO_CAJA_APROX_M, RADIO_CAJA_APROX_M / 2):
+            dlat = math.degrees(caja / 6371008.8)
+            dlon = dlat / math.cos(math.radians(lat))
+            bbox = f"{lon - dlon:.6f},{lat - dlat:.6f},{lon + dlon:.6f},{lat + dlat:.6f}"
+            try:
+                datos = self._get(f"{URL_OSM}?bbox={bbox}")
+                break
+            except urllib.error.HTTPError as e:
+                if e.code != 400 or caja != RADIO_CAJA_APROX_M:
+                    raise
         vias = self._destilar_osm(datos, lat, lon, RADIO_NODOS_APROX_M, ETIQUETAS_APROX, partir=True)
         self.osm_aprox.set(clave, vias)
         return vias
