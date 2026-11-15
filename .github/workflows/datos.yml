@@ -101,6 +101,10 @@ jobs:
               if v:
                   print(f"::notice title=Prueba {i[:40]}::{v['fiab']} largo={v.get('largo_m')} tunel={v.get('tunel_m')} cruces={v.get('cruces')} amb={v.get('ambiguos')} {'; '.join(v.get('motivos') or [])}")
           PY
+      - name: Límite de cada radar (3.4)
+        # Usa solo la caché de OpenStreetMap de 3.2; publica recuentos y discrepancias como anotaciones.
+        run: |
+          python3 -I datos/pipeline/calcular_limites.py --radares salida-prueba/radares_crudos.json || echo "::warning title=Límites::falló (código $?)"
       - name: Resumen del resultado
         if: always()
         run: |
