@@ -25,6 +25,7 @@ AGENTE = "avisos-radares/0.1 (+https://github.com/unaitxo1986/avisos-radares)"
 URL_OSM = "https://api.openstreetmap.org/api/0.6/map.json"
 URL_OSRM = "https://router.project-osrm.org/route/v1/driving/"
 URL_NOMINATIM = "https://nominatim.openstreetmap.org/search"
+URL_CARTO = "https://www.cartociudad.es/geocoder/api/geocoder/candidatesJsonp"
 
 # Tipos de vía que cuentan como calzada candidata (sin pistas, sendas ni aceras).
 VIAS = {
@@ -50,13 +51,14 @@ class Servicios:
         self.osm = Cache(d / "osm.json")
         self.osrm = Cache(d / "osrm.json")
         self.nominatim = Cache(d / "nominatim.json")
+        self.carto = Cache(d / "cartociudad.json")
         self.sin_red = sin_red
         self.pausa = pausa
         self._ultimo = 0.0
         self.peticiones = 0
 
     def guardar(self):
-        for c in (self.osm, self.osrm, self.nominatim):
+        for c in (self.osm, self.osrm, self.nominatim, self.carto):
             c.guardar()
 
     # ---- red ----
@@ -73,7 +75,10 @@ class Servicios:
                     self.peticiones += 1
                     if self.peticiones % 50 == 0:
                         self.guardar()  # así una ejecución cortada no pierde lo ya pedido
-                    return json.loads(r.read().decode("utf-8"))
+                    texto = r.read().decode("utf-8")
+                    if texto.startswith("callback("):  # JSONP de CartoCiudad
+                        texto = texto[len("callback("):].rstrip().rstrip(";").rstrip(")")
+                    return json.loads(texto)
             except urllib.error.HTTPError as e:
                 self._ultimo = time.time()
                 if e.code == 400:
@@ -166,4 +171,23 @@ class Servicios:
             "nombre": (x.get("display_name") or "")[:80],
         } for x in datos]
         self.nominatim.set(clave, res)
+        return res
+
+    # ---- puntos kilométricos (CartoCiudad, IGN) ----
+    def punto_km(self, carretera, km):
+        """Puntos de CartoCiudad para 'carretera km N' (km entero): [{'lat','lon','dir','muni'}]."""
+        clave = f"{' '.join(carretera.upper().split())} km {int(km)}"
+        if clave in self.carto:
+            return self.carto.get(clave)
+        if self.sin_red:
+            raise Pendiente(f"cartociudad {clave}")
+        q = urllib.parse.urlencode({"q": clave, "limit": 10, "no_process": "municipio"})
+        try:
+            datos = self._get(f"{URL_CARTO}?{q}")
+        except OSError:
+            datos = []
+        res = [{"lat": round(x["lat"], 6), "lon": round(x["lng"], 6),
+                "dir": x.get("address") or "", "muni": x.get("muni")}
+               for x in datos if x.get("type") == "portal" and x.get("lat") is not None]
+        self.carto.set(clave, res)
         return res

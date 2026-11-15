@@ -30,6 +30,7 @@ MARGEN_C_M = 1000.0      # regla c: margen mínimo
 DEST_LEJOS_C_M = 0.0  # regla c: sin exigir destino lejano (ver plan, 0.13: con margen >= 1 km basta)
 DEST_LEJOS_E_M = 2000.0   # regla e: destino a más de esto (carretera de doble sentido)
 RADIO_DEST_CERCA_M = 30000.0
+DIST_MIN_CARTO_M = 400.0  # el punto de CartoCiudad debe estar al menos a esto del radar
 
 TIPOS_CALCULABLES = ("fijo", "fotorrojo")
 
@@ -104,10 +105,55 @@ def _vecinos(r, infos):
     return sorted(mismos, key=lambda i: abs(i["r"]["pk_m"] - r["pk_m"]))
 
 
+def _puntos_carto(r, serv):
+    """Puntos de CartoCiudad en los kilómetros enteros que rodean al radar, ya validados.
+
+    Cada uno: (km, lat, lon). Se acepta si la dirección empieza por la misma carretera y
+    la distancia en línea recta al radar es coherente con la diferencia de kilometraje.
+    """
+    pk = r["pk_m"]
+    ref = norm_ref(r.get("carretera") or "")
+    res = []
+    for km in (int(pk // 1000), int(pk // 1000) + 1):
+        d_km = abs(km * 1000 - pk)
+        if d_km < DIST_MIN_CARTO_M or km < 0:
+            continue
+        buenos = []
+        for x in serv.punto_km(r["carretera"], km):
+            if norm_ref(x["dir"].split(" km ")[0]) != ref:
+                continue
+            d = haversine(r["lat"], r["lon"], x["lat"], x["lon"])
+            if abs(d - d_km) <= 0.4 * d_km + 150:
+                buenos.append((abs(d - d_km), x))
+        if buenos:
+            x = min(buenos, key=lambda t: t[0])[1]
+            res.append((km, x["lat"], x["lon"]))
+    return res
+
+
+def eje_carto(r, cands, serv):
+    """Eje kilométrico con un punto de CartoCiudad cuando el radar no tiene vecino."""
+    if r.get("pk_m") is None or not hasattr(serv, "punto_km"):
+        return None
+    for km, lat, lon in _puntos_carto(r, serv):
+        d = [serv.ruta(c["p"], c["rumbo"], (lat, lon), None) for c in cands]
+        if d[0] is None or d[1] is None or abs(d[0] - d[1]) < TOL_EJE_M:
+            continue
+        hacia = 0 if d[0] < d[1] else 1
+        creciente = hacia if km * 1000 > r["pk_m"] else 1 - hacia
+        return {"creciente": creciente, "margen": abs(d[0] - d[1]), "vecino": f"cartociudad-km{km}"}
+    return None
+
+
 def eje_km(r, cands, vecinos, serv):
     """Qué candidata es la creciente. Devuelve {'creciente': indice, 'margen': m, 'vecino': id} o None."""
     if len(cands) != 2:
         return None
+    e = _eje_vecinos(r, cands, vecinos, serv)
+    return e if e else eje_carto(r, cands, serv)
+
+
+def _eje_vecinos(r, cands, vecinos, serv):
     for v in vecinos[:2]:
         d = []
         for c in cands:

@@ -97,6 +97,18 @@ class PruebasSentido(unittest.TestCase):
         self.assertEqual(a["regla"], "d")
         self.assertAlmostEqual(a["rumbo"], 90, delta=2)
 
+    def test_eje_con_cartociudad_sin_vecino(self):
+        class Carto(ServicioFalso):
+            def punto_km(self, carretera, km):
+                # el km N de la N-1 está en x = N * 1000 m (el radar, pk 1500, en x = 1500)
+                return [{"lat": 43.0, "lon": _lon(km * 1000), "dir": f"N-1 km {km} (Prueba)", "muni": "P"},
+                        {"lat": 43.5, "lon": _lon(0), "dir": f"A-1 km {km} (Otra)", "muni": "O"}]
+        rs = [radar("solo", 1500, 1500, sentido_oficial="creciente")]
+        a = sentido.calcular(rs, Carto(via_doble()))["solo"]
+        self.assertEqual(a["resultado"], "resuelto", a)
+        self.assertEqual(a["sentido_km"], "creciente")
+        self.assertAlmostEqual(a["rumbo"], 90, delta=2)
+
     def test_tipo_tramo_no_aplica(self):
         r = radar("t", 0, 0, tipo="tramo")
         self.assertEqual(sentido.calcular([r], ServicioFalso(via_doble()))["t"]["resultado"], "no_aplica")
