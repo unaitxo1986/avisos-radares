@@ -35,6 +35,10 @@ VIAS = {
 ETIQUETAS = ("highway", "oneway", "junction", "ref", "maxspeed", "name")
 RADIO_CAJA_M = 90.0    # mitad del lado del recuadro que se pide a OpenStreetMap
 RADIO_NODOS_M = 250.0  # solo se guardan los nodos de la vía a menos de esto del punto
+# Tramo de aproximación (3.3): recuadro mayor, más etiquetas (túnel) y vías cortadas en trozos continuos.
+ETIQUETAS_APROX = ("highway", "oneway", "junction", "ref", "tunnel")
+RADIO_CAJA_APROX_M = 600.0
+RADIO_NODOS_APROX_M = 700.0
 
 
 class Pendiente(Exception):
@@ -49,6 +53,7 @@ class Servicios:
     def __init__(self, dir_cache, sin_red=False, pausa=1.1):
         d = Path(dir_cache)
         self.osm = Cache(d / "osm.json")
+        self.osm_aprox = Cache(d / "osm_aprox.json")
         self.osrm = Cache(d / "osrm.json")
         self.nominatim = Cache(d / "nominatim.json")
         self.carto = Cache(d / "cartociudad.json")
@@ -58,7 +63,7 @@ class Servicios:
         self.peticiones = 0
 
     def guardar(self):
-        for c in (self.osm, self.osrm, self.nominatim, self.carto):
+        for c in (self.osm, self.osm_aprox, self.osrm, self.nominatim, self.carto):
             c.guardar()
 
     # ---- red ----
@@ -105,8 +110,27 @@ class Servicios:
         self.osm.set(clave, vias)
         return vias
 
+    def vias_aprox(self, lat, lon):
+        """Como `vias_cerca` pero con un recuadro de unos 1,2 km, para el tramo de aproximación (3.3).
+
+        Cada vía lleva sus nodos en trozos continuos (mismo `id` puede salir varias veces si la
+        vía sale y vuelve a entrar en el radio) y la etiqueta `tunnel`.
+        """
+        clave = _clave_punto(lat, lon)
+        if clave in self.osm_aprox:
+            return self.osm_aprox.get(clave)
+        if self.sin_red:
+            raise Pendiente(f"osm_aprox {clave}")
+        dlat = math.degrees(RADIO_CAJA_APROX_M / 6371008.8)
+        dlon = dlat / math.cos(math.radians(lat))
+        bbox = f"{lon - dlon:.6f},{lat - dlat:.6f},{lon + dlon:.6f},{lat + dlat:.6f}"
+        datos = self._get(f"{URL_OSM}?bbox={bbox}")
+        vias = self._destilar_osm(datos, lat, lon, RADIO_NODOS_APROX_M, ETIQUETAS_APROX, partir=True)
+        self.osm_aprox.set(clave, vias)
+        return vias
+
     @staticmethod
-    def _destilar_osm(datos, lat, lon):
+    def _destilar_osm(datos, lat, lon, radio=RADIO_NODOS_M, etiquetas=ETIQUETAS, partir=False):
         nodos = {e["id"]: (e["lat"], e["lon"]) for e in datos.get("elements", []) if e.get("type") == "node"}
         vias = []
         for e in datos.get("elements", []):
@@ -116,14 +140,25 @@ class Servicios:
             if tags.get("highway") not in VIAS:
                 continue
             pts = [nodos[i] for i in e.get("nodes", []) if i in nodos]
-            pts = [p for p in pts if haversine(lat, lon, p[0], p[1]) <= RADIO_NODOS_M]
-            if len(pts) < 2:
-                continue
-            vias.append({
-                "id": e["id"],
-                "t": {k: tags[k] for k in ETIQUETAS if k in tags},
-                "n": [[round(p[0], 6), round(p[1], 6)] for p in pts],
-            })
+            if partir:
+                trozos, actual = [], []
+                for p in pts:
+                    if haversine(lat, lon, p[0], p[1]) <= radio:
+                        actual.append(p)
+                    else:
+                        trozos.append(actual)
+                        actual = []
+                trozos.append(actual)
+            else:
+                trozos = [[p for p in pts if haversine(lat, lon, p[0], p[1]) <= radio]]
+            for trozo in trozos:
+                if len(trozo) < 2:
+                    continue
+                vias.append({
+                    "id": e["id"],
+                    "t": {k: tags[k] for k in etiquetas if k in tags},
+                    "n": [[round(p[0], 6), round(p[1], 6)] for p in trozo],
+                })
         return vias
 
     # ---- rutas ----
