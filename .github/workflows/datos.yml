@@ -74,9 +74,12 @@ jobs:
         with:
           name: radares-crudos
           path: salida-prueba
-      - name: Calcular el sentido (radares de Trafikoa)
-        run: python3 -I datos/pipeline/calcular_sentido.py --radares salida-prueba/radares_crudos.json --fuente trafikoa
+      - name: Calcular el sentido (todos los radares)
+        # Se corta a los 38 minutos con SIGINT: la caché se guarda y la siguiente ejecución sigue donde quedó.
+        run: |
+          timeout -s INT 38m python3 -I datos/pipeline/calcular_sentido.py --radares salida-prueba/radares_crudos.json --fuente todos || echo "::warning title=Sentido::cortado o con error (código $?); se guarda la caché y se continúa en la siguiente ejecución"
       - name: Resumen por carretera y destino
+        if: always()
         run: |
           python3 - <<'PY'
           import json, collections as C
@@ -86,14 +89,17 @@ jobs:
           for i, v in res.items():
               r = crudos[i]
               g[(r["carretera"], r["provincia"], r.get("destino") or "")][v.get("sentido_km") if v["resultado"] == "resuelto" else v["resultado"]] += 1
-          lineas = [f"{k[0]}|{k[1]}|{k[2]}: {dict(c)}" for k, c in sorted(g.items())]
+          lineas = [f"{k[0]}|{k[1]}|{k[2]}: {dict(c)}" for k, c in sorted(g.items()) if crudos[next(i for i, r in crudos.items() if (r["carretera"], r["provincia"], r.get("destino") or "") == k)]["fuente"] == "trafikoa"]
+          tot = C.Counter((crudos[i]["fuente"], v["resultado"], v.get("regla")) for i, v in res.items())
+          print("::notice title=Recuento por fuente y regla::" + str(dict(tot)))
           for i in range(0, len(lineas), 12):
               print("::notice title=Sentido por grupo " + str(i // 12 + 1) + "::" + " ; ".join(lineas[i:i + 12])[:3800])
-          for i, v in res.items():
-              if v["resultado"] != "resuelto" and v["resultado"] != "no_aplica":
+          for i, v in list(res.items())[:60]:
+              if v["resultado"] not in ("resuelto", "no_aplica"):
                   print("::warning title=Sin resolver::" + crudos[i]["nombre"][:60] + " -> " + v["resultado"] + ": " + str(v.get("motivo", ""))[:150])
           PY
       - name: Guardar la caché en el repositorio
+        if: always()
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

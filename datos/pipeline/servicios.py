@@ -71,6 +71,8 @@ class Servicios:
                 with urllib.request.urlopen(req, timeout=60) as r:
                     self._ultimo = time.time()
                     self.peticiones += 1
+                    if self.peticiones % 50 == 0:
+                        self.guardar()  # así una ejecución cortada no pierde lo ya pedido
                     return json.loads(r.read().decode("utf-8"))
             except urllib.error.HTTPError as e:
                 self._ultimo = time.time()
