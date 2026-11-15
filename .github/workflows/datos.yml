@@ -48,6 +48,7 @@ jobs:
             echo "::error title=Lectura de fuentes::$(tr '\n' ' ' < error.txt | cut -c1-900)"
             exit 1
           fi
+          python3 -c "import json,collections as C;d=json.load(open('salida-prueba/radares_crudos.json'));c=C.Counter((r['fuente'],r['tipo']) for r in d['radares']);s=C.Counter(r['sentido_oficial'] for r in d['radares'] if r['fuente']=='dgt');print('::notice title=Recuentos::'+str(dict(c))+' DGT sentido: '+str(dict(s))+' DGT publicada: '+str(d['fuentes']['dgt']['publicado']))"
           python3 -c "import json;[print('::warning title=Fuente con aviso::'+a[:900]) for a in json.load(open('salida-prueba/radares_crudos.json'))['avisos']]"
       - name: Guardar el resultado como artefacto
         uses: actions/upload-artifact@v4
