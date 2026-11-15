@@ -50,30 +50,56 @@ def _limite(texto: str):
     return None, t
 
 
-def leer(html: str) -> dict:
-    """Lee el HTML de Trafikoa. Devuelve {'radares': [...]}."""
+def filas_desde_html(html: str) -> list:
+    """Extrae del HTML una fila por radar: [x, y, territorio, nombre, destino,
+    municipio, territorio2, carretera, km, velocidad], todo como texto."""
     trozos = re.split(r"var x\s*=\s*", html)[1:]
     if not trozos:
         raise ErrorLectura("Trafikoa: no hay ningún bloque 'var x' (¿cambió la página?)")
-
-    radares = []
+    filas = []
     for i, t in enumerate(trozos, 1):
         try:
-            este = float(re.match(r"[\d.]+", t).group())
-            norte = float(_RE_Y.search(t).group(1))
+            este = re.match(r"[\d.]+", t).group()
+            norte = _RE_Y.search(t).group(1)
             territorio = _RE_TH.search(t).group(1)
-            titulo = _RE_TITULO.search(t).group(1)
             matrices = [_RE_CADENA.findall(m) for m in _RE_VALORES.findall(t)]
             vals = next((m for m in matrices if len(m) == 7), None)
             if vals is None:
                 raise ValueError("no hay popupValores de 7 elementos")
         except (AttributeError, ValueError) as e:
             raise ErrorLectura(f"Trafikoa: bloque {i} ilegible ({e})") from e
+        filas.append([este, norte, territorio, *vals])
+    return filas
 
-        nombre, destino, municipio, terr2, carretera, km, vel = (v.strip() for v in vals)
-        lat, lon = utm_a_latlon(este, norte)
+
+def filas_a_texto(filas: list, cabecera: str) -> str:
+    """Formato de la copia guardada en datos/fuentes/: una fila por línea, separada por |."""
+    return "# " + cabecera + "\n" + "\n".join("|".join(f) for f in filas) + "\n"
+
+
+def filas_desde_texto(texto: str) -> list:
+    filas = [l.split("|") for l in texto.splitlines() if l.strip() and not l.startswith("#")]
+    if not filas or any(len(f) != 10 for f in filas):
+        raise ErrorLectura("Trafikoa: la copia guardada no tiene el formato esperado")
+    return filas
+
+
+def leer(html: str) -> dict:
+    """Lee el HTML de Trafikoa. Devuelve {'radares': [...]}."""
+    return leer_filas(filas_desde_html(html))
+
+
+def leer_filas(filas: list) -> dict:
+    radares = []
+    for i, f in enumerate(filas, 1):
+        territorio = f[2]
+        nombre, destino, municipio, terr2, carretera, km, vel = (v.strip() for v in f[3:])
+        try:
+            lat, lon = utm_a_latlon(float(f[0]), float(f[1]))
+            pk_m = round(float(km) * 1000)
+        except ValueError as e:
+            raise ErrorLectura(f"Trafikoa: fila {i} ({nombre}) con números ilegibles ({e})") from e
         limite, limite_texto = _limite(vel)
-        pk_m = round(float(km) * 1000)
 
         tipo = "fijo"
         extra = {}

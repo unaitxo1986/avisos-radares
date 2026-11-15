@@ -5,10 +5,13 @@ Uso (solo librería estándar):
     python3 -I datos/pipeline/leer_fuentes.py --salida datos/salida/radares_crudos.json
     python3 -I datos/pipeline/leer_fuentes.py --dgt copia.xml --trafikoa copia.html --salida x.json
 
-Sin --dgt / --trafikoa descarga de las URL oficiales. Si una fuente falla, sale
-con error y NO escribe la salida: conservar la última copia buena es de 3.5.
+Sin --dgt / --trafikoa descarga de las URL oficiales. Si falla la DGT o da cifras
+raras, sale con error y NO escribe la salida. Si falla Trafikoa (desde GitHub
+Actions su servidor no responde, comprobado el 15/11/2026), sigue con la última
+copia buena de datos/fuentes/trafikoa.txt y lo anota en "avisos".
 """
 import argparse
+import datetime
 import json
 import sys
 import urllib.request
@@ -25,6 +28,8 @@ CAJA_EUSKADI = (42.4, 43.5, -3.5, -1.7)
 RANGO_DGT_FIJOS = (500, 900)
 RANGO_DGT_TRAMOS = (30, 70)
 RANGO_TRAFIKOA = (80, 130)
+
+RUTA_COPIA_TRAFIKOA = Path(__file__).resolve().parents[1] / "fuentes" / "trafikoa.txt"
 
 AGENTE = "avisos-radares/0.1 (+https://github.com/unaitxo1986/avisos-radares)"
 
@@ -62,6 +67,29 @@ def comprobar(fuente: str, radares: list, caja, rangos: dict) -> list:
     return problemas
 
 
+def _filas_trafikoa(ruta_local, avisos):
+    """Filas de Trafikoa. Si la descarga o la lectura fallan, usa la última copia
+    buena (datos/fuentes/trafikoa.txt) y lo anota en `avisos`. Si la lectura sale
+    bien, renueva la copia. Devuelve (filas, usada_copia)."""
+    try:
+        html = (Path(ruta_local).read_text(encoding="utf-8") if ruta_local
+                else descargar(trafikoa.URL).decode("utf-8"))
+        filas = trafikoa.filas_desde_html(html)
+    except (ErrorLectura, OSError) as e:
+        if not RUTA_COPIA_TRAFIKOA.exists():
+            raise
+        filas = trafikoa.filas_desde_texto(RUTA_COPIA_TRAFIKOA.read_text(encoding="utf-8"))
+        avisos.append(f"Trafikoa no se pudo leer ({e}); se usa la copia guardada: "
+                      + RUTA_COPIA_TRAFIKOA.read_text(encoding="utf-8").splitlines()[0].lstrip("# "))
+        return filas, True
+    hoy = datetime.date.today().isoformat()
+    RUTA_COPIA_TRAFIKOA.parent.mkdir(parents=True, exist_ok=True)
+    RUTA_COPIA_TRAFIKOA.write_text(
+        trafikoa.filas_a_texto(filas, f"Copia de la página oficial de Trafikoa leída el {hoy} ({len(filas)} radares)."),
+        encoding="utf-8")
+    return filas, False
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dgt", help="fichero XML local en vez de descargar")
@@ -71,15 +99,15 @@ def main(argv=None):
     a = ap.parse_args(argv)
 
     problemas = []
+    avisos = []
     try:
         xml = Path(a.dgt).read_bytes() if a.dgt else descargar(dgt.URL)
         d = dgt.leer(xml)
         problemas += comprobar("DGT", d["radares"], CAJA_ESPANA,
                                {"fijo": RANGO_DGT_FIJOS, "tramo": RANGO_DGT_TRAMOS})
 
-        html = (Path(a.trafikoa).read_text(encoding="utf-8") if a.trafikoa
-                else descargar(trafikoa.URL).decode("utf-8"))
-        t = trafikoa.leer(html)
+        filas, usada_copia = _filas_trafikoa(a.trafikoa, avisos)
+        t = trafikoa.leer_filas(filas)
         problemas += comprobar("Trafikoa", t["radares"], CAJA_EUSKADI,
                                {"fijo": (RANGO_TRAFIKOA[0] - 3, RANGO_TRAFIKOA[1])})
 
@@ -99,13 +127,16 @@ def main(argv=None):
         "generado_con": "datos/leer_fuentes.py",
         "fuentes": {
             "dgt": {"publicado": d["publicado"], "radares": len(d["radares"]), "url": dgt.URL},
-            "trafikoa": {"radares": len(t["radares"]), "url": trafikoa.URL},
+            "trafikoa": {"radares": len(t["radares"]), "url": trafikoa.URL, "usada_copia": usada_copia},
             "manual": {"radares": len(m["radares"])},
         },
+        "avisos": avisos,
         "radares": radares,
     }
     Path(a.salida).parent.mkdir(parents=True, exist_ok=True)
     Path(a.salida).write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    for av in avisos:
+        print(f"AVISO: {av}", file=sys.stderr)
     print(f"OK: {len(radares)} radares (DGT {len(d['radares'])}, Trafikoa {len(t['radares'])}, manual {len(m['radares'])})")
     return 0
 

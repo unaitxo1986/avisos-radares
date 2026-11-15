@@ -34,19 +34,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Diagnóstico de red (cada fuente por separado)
+      - name: Comprobar si Trafikoa responde desde Actions
+        # Desde GitHub su servidor no contestaba el 15/11/2026 (se cuelga al conectar).
+        # Si algún día responde, la lectura directa vuelve a funcionar sin cambiar nada.
         continue-on-error: true
         run: |
-          prueba() {
-            r=$(curl -sS "$@" -o /dev/null -w "http=%{http_code} bytes=%{size_download} t=%{time_total}s" 2>&1 | tr '\n' ' ')
-            echo "::notice title=Red::$* -> $r"
-          }
-          T="https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo"
-          prueba -4 -m 25 "$T"
-          prueba -6 -m 25 "$T"
-          prueba -4 -m 25 "https://www.trafikoa.euskadi.eus/"
-          prueba -4 -m 25 "https://www.euskadi.eus/"
-          prueba -4 -m 25 "https://opendata.euskadi.eus/"
+          r=$(curl -4 -sS -m 20 -o /dev/null -w "http=%{http_code} t=%{time_total}s" "https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo" 2>&1 | tr '\n' ' ')
+          echo "::notice title=Trafikoa desde Actions::$r"
       - name: Leer las fuentes reales
         run: |
           # El motivo del fallo se publica como anotación para poder leerlo sin bajar los registros.
@@ -54,6 +48,7 @@ jobs:
             echo "::error title=Lectura de fuentes::$(tr '\n' ' ' < error.txt | cut -c1-900)"
             exit 1
           fi
+          python3 -c "import json;[print('::warning title=Fuente con aviso::'+a[:900]) for a in json.load(open('salida-prueba/radares_crudos.json'))['avisos']]"
       - name: Guardar el resultado como artefacto
         uses: actions/upload-artifact@v4
         with:

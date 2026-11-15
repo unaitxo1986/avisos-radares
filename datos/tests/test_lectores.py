@@ -8,7 +8,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from datos.pipeline import dgt, manual, trafikoa
+from datos.pipeline import dgt, leer_fuentes, manual, trafikoa
 from datos.pipeline.dgt import ErrorLectura
 from datos.pipeline.utm import utm_a_latlon
 
@@ -114,6 +114,54 @@ class PruebasTrafikoa(unittest.TestCase):
             trafikoa.leer("<html>otra cosa</html>")
         with self.assertRaises(ErrorLectura):
             trafikoa.leer("var x = 1000;\n var y = 2000;")
+
+
+class PruebasCopiaTrafikoa(unittest.TestCase):
+    def setUp(self):
+        self.filas = _filas_ref()
+        self.html = _html_trafikoa(self.filas)
+        self.tmp = tempfile.TemporaryDirectory()
+        self.copia = Path(self.tmp.name) / "trafikoa.txt"
+        self._orig = leer_fuentes.RUTA_COPIA_TRAFIKOA
+        leer_fuentes.RUTA_COPIA_TRAFIKOA = self.copia
+
+    def tearDown(self):
+        leer_fuentes.RUTA_COPIA_TRAFIKOA = self._orig
+        self.tmp.cleanup()
+
+    def test_ida_y_vuelta_de_la_copia(self):
+        filas = trafikoa.filas_desde_html(self.html)
+        texto = trafikoa.filas_a_texto(filas, "prueba")
+        self.assertEqual(trafikoa.filas_desde_texto(texto), filas)
+        self.assertEqual(trafikoa.leer_filas(filas), trafikoa.leer(self.html))
+
+    def test_lectura_buena_renueva_la_copia(self):
+        avisos = []
+        with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8") as f:
+            f.write(self.html)
+        filas, usada = leer_fuentes._filas_trafikoa(f.name, avisos)
+        self.assertFalse(usada)
+        self.assertEqual(avisos, [])
+        self.assertEqual(len(trafikoa.filas_desde_texto(self.copia.read_text(encoding="utf-8"))), 98)
+
+    def test_pagina_rota_usa_la_copia_y_avisa(self):
+        self.copia.write_text(trafikoa.filas_a_texto(self.filas, "copia de prueba"), encoding="utf-8")
+        with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8") as f:
+            f.write("<html>rediseñada</html>")
+        avisos = []
+        filas, usada = leer_fuentes._filas_trafikoa(f.name, avisos)
+        self.assertTrue(usada)
+        self.assertEqual(len(filas), 98)
+        self.assertEqual(len(avisos), 1)
+        self.assertIn("copia de prueba", avisos[0])
+        # la copia no se toca cuando se usa
+        self.assertIn("copia de prueba", self.copia.read_text(encoding="utf-8"))
+
+    def test_sin_copia_y_pagina_rota_da_error(self):
+        with tempfile.NamedTemporaryFile("w", suffix=".html", delete=False, encoding="utf-8") as f:
+            f.write("<html></html>")
+        with self.assertRaises(ErrorLectura):
+            leer_fuentes._filas_trafikoa(f.name, [])
 
 
 # Mini fichero DATEX II con la misma estructura que el de la DGT (ver dgt.py).
