@@ -1,0 +1,44 @@
+name: Proceso de datos
+
+# 3.1: pruebas de los lectores y lectura de las fuentes oficiales reales.
+# La tarea programada (3.6) se añadirá aquí cuando el proceso esté completo.
+on:
+  push:
+    branches: [main]
+    paths:
+      - "datos/**"
+      - ".github/workflows/datos.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pruebas de los lectores
+        run: python3 -I -m unittest discover -s datos/tests -t . -v
+
+  leer-fuentes:
+    # Descarga la DGT y Trafikoa de sus URL oficiales. Si una falla o da cifras raras,
+    # el programa sale con error y no escribe nada (ver datos/pipeline/leer_fuentes.py).
+    needs: pruebas
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Leer las fuentes reales
+        run: python3 -I datos/pipeline/leer_fuentes.py --salida salida-prueba/radares_crudos.json
+      - name: Guardar el resultado como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: radares-crudos
+          path: salida-prueba/radares_crudos.json
+          retention-days: 14

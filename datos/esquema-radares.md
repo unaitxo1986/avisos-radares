@@ -55,3 +55,21 @@ Campos de cada radar:
 Radares que no están en las listas oficiales (por ejemplo, municipales) y revisiones a mano (tramo de aproximación dudoso confirmado, límite que falte). Mismo formato de radar que `radares.json`, más un campo opcional `completa` con el `id` del radar oficial al que rellena un dato.
 
 **Regla (Unai, 14/11): ante la duda prevalece lo oficial.** Lo manual y OpenStreetMap solo rellenan lo que la fuente oficial no da; nunca corrigen un dato oficial. Si Unai quiere contradecir una fuente oficial, se decide y se anota en el plan.
+
+## Formato intermedio: salida de la lectura de fuentes (3.1)
+
+`datos/pipeline/leer_fuentes.py` escribe un JSON "crudo" (`radares_crudos.json`, aún no publicado) con las tres fuentes unidas, **sin sentido resuelto, sin tramo de aproximación y sin límite de OpenStreetMap**. Lo consumen 3.2 a 3.5, que generan `radares.json` con el formato de arriba. Campos de cada radar (15/11/2026):
+
+| Campo | Notas |
+|---|---|
+| `id`, `fuente`, `tipo`, `nombre` | `id` con prefijo `dgt-`, `eus-` o `man-`; `fuente` `dgt`, `trafikoa` o `manual`. `tipo`: `fijo`, `tramo`, `fotorrojo` y, solo en Trafikoa, `tramo_extremo` (los dos puntos de Trabakua, con `tramo_grupo` y `tramo_extremo` 1 o 2; emparejarlos en un tramo queda para la fase 5) |
+| `lat`, `lon`, `lat_fin`, `lon_fin` | WGS84. En Trafikoa vienen de UTM huso 30 ETRS89. En tramos de la DGT, `from` es el inicio y `to` el fin **[sin verificar]** que coincida con el kilometraje: comprobar en 3.2 |
+| `carretera`, `pk_m` | `pk_m` en **metros** (entero); en `pk` del fichero publicado serán km. En tramos DGT, `pk_fin_m` es el del fin |
+| `sentido_oficial` | `creciente` o `decreciente` (DGT: `positive`/`negative`). En Trafikoa es `null`: da el destino |
+| `destino` | Destino oficial (DGT en un tercio de los fijos, Trafikoa siempre) |
+| `limite_oficial`, `limite_texto` | Trafikoa: entero si el texto trae un solo número; `60/80` y `-` dan `null` con el texto original en `limite_texto`. DGT: siempre `null` (no publica el límite). `limite_manual` solo en entradas manuales |
+| `municipio`, `provincia`, `provincia_ine`, `tipo_via` | Datos de la fuente, tal cual |
+| `enlace_oficial` | Enlace a la fuente oficial |
+| `completa` | Solo manual: id del radar oficial al que rellena un dato |
+
+Comprobaciones al leer (si falla alguna, no se escribe nada): recuentos esperados (DGT 500-900 fijos y 30-70 tramos; Trafikoa 77-130), coordenadas dentro de la zona, identificadores únicos y estructura de cada fuente.
