@@ -57,6 +57,52 @@ jobs:
           path: salida-prueba/radares_crudos.json
           retention-days: 14
 
+  sentido:
+    # 3.2: calcula el sentido de los radares con OpenStreetMap, OSRM y Nominatim (que desde
+    # Actions sí responden) y guarda las respuestas en datos/cache/ para no repetirlas.
+    needs: leer-fuentes
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/download-artifact@v4
+        with:
+          name: radares-crudos
+          path: salida-prueba
+      - name: Calcular el sentido (radares de Trafikoa)
+        run: python3 -I datos/pipeline/calcular_sentido.py --radares salida-prueba/radares_crudos.json --fuente trafikoa
+      - name: Resumen por carretera y destino
+        run: |
+          python3 - <<'PY'
+          import json, collections as C
+          crudos = {r["id"]: r for r in json.load(open("salida-prueba/radares_crudos.json"))["radares"]}
+          res = json.load(open("datos/cache/sentido.json"))
+          g = C.defaultdict(C.Counter)
+          for i, v in res.items():
+              r = crudos[i]
+              g[(r["carretera"], r["provincia"], r.get("destino") or "")][v.get("sentido_km") if v["resultado"] == "resuelto" else v["resultado"]] += 1
+          lineas = [f"{k[0]}|{k[1]}|{k[2]}: {dict(c)}" for k, c in sorted(g.items())]
+          for i in range(0, len(lineas), 12):
+              print("::notice title=Sentido por grupo " + str(i // 12 + 1) + "::" + " ; ".join(lineas[i:i + 12])[:3800])
+          for i, v in res.items():
+              if v["resultado"] != "resuelto" and v["resultado"] != "no_aplica":
+                  print("::warning title=Sin resolver::" + crudos[i]["nombre"][:60] + " -> " + v["resultado"] + ": " + str(v.get("motivo", ""))[:150])
+          PY
+      - name: Guardar la caché en el repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/cache
+          if git diff --cached --quiet; then echo "Sin cambios en la caché"; exit 0; fi
+          git commit -m "Caché de servicios y sentido calculado (automático)"
+          git pull --rebase origin main
+          git push origin HEAD:main
+
   servicios-3-2:
     # Diagnóstico temporal para 3.2: qué servicios externos del algoritmo del sentido
     # se alcanzan desde GitHub Actions. El resultado sale como anotaciones. No bloquea nada.
