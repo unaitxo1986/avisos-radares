@@ -1188,14 +1188,13 @@
 "candidatas": 2,
 "destino_a_m": 2208,
 "margen_m": 2683,
-"motivo": "ninguna regla de confianza se cumple",
 "origen": "destino",
 "punto": [
 43.343125,
 -2.995415
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "c",
+"resultado": "resuelto",
 "rumbo": 59,
 "sentido_km": "creciente",
 "via": 40152830
@@ -1359,14 +1358,13 @@
 "candidatas": 2,
 "destino_a_m": 2235,
 "margen_m": 5186,
-"motivo": "ninguna regla de confianza se cumple",
 "origen": "destino",
 "punto": [
 43.302705,
 -1.978539
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "c",
+"resultado": "resuelto",
 "rumbo": 350,
 "sentido_km": null,
 "via": 24012693
@@ -1405,14 +1403,13 @@
 "candidatas": 2,
 "destino_a_m": 2904,
 "margen_m": 5054,
-"motivo": "ninguna regla de confianza se cumple",
 "origen": "destino",
 "punto": [
 43.046108,
 -2.238985
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "c",
+"resultado": "resuelto",
 "rumbo": 99,
 "sentido_km": null,
 "via": 27694629
@@ -1705,14 +1702,13 @@
 "candidatas": 2,
 "destino_a_m": 5369,
 "margen_m": 7023,
-"motivo": "ninguna regla de confianza se cumple",
 "origen": "destino",
 "punto": [
 43.29083,
 -2.880723
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "c",
+"resultado": "resuelto",
 "rumbo": 162,
 "sentido_km": null,
 "via": 129116837
@@ -1736,14 +1732,13 @@
 "candidatas": 2,
 "destino_a_m": 3593,
 "margen_m": 3940,
-"motivo": "ninguna regla de confianza se cumple",
 "origen": "destino",
 "punto": [
 43.297593,
 -2.96671
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "c",
+"resultado": "resuelto",
 "rumbo": 37,
 "sentido_km": "creciente",
 "via": 117884119
@@ -1752,14 +1747,13 @@
 "candidatas": 2,
 "destino_a_m": 6004,
 "margen_m": 9687,
-"motivo": "ninguna regla de confianza se cumple",
 "origen": "destino",
 "punto": [
 43.301733,
 -2.960228
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "c",
+"resultado": "resuelto",
 "rumbo": 300,
 "sentido_km": "decreciente",
 "via": 22663831
@@ -1774,14 +1768,13 @@
 "candidatas": 2,
 "destino_a_m": 5124,
 "margen_m": 1253,
-"motivo": "ninguna regla de confianza se cumple",
 "origen": "destino",
 "punto": [
 43.290723,
 -2.985461
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "c",
+"resultado": "resuelto",
 "rumbo": 197,
 "sentido_km": "decreciente",
 "via": 27652257
@@ -1790,14 +1783,13 @@
 "candidatas": 2,
 "destino_a_m": 4921,
 "margen_m": 3916,
-"motivo": "ninguna regla de confianza se cumple",
 "origen": "destino",
 "punto": [
 43.286404,
 -2.892504
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "c",
+"resultado": "resuelto",
 "rumbo": 313,
 "sentido_km": null,
 "via": 25946597

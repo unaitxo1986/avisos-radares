@@ -27,7 +27,7 @@ RADIO_CAND_M = 50.0      # calzadas candidatas a menos de esto de la cabina
 TOL_EJE_M = 150.0        # diferencia mínima entre las dos rutas para fiarse del eje
 CAP_PESO_M = 5000.0      # tope del margen al ponderar votos
 MARGEN_C_M = 1000.0      # regla c: margen mínimo
-DEST_LEJOS_C_M = 10000.0  # regla c: destino a más de esto
+DEST_LEJOS_C_M = 0.0  # regla c: sin exigir destino lejano (ver plan, 0.13: con margen >= 1 km basta)
 DEST_LEJOS_E_M = 2000.0   # regla e: destino a más de esto (carretera de doble sentido)
 RADIO_DEST_CERCA_M = 30000.0
 
