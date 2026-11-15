@@ -166,7 +166,7 @@ class PruebasCopiaTrafikoa(unittest.TestCase):
 
 # Mini fichero DATEX II con la misma estructura que el de la DGT (ver dgt.py).
 _PUNTO = """<_0:predefinedLocation id="GUID_CABINACINEMOMETRO_{n}">
- <_0:predefinedLocationName><_0:value lang="es">CABINACINEMOMETRO_{n}</_0:value></_0:predefinedLocationName>
+ <_0:predefinedLocationName><_0:value lang="es">{nombre}</_0:value></_0:predefinedLocationName>
  <_0:predefinedLocation xsi:type="_0:Point"><_0:tpegpointLocation xsi:type="_0:TPEGSimplePoint">
   <_0:tpegDirection>unknown</_0:tpegDirection><_0:tpegLocationType>nonLinkedPoint</_0:tpegLocationType>
   <_0:point><_0:pointCoordinates><_0:latitude>{lat}</_0:latitude><_0:longitude>{lon}</_0:longitude></_0:pointCoordinates>
@@ -208,7 +208,7 @@ _TRAMO = """<_0:predefinedLocation id="GUID_CVM_161274">
 
 
 def _xml_dgt(fijos, con_tramo=True):
-    cuerpo = "".join(_PUNTO.format(n=120001 + i, **f) for i, f in enumerate(fijos))
+    cuerpo = "".join(_PUNTO.format(n=120001 + i, **{"nombre": f"CABINACINEMOMETRO_{120001 + i}", **f}) for i, f in enumerate(fijos))
     tramos = ('<_0:predefinedLocationSet id="T"><_0:predefinedLocationSetName><_0:value lang="es">'
               'CinemometrosVelocidadMedia</_0:value></_0:predefinedLocationSetName>'
               + _TRAMO + "</_0:predefinedLocationSet>") if con_tramo else ""
@@ -260,6 +260,18 @@ class PruebasDGT(unittest.TestCase):
         self.assertEqual((t["lat_fin"], t["lon_fin"]), (41.6192, -0.9496))  # to
         self.assertEqual((t["pk_m"], t["pk_fin_m"]), (26600, 29700))
         self.assertEqual(t["sentido_oficial"], "creciente")
+
+    def test_nombres_de_lugar_repetidos_no_repiten_id(self):
+        # En el fichero real, 3 nombres de lugar (TABAZA, MALIAÑO, CASTRO URDIALES) se repiten.
+        f = [dict(FIJOS[0], nombre="TABAZA"), dict(FIJOS[1], nombre="TABAZA")]
+        fijos = [x for x in dgt.leer(_xml_dgt(f))["radares"] if x["tipo"] == "fijo"]
+        self.assertEqual(len({x["id"] for x in fijos}), 2)
+        self.assertEqual([x["nombre"] for x in fijos], ["TABAZA", "TABAZA"])
+        self.assertEqual(fijos[0]["id"], "dgt-CABINACINEMOMETRO_120001")
+
+    def test_nombre_vacio_si_solo_repite_el_id(self):
+        a = [x for x in dgt.leer(_xml_dgt(FIJOS))["radares"] if x["tipo"] == "fijo"][0]
+        self.assertIsNone(a["nombre"])
 
     def test_xml_roto(self):
         with self.assertRaises(ErrorLectura):

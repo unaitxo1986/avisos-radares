@@ -10,6 +10,7 @@ Dos listas dentro (comprobado el 15/11/2026, publicación del 18/12/2025):
 El fichero NO trae el límite de velocidad. El sentido viene como creciente o
 decreciente (directionRelative positive/negative) y, en algunos, un destino.
 """
+import re
 import xml.etree.ElementTree as ET
 
 URL = "https://nap.dgt.es/datex2/dgt/PredefinedLocationsPublication/radares/content.xml"
@@ -59,6 +60,19 @@ def _descriptor(el, tipo):
     return None
 
 
+def _id_y_nombre(loc):
+    """El identificador único es el atributo `id` de la ubicación (GUID_...). El
+    `predefinedLocationName` NO es único: en 149 de 737 es un nombre de lugar
+    (TABAZA, MALIAÑO, CASTRO URDIALES...) que se repite; en el resto repite el id."""
+    ident = (loc.get("id") or "").removeprefix("GUID_")
+    if not ident:
+        raise ErrorLectura("DGT: una ubicación no tiene atributo id")
+    nombre = _texto(_primero(loc, "predefinedLocationName"), "value")
+    if nombre and re.fullmatch(r"(CABINACINEMOMETRO|CVM)_\d+", nombre):
+        nombre = None
+    return f"dgt-{ident}", nombre
+
+
 def _sentido(valor):
     return {"positive": "creciente", "negative": "decreciente"}.get(valor)
 
@@ -96,25 +110,25 @@ def leer(contenido: bytes | str) -> dict:
     radares = []
     for conj in conjuntos:
         for loc in _hijos(conj, "predefinedLocation"):
-            nombre = _texto(_primero(loc, "predefinedLocationName"), "value")
+            ident, nombre = _id_y_nombre(loc)
             if _primero(loc, "tpeglinearLocation") is not None:
-                radares.append(_tramo(loc, nombre))
+                radares.append(_tramo(loc, ident, nombre))
             elif _primero(loc, "tpegpointLocation") is not None:
-                radares.append(_fijo(loc, nombre))
+                radares.append(_fijo(loc, ident, nombre))
     if not radares:
         raise ErrorLectura("El fichero de la DGT no contiene ningún radar")
     return {"publicado": publicado, "radares": radares}
 
 
-def _fijo(loc, nombre):
+def _fijo(loc, ident, nombre):
     punto = _primero(loc, "tpegpointLocation")
     lat, lon = _coords(punto)
     d = _ref(_primero(loc, "referencePoint"))
     return {
-        "id": f"dgt-{nombre}",
+        "id": ident,
         "fuente": FUENTE,
         "tipo": "fijo",
-        "nombre": _descriptor(punto, "linkName"),
+        "nombre": nombre,
         "lat": lat, "lon": lon,
         "lat_fin": None, "lon_fin": None,
         "municipio": _descriptor(punto, "townName"),
@@ -125,7 +139,7 @@ def _fijo(loc, nombre):
     }
 
 
-def _tramo(loc, nombre):
+def _tramo(loc, ident, nombre):
     lin = _primero(loc, "tpeglinearLocation")
     # `from` es el inicio y `to` el final según TPEG. [sin verificar] que coincida
     # con el inicio y el fin del kilometraje (referencePointPrimary/Secondary):
@@ -135,10 +149,10 @@ def _tramo(loc, nombre):
     ini = _ref(_primero(_primero(loc, "referencePointPrimaryLocation"), "referencePoint"))
     fin = _ref(_primero(_primero(loc, "referencePointSecondaryLocation"), "referencePoint"))
     return {
-        "id": f"dgt-{nombre}",
+        "id": ident,
         "fuente": FUENTE,
         "tipo": "tramo",
-        "nombre": _descriptor(_hijos(lin, "from")[0], "linkName"),
+        "nombre": nombre,
         "lat": lat, "lon": lon,
         "lat_fin": lat_f, "lon_fin": lon_f,
         "municipio": _descriptor(_hijos(lin, "from")[0], "townName"),
