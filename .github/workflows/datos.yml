@@ -56,3 +56,24 @@ jobs:
           name: radares-crudos
           path: salida-prueba/radares_crudos.json
           retention-days: 14
+
+  servicios-3-2:
+    # Diagnóstico temporal para 3.2: qué servicios externos del algoritmo del sentido
+    # se alcanzan desde GitHub Actions. El resultado sale como anotaciones. No bloquea nada.
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Probar servicios de rutas, geocodificación y mapa
+        run: |
+          prueba() {
+            nombre="$1"; shift
+            r=$(curl -4 -sS -m 25 -A "avisos-radares/0.1 (+https://github.com/unaitxo1986/avisos-radares)" -o /tmp/r.out -w "http=%{http_code} bytes=%{size_download} t=%{time_total}s" "$@" 2>&1 | tr '\n' ' ')
+            muestra=$(head -c 90 /tmp/r.out 2>/dev/null | tr '\n"' '  ')
+            echo "::notice title=$nombre::$r | $muestra"
+          }
+          prueba "OSRM demo (ruta)" "https://router.project-osrm.org/route/v1/driving/-3.0002,43.2864;-2.9350,43.2630?overview=false"
+          prueba "Nominatim (geocodificar)" "https://nominatim.openstreetmap.org/search?q=Cantabria&format=json&limit=1"
+          prueba "API de OpenStreetMap (mapa)" "https://api.openstreetmap.org/api/0.6/map.json?bbox=-3.0010,43.2858,-2.9990,43.2870"
+          prueba "Overpass (estado)" "https://overpass-api.de/api/status"
+          prueba "CartoCiudad (IGN)" "https://www.cartociudad.es/geocoder/api/geocoder/candidatesJsonp?q=A-2+km+202&limit=1&no_process=municipio"
+          prueba "detector-radar.com" "https://detector-radar.com/wp-json/dgt/v1/capa/euskadi"
