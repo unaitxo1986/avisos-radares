@@ -431,9 +431,17 @@
 },
 "dgt-CABINACINEMOMETRO_120035": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1074,
+"origen": "oficial",
+"punto": [
+36.833279,
+-6.066581
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 218,
+"sentido_km": "creciente",
+"via": 44112516
 },
 "dgt-CABINACINEMOMETRO_120036": {
 "candidatas": 2,
@@ -797,17 +805,16 @@
 },
 "dgt-CABINACINEMOMETRO_120069": {
 "candidatas": 2,
-"destino_a_m": 14461,
-"margen_m": 2074,
-"origen": "destino",
+"margen_m": 1373,
+"origen": "oficial",
 "punto": [
 42.287354,
 -7.896696
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 253,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 275939140
 },
 "dgt-CABINACINEMOMETRO_120071": {
@@ -841,17 +848,16 @@
 },
 "dgt-CABINACINEMOMETRO_120073": {
 "candidatas": 2,
-"destino_a_m": 895,
 "margen_m": 1148,
-"origen": "destino",
+"origen": "oficial",
 "punto": [
 43.329934,
 -8.395257
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 105,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 23234085
 },
 "dgt-CABINACINEMOMETRO_120074": {
@@ -1205,17 +1211,16 @@
 },
 "dgt-CABINACINEMOMETRO_120108": {
 "candidatas": 2,
-"destino_a_m": 8138,
-"margen_m": 317,
-"origen": "destino",
+"margen_m": 324,
+"origen": "oficial",
 "punto": [
 43.255393,
 -7.669886
 ],
-"regla": "e",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 352,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 155814322
 },
 "dgt-CABINACINEMOMETRO_120110": {
@@ -1824,15 +1829,31 @@
 },
 "dgt-CABINACINEMOMETRO_120167": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 9439,
+"origen": "oficial",
+"punto": [
+37.308176,
+-6.892832
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 239,
+"sentido_km": "creciente",
+"via": 841226151
 },
 "dgt-CABINACINEMOMETRO_120168": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 4991,
+"origen": "oficial",
+"punto": [
+36.505512,
+-6.248436
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 223,
+"sentido_km": "creciente",
+"via": 1231460241
 },
 "dgt-CABINACINEMOMETRO_120169": {
 "candidatas": 2,
@@ -1951,9 +1972,17 @@
 },
 "dgt-CABINACINEMOMETRO_120180": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 3498,
+"origen": "oficial",
+"punto": [
+37.419324,
+-5.945723
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 339,
+"sentido_km": "creciente",
+"via": 39723586
 },
 "dgt-CABINACINEMOMETRO_120181": {
 "candidatas": 2,
@@ -2161,9 +2190,17 @@
 },
 "dgt-CABINACINEMOMETRO_120202": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 3068,
+"origen": "oficial",
+"punto": [
+36.634534,
+-6.196655
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 172,
+"sentido_km": "decreciente",
+"via": 28210163
 },
 "dgt-CABINACINEMOMETRO_120203": {
 "candidatas": 0,
@@ -2213,17 +2250,16 @@
 },
 "dgt-CABINACINEMOMETRO_120208": {
 "candidatas": 2,
-"destino_a_m": 253097,
-"margen_m": 4094,
-"origen": "destino",
+"margen_m": 8948,
+"origen": "oficial",
 "punto": [
 41.656792,
 -0.841031
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 2,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 28073898
 },
 "dgt-CABINACINEMOMETRO_120209": {
@@ -2314,18 +2350,16 @@
 },
 "dgt-CABINACINEMOMETRO_120215": {
 "candidatas": 2,
-"destino_a_m": 1827,
-"margen_m": 921,
-"motivo": "ninguna regla de confianza se cumple",
-"origen": "destino",
+"margen_m": 920,
+"origen": "oficial",
 "punto": [
 42.468662,
 -2.417616
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "a",
+"resultado": "resuelto",
 "rumbo": 210,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 183653935
 },
 "dgt-CABINACINEMOMETRO_120216": {
@@ -2344,17 +2378,16 @@
 },
 "dgt-CABINACINEMOMETRO_120217": {
 "candidatas": 2,
-"destino_a_m": 2638,
-"margen_m": 852,
-"origen": "destino",
+"margen_m": 929,
+"origen": "oficial",
 "punto": [
 42.426694,
 -2.423415
 ],
-"regla": "e",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 225,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 96983002
 },
 "dgt-CABINACINEMOMETRO_120218": {
@@ -2430,9 +2463,17 @@
 },
 "dgt-CABINACINEMOMETRO_120225": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 3763,
+"origen": "oficial",
+"punto": [
+39.595555,
+-3.089575
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 279,
+"sentido_km": "decreciente",
+"via": 343653242
 },
 "dgt-CABINACINEMOMETRO_120226": {
 "candidatas": 2,
@@ -2574,21 +2615,45 @@
 },
 "dgt-CABINACINEMOMETRO_120241": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 7164,
+"origen": "oficial",
+"punto": [
+40.686536,
+-3.173187
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 184,
+"sentido_km": "decreciente",
+"via": 1497161302
 },
 "dgt-CABINACINEMOMETRO_120242": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 3905,
+"origen": "oficial",
+"punto": [
+40.025247,
+-5.8487
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 93,
+"sentido_km": "creciente",
+"via": 356090848
 },
 "dgt-CABINACINEMOMETRO_120243": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 7405,
+"origen": "oficial",
+"punto": [
+39.916871,
+-5.560984
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 150,
+"sentido_km": "decreciente",
+"via": 1103889070
 },
 "dgt-CABINACINEMOMETRO_120244": {
 "candidatas": 2,
@@ -2648,9 +2713,17 @@
 },
 "dgt-CABINACINEMOMETRO_120249": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 475,
+"origen": "oficial",
+"punto": [
+39.999506,
+-6.549077
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 126,
+"sentido_km": "decreciente",
+"via": 218426122
 },
 "dgt-CABINACINEMOMETRO_120250": {
 "candidatas": 2,
@@ -2660,9 +2733,17 @@
 },
 "dgt-CABINACINEMOMETRO_120252": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 640,
+"origen": "oficial",
+"punto": [
+38.960554,
+-5.910518
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 277,
+"sentido_km": "decreciente",
+"via": 425251804
 },
 "dgt-CABINACINEMOMETRO_120253": {
 "candidatas": 2,
@@ -2720,9 +2801,17 @@
 },
 "dgt-CABINACINEMOMETRO_120258": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 27912,
+"origen": "oficial",
+"punto": [
+39.580274,
+-3.696131
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 330,
+"sentido_km": "decreciente",
+"via": 23094069
 },
 "dgt-CABINACINEMOMETRO_120259": {
 "candidatas": 0,
@@ -2909,9 +2998,17 @@
 },
 "dgt-CABINACINEMOMETRO_120276": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 2489,
+"origen": "oficial",
+"punto": [
+39.916644,
+-3.01771
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 327,
+"sentido_km": "creciente",
+"via": 1513946563
 },
 "dgt-CABINACINEMOMETRO_120277": {
 "candidatas": 2,
@@ -3227,9 +3324,17 @@
 },
 "dgt-CABINACINEMOMETRO_120312": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 8225,
+"origen": "oficial",
+"punto": [
+39.73455,
+-1.907954
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 354,
+"sentido_km": "decreciente",
+"via": 575697470
 },
 "dgt-CABINACINEMOMETRO_120314": {
 "candidatas": 2,
@@ -3307,15 +3412,31 @@
 },
 "dgt-CABINACINEMOMETRO_120325": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1745,
+"origen": "oficial",
+"punto": [
+40.299954,
+-3.769968
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 314,
+"sentido_km": "creciente",
+"via": 203790367
 },
 "dgt-CABINACINEMOMETRO_120327": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 4531,
+"origen": "oficial",
+"punto": [
+40.352694,
+-3.634834
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 68,
+"sentido_km": "creciente",
+"via": 306174023
 },
 "dgt-CABINACINEMOMETRO_120329": {
 "candidatas": 2,
@@ -3500,9 +3621,17 @@
 },
 "dgt-CABINACINEMOMETRO_120352": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1779,
+"origen": "oficial",
+"punto": [
+39.04536,
+-4.049871
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 123,
+"sentido_km": "creciente",
+"via": 380763677
 },
 "dgt-CABINACINEMOMETRO_120355": {
 "candidatas": 2,
@@ -3787,9 +3916,17 @@
 },
 "dgt-CABINACINEMOMETRO_120380": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 7519,
+"origen": "oficial",
+"punto": [
+36.729189,
+-4.454259
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 169,
+"sentido_km": "decreciente",
+"via": 243296240
 },
 "dgt-CABINACINEMOMETRO_120381": {
 "candidatas": 2,
@@ -3961,32 +4098,30 @@
 },
 "dgt-CABINACINEMOMETRO_120397": {
 "candidatas": 2,
-"destino_a_m": 74266,
 "margen_m": 1431,
-"origen": "destino",
+"origen": "oficial",
 "punto": [
 41.350325,
 -4.532855
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 246,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 277832763
 },
 "dgt-CABINACINEMOMETRO_120398": {
 "candidatas": 2,
-"destino_a_m": 64900,
-"margen_m": 888,
-"origen": "destino",
+"margen_m": 347,
+"origen": "oficial",
 "punto": [
 40.301781,
 -4.630407
 ],
-"regla": "e",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 285,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 1117811515
 },
 "dgt-CABINACINEMOMETRO_120399": {
@@ -4392,32 +4527,30 @@
 },
 "dgt-CABINACINEMOMETRO_120434": {
 "candidatas": 2,
-"destino_a_m": 2285,
-"margen_m": 1065,
-"origen": "destino",
+"margen_m": 1155,
+"origen": "oficial",
 "punto": [
 43.330007,
 -8.395187
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 286,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 354373939
 },
 "dgt-CABINACINEMOMETRO_120435": {
 "candidatas": 2,
-"destino_a_m": 22247,
-"margen_m": 2608,
-"origen": "destino",
+"margen_m": 1894,
+"origen": "oficial",
 "punto": [
 43.33493,
 -8.453568
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 124,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 1346021607
 },
 "dgt-CABINACINEMOMETRO_120439": {
@@ -4568,9 +4701,17 @@
 },
 "dgt-CABINACINEMOMETRO_120457": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 349,
+"origen": "oficial",
+"punto": [
+39.586608,
+3.247804
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 68,
+"sentido_km": "creciente",
+"via": 464510252
 },
 "dgt-CABINACINEMOMETRO_120458": {
 "candidatas": 0,
@@ -4721,17 +4862,16 @@
 },
 "dgt-CABINACINEMOMETRO_120471": {
 "candidatas": 2,
-"destino_a_m": 182768,
-"margen_m": 2588,
-"origen": "destino",
+"margen_m": 1931,
+"origen": "oficial",
 "punto": [
 42.284433,
 -7.857941
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 165,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 174373713
 },
 "dgt-CABINACINEMOMETRO_120472": {
@@ -4834,9 +4974,17 @@
 },
 "dgt-CABINACINEMOMETRO_120479": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 2440,
+"origen": "oficial",
+"punto": [
+28.653655,
+-17.852198
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 268,
+"sentido_km": "creciente",
+"via": 446657721
 },
 "dgt-CABINACINEMOMETRO_120480": {
 "candidatas": 2,
@@ -4868,9 +5016,17 @@
 },
 "dgt-CABINACINEMOMETRO_120482": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 207,
+"origen": "oficial",
+"punto": [
+28.491169,
+-16.374539
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 259,
+"sentido_km": "decreciente",
+"via": 455254134
 },
 "dgt-CABINACINEMOMETRO_120484": {
 "candidatas": 2,
@@ -5193,18 +5349,17 @@
 },
 "dgt-CABINACINEMOMETRO_120518": {
 "candidatas": 2,
-"destino_a_m": 2601,
-"margen_m": 1055,
-"origen": "destino",
+"margen_m": 1565,
+"origen": "oficial",
 "punto": [
-40.942002,
--5.661075
+40.941912,
+-5.660702
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
-"rumbo": 263,
-"sentido_km": null,
-"via": 41153286
+"rumbo": 83,
+"sentido_km": "decreciente",
+"via": 45496809
 },
 "dgt-CABINACINEMOMETRO_120519": {
 "candidatas": 2,
@@ -5473,17 +5628,16 @@
 },
 "dgt-CABINACINEMOMETRO_120541": {
 "candidatas": 2,
-"destino_a_m": 7781,
-"margen_m": 5228,
-"origen": "destino",
+"margen_m": 1985,
+"origen": "oficial",
 "punto": [
 43.472213,
 -6.111106
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 232,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 232313656
 },
 "dgt-CABINACINEMOMETRO_120542": {
@@ -5502,17 +5656,16 @@
 },
 "dgt-CABINACINEMOMETRO_120544": {
 "candidatas": 2,
-"destino_a_m": 2570,
-"margen_m": 4116,
-"origen": "destino",
+"margen_m": 1422,
+"origen": "oficial",
 "punto": [
 43.529174,
 -5.686059
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 41,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 391712620
 },
 "dgt-CABINACINEMOMETRO_120545": {
@@ -5671,17 +5824,16 @@
 },
 "dgt-CABINACINEMOMETRO_120556": {
 "candidatas": 2,
-"destino_a_m": 17753,
-"margen_m": 2412,
-"origen": "destino",
+"margen_m": 427,
+"origen": "oficial",
 "punto": [
 40.586652,
 -4.415139
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 108,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 26684672
 },
 "dgt-CABINACINEMOMETRO_120557": {
@@ -5812,9 +5964,17 @@
 },
 "dgt-CABINACINEMOMETRO_120567": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 2035,
+"origen": "oficial",
+"punto": [
+38.98454,
+-0.596121
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 52,
+"sentido_km": "creciente",
+"via": 68207149
 },
 "dgt-CABINACINEMOMETRO_120568": {
 "candidatas": 2,
@@ -5946,9 +6106,17 @@
 },
 "dgt-CABINACINEMOMETRO_120581": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 718,
+"origen": "oficial",
+"punto": [
+38.803511,
+-0.611426
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 157,
+"sentido_km": "creciente",
+"via": 897730235
 },
 "dgt-CABINACINEMOMETRO_120582": {
 "candidatas": 2,
@@ -6196,9 +6364,17 @@
 },
 "dgt-CABINACINEMOMETRO_120604": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 385,
+"origen": "oficial",
+"punto": [
+38.775325,
+0.142468
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 93,
+"sentido_km": "creciente",
+"via": 886927297
 },
 "dgt-CABINACINEMOMETRO_120605": {
 "candidatas": 2,
@@ -6230,9 +6406,17 @@
 },
 "dgt-CABINACINEMOMETRO_120607": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1368,
+"origen": "oficial",
+"punto": [
+38.439382,
+-0.856492
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 93,
+"sentido_km": "decreciente",
+"via": 1375985767
 },
 "dgt-CABINACINEMOMETRO_120608": {
 "candidatas": 2,
@@ -6428,9 +6612,17 @@
 },
 "dgt-CABINACINEMOMETRO_120625": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 4186,
+"origen": "oficial",
+"punto": [
+38.015487,
+-1.379581
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 260,
+"sentido_km": "creciente",
+"via": 141229883
 },
 "dgt-CABINACINEMOMETRO_120626": {
 "candidatas": 1,
@@ -6461,9 +6653,17 @@
 },
 "dgt-CABINACINEMOMETRO_120629": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1009,
+"origen": "oficial",
+"punto": [
+38.407592,
+-1.394707
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 237,
+"sentido_km": "creciente",
+"via": 1225192514
 },
 "dgt-CABINACINEMOMETRO_120630": {
 "candidatas": 2,
@@ -6686,9 +6886,17 @@
 },
 "dgt-CABINACINEMOMETRO_120649": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1691,
+"origen": "oficial",
+"punto": [
+39.779259,
+3.132645
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 140,
+"sentido_km": "decreciente",
+"via": 234858755
 },
 "dgt-CABINACINEMOMETRO_120650": {
 "candidatas": 2,
@@ -6718,9 +6926,17 @@
 },
 "dgt-CABINACINEMOMETRO_120653": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 829,
+"origen": "oficial",
+"punto": [
+38.957285,
+1.446971
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 211,
+"sentido_km": "decreciente",
+"via": 1065298206
 },
 "dgt-CABINACINEMOMETRO_120654": {
 "candidatas": 2,
@@ -7394,17 +7610,16 @@
 },
 "dgt-CABINACINEMOMETRO_164595": {
 "candidatas": 2,
-"destino_a_m": 3493,
 "margen_m": 1034,
-"origen": "destino",
+"origen": "oficial",
 "punto": [
 41.681536,
 -4.743616
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 150,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 999299274
 },
 "dgt-CABINACINEMOMETRO_164597": {
@@ -7437,9 +7652,17 @@
 },
 "dgt-CABINACINEMOMETRO_165183": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 218,
+"origen": "oficial",
+"punto": [
+42.325474,
+-5.0221
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 152,
+"sentido_km": "decreciente",
+"via": 186545253
 },
 "dgt-CABINACINEMOMETRO_165184": {
 "candidatas": 0,
@@ -7720,68 +7943,72 @@
 },
 "dgt-CABINACINEMOMETRO_165670": {
 "candidatas": 2,
-"destino_a_m": 7221,
-"margen_m": 1204,
-"origen": "destino",
+"margen_m": 1095,
+"origen": "oficial",
 "punto": [
 43.640249,
 -7.928347
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 154,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 1421383926
 },
 "dgt-CABINACINEMOMETRO_165803": {
 "candidatas": 2,
-"destino_a_m": 5499,
-"margen_m": 2469,
-"origen": "destino",
+"margen_m": 1476,
+"origen": "oficial",
 "punto": [
 43.166883,
 -8.183161
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 184,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 108145809
 },
 "dgt-CABINACINEMOMETRO_165804": {
 "candidatas": 2,
-"destino_a_m": 17879,
-"margen_m": 5896,
-"origen": "destino",
+"margen_m": 4229,
+"origen": "oficial",
 "punto": [
 42.834991,
 -8.737932
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 51,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 303649075
 },
 "dgt-CABINACINEMOMETRO_165805": {
 "candidatas": 2,
-"motivo": "destino no localizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 674,
+"origen": "oficial",
+"punto": [
+43.430797,
+-7.756399
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 219,
+"sentido_km": "creciente",
+"via": 1194855760
 },
 "dgt-CABINACINEMOMETRO_165807": {
 "candidatas": 2,
-"destino_a_m": 271359,
-"margen_m": 6538,
-"origen": "destino",
+"margen_m": 56667,
+"origen": "oficial",
 "punto": [
 42.685301,
 -7.462519
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
-"rumbo": 11,
-"sentido_km": null,
+"rumbo": 191,
+"sentido_km": "creciente",
 "via": 424761090
 },
 "dgt-CABINACINEMOMETRO_165808": {
@@ -7828,32 +8055,30 @@
 },
 "dgt-CABINACINEMOMETRO_165814": {
 "candidatas": 2,
-"destino_a_m": 5466,
-"margen_m": 223,
-"origen": "destino",
+"margen_m": 224,
+"origen": "oficial",
 "punto": [
 42.046391,
 -8.883617
 ],
-"regla": "e",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 351,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 991966900
 },
 "dgt-CABINACINEMOMETRO_165816": {
 "candidatas": 2,
-"destino_a_m": 2499,
 "margen_m": 5273,
-"origen": "destino",
+"origen": "oficial",
 "punto": [
 42.373178,
 -8.688456
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 306,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 23968378
 },
 "dgt-CABINACINEMOMETRO_165824": {
@@ -7873,9 +8098,17 @@
 },
 "dgt-CABINACINEMOMETRO_165876": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 168,
+"origen": "oficial",
+"punto": [
+38.937282,
+1.453671
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 30,
+"sentido_km": "creciente",
+"via": 1064321499
 },
 "dgt-CABINACINEMOMETRO_165877": {
 "candidatas": 2,
@@ -7907,9 +8140,17 @@
 },
 "dgt-CABINACINEMOMETRO_165879": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 377,
+"origen": "oficial",
+"punto": [
+38.996038,
+1.543643
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 17,
+"sentido_km": "creciente",
+"via": 993874916
 },
 "dgt-CABINACINEMOMETRO_165889": {
 "candidatas": 2,
@@ -8259,17 +8500,16 @@
 },
 "dgt-CABINACINEMOMETRO_167168": {
 "candidatas": 2,
-"destino_a_m": 10593,
-"margen_m": 1052,
-"origen": "destino",
+"margen_m": 781,
+"origen": "oficial",
 "punto": [
 43.411538,
 -5.80577
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 120,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 95513471
 },
 "dgt-CABINACINEMOMETRO_167169": {
@@ -8483,9 +8723,17 @@
 },
 "dgt-CABINACINEMOMETRO_174823": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1537,
+"origen": "oficial",
+"punto": [
+38.383148,
+-0.519001
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 312,
+"sentido_km": "creciente",
+"via": 539892033
 },
 "dgt-CABINACINEMOMETRO_174824": {
 "candidatas": 0,
@@ -8495,9 +8743,17 @@
 },
 "dgt-CABINACINEMOMETRO_174825": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 431,
+"origen": "oficial",
+"punto": [
+40.382875,
+0.38361
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 144,
+"sentido_km": "creciente",
+"via": 1453772007
 },
 "dgt-CABINACINEMOMETRO_174826": {
 "candidatas": 0,
@@ -8521,9 +8777,17 @@
 },
 "dgt-CABINACINEMOMETRO_174828": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1215,
+"origen": "oficial",
+"punto": [
+39.466884,
+-0.476181
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 358,
+"sentido_km": "creciente",
+"via": 32520450
 },
 "dgt-CABINACINEMOMETRO_174829": {
 "candidatas": 2,
@@ -8596,9 +8860,17 @@
 },
 "dgt-CABINACINEMOMETRO_174834": {
 "candidatas": 2,
-"motivo": "sin destino ni sentido creciente/decreciente utilizable",
-"regla": null,
-"resultado": "ambos"
+"margen_m": 1319,
+"origen": "oficial",
+"punto": [
+38.016347,
+-0.699264
+],
+"regla": "a",
+"resultado": "resuelto",
+"rumbo": 332,
+"sentido_km": "decreciente",
+"via": 26415949
 },
 "dgt-CABINACINEMOMETRO_174836": {
 "candidatas": 2,
@@ -8868,7 +9140,7 @@
 "regla": "c",
 "resultado": "resuelto",
 "rumbo": 79,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 193675077
 },
 "eus-a-1-390700-egino-madrid": {
@@ -8883,7 +9155,7 @@
 "regla": "c",
 "resultado": "resuelto",
 "rumbo": 260,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 623897567
 },
 "eus-a-124-58015-leza-lo": {
@@ -9570,7 +9842,7 @@
 "regla": "c",
 "resultado": "resuelto",
 "rumbo": 37,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 47452830
 },
 "eus-ap-68-270-buia": {
@@ -9986,7 +10258,7 @@
 "regla": "e",
 "resultado": "resuelto",
 "rumbo": 178,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 290747479
 },
 "eus-bi-633-36990-trabakua-tramo-1": {
@@ -10283,7 +10555,7 @@
 "regla": "c",
 "resultado": "resuelto",
 "rumbo": 37,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 46251363
 },
 "eus-gi-636-13-288-hondarribia-amutalde": {
