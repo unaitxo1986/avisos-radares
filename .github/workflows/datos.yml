@@ -62,7 +62,7 @@ jobs:
     # Actions sí responden) y guarda las respuestas en datos/cache/ para no repetirlas.
     needs: leer-fuentes
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 340
     permissions:
       contents: write
     steps:
@@ -75,9 +75,9 @@ jobs:
           name: radares-crudos
           path: salida-prueba
       - name: Calcular el sentido (todos los radares)
-        # Se corta a los 38 minutos con SIGINT: la caché se guarda y la siguiente ejecución sigue donde quedó.
+        # Se corta a las 5 h 20 min con SIGINT: la caché se guarda y la siguiente ejecución sigue donde quedó.
         run: |
-          timeout -s INT 38m python3 -I datos/pipeline/calcular_sentido.py --radares salida-prueba/radares_crudos.json --fuente todos || echo "::warning title=Sentido::cortado o con error (código $?); se guarda la caché y se continúa en la siguiente ejecución"
+          timeout -s INT 320m python3 -I datos/pipeline/calcular_sentido.py --radares salida-prueba/radares_crudos.json --fuente todos || echo "::warning title=Sentido::cortado o con error (código $?); se guarda la caché y se continúa en la siguiente ejecución"
       - name: Resumen por carretera y destino
         if: always()
         run: |
