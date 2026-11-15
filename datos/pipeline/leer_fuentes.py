@@ -31,8 +31,11 @@ AGENTE = "avisos-radares/0.1 (+https://github.com/unaitxo1986/avisos-radares)"
 
 def descargar(url: str) -> bytes:
     req = urllib.request.Request(url, headers={"User-Agent": AGENTE})
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return r.read()
+    try:
+        with urllib.request.urlopen(req, timeout=90) as r:
+            return r.read()
+    except OSError as e:
+        raise OSError(f"no se pudo descargar {url}: {e}") from e
 
 
 def _en_caja(r, caja):

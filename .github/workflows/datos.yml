@@ -34,6 +34,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - name: Diagnóstico de red (cada fuente por separado)
+        continue-on-error: true
+        run: |
+          for u in "https://nap.dgt.es/datex2/dgt/PredefinedLocationsPublication/radares/content.xml" \
+                   "https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo"; do
+            r=$(curl -sS -m 40 -o /dev/null -w "http=%{http_code} bytes=%{size_download} t=%{time_total}s" "$u" 2>&1 | tr '\n' ' ')
+            echo "::notice title=Red::$u -> $r"
+          done
       - name: Leer las fuentes reales
         run: |
           # El motivo del fallo se publica como anotación para poder leerlo sin bajar los registros.
