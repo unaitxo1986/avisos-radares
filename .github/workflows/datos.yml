@@ -89,6 +89,11 @@ jobs:
           print("::notice title=Recuento por fuente y regla::" + str(dict(tot)))
           mot = C.Counter((crudos[i]["fuente"], v.get("motivo")) for i, v in res.items() if i in crudos and v["resultado"] == "ambos")
           print("::notice title=Motivos de ambos sentidos::" + str(dict(mot)))
+          tr = [r for r in crudos.values() if r["fuente"] == "dgt" and r["tipo"] == "tramo"]
+          c = C.Counter(("sin_pk" if r.get("pk_m") is None or r.get("pk_fin_m") is None else "fin>inicio" if r["pk_fin_m"] > r["pk_m"] else "fin<inicio" if r["pk_fin_m"] < r["pk_m"] else "igual") for r in tr)
+          print("::notice title=Tramos DGT, kilometraje inicio-fin::" + str(dict(c)) + " sentido_oficial: " + str(dict(C.Counter(r.get("sentido_oficial") for r in tr))))
+          ej = [f'{r["carretera"]} {r["pk_m"]}->{r["pk_fin_m"]} {r.get("sentido_oficial")}' for r in tr if r.get("pk_m") is not None and r.get("pk_fin_m") is not None][:12]
+          print("::notice title=Ejemplos de tramos::" + " ; ".join(ej))
           PY
       - name: Guardar la caché en el repositorio
         if: always()
