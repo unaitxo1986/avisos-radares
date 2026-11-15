@@ -137,6 +137,28 @@ class PruebasSimplificar(unittest.TestCase):
         self.assertEqual(len(aproximacion._simplificar(pts)), 3)
 
 
+class PruebasDestilar(unittest.TestCase):
+    def test_segmento_largo_que_cruza_el_radio_se_conserva(self):
+        from datos.pipeline.servicios import Servicios
+        # nodos a -1500, 0 y 3000 m: solo el del medio está a menos de 700 m, pero los segmentos se conservan
+        nodos = [{"type": "node", "id": i, "lat": P(x)[0], "lon": P(x)[1]} for i, x in enumerate((-1500, 0, 3000))]
+        datos = {"elements": nodos + [{"type": "way", "id": 7, "nodes": [0, 1, 2],
+                                      "tags": {"highway": "motorway", "tunnel": "yes", "name": "x"}}]}
+        vias = Servicios._destilar_osm(datos, 43.0, -2.0, 700.0, ("highway", "tunnel"), partir=True)
+        self.assertEqual(len(vias), 1)
+        self.assertEqual(len(vias[0]["n"]), 3)
+        self.assertEqual(vias[0]["t"], {"highway": "motorway", "tunnel": "yes"})
+
+    def test_via_que_sale_y_vuelve_se_parte_en_dos_trozos(self):
+        from datos.pipeline.servicios import Servicios
+        xs = (0, 100, 5000, 6000, 200, 300)
+        nodos = [{"type": "node", "id": i, "lat": P(x)[0], "lon": P(x)[1]} for i, x in enumerate(xs)]
+        datos = {"elements": nodos + [{"type": "way", "id": 7, "nodes": list(range(6)),
+                                      "tags": {"highway": "primary"}}]}
+        vias = Servicios._destilar_osm(datos, 43.0, -2.0, 700.0, ("highway",), partir=True)
+        self.assertEqual(len(vias), 2)
+
+
 class ServicioFalso:
     def __init__(self, vias):
         self.vias = vias

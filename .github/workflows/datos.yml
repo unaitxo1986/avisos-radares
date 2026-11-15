@@ -78,6 +78,13 @@ jobs:
         # Se corta a las 5 h 20 min con SIGINT: la caché se guarda y la siguiente ejecución sigue donde quedó.
         run: |
           timeout -s INT 320m python3 -I datos/pipeline/calcular_sentido.py --radares salida-prueba/radares_crudos.json --fuente todos || echo "::warning title=Sentido::cortado o con error (código $?); se guarda la caché y se continúa en la siguiente ejecución"
+      - name: Caché de OpenStreetMap para la aproximación
+        # La respuesta cruda pesa unos 28 KB por radar: no se versiona, se guarda en la caché de Actions.
+        uses: actions/cache@v4
+        with:
+          path: datos/cache/osm_aprox.json
+          key: osm-aprox-v2-${{ github.run_id }}
+          restore-keys: osm-aprox-v2-
       - name: Tramo de aproximación (3.3, prueba con 11 radares vascos)
         # Pide a OpenStreetMap un recuadro de 1,2 km por radar (caché en datos/cache/osm_aprox.json)
         # y publica el resultado de cada uno como anotación.

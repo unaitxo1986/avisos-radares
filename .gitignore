@@ -28,3 +28,7 @@ venv/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# Respuesta cruda de OpenStreetMap para el tramo de aproximación (3.3): demasiado grande (unos 28 KB por radar)
+# para versionarla; se guarda en la caché de Actions. Lo que se versiona es aproximacion.json.
+datos/cache/osm_aprox.json

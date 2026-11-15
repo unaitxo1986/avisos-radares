@@ -141,14 +141,20 @@ class Servicios:
                 continue
             pts = [nodos[i] for i in e.get("nodes", []) if i in nodos]
             if partir:
-                trozos, actual = [], []
-                for p in pts:
-                    if haversine(lat, lon, p[0], p[1]) <= radio:
-                        actual.append(p)
-                    else:
-                        trozos.append(actual)
-                        actual = []
-                trozos.append(actual)
+                # Trozos continuos dentro del radio, ampliados con el primer nodo de fuera a cada lado:
+                # en rectas y túneles los nodos están muy separados y, sin él, se perdería el segmento
+                # que cruza el límite (comprobado el 15/11/2026 en Belabieta).
+                dentro = [haversine(lat, lon, p[0], p[1]) <= radio for p in pts]
+                trozos, i = [], 0
+                while i < len(pts):
+                    if not dentro[i]:
+                        i += 1
+                        continue
+                    j = i
+                    while j + 1 < len(pts) and dentro[j + 1]:
+                        j += 1
+                    trozos.append(pts[max(i - 1, 0):min(j + 2, len(pts))])
+                    i = j + 1
             else:
                 trozos = [[p for p in pts if haversine(lat, lon, p[0], p[1]) <= radio]]
             for trozo in trozos:
