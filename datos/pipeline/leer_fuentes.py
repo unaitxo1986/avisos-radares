@@ -12,6 +12,7 @@ copia buena de datos/fuentes/trafikoa.txt y lo anota en "avisos".
 """
 import argparse
 import datetime
+import gzip
 import json
 import sys
 import urllib.request
@@ -30,6 +31,7 @@ RANGO_DGT_TRAMOS = (30, 70)
 RANGO_TRAFIKOA = (80, 130)
 
 RUTA_COPIA_TRAFIKOA = Path(__file__).resolve().parents[1] / "fuentes" / "trafikoa.txt"
+RUTA_COPIA_DGT = Path(__file__).resolve().parents[1] / "fuentes" / "dgt.xml.gz"
 
 AGENTE = "avisos-radares/0.1 (+https://github.com/unaitxo1986/avisos-radares)"
 
@@ -90,6 +92,23 @@ def _filas_trafikoa(ruta_local, avisos):
     return filas, False
 
 
+def _datos_dgt(ruta_local, avisos):
+    """Lee la DGT. Si la descarga o la lectura fallan, usa la última copia buena
+    (datos/fuentes/dgt.xml.gz) y lo anota en `avisos`; si sale bien, renueva la copia.
+    La copia se renueva en `main`, solo si además pasan las comprobaciones de cifras.
+    Devuelve (datos, usada_copia, xml descargado o None)."""
+    try:
+        xml = Path(ruta_local).read_bytes() if ruta_local else descargar(dgt.URL)
+        d = dgt.leer(xml)
+    except (ErrorLectura, OSError) as e:
+        if ruta_local or not RUTA_COPIA_DGT.exists():
+            raise
+        d = dgt.leer(gzip.decompress(RUTA_COPIA_DGT.read_bytes()))
+        avisos.append(f"La DGT no se pudo leer ({e}); se usa la copia guardada (publicada {d['publicado']})")
+        return d, True, None
+    return d, False, xml
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dgt", help="fichero XML local en vez de descargar")
@@ -101,10 +120,10 @@ def main(argv=None):
     problemas = []
     avisos = []
     try:
-        xml = Path(a.dgt).read_bytes() if a.dgt else descargar(dgt.URL)
-        d = dgt.leer(xml)
-        problemas += comprobar("DGT", d["radares"], CAJA_ESPANA,
-                               {"fijo": RANGO_DGT_FIJOS, "tramo": RANGO_DGT_TRAMOS})
+        d, dgt_copia, xml_dgt = _datos_dgt(a.dgt, avisos)
+        problemas_dgt = comprobar("DGT", d["radares"], CAJA_ESPANA,
+                                  {"fijo": RANGO_DGT_FIJOS, "tramo": RANGO_DGT_TRAMOS})
+        problemas += problemas_dgt
 
         filas, usada_copia = _filas_trafikoa(a.trafikoa, avisos)
         t = trafikoa.leer_filas(filas)
@@ -122,11 +141,16 @@ def main(argv=None):
             print(f"ERROR: {p}", file=sys.stderr)
         return 3
 
+    if xml_dgt is not None and not a.dgt:
+        RUTA_COPIA_DGT.parent.mkdir(parents=True, exist_ok=True)
+        RUTA_COPIA_DGT.write_bytes(gzip.compress(xml_dgt, 9, mtime=0))
+
     radares = d["radares"] + t["radares"] + m["radares"]
     out = {
         "generado_con": "datos/leer_fuentes.py",
         "fuentes": {
-            "dgt": {"publicado": d["publicado"], "radares": len(d["radares"]), "url": dgt.URL},
+            "dgt": {"publicado": d["publicado"], "radares": len(d["radares"]), "url": dgt.URL,
+                    "usada_copia": dgt_copia},
             "trafikoa": {"radares": len(t["radares"]), "url": trafikoa.URL, "usada_copia": usada_copia},
             "manual": {"radares": len(m["radares"])},
         },

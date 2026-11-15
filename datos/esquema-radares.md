@@ -1,52 +1,56 @@
 # Esquema de los ficheros publicados
 
-Borrador inicial (fase 3), alineado con el plan del 14/11/2026. Se ajusta cuando se escriba el proceso de datos y se anota el cambio en el plan.
+Formato definitivo de 3.5 (15/11/2026). Lo escribe `datos/pipeline/publicar.py` uniendo la lectura de fuentes (3.1), el sentido (3.2), el tramo de aproximación (3.3) y el límite (3.4).
 
-La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y deduce el sentido por cómo avanza a lo largo del tramo de aproximación de cada radar.
+La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y deduce el sentido por cómo avanza a lo largo del tramo de aproximación de cada radar. La app solo lee `radares.json` (y `estado.json` para avisar al usuario).
 
 ## `salida/radares.json`
 
 ```json
-{
-  "version": "2026-11-14T06:00:00Z",
-  "radares": [ { "...": "ver campos" } ]
-}
+{ "version": "2026-11-15T06:00:00Z", "radares": [ { "...": "ver campos" } ] }
 ```
 
-Campos de cada radar:
+`version` es el momento de la última publicación **con datos distintos**: si una ejecución no cambia ningún radar, se conserva. El fichero va compacto (sin sangrías).
 
 | Campo | Tipo | Descripción |
 |---|---|---|
 | `id` | texto | Identificador estable. Prefijo de la fuente: `dgt-`, `eus-`, `man-` |
-| `tipo` | texto | `fijo`, `tramo` o `fotorrojo` |
-| `lat`, `lon` | número | Coordenadas WGS84 (en tramos, punto de inicio) |
-| `lat_fin`, `lon_fin` | número o nulo | Fin del tramo; solo en `tramo` |
-| `carretera` | texto | Por ejemplo `A-8`, `BI-633` |
-| `pk` | número o nulo | Punto kilométrico, en km |
-| `sentido` | texto o nulo | Sentido oficial tal como lo da la fuente (destino, por ejemplo `CANTABRIA`, o creciente/decreciente) |
-| `aproximacion` | lista de `[lat, lon]` o nulo | Línea de la carretera por la que se llega al radar en el sentido que vigila (**500 m** antes del radar, decisión de Unai del 15/11/2026), en el orden de la marcha. Termina en el radar. Geometría de OpenStreetMap |
-| `aproximacion_fiab` | texto | `alta`, `dudosa` o `manual`. Con `dudosa` o sin `aproximacion`, la app avisa por cercanía en cualquier sentido |
-| `limite` | entero o nulo | Límite en km/h. Nulo si no se conoce: la app avisa sin límite |
-| `limite_origen` | texto o nulo | `oficial`, `manual` u `osm`. Prioridad: oficial, después manual, después OpenStreetMap |
+| `tipo` | texto | `fijo`, `tramo`, `fotorrojo` o `tramo_extremo` (Trabakua, sin emparejar hasta la fase 5) |
 | `nombre` | texto | Nombre o ubicación |
 | `fuente` | texto | `dgt`, `trafikoa` o `manual` |
+| `lat`, `lon` | número | WGS84 (en tramos, punto de inicio) |
+| `lat_fin`, `lon_fin` | número o nulo | Fin del tramo; solo en `tramo` |
+| `carretera` | texto o nulo | Por ejemplo `A-8`, `BI-633` |
+| `pk` | número o nulo | Punto kilométrico en **km** |
+| `sentido` | texto o nulo | Sentido oficial tal como lo da la fuente: destino (`CANTABRIA`) si lo hay; si no, `creciente`/`decreciente` |
+| `sentido_km` | `creciente`, `decreciente` o nulo | Sentido en que crece o decrece el kilometraje, deducido en 3.2 sobre la carretera. Nulo si la carretera es de sentido único o no se pudo resolver. Informativo para la app |
+| `aproximacion` | lista de `[lat, lon]` o nulo | Línea de la carretera por la que se llega al radar en el sentido que vigila (**500 m**, decisión de Unai del 15/11/2026), en el orden de la marcha; termina en el radar. Geometría de OpenStreetMap. Solo se publica si `aproximacion_fiab` es `alta` |
+| `aproximacion_fiab` | texto o nulo | `alta`, `dudosa` o nulo (no calculada, por ejemplo en tramos). Con `dudosa` o nulo la app avisa por cercanía en cualquier sentido |
+| `limite` | entero o nulo | km/h. Nulo si no se conoce: la app avisa sin límite |
+| `limite_origen` | texto o nulo | `oficial`, `manual`, `osm` (calzada elegida en 3.2) u `osm_cercana` (vía próxima de la misma carretera). Prioridad: oficial, manual, OpenStreetMap |
+| `limite_fiab` | texto o nulo | `alta` (oficial o manual), `media` (`osm`) o `baja` (`osm_cercana`). Qué hace la app con `baja` se decide en 4.3 (recomendación: no mostrar el límite) |
+| `enlace` | texto o nulo | Enlace a la fuente oficial |
 
 ## `salida/estado.json`
 
 ```json
 {
-  "generado": "2026-11-14T06:00:00Z",
+  "generado": "2026-11-15T06:00:00Z",
   "ok": true,
   "avisos": [],
   "fuentes": {
     "dgt":      { "ok": true, "radares": 0, "fecha_fuente": null, "usada_copia": false },
     "trafikoa": { "ok": true, "radares": 0, "fecha_fuente": null, "usada_copia": false },
     "manual":   { "ok": true, "radares": 0 }
-  }
+  },
+  "radares_publicados": 0,
+  "contraste": { "trafikoa": 0, "detector_radar": 0 }
 }
 ```
 
-- `ok` es `false` si alguna fuente falló o dio cifras raras; el motivo va en `avisos`.
+- `ok` es `false` si las cifras salieron raras y **no se publicó**: `radares.json` conserva la última versión buena y el motivo va en `avisos` (empieza por `NO PUBLICADO:`). Comprobaciones: mínimo de radares, variación de más del 10 % frente a lo publicado, ids repetidos, límites fuera de 20-130 km/h, aproximación calculada para al menos el 60 % de los radares y fiabilidad alta sin línea. Si falla la lectura de una fuente (o da cifras fuera de rango), `leer_fuentes.py` termina con error y el proceso conserva todo lo publicado.
+- `usada_copia` indica que esa fuente no se pudo leer y se usó la última copia buena de `datos/fuentes/` (`dgt.xml.gz`, `trafikoa.txt`); el motivo va en `avisos`.
+- `contraste` compara el número de radares de Trafikoa con el de detector-radar.com (no oficial, no se publican sus datos); una diferencia de más del 15 % añade un aviso. **[sin verificar]** el formato de su respuesta.
 - La app avisa al usuario si `ok` es `false` o si `generado` tiene más de un mes.
 - `generado` cambia en cada ejecución, así que cada ejecución deja un cambio en el repositorio.
 

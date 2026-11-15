@@ -1,6 +1,7 @@
 name: Proceso de datos
 
 # 3.1: pruebas de los lectores y lectura de las fuentes oficiales reales.
+# 3.5: el trabajo "sentido" termina publicando datos/salida/radares.json y estado.json.
 # La tarea programada (3.6) se añadirá aquí cuando el proceso esté completo.
 on:
   push:
@@ -56,6 +57,13 @@ jobs:
           name: radares-crudos
           path: salida-prueba/radares_crudos.json
           retention-days: 14
+      - name: Guardar las copias buenas de las fuentes
+        # Se renuevan solo si la lectura salió bien; las confirma el trabajo siguiente.
+        uses: actions/upload-artifact@v4
+        with:
+          name: fuentes-copia
+          path: datos/fuentes
+          retention-days: 14
 
   sentido:
     # 3.2: calcula el sentido de los radares con OpenStreetMap, OSRM y Nominatim (que desde
@@ -74,6 +82,10 @@ jobs:
         with:
           name: radares-crudos
           path: salida-prueba
+      - uses: actions/download-artifact@v4
+        with:
+          name: fuentes-copia
+          path: datos/fuentes
       - name: Calcular el sentido (todos los radares)
         # Se corta a las 5 h 20 min con SIGINT: la caché se guarda y la siguiente ejecución sigue donde quedó.
         run: |
@@ -105,6 +117,19 @@ jobs:
         # Usa solo la caché de OpenStreetMap de 3.2; publica recuentos y discrepancias como anotaciones.
         run: |
           python3 -I datos/pipeline/calcular_limites.py --radares salida-prueba/radares_crudos.json || echo "::warning title=Límites::falló (código $?)"
+      - name: Contraste con detector-radar.com
+        continue-on-error: true
+        run: |
+          python3 -I datos/pipeline/contraste.py --radares salida-prueba/radares_crudos.json --salida salida-prueba/contraste.json
+      - name: Publicar radares.json y estado.json (3.5)
+        # Si las cifras salen raras no toca radares.json (queda la última versión buena) y estado.json lo dice.
+        run: |
+          args=""
+          [ -f salida-prueba/contraste.json ] && args="--contraste salida-prueba/contraste.json"
+          python3 -I datos/pipeline/publicar.py --radares salida-prueba/radares_crudos.json $args 2> error-publicar.txt || {
+            echo "::error title=Publicación::$(tr '\n' ' ' < error-publicar.txt | cut -c1-900)"; }
+          python3 -c "import json;e=json.load(open('datos/salida/estado.json'));print('::notice title=Estado::ok='+str(e['ok'])+' publicados='+str(e['radares_publicados'])+' avisos='+str(e['avisos'])[:600])"
+          ls -l datos/salida
       - name: Resumen del resultado
         if: always()
         run: |
@@ -127,7 +152,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add datos/cache
+          git add datos/cache datos/salida datos/fuentes
           if git diff --cached --quiet; then echo "Sin cambios en la caché"; exit 0; fi
           git commit -m "Caché de servicios y sentido calculado (automático)"
           git pull --rebase origin main
