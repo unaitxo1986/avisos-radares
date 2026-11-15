@@ -24,7 +24,7 @@ Campos de cada radar:
 | `carretera` | texto | Por ejemplo `A-8`, `BI-633` |
 | `pk` | número o nulo | Punto kilométrico, en km |
 | `sentido` | texto o nulo | Sentido oficial tal como lo da la fuente (destino, por ejemplo `CANTABRIA`, o creciente/decreciente) |
-| `aproximacion` | lista de `[lat, lon]` o nulo | Línea de la carretera por la que se llega al radar en el sentido que vigila (del orden de 1 a 2 km antes del radar), en el orden de la marcha. Termina en el radar. Geometría de OpenStreetMap |
+| `aproximacion` | lista de `[lat, lon]` o nulo | Línea de la carretera por la que se llega al radar en el sentido que vigila (**500 m** antes del radar, decisión de Unai del 15/11/2026), en el orden de la marcha. Termina en el radar. Geometría de OpenStreetMap |
 | `aproximacion_fiab` | texto | `alta`, `dudosa` o `manual`. Con `dudosa` o sin `aproximacion`, la app avisa por cercanía en cualquier sentido |
 | `limite` | entero o nulo | Límite en km/h. Nulo si no se conoce: la app avisa sin límite |
 | `limite_origen` | texto o nulo | `oficial`, `manual` u `osm`. Prioridad: oficial, después manual, después OpenStreetMap |
@@ -87,4 +87,22 @@ Lo escribe `datos/pipeline/calcular_sentido.py` (algoritmo en `sentido.py`, desc
 | `sentido_km` | `creciente` o `decreciente` si se pudo fijar el eje kilométrico; si no, `null` |
 | `margen_m`, `destino_a_m`, `candidatas`, `corregido`, `grupo`, `motivo` | Diagnóstico: diferencia de ruta entre calzadas, distancia al destino, número de calzadas candidatas, si la votación de grupo lo corrigió, el grupo y el motivo del "ambos" |
 
-El eje kilométrico se saca de un radar vecino de la misma carretera y territorio; si no lo hay, de un punto de CartoCiudad (IGN) en el kilómetro entero anterior o posterior, validado por carretera y distancia. El tramo de aproximación (3.3) y el formato publicado se construirán a partir de este resultado.
+El eje kilométrico se saca de un radar vecino de la misma carretera y territorio; si no lo hay, de un punto de CartoCiudad (IGN) en el kilómetro entero anterior o posterior, validado por carretera y distancia. El tramo de aproximación (3.3, siguiente apartado) y el formato publicado se construyen a partir de este resultado.
+
+## Tramo de aproximación (3.3): `datos/cache/aproximacion.json`
+
+Lo escribe `datos/pipeline/calcular_aproximacion.py` (algoritmo en `aproximacion.py`). Un objeto por `id` de radar fijo o fotorrojo (los tramos y los que no aplican no salen). Es la fuente de `aproximacion` y `aproximacion_fiab` del fichero publicado (3.5). Campos (15/11/2026):
+
+| Campo | Notas |
+|---|---|
+| `fiab` | `alta` o `dudosa`. Con `dudosa` (o sin `puntos`) la app avisa por cercanía en cualquier sentido |
+| `puntos` | Lista `[lat, lon]` en el orden de la marcha, **termina en el punto de la calzada junto a la cabina** (el `punto` de `sentido.json`) y empieza 500 m antes siguiendo la carretera. Simplificada (tolerancia de 2 m). `null` si no hay línea (radar sin sentido fiable o sin datos) |
+| `largo_m` | Metros recorridos hacia atrás (500 si la carretera continúa lo suficiente) |
+| `tunel_m` | Metros de la línea que van en túnel (etiqueta `tunnel` de OpenStreetMap) |
+| `cruces`, `ambiguos` | Cruces con más de una entrada, y cuántos no tenían una continuación clara |
+| `motivos` | Por qué es `dudosa` (lista de textos); vacía si es `alta` |
+
+Cómo se construye: se parte de la vía, el rumbo y el punto de `sentido.json` y se retrocede por la red de OpenStreetMap (respetando los sentidos únicos) hasta 500 m. En cada cruce se elige la entrada que mejor continúa la carretera: primero la que comparte la referencia (por ejemplo `A-8`), después la del mismo tipo (enlace o no) y después la de menor giro. **Es `dudosa`** si: hay menos de 450 m de carretera continua (acaba o vuelve sobre sí misma, por ejemplo una rotonda), un cruce tiene dos entradas equivalentes (misma referencia y tipo y giros que difieren menos de 25°) o una que gira más de 100°, o más de 200 m de la línea van en túnel (el GPS no sirve dentro). Los umbrales son criterios propios **[sin verificar]** con uso real (se ajustan en 4.5). Si el rumbo de la calzada no cuadra con el de 3.2 (más de 60°) se anota en `motivos`.
+
+Datos de entrada: recuadro de unos 1,2 km por radar de la API de OpenStreetMap (`osm_aprox.json`, una petición por radar). **Esa respuesta cruda no se versiona** (unos 28 KB por radar, unos 20 MB en total; está en `.gitignore`): vive en la caché de Actions (`actions/cache`), y si se pierde se vuelve a pedir (unos 45 minutos). Lo que se versiona es `aproximacion.json` (unos 175 KB). Las vías se guardan en trozos continuos y con el primer nodo de fuera del radio a cada lado, porque en rectas y túneles los nodos están muy separados.
+
