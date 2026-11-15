@@ -35,7 +35,12 @@ jobs:
         with:
           python-version: "3.12"
       - name: Leer las fuentes reales
-        run: python3 -I datos/pipeline/leer_fuentes.py --salida salida-prueba/radares_crudos.json
+        run: |
+          # El motivo del fallo se publica como anotación para poder leerlo sin bajar los registros.
+          if ! python3 -I datos/pipeline/leer_fuentes.py --salida salida-prueba/radares_crudos.json 2> error.txt; then
+            echo "::error title=Lectura de fuentes::$(tr '\n' ' ' < error.txt | cut -c1-900)"
+            exit 1
+          fi
       - name: Guardar el resultado como artefacto
         uses: actions/upload-artifact@v4
         with:
