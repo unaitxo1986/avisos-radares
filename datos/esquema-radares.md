@@ -63,7 +63,7 @@ Radares que no están en las listas oficiales (por ejemplo, municipales) y revis
 | Campo | Notas |
 |---|---|
 | `id`, `fuente`, `tipo`, `nombre` | `id` con prefijo `dgt-`, `eus-` o `man-`; `fuente` `dgt`, `trafikoa` o `manual`. `tipo`: `fijo`, `tramo`, `fotorrojo` y, solo en Trafikoa, `tramo_extremo` (los dos puntos de Trabakua, con `tramo_grupo` y `tramo_extremo` 1 o 2; emparejarlos en un tramo queda para la fase 5) |
-| `lat`, `lon`, `lat_fin`, `lon_fin` | WGS84. En Trafikoa vienen de UTM huso 30 ETRS89. En tramos de la DGT, `from` es el inicio y `to` el fin **[sin verificar]** que coincida con el kilometraje: comprobar en 3.2 |
+| `lat`, `lon`, `lat_fin`, `lon_fin` | WGS84. En Trafikoa vienen de UTM huso 30 ETRS89. En tramos de la DGT, `from` es el inicio y `to` el fin (el 15/11 se comprobó con el kilometraje: 25 tramos con fin > inicio y 22 con fin < inicio; en los 12 ejemplos mirados coincide con `sentido_oficial`, pero hay 29 crecientes frente a 25 con fin > inicio, así que **4 tramos quedan por revisar** en la fase 5) |
 | `carretera`, `pk_m` | `pk_m` en **metros** (entero); en `pk` del fichero publicado serán km. En tramos DGT, `pk_fin_m` es el del fin |
 | `sentido_oficial` | `creciente` o `decreciente` (DGT: `positive`/`negative`). En Trafikoa es `null`: da el destino |
 | `destino` | Destino oficial (DGT en un tercio de los fijos, Trafikoa siempre) |
@@ -73,3 +73,18 @@ Radares que no están en las listas oficiales (por ejemplo, municipales) y revis
 | `completa` | Solo manual: id del radar oficial al que rellena un dato |
 
 Comprobaciones al leer (si falla alguna, no se escribe nada): recuentos esperados (DGT 500-900 fijos y 30-70 tramos; Trafikoa 77-130), coordenadas dentro de la zona, identificadores únicos y estructura de cada fuente.
+
+## Resultado del sentido (3.2): `datos/cache/sentido.json`
+
+Lo escribe `datos/pipeline/calcular_sentido.py` (algoritmo en `sentido.py`, descrito en `prueba-sentido-radares.md` del proyecto). Un objeto por `id` de radar. Las respuestas de los servicios externos se guardan en `datos/cache/` (`osm.json`, `osrm.json`, `nominatim.json`, `cartociudad.json`) y se suben al repositorio: solo se piden los datos nuevos. Campos (15/11/2026):
+
+| Campo | Notas |
+|---|---|
+| `resultado` | `resuelto`, `ambos` (sin garantías: la app avisa en cualquier sentido), `no_aplica` (los tramos, fase 5) o `pendiente` (solo en modo sin red) |
+| `regla` | Por qué se da por bueno: `a` oficial creciente/decreciente con eje conocido; `b` grupo coherente de 2 o más radares; `c` margen de 1 km o más entre las dos calzadas; `d` calzada única; `e` carretera de doble sentido y destino a más de 2 km |
+| `origen` | `oficial`, `destino` o `unica` |
+| `via`, `rumbo`, `punto` | Vía de OpenStreetMap elegida, rumbo de marcha (grados, solo informativo: la app no compara rumbos) y punto de la calzada más cercano a la cabina |
+| `sentido_km` | `creciente` o `decreciente` si se pudo fijar el eje kilométrico; si no, `null` |
+| `margen_m`, `destino_a_m`, `candidatas`, `corregido`, `grupo`, `motivo` | Diagnóstico: diferencia de ruta entre calzadas, distancia al destino, número de calzadas candidatas, si la votación de grupo lo corrigió, el grupo y el motivo del "ambos" |
+
+El eje kilométrico se saca de un radar vecino de la misma carretera y territorio; si no lo hay, de un punto de CartoCiudad (IGN) en el kilómetro entero anterior o posterior, validado por carretera y distancia. El tramo de aproximación (3.3) y el formato publicado se construirán a partir de este resultado.
