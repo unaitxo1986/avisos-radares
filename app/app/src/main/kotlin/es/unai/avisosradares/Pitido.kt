@@ -38,11 +38,40 @@ fun generarAviso(frecuenciaMuestreo: Int): ShortArray {
     return primero + silencio + segundo
 }
 
+/** [cuantos] pitidos iguales de [duracionMs] separados por [silencioMs]. Código puro, con prueba. */
+fun generarSecuencia(cuantos: Int, frecuenciaHz: Int, duracionMs: Int, silencioMs: Int, frecuenciaMuestreo: Int): ShortArray {
+    val pitido = generarPitido(frecuenciaHz, duracionMs, frecuenciaMuestreo)
+    val silencio = ShortArray(frecuenciaMuestreo * silencioMs / 1000)
+    var salida = ShortArray(0)
+    for (i in 0 until cuantos) {
+        if (i > 0) salida += silencio
+        salida += pitido
+    }
+    return salida
+}
+
+/** Sonidos del ciclo de uso (fase 2): conexión, desconexión y radar. */
+fun sonidoConexion(m: Int): ShortArray = generarSecuencia(1, 660, 150, 0, m)
+fun sonidoDesconexion(m: Int): ShortArray = generarSecuencia(2, 660, 150, 120, m)
+fun sonidoRadar(m: Int): ShortArray = generarSecuencia(5, 1320, 150, 100, m)
+
 /** Reproduce el aviso como lo haría un aviso de navegación y deja en el registro todo lo que pasa. */
 object Sonido {
-    private const val MUESTREO = 22050
+    const val MUESTREO = 22050
 
-    fun avisoDePrueba(contexto: Context, origen: String) {
+    fun avisoDePrueba(contexto: Context, origen: String) =
+        reproducir(contexto, origen, "aviso de prueba", generarAviso(MUESTREO))
+
+    fun conexion(contexto: Context, origen: String) =
+        reproducir(contexto, origen, "conexión (1 pitido)", sonidoConexion(MUESTREO))
+
+    fun desconexion(contexto: Context, origen: String) =
+        reproducir(contexto, origen, "desconexión (2 pitidos)", sonidoDesconexion(MUESTREO))
+
+    fun radar(contexto: Context, origen: String) =
+        reproducir(contexto, origen, "radar simulado (5 pitidos)", sonidoRadar(MUESTREO))
+
+    private fun reproducir(contexto: Context, origen: String, nombre: String, muestras: ShortArray) {
         val ctx = contexto.applicationContext
         val audio = ctx.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         val atributos = AudioAttributes.Builder()
@@ -58,9 +87,8 @@ object Sonido {
         val volumenMax = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
         Registro.anota(
             ctx, origen,
-            "sonido: foco=$textoFoco volumen música=$volumen/$volumenMax salidas disponibles=" + salidas(audio)
+            "sonido [$nombre]: foco=$textoFoco volumen música=$volumen/$volumenMax salidas disponibles=" + salidas(audio)
         )
-        val muestras = generarAviso(MUESTREO)
         try {
             val formato = AudioFormat.Builder()
                 .setEncoding(AudioFormat.ENCODING_PCM_16BIT)
@@ -89,7 +117,7 @@ object Sonido {
                 val aviso = if (posicion == 0) " (¿silenciado por el sistema?)" else ""
                 val salida = pista.routedDevice
                 val destino = if (salida == null) "desconocida" else nombreSalidaAudio(salida.type) + " (" + salida.productName + ")"
-                Registro.anota(ctx, origen, "sonido: reproducidas $posicion de ${muestras.size} muestras, SALIDA USADA=$destino$aviso")
+                Registro.anota(ctx, origen, "sonido [$nombre]: reproducidas $posicion de ${muestras.size} muestras, SALIDA USADA=$destino$aviso")
                 pista.release()
                 audio.abandonAudioFocusRequest(peticion)
             }, duracionMs + 300)

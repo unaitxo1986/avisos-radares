@@ -48,6 +48,7 @@ class MainActivity : Activity() {
     private lateinit var botonCoche: Button
     private lateinit var botonVentana: Button
     private lateinit var botonPeriodico: Button
+    private lateinit var botonCiclo: Button
     private lateinit var raiz: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -104,6 +105,7 @@ class MainActivity : Activity() {
         raiz.addView(titulo("3. Ventana flotante y sonido (2.4 y 2.6)"))
         botonVentana = anade("") { ajustes.ventana = !ajustes.ventana }
         botonPeriodico = anade("") { ajustes.pitidoPeriodico = !ajustes.pitidoPeriodico }
+        botonCiclo = anade("") { ajustes.sonidosCiclo = !ajustes.sonidosCiclo }
         anade("Pitido de prueba ahora") { Sonido.avisoDePrueba(this, "PANTALLA") }
 
         // 4. Registro
@@ -165,6 +167,7 @@ class MainActivity : Activity() {
         botonModo.text = "Al conectar Bluetooth: " + nombreModo(ajustes.modoBluetooth)
         botonCoche.text = "Dispositivo Bluetooth: " + ajustes.nombreCoche
         botonVentana.text = "Ventana flotante: " + (if (ajustes.ventana) "SÍ" else "NO")
+        botonCiclo.text = "Sonidos de ciclo (1 al conectar, 2 al desconectar, 5 de radar cada 10 s): " + (if (ajustes.sonidosCiclo) "SÍ" else "NO")
         botonPeriodico.text = "Pitido cada minuto con el servicio en marcha: " + (if (ajustes.pitidoPeriodico) "SÍ" else "NO")
         textoEstado.text = construirEstado()
         textoRegistro.text = Registro.lee(this, 120)

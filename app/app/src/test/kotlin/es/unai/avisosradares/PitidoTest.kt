@@ -30,4 +30,24 @@ class PitidoTest {
     fun avisoSonDosPitidosYUnSilencio() {
         assertEquals(4410 + 2646 + 4410, generarAviso(22050).size)
     }
+
+    @Test
+    fun sonidoDeConexionEsUnPitidoSuave() {
+        assertEquals(3307, sonidoConexion(22050).size)
+    }
+
+    @Test
+    fun sonidoDeDesconexionSonDosPitidos() {
+        assertEquals(3307 + 2646 + 3307, sonidoDesconexion(22050).size)
+    }
+
+    @Test
+    fun sonidoDeRadarSonCincoPitidos() {
+        assertEquals(5 * 3307 + 4 * 2205, sonidoRadar(22050).size)
+    }
+
+    @Test
+    fun secuenciaSinPitidosEstaVacia() {
+        assertEquals(0, generarSecuencia(0, 660, 150, 100, 22050).size)
+    }
 }

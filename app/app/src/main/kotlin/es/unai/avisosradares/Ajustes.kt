@@ -24,6 +24,11 @@ class Ajustes(contexto: Context) {
         get() = p.getBoolean("pitidoPeriodico", false)
         set(valor) { p.edit().putBoolean("pitidoPeriodico", valor).apply() }
 
+    /** Sonidos del ciclo: 1 pitido al conectar, 2 al desconectar y 5 (radar simulado) cada 10 s con el servicio en marcha. */
+    var sonidosCiclo: Boolean
+        get() = p.getBoolean("sonidosCiclo", true)
+        set(valor) { p.edit().putBoolean("sonidosCiclo", valor).apply() }
+
     var ventana: Boolean
         get() = p.getBoolean("ventana", true)
         set(valor) { p.edit().putBoolean("ventana", valor).apply() }

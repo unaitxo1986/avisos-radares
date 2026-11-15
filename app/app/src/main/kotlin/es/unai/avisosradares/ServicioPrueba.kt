@@ -40,6 +40,7 @@ class ServicioPrueba : Service() {
         private const val CANAL = "pruebas"
         private const val ID_NOTIFICACION = 1
         private const val PERIODO_LATIDO_MS = 30_000L
+        private const val PERIODO_RADAR_MS = 10_000L
 
         @Volatile
         var enMarcha = false
@@ -90,6 +91,14 @@ class ServicioPrueba : Service() {
         }
     }
 
+    /** Radar simulado cada 10 s para probar el sonido de aviso sin salir a la carretera. */
+    private val radarSimulado = object : Runnable {
+        override fun run() {
+            Sonido.radar(this@ServicioPrueba, "SERVICIO")
+            manejador.postDelayed(this, PERIODO_RADAR_MS)
+        }
+    }
+
     override fun onBind(intent: Intent?): IBinder? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -110,6 +119,7 @@ class ServicioPrueba : Service() {
         arrancarUbicacion()
         arrancarVentana()
         manejador.postDelayed(latido, PERIODO_LATIDO_MS)
+        if (Ajustes(this).sonidosCiclo) manejador.postDelayed(radarSimulado, PERIODO_RADAR_MS)
         return START_NOT_STICKY
     }
 
@@ -117,6 +127,7 @@ class ServicioPrueba : Service() {
         val segundos = (SystemClock.elapsedRealtime() - inicioMs) / 1000
         Registro.anota(this, "SERVICIO", "onDestroy tras ${segundos}s, $fixes posiciones")
         manejador.removeCallbacks(latido)
+        manejador.removeCallbacks(radarSimulado)
         val oyenteActual = oyente
         if (oyenteActual != null) {
             try {

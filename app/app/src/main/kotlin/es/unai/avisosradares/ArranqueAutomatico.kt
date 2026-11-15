@@ -25,6 +25,7 @@ object ArranqueAutomatico {
     fun conectado(contexto: Context, origen: String, direccion: String) {
         val ajustes = Ajustes(contexto)
         if (!cuenta(contexto, ajustes, direccion, origen)) return
+        if (ajustes.sonidosCiclo && !ServicioPrueba.enMarcha) Sonido.conexion(contexto, origen)
         ServicioPrueba.arrancar(contexto, ajustes.modoBluetooth, origen)
     }
 
@@ -32,6 +33,7 @@ object ArranqueAutomatico {
         val ajustes = Ajustes(contexto)
         if (!cuenta(contexto, ajustes, direccion, origen)) return
         Registro.anota(contexto, origen, "parando el servicio por desconexión (estaba en marcha: ${ServicioPrueba.enMarcha})")
+        if (ajustes.sonidosCiclo && ServicioPrueba.enMarcha) Sonido.desconexion(contexto, origen)
         ServicioPrueba.parar(contexto)
     }
 }
