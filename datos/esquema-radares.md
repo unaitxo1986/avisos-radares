@@ -106,3 +106,19 @@ Cómo se construye: se parte de la vía, el rumbo y el punto de `sentido.json` y
 
 Datos de entrada: recuadro de unos 1,2 km por radar de la API de OpenStreetMap (`osm_aprox.json`, una petición por radar). **Esa respuesta cruda no se versiona** (unos 28 KB por radar, unos 20 MB en total; está en `.gitignore`): vive en la caché de Actions (`actions/cache`), y si se pierde se vuelve a pedir (unos 45 minutos). Lo que se versiona es `aproximacion.json` (unos 175 KB). Las vías se guardan en trozos continuos y con el primer nodo de fuera del radio a cada lado, porque en rectas y túneles los nodos están muy separados.
 
+
+## Límite de cada radar (3.4): `datos/cache/limites.json`
+
+Lo escribe `datos/pipeline/calcular_limites.py` (reglas en `limites.py`), usando solo la caché de OpenStreetMap de 3.2. Un objeto por `id` de radar (los 835; los tramos de la DGT salen sin límite hasta la fase 5). Es la fuente de `limite` y `limite_origen` del fichero publicado (3.5). Campos (15/11/2026):
+
+| Campo | Notas |
+|---|---|
+| `limite` | km/h, entero entre 20 y 130, o `null` (la app avisa sin límite) |
+| `origen` | `oficial` (la fuente del radar), `manual` (revisado a mano), `osm` (`maxspeed` de la calzada que 3.2 eligió para el radar), `osm_cercana` (valor único de las vías a menos de 50 m de la misma carretera) o `null` |
+| `fiab` | `alta` (oficial, manual), `media` (osm), `baja` (osm_cercana) o `null` |
+| `osm`, `nivel_osm` | Lo que dice OpenStreetMap (`calzada` o `cercanas`) aunque no se use, para medir su fiabilidad |
+| `texto` | Texto original de la fuente (`60/80 km/h`, `-`) |
+| `nota` | Por ejemplo "la fuente oficial da 60/80 km/h: se usa el más bajo" |
+| `discrepa` | `true` si hay límite oficial y OpenStreetMap da otro (el oficial manda) |
+
+Prioridad: oficial, manual, osm, osm_cercana, sin límite. Solo valen `maxspeed` numéricos (los simbólicos como `ES:urban`, `none` y las millas se ignoran). Si dos vías cercanas discrepan no se usa ninguna.
