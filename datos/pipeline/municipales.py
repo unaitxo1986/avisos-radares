@@ -12,9 +12,14 @@ Fuentes (comprobadas con Chrome el 18/11/2026, detalle en el documento del proye
 - Donostia / San Sebastián: capa 41 `Radarra` del servicio ArcGIS `GARRAIOA` (conjunto abierto
   "wms-transporte", CC BY-SA), con el límite de cada radar (`Abiadura`).
 
+- Bilbao: el Ayuntamiento dice en sus notas y contratos que tiene cabinas fijas en la avenida
+  Zumalakarregi (Txurdinaga, dos) y en Alameda Rekalde (dos), pero no publica coordenadas. La
+  posición y el sentido de cada una salen de OpenStreetMap (nodo `highway=speed_camera` con su
+  relación `enforcement`); Unai confirmó haber visto las cuatro (18/11/2026). Solo copia.
+
 Regla de todas las fuentes: se intenta descargar; si sale bien y las cifras cuadran, se renueva la
 copia `datos/fuentes/municipales.json`; si no, se usa la copia y se anota en `avisos`.
-Bilbao, Leioa y el resto no publican ubicaciones con coordenadas: no entran.
+Leioa y el resto no publican ubicaciones: no entran.
 """
 import json
 import urllib.parse
@@ -35,6 +40,10 @@ VITORIA_IDENTIFY = (
         "geometry": _VITORIA_EXT, "geometryType": "esriGeometryEnvelope", "sr": 25830,
         "layers": "all:36", "tolerance": 0, "mapExtent": _VITORIA_EXT,
         "imageDisplay": "1000,800,96", "returnGeometry": "true", "f": "json"}))
+BILBAO_ENLACES = {
+    "z17": "https://www.bilbao.eus/cs/Satellite?c=BIO_Noticia_FA&cid=1279168068778&language=es&pageid=3000075248&pagename=Bilbaonet%2FBIO_Noticia_FA%2FBIO_Noticia",
+    "r17": "https://www.bilbao.eus/cs/Satellite?c=BIO_Noticia_FA&cid=1279169578232&idiomaSesion=es_ES&p=100078707&pagename=Agenda21%2FAG21_Detalle_Noticia&titulo=Noticias",
+}
 DONOSTIA_DATOS = "https://www.donostia.eus/datosabiertos/catalogo/wms-transporte"
 DONOSTIA_QUERY = (
     "https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query?"
@@ -42,7 +51,8 @@ DONOSTIA_QUERY = (
                               "outSR": 4326, "f": "json"}))
 
 # Recuentos esperados por publicación; fuera de rango se considera rota y se usa la copia.
-RANGOS = {"vitoria_cabinas": (10, 40), "vitoria_fotorrojo": (3, 20), "donostia_radares": (8, 30)}
+RANGOS = {"vitoria_cabinas": (10, 40), "vitoria_fotorrojo": (3, 20), "donostia_radares": (8, 30),
+          "bilbao_cabinas": (2, 20)}
 
 
 def registros_vitoria(doc):
@@ -99,6 +109,11 @@ def radares(copia):
                     "lat": c["lat"], "lon": c["lon"], "municipio": "Donostia / San Sebastián",
                     "provincia": "Gipuzkoa", "limite_oficial": v if isinstance(v, int) else None,
                     "enlace_oficial": DONOSTIA_DATOS})
+    for c in copia.get("bilbao_cabinas", {}).get("registros", []):
+        out.append({**base, "id": f"mun-bilbao-{c['osm']}", "tipo": "fijo",
+                    "nombre": f"{c['calle']}, vigila {c['vigila']}", "lat": c["lat"], "lon": c["lon"],
+                    "municipio": "Bilbao", "provincia": "Bizkaia", "limite_oficial": None,
+                    "posicion": "osm", "enlace_oficial": BILBAO_ENLACES[c["enlace"]]})
     return out
 
 
@@ -128,7 +143,7 @@ def leer(descargar=None, ruta_copia=RUTA_COPIA, hoy=None, avisos=None):
             usadas.append(clave)
             avisos.append(f"Municipales ({clave}) no se pudo leer ({str(e)[:200]}); se usa la copia del "
                           f"{copia[clave].get('leido')}")
-    usadas.append("vitoria_fotorrojo")  # solo copia (ver el docstring)
+    usadas += ["vitoria_fotorrojo", "bilbao_cabinas"]  # solo copia (ver el docstring)
     for clave, (lo, hi) in RANGOS.items():
         n = len(copia[clave]["registros"])
         if not lo <= n <= hi:

@@ -30,7 +30,10 @@ class PruebasMunicipales(unittest.TestCase):
         r = municipales.leer(None)
         ids = [x["id"] for x in r["radares"]]
         self.assertEqual(len(ids), len(set(ids)))
-        self.assertEqual(len(ids), 34)
+        self.assertEqual(len(ids), 38)
+        bil = [x for x in r["radares"] if x["id"].startswith("mun-bilbao")]
+        self.assertEqual(len(bil), 4)
+        self.assertTrue(all(43.24 < x["lat"] < 43.27 for x in bil))
         don = [x for x in r["radares"] if x["id"].startswith("mun-donostia")]
         self.assertTrue(all(x["limite_oficial"] in (30, 50) for x in don))
         vit = [x for x in r["radares"] if x["id"].startswith("mun-vitoria-cabina")]
@@ -47,7 +50,7 @@ class PruebasMunicipales(unittest.TestCase):
             c = json.loads(p.read_text(encoding="utf-8"))
             self.assertEqual(c["vitoria_cabinas"]["leido"], "2026-12-01")
             self.assertEqual(len(c["donostia_radares"]["registros"]), 10)
-            self.assertEqual(r["copia_usada"], ["vitoria_fotorrojo"])
+            self.assertEqual(r["copia_usada"], ["vitoria_fotorrojo", "bilbao_cabinas"])
 
     def test_descarga_fallida_o_rara_usa_copia(self):
         with tempfile.TemporaryDirectory() as d:
@@ -61,7 +64,7 @@ class PruebasMunicipales(unittest.TestCase):
             r = municipales.leer(bajar, ruta_copia=p, avisos=avisos)
             self.assertEqual(p.read_text(encoding="utf-8"), antes)
             self.assertEqual(len(avisos), 2)
-            self.assertEqual(len(r["radares"]), 34)
+            self.assertEqual(len(r["radares"]), 38)
 
     def test_copia_rota(self):
         with tempfile.TemporaryDirectory() as d:

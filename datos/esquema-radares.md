@@ -37,6 +37,7 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 Lector `datos/pipeline/municipales.py`, copia `datos/fuentes/municipales.json`. Solo entran publicaciones oficiales con coordenadas:
 
 - **Vitoria-Gasteiz**, 16 cabinas de radar de velocidad (capa 36 `CABINA_RADAR` de GeoVitoria, leída con la operación `identify` porque `query` no da la geometría), con `rotatoria: true`, y 6 detectores de foto rojo (colección "Foto-rojo" de GeoVitoria, solo copia). Sin límite oficial.
+- **Bilbao**, 4 cabinas (avenida Zumalakarregi, dos; Alameda Rekalde, dos). Que existen lo dicen las notas y contratos del Ayuntamiento (2017-2018), que no publican coordenadas: la posición sale de OpenStreetMap (nodos `highway=speed_camera`, campo crudo `posicion: osm`). Solo copia. Sin límite.
 - **Donostia / San Sebastián**, 12 radares (capa 41 `Radarra` del servicio `GARRAIOA`, conjunto abierto "wms-transporte"), con límite oficial de 30 o 50 km/h.
 
 No tienen carretera ni punto kilométrico: el sentido sale `no_aplica`, no llevan tramo de aproximación (`aproximacion_fiab` nulo) y la app avisa por cercanía en cualquier sentido.

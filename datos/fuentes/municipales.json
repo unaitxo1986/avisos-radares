@@ -278,5 +278,43 @@
     "lon": -1.977423
    }
   ]
+ },
+ "bilbao_cabinas": {
+  "leido": "2026-11-18",
+  "comentario": "Existencia: notas y contratos del Ayuntamiento de Bilbao (2017-2018). Posición y sentido: nodos highway=speed_camera de OpenStreetMap con su relación enforcement. Unai las ha visto (18/11/2026).",
+  "registros": [
+   {
+    "osm": 992000965,
+    "lat": 43.25137,
+    "lon": -2.9071,
+    "calle": "Avenida Zumalakarregi (Txurdinaga, junto al polideportivo)",
+    "vigila": "bajada, hacia Galdakao",
+    "enlace": "z17"
+   },
+   {
+    "osm": 992001590,
+    "lat": 43.25006,
+    "lon": -2.90241,
+    "calle": "Avenida Zumalakarregi (curva tras la rotonda de Ibarsusi)",
+    "vigila": "subida, hacia el centro de Bilbao",
+    "enlace": "z17"
+   },
+   {
+    "osm": 7200247189,
+    "lat": 43.267893,
+    "lon": -2.933089,
+    "calle": "Alameda Rekalde (a la altura de Alameda Mazarredo)",
+    "vigila": "hacia el sur (Moyua)",
+    "enlace": "r17"
+   },
+   {
+    "osm": 7200247188,
+    "lat": 43.264465,
+    "lon": -2.934292,
+    "calle": "Alameda Rekalde (entre los números 25 y 27)",
+    "vigila": "hacia el norte (puente de La Salve)",
+    "enlace": "r17"
+   }
+  ]
  }
 }
