@@ -202,7 +202,7 @@ class ServicioRadares : Service() {
         val notificacion = Notification.Builder(this, CANAL)
             .setContentTitle("Avisos de radares")
             .setContentText(texto)
-            .setSmallIcon(android.R.drawable.ic_menu_mylocation)
+            .setSmallIcon(R.drawable.ic_lanzador_monocromo)
             .setContentIntent(abrir)
             .addAction(Notification.Action.Builder(null, "Parar", parar).build())
             .setOngoing(true)

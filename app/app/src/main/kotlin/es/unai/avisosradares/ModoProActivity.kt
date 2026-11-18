@@ -252,7 +252,7 @@ class ModoProActivity : Activity() {
         val avisos = GestorLista.avisos(this)
         textoAvisosLista.text = avisos.joinToString("\n") { "⚠ $it" }
 
-        botonCoche.text = "Bluetooth del coche: " + ajustes.nombreCoche.ifEmpty { "SIN ELEGIR (toca para elegirlo)" }
+        botonCoche.text = "Bluetooth que arrancan y paran: " + ajustes.coches.let { if (it.isEmpty()) "SIN ELEGIR (toca para elegir)" else textoDispositivos(it) }
         botonArranque.text = "Arrancar y parar solo con el coche: " + (if (ajustes.arranqueBluetooth) "SÍ" else "NO")
         botonCiclo.text = "Pitidos al arrancar (1) y al parar (2): " + (if (ajustes.sonidosCiclo) "SÍ" else "NO")
         botonVentana.text = "Ventana flotante con la velocidad: " + (if (ajustes.ventana) "SÍ" else "NO")

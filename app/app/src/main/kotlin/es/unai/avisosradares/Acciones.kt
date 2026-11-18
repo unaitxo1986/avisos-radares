@@ -26,7 +26,7 @@ object Acciones {
             ventanaFlotante = Settings.canDrawOverlays(a),
             quiereVentana = ajustes.ventana,
             bateria = energia.isIgnoringBatteryOptimizations(a.packageName),
-            cocheElegido = ajustes.direccionCoche.isNotEmpty(),
+            cocheElegido = ajustes.coches.isNotEmpty(),
             arranqueConCoche = ajustes.arranqueBluetooth,
         )
     }
@@ -76,6 +76,7 @@ object Acciones {
         a.startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:${a.packageName}")))
     }
 
+    /** Elegir uno o varios Bluetooth (coches, manos libres) que arrancan y paran la app. */
     @SuppressLint("MissingPermission")
     fun elegirCoche(a: Activity, ajustes: Ajustes, alElegir: () -> Unit) {
         if (Build.VERSION.SDK_INT >= 31 && !Diagnostico.concedido(a, Manifest.permission.BLUETOOTH_CONNECT)) {
@@ -94,14 +95,18 @@ object Acciones {
             return
         }
         val nombres = emparejados.map { it.name ?: it.address }
+        val elegidos = ajustes.coches
+        val marcados = BooleanArray(emparejados.size) { esElegido(elegidos, emparejados[it].address) }
         AlertDialog.Builder(a)
-            .setTitle("¿Cuál es el Bluetooth del coche?")
-            .setItems(nombres.toTypedArray()) { _, i ->
-                ajustes.direccionCoche = emparejados[i].address
-                ajustes.nombreCoche = nombres[i]
-                Registro.anota(a, "PANTALLA", "coche elegido: ${nombres[i]}")
+            .setTitle("¿Con qué Bluetooth arranca y para? (puedes marcar varios)")
+            .setMultiChoiceItems(nombres.toTypedArray(), marcados) { _, i, marcado -> marcados[i] = marcado }
+            .setPositiveButton("Guardar") { _, _ ->
+                val nuevos = emparejados.indices.filter { marcados[it] }.map { DispositivoBt(emparejados[it].address, nombres[it]) }
+                ajustes.coches = nuevos
+                Registro.anota(a, "PANTALLA", "Bluetooth elegidos: ${textoDispositivos(nuevos)}")
                 alElegir()
             }
+            .setNegativeButton("Cancelar", null)
             .show()
     }
 

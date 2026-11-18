@@ -218,10 +218,12 @@ class MainActivity : Activity() {
         refrescarMarcha()
 
         // Coche.
-        val sinCoche = ajustes.nombreCoche.isEmpty()
-        nombreCoche.text = if (sinCoche) "Elige su Bluetooth" else ajustes.nombreCoche
+        val coches = ajustes.coches
+        val sinCoche = coches.isEmpty()
+        nombreCoche.text = textoDispositivos(coches)
         nombreCoche.setTextColor(if (sinCoche) Estilo.AMARILLO else Estilo.TEXTO)
-        etiquetaCoche.text = (if (ajustes.arranqueBluetooth) "Tu coche · arranca y para sola" else "Tu coche · arranque automático apagado").uppercase()
+        val quien = if (coches.size > 1) "Tus ${coches.size} Bluetooth" else "Tu coche"
+        etiquetaCoche.text = (if (ajustes.arranqueBluetooth) "$quien · arranca y para sola" else "$quien · arranque automático apagado").uppercase()
         tarjetaCoche.background = Estilo.redondeado(Estilo.TARJETA, dp(18f).toFloat(), if (sinCoche) Estilo.AMARILLO else Estilo.BORDE, dp(1.5f))
 
         // Puesta a punto: pasos pendientes y problemas de la lista.

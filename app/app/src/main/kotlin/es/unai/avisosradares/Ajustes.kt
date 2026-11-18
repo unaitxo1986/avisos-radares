@@ -21,14 +21,23 @@ class Ajustes(contexto: Context) {
         }
     }
 
-    /** Dirección del dispositivo Bluetooth del coche; vacío = ninguno elegido (no arranca solo). */
-    var direccionCoche: String
-        get() = p.getString("btDireccion", "") ?: ""
-        set(valor) { p.edit().putString("btDireccion", valor).apply() }
+    /**
+     * Bluetooth que arrancan y paran la app (varios desde el 18/11: varios coches, o el coche y un manos libres);
+     * lista vacía = ninguno elegido (no arranca sola). El único coche que se elegía antes pasa a ser el primero.
+     */
+    var coches: List<DispositivoBt>
+        get() {
+            val guardado = p.getString("btCoches", null)
+            if (guardado != null) return decodificarDispositivos(guardado)
+            val direccion = p.getString("btDireccion", "") ?: ""
+            return if (direccion.isEmpty()) emptyList() else listOf(DispositivoBt(direccion, p.getString("btNombre", direccion) ?: direccion))
+        }
+        set(valor) { p.edit().putString("btCoches", codificarDispositivos(valor)).apply() }
 
-    var nombreCoche: String
-        get() = p.getString("btNombre", "") ?: ""
-        set(valor) { p.edit().putString("btNombre", valor).apply() }
+    /** Direcciones de los elegidos que están conectados ahora (para parar solo cuando se desconecte el último). */
+    var conectadosBt: Set<String>
+        get() = p.getStringSet("btConectados", emptySet())?.toSet() ?: emptySet()
+        set(valor) { p.edit().putStringSet("btConectados", valor).apply() }
 
     /** Arrancar y parar solo con el Bluetooth del coche. */
     var arranqueBluetooth: Boolean
