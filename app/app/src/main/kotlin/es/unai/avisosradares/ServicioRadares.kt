@@ -93,6 +93,7 @@ class ServicioRadares : Service() {
     private var inicioMs = 0L
     private var posiciones = 0
     private var avisos = 0
+    private var ultimoSonidoRadarMs = 0L
     private var recorrido: List<Posicion>? = null
     private var descripcionRecorrido = ""
 
@@ -297,9 +298,15 @@ class ServicioRadares : Service() {
             when (e.tipo) {
                 TipoEvento.AVISO -> {
                     avisos++
+                    ultimoSonidoRadarMs = SystemClock.uptimeMillis()
                     Sonido.radar(this, "AVISO")
                 }
-                TipoEvento.EXCESO -> Sonido.exceso(this, "AVISO")
+                TipoEvento.EXCESO -> {
+                    // Si acaba de sonar el aviso de radar (1,2 s), el de exceso espera a que termine.
+                    val espera = ultimoSonidoRadarMs + 1400 - SystemClock.uptimeMillis()
+                    if (espera > 0) manejador.postDelayed({ Sonido.exceso(this, "AVISO") }, espera)
+                    else Sonido.exceso(this, "AVISO")
+                }
                 else -> {}
             }
         }
