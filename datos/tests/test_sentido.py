@@ -65,6 +65,27 @@ class PruebasSentido(unittest.TestCase):
         self.assertEqual(a["sentido_km"], "creciente")
         self.assertAlmostEqual(a["rumbo"], 90, delta=2)
 
+    def test_vecino_con_kilometraje_que_no_cuadra_se_ignora(self):
+        # Fase 5 (18/11, N-240 en Huesca): el vecino más próximo en kilometraje tiene la posición rota (su pk
+        # dice 600 m pero está a 4 km). No debe fijar el eje: se usa el siguiente, que sí cuadra.
+        rs = [radar("a", 1000, 1000, sentido_oficial="creciente"),
+              radar("roto", 1600, -3000),
+              radar("b", 5000, 5000)]
+        res = sentido.calcular(rs, ServicioFalso(via_doble()))
+        self.assertEqual(res["a"]["sentido_km"], "creciente")
+        self.assertAlmostEqual(res["a"]["rumbo"], 90, delta=2)
+
+    def test_sin_vecino_que_cuadre_queda_en_ambos(self):
+        rs = [radar("a", 1000, 1000, sentido_oficial="creciente"), radar("roto", 1600, -3000)]
+        res = sentido.calcular(rs, ServicioFalso(via_doble()))
+        self.assertEqual(res["a"]["resultado"], "ambos")
+
+    def test_cuadra_km(self):
+        self.assertTrue(sentido.cuadra_km(800, 600))
+        self.assertFalse(sentido.cuadra_km(2714, 600))
+        self.assertTrue(sentido.cuadra_km(11900, 10000))
+        self.assertFalse(sentido.cuadra_km(12100, 10000))
+
     def test_oficial_decreciente(self):
         rs = [radar("a", 1000, 1000, sentido_oficial="decreciente"), radar("b", 5000, 5000)]
         a = sentido.calcular(rs, ServicioFalso(via_doble()))["a"]

@@ -33,6 +33,11 @@ RADIO_DEST_CERCA_M = 30000.0
 DIST_MIN_CARTO_M = 400.0  # el punto de CartoCiudad debe estar al menos a esto del radar
 
 TIPOS_CALCULABLES = ("fijo", "fotorrojo")
+# Fase 5 (18/11): la ruta hasta el vecino que fija el eje tiene que cuadrar con la diferencia de kilometraje
+# (como en los tramos): si no, el vecino o sus datos no sirven y se prueba otro.
+TOL_EJE_ABS_M = 300.0
+TOL_EJE_REL = 0.2
+MAX_VECINOS = 4
 
 
 def norm_ref(s):
@@ -131,6 +136,15 @@ def _puntos_carto(r, serv):
     return res
 
 
+def cuadra_km(dist, dpk):
+    """¿Cuadra una distancia por carretera con una diferencia de kilometraje? (300 m o 20 %).
+
+    Se usa para no fijar el eje kilométrico con una ruta que da un rodeo o con datos rotos (fase 5, 18/11:
+    en la N-240 de Huesca, con el vecino a 600 m, las rutas medían 2,7 y 3,5 km y la calzada salió al revés;
+    en la N-632 dos cabinas a 14 m tienen 1.650 m de diferencia de kilometraje)."""
+    return abs(dist - dpk) <= max(TOL_EJE_ABS_M, TOL_EJE_REL * dpk)
+
+
 def eje_carto(r, cands, serv):
     """Eje kilométrico con un punto de CartoCiudad cuando el radar no tiene vecino."""
     if r.get("pk_m") is None or not hasattr(serv, "punto_km"):
@@ -138,6 +152,8 @@ def eje_carto(r, cands, serv):
     for km, lat, lon in _puntos_carto(r, serv):
         d = [serv.ruta(c["p"], c["rumbo"], (lat, lon), None) for c in cands]
         if d[0] is None or d[1] is None or abs(d[0] - d[1]) < TOL_EJE_M:
+            continue
+        if not cuadra_km(min(d), abs(km * 1000 - r["pk_m"])):
             continue
         hacia = 0 if d[0] < d[1] else 1
         creciente = hacia if km * 1000 > r["pk_m"] else 1 - hacia
@@ -154,13 +170,15 @@ def eje_km(r, cands, vecinos, serv):
 
 
 def _eje_vecinos(r, cands, vecinos, serv):
-    for v in vecinos[:2]:
+    for v in vecinos[:MAX_VECINOS]:
         d = []
         for c in cands:
             ds = [serv.ruta(c["p"], c["rumbo"], n["p"], n["rumbo"]) for n in v["cands"]]
             ds = [x for x in ds if x is not None]
             d.append(min(ds) if ds else None)
         if d[0] is None or d[1] is None or abs(d[0] - d[1]) < TOL_EJE_M:
+            continue
+        if not cuadra_km(min(d), abs(v["r"]["pk_m"] - r["pk_m"])):
             continue
         hacia_vecino = 0 if d[0] < d[1] else 1
         creciente = hacia_vecino if v["r"]["pk_m"] > r["pk_m"] else 1 - hacia_vecino
