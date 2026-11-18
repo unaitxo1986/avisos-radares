@@ -50,12 +50,19 @@ fun generarSecuencia(cuantos: Int, frecuenciaHz: Int, duracionMs: Int, silencioM
     return salida
 }
 
-/** Sonidos del ciclo de uso (fase 2): conexión, desconexión y radar. */
+/**
+ * Sonidos de la app: arranque (1 pitido suave), parada (2), radar (5 agudos, el mismo que se probó en la
+ * fase 2) y exceso de velocidad (3 muy agudos y rápidos, distinto del de radar para reconocerlo sin mirar).
+ */
 fun sonidoConexion(m: Int): ShortArray = generarSecuencia(1, 660, 150, 0, m)
 fun sonidoDesconexion(m: Int): ShortArray = generarSecuencia(2, 660, 150, 120, m)
 fun sonidoRadar(m: Int): ShortArray = generarSecuencia(5, 1320, 150, 100, m)
+fun sonidoExceso(m: Int): ShortArray = generarSecuencia(3, 1760, 90, 60, m)
 
-/** Reproduce el aviso como lo haría un aviso de navegación y deja en el registro todo lo que pasa. */
+/**
+ * Reproduce los sonidos como un aviso de navegación, **siempre por el altavoz del móvil** (decisión de Unai,
+ * 15/11), y deja en el registro por dónde ha salido.
+ */
 object Sonido {
     const val MUESTREO = 22050
 
@@ -69,7 +76,10 @@ object Sonido {
         reproducir(contexto, origen, "desconexión (2 pitidos)", sonidoDesconexion(MUESTREO))
 
     fun radar(contexto: Context, origen: String) =
-        reproducir(contexto, origen, "radar simulado (5 pitidos)", sonidoRadar(MUESTREO))
+        reproducir(contexto, origen, "radar (5 pitidos)", sonidoRadar(MUESTREO))
+
+    fun exceso(contexto: Context, origen: String) =
+        reproducir(contexto, origen, "exceso (3 pitidos)", sonidoExceso(MUESTREO))
 
     private fun reproducir(contexto: Context, origen: String, nombre: String, muestras: ShortArray) {
         val ctx = contexto.applicationContext

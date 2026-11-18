@@ -45,6 +45,14 @@ android {
         }
     }
 
+    // El APK lleva dentro la lista de radares publicada al compilar (datos/salida/radares.json y estado.json),
+    // para funcionar desde el primer momento y sin cobertura; después la app baja las versiones nuevas (fase 4.2).
+    sourceSets {
+        getByName("main") {
+            assets.srcDir("../../datos/salida")
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

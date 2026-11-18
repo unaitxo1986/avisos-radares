@@ -1,6 +1,13 @@
 # App Android
 
-Proyecto Gradle (Kotlin) con un módulo `:app`. Estado: **app vacía de la fase 1** (una pantalla con la versión instalada), que sirve para comprobar la cadena compilar, firmar e instalar.
+Proyecto Gradle (Kotlin) con un módulo `:app`. Estado: **versión 1 de la fase 4** (18/11/2026).
+
+## Qué hace
+- `ServicioRadares`: servicio en primer plano (tipo ubicación) que lee el GPS cada segundo, enseña la velocidad en una ventana flotante (se puede arrastrar), avisa con sonido por el altavoz del móvil y graba cada viaje. Lo arranca y lo para el Bluetooth del coche (`BluetoothReceiver`, exportado; vía A de la fase 2), el botón de la pantalla o el botón "Parar" de la notificación.
+- `MotorAvisos` (código puro, con pruebas): aviso **por carretera y sentido** en los radares con tramo de aproximación fiable (el coche va sobre la línea y avanza hacia el radar; distancia medida por la carretera) y **por cercanía** en el resto (500 m, acercándose, cualquier sentido). El aviso suena siempre al acercarse; si se conoce el límite y se supera, aviso de exceso repetido cada 4 s y ventana roja.
+- `GestorLista`: el APK lleva dentro `datos/salida/radares.json` y `estado.json`; la app baja las versiones nuevas desde GitHub (con `ETag`, cada 6 h como mucho) y avisa si la lista puede estar anticuada.
+- `Viajes`: un CSV por viaje (posiciones y avisos), exportable a Descargas/AvisosRadares; se puede reproducir en el móvil. `Simulacion`: recorridos inventados sobre un radar real para probar sin conducir.
+- Pruebas automáticas (`src/test`): además de las de la lógica, `DatosRealesTest` simula el paso por **cada** radar de la lista publicada, en su sentido y en el contrario.
 
 ## Compilación y firma
 - Se compila en GitHub Actions (`.github/workflows/compilar-apk.yml`) en cada cambio en `app/`, o a mano desde la pestaña Actions (Run workflow).

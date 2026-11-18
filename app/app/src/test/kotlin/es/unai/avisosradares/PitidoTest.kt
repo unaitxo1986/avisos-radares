@@ -50,4 +50,9 @@ class PitidoTest {
     fun secuenciaSinPitidosEstaVacia() {
         assertEquals(0, generarSecuencia(0, 660, 150, 100, 22050).size)
     }
+
+    @Test
+    fun sonidoDeExcesoSonTresPitidosCortos() {
+        assertEquals(3 * 1984 + 2 * 1323, sonidoExceso(22050).size)
+    }
 }

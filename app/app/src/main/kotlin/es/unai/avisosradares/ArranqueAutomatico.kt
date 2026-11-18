@@ -3,37 +3,41 @@ package es.unai.avisosradares
 import android.content.Context
 
 /**
- * Lógica común de las vías Bluetooth: qué hacer cuando "el coche" se conecta o se desconecta,
- * llegue el aviso por el receptor del manifiesto, por el dinámico o por el servicio de dispositivo compañero.
+ * Arranque y parada automáticos con el Bluetooth del coche (vía A, probada en la fase 2): al conectarse el
+ * dispositivo elegido se arranca el servicio y al desconectarse se para. Si no hay coche elegido no se
+ * arranca nada, para que no se ponga en marcha con unos auriculares.
  */
 object ArranqueAutomatico {
 
-    /** El dispositivo elegido cuenta como "el coche": si no se eligió ninguno, vale cualquiera. */
-    private fun cuenta(contexto: Context, ajustes: Ajustes, direccion: String, origen: String): Boolean {
-        if (ajustes.modoBluetooth == Tipos.NINGUNO) {
-            Registro.anota(contexto, origen, "modo «solo registrar»: no se arranca ni se para nada")
+    private fun cuenta(contexto: Context, ajustes: Ajustes, direccion: String): Boolean {
+        if (!ajustes.arranqueBluetooth) {
+            Registro.anota(contexto, "BT", "arranque automático desactivado en la app: no se hace nada")
             return false
         }
         val elegido = ajustes.direccionCoche
-        if (elegido.isNotEmpty() && !elegido.equals(direccion, ignoreCase = true)) {
-            Registro.anota(contexto, origen, "ignorado: no es el dispositivo elegido (${ajustes.nombreCoche})")
+        if (elegido.isEmpty()) {
+            Registro.anota(contexto, "BT", "no hay Bluetooth del coche elegido: no se hace nada")
+            return false
+        }
+        if (!elegido.equals(direccion, ignoreCase = true)) {
+            Registro.anota(contexto, "BT", "ignorado: no es el coche (${ajustes.nombreCoche})")
             return false
         }
         return true
     }
 
-    fun conectado(contexto: Context, origen: String, direccion: String) {
+    fun conectado(contexto: Context, direccion: String) {
         val ajustes = Ajustes(contexto)
-        if (!cuenta(contexto, ajustes, direccion, origen)) return
-        if (ajustes.sonidosCiclo && !ServicioPrueba.enMarcha) Sonido.conexion(contexto, origen)
-        ServicioPrueba.arrancar(contexto, ajustes.modoBluetooth, origen)
+        if (!cuenta(contexto, ajustes, direccion)) return
+        if (ajustes.sonidosCiclo && !ServicioRadares.enMarcha) Sonido.conexion(contexto, "BT")
+        ServicioRadares.arrancar(contexto, "Bluetooth del coche")
     }
 
-    fun desconectado(contexto: Context, origen: String, direccion: String) {
+    fun desconectado(contexto: Context, direccion: String) {
         val ajustes = Ajustes(contexto)
-        if (!cuenta(contexto, ajustes, direccion, origen)) return
-        Registro.anota(contexto, origen, "parando el servicio por desconexión (estaba en marcha: ${ServicioPrueba.enMarcha})")
-        if (ajustes.sonidosCiclo && ServicioPrueba.enMarcha) Sonido.desconexion(contexto, origen)
-        ServicioPrueba.parar(contexto)
+        if (!cuenta(contexto, ajustes, direccion)) return
+        Registro.anota(contexto, "BT", "parando por desconexión del coche (estaba en marcha: ${ServicioRadares.enMarcha})")
+        if (ajustes.sonidosCiclo && ServicioRadares.enMarcha) Sonido.desconexion(contexto, "BT")
+        ServicioRadares.parar(contexto)
     }
 }

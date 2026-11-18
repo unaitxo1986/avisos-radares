@@ -7,18 +7,18 @@ import android.app.ActivityManager
 import android.app.AlertDialog
 import android.bluetooth.BluetoothManager
 import android.content.ClipData
-import android.companion.AssociationRequest
-import android.companion.BluetoothDeviceFilter
-import android.companion.CompanionDeviceManager
 import android.content.ClipboardManager
 import android.content.Context
 import android.content.Intent
-import android.content.IntentSender
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.graphics.Typeface
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.os.PowerManager
 import android.provider.Settings
 import android.widget.Button
@@ -26,98 +26,113 @@ import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
-import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 /**
- * Pantalla de pruebas de la fase 2: permisos, arranque automático, ventana flotante, sonido y registro.
- * Es una pantalla de diagnóstico provisional, no la pantalla final de la app.
+ * Pantalla principal de la versión 1: estado, permisos, Bluetooth del coche, lista de radares, pruebas sin
+ * conducir (simulación y reproducción de viajes), viajes grabados y registro de diagnóstico.
  */
 class MainActivity : Activity() {
 
-    private companion object {
-        const val CODIGO_ASOCIAR = 42
-    }
-
     private lateinit var ajustes: Ajustes
-    private lateinit var textoEstado: TextView
-    private lateinit var textoRegistro: TextView
-    private lateinit var botonModo: Button
-    private lateinit var botonCoche: Button
-    private lateinit var botonVentana: Button
-    private lateinit var botonPeriodico: Button
-    private lateinit var botonCiclo: Button
     private lateinit var raiz: LinearLayout
+    private lateinit var textoServicio: TextView
+    private lateinit var textoLista: TextView
+    private lateinit var textoAvisosLista: TextView
+    private lateinit var textoPermisos: TextView
+    private lateinit var textoViajes: TextView
+    private lateinit var textoRegistro: TextView
+    private lateinit var botonServicio: Button
+    private lateinit var botonCoche: Button
+    private lateinit var botonArranque: Button
+    private lateinit var botonCiclo: Button
+    private lateinit var botonVentana: Button
+    private val manejador = Handler(Looper.getMainLooper())
+    private val refrescoPeriodico = object : Runnable {
+        override fun run() {
+            refrescarServicio()
+            manejador.postDelayed(this, 1000)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ajustes = Ajustes(this)
-
         raiz = LinearLayout(this)
         raiz.orientation = LinearLayout.VERTICAL
-        raiz.setPadding(24, 24, 24, 24)
+        raiz.setPadding(28, 28, 28, 28)
 
         @Suppress("DEPRECATION")
         val info = packageManager.getPackageInfo(packageName, 0)
         @Suppress("DEPRECATION")
-        val codigo = info.versionCode.toLong()
-        val cabecera = TextView(this)
-        cabecera.text = "Avisos de radares: pruebas de la fase 2\n" + etiquetaVersion(info.versionName ?: "?", codigo)
-        cabecera.textSize = 18f
+        val cabecera = texto("Avisos de radares\n" + etiquetaVersion(info.versionName ?: "?", info.versionCode.toLong()), 20f)
+        cabecera.setTypeface(cabecera.typeface, Typeface.BOLD)
         raiz.addView(cabecera)
 
-        // 1. Permisos
-        raiz.addView(titulo("1. Permisos y estado"))
-        textoEstado = TextView(this)
-        textoEstado.typeface = Typeface.MONOSPACE
-        textoEstado.textSize = 12f
-        raiz.addView(textoEstado)
-        anade("Paso 1: pedir ubicación, Bluetooth y notificaciones") { pedirPermisos() }
-        anade("Paso 2: ubicación «permitir siempre»") { pedirSiempre() }
-        anade("Paso 3: permiso de ventana flotante") { abrirSuperposicion() }
-        anade("Paso 4: ajustes de la app (batería, ajustes restringidos)") { abrirAjustesApp() }
-
-        // 2. Arranque automático
-        raiz.addView(titulo("2. Arranque automático (pruebas 2.1 a 2.3)"))
-        botonModo = anade("") { ajustes.modoBluetooth = (ajustes.modoBluetooth + 1) % 3 }
-        botonCoche = anade("") { elegirCoche() }
-        anade("Arrancar el servicio ahora desde aquí (control)") {
-            ServicioPrueba.arrancar(this, Tipos.UBICACION, "botón de la pantalla")
+        // Servicio
+        textoServicio = texto("", 16f)
+        raiz.addView(textoServicio)
+        botonServicio = boton("") {
+            if (ServicioRadares.enMarcha) ServicioRadares.parar(this) else ServicioRadares.arrancar(this, "botón de la pantalla")
         }
-        anade("Parar el servicio") { ServicioPrueba.parar(this) }
-        anade("Vía D: asociar el Bluetooth del coche (dispositivo compañero)") { asociarCompanero() }
-        anade("Vía D: comprobar asociaciones y activar la detección") { observarAsociaciones() }
-        val ayuda = TextView(this)
-        ayuda.text = "Qué hace cada modo:\n" +
-            "• Solo registrar: apunta en el registro cada conexión Bluetooth, sin arrancar nada.\n" +
-            "• Vía A: al conectarse el Bluetooth elegido, intenta arrancar el servicio de GPS (tipo ubicación).\n" +
-            "• Vía C: igual, pero con el servicio declarado como dispositivo conectado.\n" +
-            "• Vía B: rutina de Samsung (Ajustes > Modos y rutinas > «Abrir app» > «Radares (arranque)»).\n" +
-            "• Vía D: se asocia el dispositivo con Android una vez; Android avisa a la app cuando aparece o desaparece, " +
-            "aunque esté cerrada. Usa el modo elegido arriba (A o C) para decidir el tipo de servicio.\n" +
-            "En los modos A, C y D el servicio se para al desconectarse el dispositivo."
-        ayuda.textSize = 12f
-        raiz.addView(ayuda)
 
-        // 3. Ventana y sonido
-        raiz.addView(titulo("3. Ventana flotante y sonido (2.4 y 2.6)"))
-        botonVentana = anade("") { ajustes.ventana = !ajustes.ventana }
-        botonPeriodico = anade("") { ajustes.pitidoPeriodico = !ajustes.pitidoPeriodico }
-        botonCiclo = anade("") { ajustes.sonidosCiclo = !ajustes.sonidosCiclo }
-        anade("Pitido de prueba ahora") { Sonido.avisoDePrueba(this, "PANTALLA") }
+        // Lista de radares
+        raiz.addView(titulo("Lista de radares"))
+        textoLista = texto("", 14f)
+        raiz.addView(textoLista)
+        textoAvisosLista = texto("", 14f)
+        textoAvisosLista.setTextColor(Color.parseColor("#B71C1C"))
+        raiz.addView(textoAvisosLista)
+        boton("Buscar datos nuevos ahora") { GestorLista.comprobar(this, forzar = true) }
 
-        // 4. Registro
-        raiz.addView(titulo("4. Registro"))
-        anade("Actualizar") { }
-        anade("Copiar el registro al portapapeles") { copiar("registro", Registro.lee(this, 400)) }
-        anade("Copiar el recorrido GPS (últimas 400 filas)") { copiar("recorrido", ultimasLineasRecorrido()) }
-        anade("Anotar motivos de cierre recientes de la app") { anotarMotivosDeCierre() }
-        anade("Borrar el registro") { Registro.borra(this) }
-        textoRegistro = TextView(this)
+        // Arranque automático
+        raiz.addView(titulo("Arranque con el coche"))
+        botonCoche = boton("") { elegirCoche() }
+        botonArranque = boton("") { ajustes.arranqueBluetooth = !ajustes.arranqueBluetooth }
+        botonCiclo = boton("") { ajustes.sonidosCiclo = !ajustes.sonidosCiclo }
+
+        // Permisos
+        raiz.addView(titulo("Permisos"))
+        textoPermisos = texto("", 13f)
+        textoPermisos.typeface = Typeface.MONOSPACE
+        raiz.addView(textoPermisos)
+        boton("1. Ubicación, Bluetooth y notificaciones") { pedirPermisos() }
+        boton("2. Ubicación «permitir siempre»") { pedirSiempre() }
+        boton("3. Ventana flotante") { startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))) }
+        boton("4. Ajustes de la app (batería sin restricciones)") {
+            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName")))
+        }
+
+        // Ventana y sonido
+        raiz.addView(titulo("Ventana y sonido"))
+        botonVentana = boton("") { ajustes.ventana = !ajustes.ventana }
+        boton("Oír el aviso de radar") { Sonido.radar(this, "PANTALLA") }
+        boton("Oír el aviso de exceso de velocidad") { Sonido.exceso(this, "PANTALLA") }
+
+        // Pruebas sin conducir
+        raiz.addView(titulo("Probar sin conducir"))
+        raiz.addView(texto("Pasa por el motor de avisos un recorrido inventado sobre el radar con tramo de aproximación más " +
+            "cercano a donde estás, a 10 km/h por encima de su límite. Suena y se ve igual que en el coche.", 13f))
+        boton("Simular paso por un radar (debe avisar)") { simular(alReves = false) }
+        boton("Simular paso en sentido contrario (no debe avisar)") { simular(alReves = true) }
+        boton("Reproducir el último viaje grabado (×4)") { reproducirUltimo() }
+
+        // Viajes
+        raiz.addView(titulo("Viajes grabados"))
+        textoViajes = texto("", 13f)
+        raiz.addView(textoViajes)
+        boton("Exportar el último viaje a Descargas") { exportarUltimo() }
+        boton("Copiar los avisos del último viaje") { copiarAvisosUltimo() }
+
+        // Diagnóstico
+        raiz.addView(titulo("Registro de diagnóstico"))
+        boton("Copiar el registro al portapapeles") { copiar("registro", Registro.lee(this, 400)) }
+        boton("Anotar motivos de cierre recientes de la app") { anotarMotivosDeCierre() }
+        boton("Borrar el registro") { Registro.borra(this) }
+        textoRegistro = texto("", 10f)
         textoRegistro.typeface = Typeface.MONOSPACE
-        textoRegistro.textSize = 10f
         textoRegistro.setTextIsSelectable(true)
         raiz.addView(textoRegistro)
 
@@ -129,8 +144,16 @@ class MainActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
-        Registro.anota(this, "PANTALLA", "pantalla de pruebas visible")
+        GestorLista.alCambiar = { refrescar() }
+        GestorLista.comprobar(this, forzar = false)
         refrescar()
+        manejador.post(refrescoPeriodico)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        GestorLista.alCambiar = null
+        manejador.removeCallbacks(refrescoPeriodico)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
@@ -142,57 +165,97 @@ class MainActivity : Activity() {
         refrescar()
     }
 
-    private fun titulo(texto: String): TextView {
-        val t = TextView(this)
-        t.text = texto
-        t.textSize = 16f
-        t.setTypeface(t.typeface, Typeface.BOLD)
-        t.setPadding(0, 40, 0, 8)
-        return t
+    // ---------- Construcción de la pantalla ----------
+
+    private fun texto(t: String, tamano: Float): TextView {
+        val v = TextView(this)
+        v.text = t
+        v.textSize = tamano
+        v.setPadding(0, 6, 0, 6)
+        return v
     }
 
-    private fun anade(texto: String, accion: () -> Unit): Button {
+    private fun titulo(t: String): TextView {
+        val v = texto(t, 17f)
+        v.setTypeface(v.typeface, Typeface.BOLD)
+        v.setPadding(0, 40, 0, 8)
+        return v
+    }
+
+    private fun boton(t: String, accion: () -> Unit): Button {
         val b = Button(this)
-        b.text = texto
+        b.text = t
         b.isAllCaps = false
         b.setOnClickListener {
-            accion()
-            refrescar()
+            try {
+                accion()
+            } catch (e: Throwable) {
+                Registro.anota(this, "PANTALLA", "ERROR: ${e.javaClass.name}: ${e.message}")
+                aviso("Error: ${e.message}")
+            }
+            manejador.postDelayed({ refrescar() }, 300)
         }
         raiz.addView(b)
         return b
     }
 
-    private fun refrescar() {
-        botonModo.text = "Al conectar Bluetooth: " + nombreModo(ajustes.modoBluetooth)
-        botonCoche.text = "Dispositivo Bluetooth: " + ajustes.nombreCoche
-        botonVentana.text = "Ventana flotante: " + (if (ajustes.ventana) "SÍ" else "NO")
-        botonCiclo.text = "Sonidos de ciclo (1 al conectar, 2 al desconectar, 5 de radar cada 10 s): " + (if (ajustes.sonidosCiclo) "SÍ" else "NO")
-        botonPeriodico.text = "Pitido cada minuto con el servicio en marcha: " + (if (ajustes.pitidoPeriodico) "SÍ" else "NO")
-        textoEstado.text = construirEstado()
-        textoRegistro.text = Registro.lee(this, 120)
-    }
-
     private fun si(valor: Boolean) = if (valor) "sí" else "NO"
 
-    private fun construirEstado(): String {
-        val energia = getSystemService(Context.POWER_SERVICE) as PowerManager
+    private fun refrescarServicio() {
+        val enMarcha = ServicioRadares.enMarcha
+        textoServicio.text = if (enMarcha) "EN MARCHA: " + ServicioRadares.estadoTexto else "Parado"
+        textoServicio.setTextColor(Color.parseColor(if (enMarcha) "#1B5E20" else "#555555"))
+        botonServicio.text = if (enMarcha) "Parar" else "Arrancar ahora (sin esperar al coche)"
+    }
+
+    private fun refrescar() {
+        refrescarServicio()
+        val formato = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ROOT)
+        val lista = try { GestorLista.lista(this) } catch (e: Throwable) { null }
+        val estado = GestorLista.estado(this)
         val sb = StringBuilder()
-        sb.append("Android ").append(Build.VERSION.RELEASE).append(" (API ").append(Build.VERSION.SDK_INT)
-            .append("), ").append(Build.MODEL).append("\n")
-        sb.append("Ubicación precisa: ").append(si(Diagnostico.concedido(this, Manifest.permission.ACCESS_FINE_LOCATION))).append("\n")
-        sb.append("Ubicación «siempre»: ").append(si(Diagnostico.concedido(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION))).append("\n")
+        if (lista == null) {
+            sb.append("No se puede leer la lista de radares.\n")
+        } else {
+            val conLinea = lista.radares.count { it.porCarretera }
+            sb.append("${lista.radares.size} radares ($conLinea con aviso por carretera y sentido, ${lista.radares.size - conLinea} por cercanía).\n")
+            sb.append("Datos cambiados por última vez: ${isoAMs(lista.version)?.let { formato.format(Date(it)) } ?: lista.version}\n")
+        }
+        estado?.generado?.let { g -> sb.append("Última ejecución del proceso de datos: ${isoAMs(g)?.let { formato.format(Date(it)) } ?: g}\n") }
+        val ok = ajustes.ultimaComprobacionOkMs
+        sb.append("Última comprobación desde el móvil: ${if (ok > 0) formato.format(Date(ok)) else "nunca"}")
+        if (GestorLista.comprobando) sb.append(" (comprobando…)")
+        if (ajustes.ultimoResultado.isNotEmpty()) sb.append("\nResultado: ${ajustes.ultimoResultado}")
+        textoLista.text = sb.toString()
+        val avisos = GestorLista.avisos(this)
+        textoAvisosLista.text = avisos.joinToString("\n") { "⚠ $it" }
+
+        botonCoche.text = "Bluetooth del coche: " + ajustes.nombreCoche.ifEmpty { "SIN ELEGIR (toca para elegirlo)" }
+        botonArranque.text = "Arrancar y parar solo con el coche: " + (if (ajustes.arranqueBluetooth) "SÍ" else "NO")
+        botonCiclo.text = "Pitidos al arrancar (1) y al parar (2): " + (if (ajustes.sonidosCiclo) "SÍ" else "NO")
+        botonVentana.text = "Ventana flotante con la velocidad: " + (if (ajustes.ventana) "SÍ" else "NO")
+
+        val energia = getSystemService(Context.POWER_SERVICE) as PowerManager
+        val p = StringBuilder()
+        p.append("Ubicación precisa:       ").append(si(Diagnostico.concedido(this, Manifest.permission.ACCESS_FINE_LOCATION))).append("\n")
+        p.append("Ubicación «siempre»:     ").append(si(Diagnostico.concedido(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION))).append("\n")
         if (Build.VERSION.SDK_INT >= 31) {
-            sb.append("Bluetooth cercano: ").append(si(Diagnostico.concedido(this, Manifest.permission.BLUETOOTH_CONNECT))).append("\n")
+            p.append("Bluetooth cercano:       ").append(si(Diagnostico.concedido(this, Manifest.permission.BLUETOOTH_CONNECT))).append("\n")
         }
         if (Build.VERSION.SDK_INT >= 33) {
-            sb.append("Notificaciones: ").append(si(Diagnostico.concedido(this, Manifest.permission.POST_NOTIFICATIONS))).append("\n")
+            p.append("Notificaciones:          ").append(si(Diagnostico.concedido(this, Manifest.permission.POST_NOTIFICATIONS))).append("\n")
         }
-        sb.append("Ventana flotante permitida: ").append(si(Settings.canDrawOverlays(this))).append("\n")
-        sb.append("Batería sin restricciones: ").append(si(energia.isIgnoringBatteryOptimizations(packageName))).append("\n")
-        sb.append("Servicio en marcha: ").append(si(ServicioPrueba.enMarcha))
-        return sb.toString()
+        p.append("Ventana flotante:        ").append(si(Settings.canDrawOverlays(this))).append("\n")
+        p.append("Batería sin restricción: ").append(si(energia.isIgnoringBatteryOptimizations(packageName)))
+        textoPermisos.text = p.toString()
+
+        val viajes = Viajes.lista(this)
+        textoViajes.text = if (viajes.isEmpty()) "Ninguno todavía." else
+            "${viajes.size} guardados. Último: ${viajes.first().name} (${viajes.first().length() / 1024} KB)"
+        textoRegistro.text = Registro.lee(this, 80)
     }
+
+    // ---------- Acciones ----------
 
     private fun pedirPermisos() {
         val lista = mutableListOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
@@ -203,24 +266,16 @@ class MainActivity : Activity() {
 
     private fun pedirSiempre() {
         if (!Diagnostico.concedido(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-            aviso("Primero haz el paso 1 y acepta la ubicación.")
+            aviso("Primero el paso 1: acepta la ubicación.")
             return
         }
         requestPermissions(arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), 2)
     }
 
-    private fun abrirSuperposicion() {
-        startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName")))
-    }
-
-    private fun abrirAjustesApp() {
-        startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName")))
-    }
-
     @SuppressLint("MissingPermission")
     private fun elegirCoche() {
         if (Build.VERSION.SDK_INT >= 31 && !Diagnostico.concedido(this, Manifest.permission.BLUETOOTH_CONNECT)) {
-            aviso("Falta el permiso de Bluetooth cercano (paso 1).")
+            aviso("Falta el permiso de Bluetooth cercano (permiso 1).")
             return
         }
         val adaptador = (getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
@@ -229,108 +284,86 @@ class MainActivity : Activity() {
         } catch (e: SecurityException) {
             emptyList()
         }
-        val nombres = mutableListOf("Cualquier dispositivo")
-        val direcciones = mutableListOf("")
-        for (d in emparejados) {
-            nombres.add(d.name ?: d.address)
-            direcciones.add(d.address)
+        if (emparejados.isEmpty()) {
+            aviso("No hay dispositivos Bluetooth emparejados.")
+            return
         }
+        val nombres = emparejados.map { it.name ?: it.address }
         AlertDialog.Builder(this)
-            .setTitle("¿Qué dispositivo Bluetooth es el coche?")
+            .setTitle("¿Cuál es el Bluetooth del coche?")
             .setItems(nombres.toTypedArray()) { _, i ->
-                ajustes.direccionCoche = direcciones[i]
+                ajustes.direccionCoche = emparejados[i].address
                 ajustes.nombreCoche = nombres[i]
+                Registro.anota(this, "PANTALLA", "coche elegido: ${nombres[i]}")
                 refrescar()
             }
             .show()
     }
 
-    /** Vía D: pide a Android que asocie un dispositivo Bluetooth a la app (sale un cuadro del sistema). */
-    @SuppressLint("NewApi")
-    private fun asociarCompanero() {
-        if (Build.VERSION.SDK_INT < 31) {
-            aviso("Esta vía necesita Android 12 o superior.")
-            return
-        }
-        val gestor = getSystemService(Context.COMPANION_DEVICE_SERVICE) as CompanionDeviceManager
-        val peticion = AssociationRequest.Builder()
-            .addDeviceFilter(BluetoothDeviceFilter.Builder().build())
-            .build()
-        Registro.anota(this, "CDM", "pidiendo asociación: Android busca dispositivos Bluetooth")
-        gestor.associate(peticion, object : CompanionDeviceManager.Callback() {
-            @Suppress("OVERRIDE_DEPRECATION")
-            override fun onDeviceFound(chooserLauncher: IntentSender) {
-                try {
-                    startIntentSenderForResult(chooserLauncher, CODIGO_ASOCIAR, null, 0, 0, 0)
-                } catch (e: Throwable) {
-                    Registro.anota(this@MainActivity, "CDM", "ERROR al abrir el selector: ${e.javaClass.name}: ${e.message}")
-                }
-            }
-
-            override fun onFailure(error: CharSequence?) {
-                Registro.anota(this@MainActivity, "CDM", "la búsqueda ha fallado: $error")
-            }
-        }, null)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode != CODIGO_ASOCIAR) return
-        if (resultCode != RESULT_OK) {
-            Registro.anota(this, "CDM", "asociación cancelada o sin dispositivo elegido (código $resultCode)")
-        } else {
-            Registro.anota(this, "CDM", "dispositivo asociado")
-            observarAsociaciones()
-        }
-        refrescar()
-    }
-
-    /** Vía D: lista los dispositivos asociados y pide a Android que avise de su presencia. */
-    @SuppressLint("NewApi")
-    @Suppress("DEPRECATION")
-    private fun observarAsociaciones() {
-        if (Build.VERSION.SDK_INT < 31) {
-            aviso("Esta vía necesita Android 12 o superior.")
-            return
-        }
-        val gestor = getSystemService(Context.COMPANION_DEVICE_SERVICE) as CompanionDeviceManager
-        val direcciones = try {
-            gestor.associations
+    /** El radar con tramo de aproximación más cercano a la última posición conocida (o uno de Bizkaia). */
+    @SuppressLint("MissingPermission")
+    private fun radarParaSimular(): Radar? {
+        val radares = GestorLista.lista(this).radares.filter { it.porCarretera }
+        if (radares.isEmpty()) return null
+        val gestor = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val ultima = try {
+            listOf(LocationManager.GPS_PROVIDER, LocationManager.NETWORK_PROVIDER, "fused")
+                .mapNotNull { if (gestor.allProviders.contains(it)) gestor.getLastKnownLocation(it) else null }
+                .maxByOrNull { it.time }
         } catch (e: Throwable) {
-            Registro.anota(this, "CDM", "ERROR al leer las asociaciones: ${e.javaClass.name}: ${e.message}")
-            return
+            null
         }
-        Registro.anota(this, "CDM", "asociaciones actuales: $direcciones")
-        for (direccion in direcciones) {
-            try {
-                gestor.startObservingDevicePresence(direccion)
-                Registro.anota(this, "CDM", "detección de presencia activada para $direccion")
-            } catch (e: Throwable) {
-                Registro.anota(this, "CDM", "ERROR al activar la detección de $direccion: ${e.javaClass.name}: ${e.message}")
-            }
-        }
+        if (ultima == null) return radares.firstOrNull { it.id.startsWith("eus-a-8") && it.limite != null } ?: radares.first()
+        return radares.minByOrNull { distanciaM(ultima.latitude, ultima.longitude, it.lat, it.lon) }
     }
 
-    private fun copiar(etiqueta: String, texto: String) {
-        if (texto.isEmpty()) {
-            aviso("No hay nada que copiar todavía.")
+    private fun simular(alReves: Boolean) {
+        if (ServicioRadares.enMarcha) {
+            aviso("Para antes el servicio (botón Parar).")
             return
         }
+        val radar = radarParaSimular() ?: return aviso("No hay radares con tramo de aproximación en la lista.")
+        val velocidad = (radar.limite ?: 90) + 10.0
+        val recorrido = recorridoSimulado(radar.linea!!, velocidad, ruidoM = 8.0, semilla = System.currentTimeMillis(), alReves = alReves)
+        val texto = (if (alReves) "sentido contrario de " else "") + radar.descripcion() + " a ${velocidad.toInt()} km/h"
+        Registro.anota(this, "PANTALLA", "simulación: $texto (${radar.id})")
+        aviso("Simulando ${recorrido.size} s: $texto")
+        ServicioRadares.reproducir(this, recorrido, texto, 1.0)
+    }
+
+    private fun reproducirUltimo() {
+        if (ServicioRadares.enMarcha) {
+            aviso("Para antes el servicio (botón Parar).")
+            return
+        }
+        val ultimo = Viajes.lista(this).firstOrNull() ?: return aviso("No hay viajes grabados.")
+        val posiciones = FormatoViaje.posiciones(ultimo.readText())
+        if (posiciones.size < 2) return aviso("El último viaje no tiene posiciones.")
+        ServicioRadares.reproducir(this, posiciones, ultimo.name, 4.0)
+    }
+
+    private fun exportarUltimo() {
+        val ultimo = Viajes.lista(this).firstOrNull() ?: return aviso("No hay viajes grabados.")
+        val donde = Viajes.exportar(this, ultimo)
+        Registro.anota(this, "PANTALLA", "viaje exportado a $donde")
+        aviso("Guardado en $donde")
+    }
+
+    private fun copiarAvisosUltimo() {
+        val ultimo = Viajes.lista(this).firstOrNull() ?: return aviso("No hay viajes grabados.")
+        val lineas = FormatoViaje.resumenEventos(ultimo.readText())
+        copiar("avisos", (listOf("# " + ultimo.name) + lineas.takeLast(300)).joinToString("\n"))
+    }
+
+    private fun copiar(etiqueta: String, t: String) {
+        if (t.isEmpty()) return aviso("No hay nada que copiar todavía.")
         val portapapeles = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        portapapeles.setPrimaryClip(ClipData.newPlainText(etiqueta, texto))
-        aviso("Copiado: ${texto.lines().size} líneas. Pégalo en la conversación.")
-    }
-
-    private fun ultimasLineasRecorrido(): String {
-        val f = File(filesDir, "recorrido.csv")
-        return if (f.exists()) ultimasLineas(f.readText(), 400) else ""
+        portapapeles.setPrimaryClip(ClipData.newPlainText(etiqueta, t))
+        aviso("Copiado: ${t.lines().size} líneas. Pégalo en la conversación.")
     }
 
     private fun anotarMotivosDeCierre() {
-        if (Build.VERSION.SDK_INT < 30) {
-            Registro.anota(this, "CIERRES", "no disponible antes de Android 11")
-            return
-        }
+        if (Build.VERSION.SDK_INT < 30) return
         val gestor = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         val lista = gestor.getHistoricalProcessExitReasons(packageName, 0, 8)
         if (lista.isEmpty()) {
@@ -347,7 +380,7 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun aviso(texto: String) {
-        Toast.makeText(this, texto, Toast.LENGTH_LONG).show()
+    private fun aviso(t: String) {
+        Toast.makeText(this, t, Toast.LENGTH_LONG).show()
     }
 }

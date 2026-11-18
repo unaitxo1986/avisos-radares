@@ -8,18 +8,17 @@ import android.content.Intent
 import android.os.Build
 
 /**
- * Recibe las conexiones y desconexiones Bluetooth (vías A y C de la fase 2).
- * Se usa de dos formas: declarado en el manifiesto (etiqueta "BT") y registrado en tiempo de ejecución
- * desde [AppRadares] (etiqueta "BT-dinámico"), para comprobar cuál de los dos recibe los avisos.
+ * Recibe las conexiones y desconexiones Bluetooth. Está declarado en el manifiesto y **exportado**: los avisos
+ * los envía la aplicación Bluetooth del sistema y un receptor no exportado no los recibe (fase 2.1). Funciona
+ * aunque la app no tenga proceso (arranque en frío comprobado el 15/11).
  */
-class BluetoothReceiver(private val etiqueta: String = "BT") : BroadcastReceiver() {
+class BluetoothReceiver : BroadcastReceiver() {
 
     @SuppressLint("MissingPermission")
     override fun onReceive(context: Context, intent: Intent) {
         val accion = intent.action ?: return
         if (accion != BluetoothDevice.ACTION_ACL_CONNECTED && accion != BluetoothDevice.ACTION_ACL_DISCONNECTED) return
         val conectado = accion == BluetoothDevice.ACTION_ACL_CONNECTED
-
         val dispositivo = dispositivoDe(intent)
         val direccion = dispositivo?.address ?: "?"
         val nombre = try {
@@ -27,17 +26,11 @@ class BluetoothReceiver(private val etiqueta: String = "BT") : BroadcastReceiver
         } catch (e: SecurityException) {
             "(sin permiso de Bluetooth cercano)"
         }
-
         Registro.anota(
-            context, etiqueta,
+            context, "BT",
             (if (conectado) "CONECTADO " else "DESCONECTADO ") + nombre + " (" + direccion + ") | " + Diagnostico.estado(context)
         )
-
-        if (conectado) {
-            ArranqueAutomatico.conectado(context, etiqueta, direccion)
-        } else {
-            ArranqueAutomatico.desconectado(context, etiqueta, direccion)
-        }
+        if (conectado) ArranqueAutomatico.conectado(context, direccion) else ArranqueAutomatico.desconectado(context, direccion)
     }
 
     private fun dispositivoDe(intent: Intent): BluetoothDevice? =

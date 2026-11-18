@@ -1,24 +1,5 @@
 package es.unai.avisosradares
 
-/** Tipos de servicio en primer plano que se prueban en la fase 2 (y valores del ajuste de arranque por Bluetooth). */
-object Tipos {
-    const val NINGUNO = 0
-    const val UBICACION = 1
-    const val DISPOSITIVO = 2
-}
-
-fun nombreTipo(tipo: Int): String = when (tipo) {
-    Tipos.UBICACION -> "ubicación"
-    Tipos.DISPOSITIVO -> "dispositivo conectado"
-    else -> "ninguno"
-}
-
-fun nombreModo(modo: Int): String = when (modo) {
-    Tipos.UBICACION -> "Arrancar servicio tipo ubicación (vía A)"
-    Tipos.DISPOSITIVO -> "Arrancar servicio tipo dispositivo conectado (vía C)"
-    else -> "Solo registrar, sin arrancar nada"
-}
-
 /** Cubos de "espera de apps" de Android (UsageStatsManager.getAppStandbyBucket). */
 fun nombreBucket(bucket: Int): String = when (bucket) {
     5 -> "EXEMPTED"

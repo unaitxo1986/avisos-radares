@@ -7,15 +7,6 @@ import org.junit.Test
 class NombresTest {
 
     @Test
-    fun nombresDeTipoYModo() {
-        assertEquals("ubicación", nombreTipo(Tipos.UBICACION))
-        assertEquals("dispositivo conectado", nombreTipo(Tipos.DISPOSITIVO))
-        assertEquals("ninguno", nombreTipo(Tipos.NINGUNO))
-        assertTrue(nombreModo(Tipos.UBICACION).contains("vía A"))
-        assertTrue(nombreModo(Tipos.DISPOSITIVO).contains("vía C"))
-    }
-
-    @Test
     fun nombresDeCubosMotivosEImportancia() {
         assertEquals("RESTRICTED", nombreBucket(45))
         assertEquals("USER_REQUESTED", nombreMotivoCierre(10))
