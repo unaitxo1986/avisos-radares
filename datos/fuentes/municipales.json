@@ -1,0 +1,282 @@
+{
+ "comentario": "Copia de las publicaciones oficiales municipales (leídas con Chrome el 2026-11-18). Ver datos/pipeline/municipales.py.",
+ "vitoria_cabinas": {
+  "leido": "2026-11-18",
+  "registros": [
+   {
+    "OBJECTID": 3,
+    "x": 524679.27,
+    "y": 4746236.12,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "DUQUE DE WELLINGTON",
+    "descripcion": "Nº 52A (sentido Norte)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 404,
+    "x": 527064.11,
+    "y": 4745445.61,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "ZARAMAGA",
+    "descripcion": "Nº 2 (Sentido Juan de Garay)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 405,
+    "x": 527025.44,
+    "y": 4745454.22,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "ZARAMAGA",
+    "descripcion": "Nº2 (Sentido calle Madrid)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 406,
+    "x": 524415.86,
+    "y": 4744654.85,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "LOS HUETOS, AVENIDA DE",
+    "descripcion": "Nº 21 (Sentido Asteguieta)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 407,
+    "x": 524423.89,
+    "y": 4744652.33,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "LOS HUETOS, AVENIDA DE",
+    "descripcion": "Nº21 (sentido Seminario)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 408,
+    "x": 524280.26,
+    "y": 4742655.67,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "ARMENTIA, ALTO DE",
+    "descripcion": "Nº20 (Sentido Vitoria-Gasteiz)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 409,
+    "x": 524277.46,
+    "y": 4742654.53,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "ARMENTIA, ALTO DE",
+    "descripcion": "Nº 20 (Sentido Madrid)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 410,
+    "x": 523983.75,
+    "y": 4742534.14,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "ARMENTIA, ALTO DE",
+    "descripcion": "Nº42 (Sentido Vitoria-Gasteiz, oeste-este)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 411,
+    "x": 523961.65,
+    "y": 4742524.94,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "ARMENTIA, ALTO DE",
+    "descripcion": "Nº42 (sentido Salida ciudad)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 412,
+    "x": 524230.4,
+    "y": 4743947.91,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "NACIONES UNIDAS, AVENIDA DE",
+    "descripcion": "Nº 31 (Sentido Jundiz)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 413,
+    "x": 524972.74,
+    "y": 4744335.35,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "ZABALGANA, AVENIDA DE",
+    "descripcion": "Nº 14 (Sentido la Antonia, Norte-Sur, y Sentido Txagorritxu, Sur-Norte)",
+    "control": "Dos sentidos"
+   },
+   {
+    "OBJECTID": 414,
+    "x": 528601.83,
+    "y": 4743873.82,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "BULEVAR DE SALBURUA",
+    "descripcion": "Nº 11 (Sentido Balsas de Salburua)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 415,
+    "x": 528602.53,
+    "y": 4743870.05,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "BULEVAR DE SALBURUA",
+    "descripcion": "Nº11 (Sentido Paseo de la Iliada)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 416,
+    "x": 529379.71,
+    "y": 4744042.24,
+    "tipo_elemento": "Cabina de radar de velocidad",
+    "calle": "BRUSELAS , AVENIDA DE",
+    "descripcion": "Nº 20 (Sentido Vitoria-Gasteiz y Sentido salida ciudad)",
+    "control": "Dos sentidos"
+   },
+   {
+    "OBJECTID": 4,
+    "x": 524225.12,
+    "y": 4743951.41,
+    "tipo_elemento": null,
+    "calle": "NACIONES UNIDAS, AVENIDA DE",
+    "descripcion": "Nº 31 (sentido centro)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 5,
+    "x": 527989.16,
+    "y": 4744593.56,
+    "tipo_elemento": null,
+    "calle": "MADRID",
+    "descripcion": "Nº 5 (sentido Jacinto Benavente)",
+    "control": "Un sentido"
+   }
+  ]
+ },
+ "vitoria_fotorrojo": {
+  "leido": "2026-11-18",
+  "registros": [
+   {
+    "n": 1,
+    "lat": 42.847323,
+    "lon": -2.68219,
+    "ubicacion": "ADRIANO VI, 15"
+   },
+   {
+    "n": 2,
+    "lat": 42.852889,
+    "lon": -2.687674,
+    "ubicacion": "MEXICO, 4"
+   },
+   {
+    "n": 3,
+    "lat": 42.84193,
+    "lon": -2.666341,
+    "ubicacion": "PLAZA DEL RENACIMIENTO, 13"
+   },
+   {
+    "n": 4,
+    "lat": 42.869651,
+    "lon": -2.659341,
+    "ubicacion": "PORTAL DE GAMARRA, 19"
+   },
+   {
+    "n": 5,
+    "lat": 42.850449,
+    "lon": -2.681001,
+    "ubicacion": "AVENIDA DE GASTEIZ, 73"
+   },
+   {
+    "n": 6,
+    "lat": 42.849323,
+    "lon": -2.678154,
+    "ubicacion": "RAMIRO DE MAEZTU, 22"
+   }
+  ]
+ },
+ "donostia_radares": {
+  "leido": "2026-11-18",
+  "registros": [
+   {
+    "FID": 0,
+    "IzenKalea": "Nafarroa hiribidea",
+    "Abiadura": 30,
+    "lat": 43.32215,
+    "lon": -1.966159
+   },
+   {
+    "FID": 1,
+    "IzenKalea": "Jose Elosegi Alkatearen hiribidea",
+    "Abiadura": 30,
+    "lat": 43.321414,
+    "lon": -1.949011
+   },
+   {
+    "FID": 2,
+    "IzenKalea": "Jose Elosegi Alkatearen hiribidea",
+    "Abiadura": 50,
+    "lat": 43.321453,
+    "lon": -1.952864
+   },
+   {
+    "FID": 3,
+    "IzenKalea": "Fernando Sasiain",
+    "Abiadura": 50,
+    "lat": 43.319946,
+    "lon": -1.961721
+   },
+   {
+    "FID": 4,
+    "IzenKalea": "Bizkaia pasealekua",
+    "Abiadura": 50,
+    "lat": 43.311357,
+    "lon": -1.97932
+   },
+   {
+    "FID": 5,
+    "IzenKalea": "Loiolako Erribera pasealekua",
+    "Abiadura": 50,
+    "lat": 43.311652,
+    "lon": -1.973446
+   },
+   {
+    "FID": 6,
+    "IzenKalea": "Otxoki pasealekua",
+    "Abiadura": 50,
+    "lat": 43.310492,
+    "lon": -1.952857
+   },
+   {
+    "FID": 7,
+    "IzenKalea": "Begiristain Doktorearen pasealekua",
+    "Abiadura": 30,
+    "lat": 43.291659,
+    "lon": -1.973446
+   },
+   {
+    "FID": 8,
+    "IzenKalea": "Tolosa hiribidea",
+    "Abiadura": 50,
+    "lat": 43.308279,
+    "lon": -2.009736
+   },
+   {
+    "FID": 9,
+    "IzenKalea": "Zorroaga pasealekua",
+    "Abiadura": 50,
+    "lat": 43.30571,
+    "lon": -1.970041
+   },
+   {
+    "FID": 10,
+    "IzenKalea": "Sibilia",
+    "Abiadura": 50,
+    "lat": 43.315378,
+    "lon": -1.961652
+   },
+   {
+    "FID": 11,
+    "IzenKalea": "Federico Garcia Lorca pasealekua",
+    "Abiadura": 50,
+    "lat": 43.314651,
+    "lon": -1.977423
+   }
+  ]
+ }
+}

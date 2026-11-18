@@ -14,10 +14,10 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 
 | Campo | Tipo | Descripción |
 |---|---|---|
-| `id` | texto | Identificador estable. Prefijo de la fuente: `dgt-`, `eus-`, `man-` |
+| `id` | texto | Identificador estable. Prefijo de la fuente: `dgt-`, `eus-`, `man-`, `mun-` (municipales, desde el 18/11/2026) |
 | `tipo` | texto | `fijo`, `tramo`, `fotorrojo` o `tramo_extremo` (Trabakua, sin emparejar hasta la fase 5) |
 | `nombre` | texto | Nombre o ubicación |
-| `fuente` | texto | `dgt`, `trafikoa` o `manual` |
+| `fuente` | texto | `dgt`, `trafikoa`, `manual` o `municipal` (publicación oficial de un ayuntamiento, ver abajo) |
 | `lat`, `lon` | número | WGS84 (en tramos, punto de inicio) |
 | `lat_fin`, `lon_fin` | número o nulo | Fin del tramo; solo en `tramo` |
 | `carretera` | texto o nulo | Por ejemplo `A-8`, `BI-633` |
@@ -30,6 +30,16 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 | `limite_origen` | texto o nulo | `oficial`, `manual`, `osm` (calzada elegida en 3.2) u `osm_cercana` (vía próxima de la misma carretera). Prioridad: oficial, manual, OpenStreetMap |
 | `limite_fiab` | texto o nulo | `alta` (oficial o manual), `media` (`osm`) o `baja` (`osm_cercana`). Qué hace la app con `baja` se decide en 4.3 (recomendación: no mostrar el límite) |
 | `enlace` | texto o nulo | Enlace a la fuente oficial |
+| `rotatoria` | booleano | `true` si el ayuntamiento dice que los radares rotan entre cabinas (la cabina puede estar vacía). Hoy, las 16 cabinas de Vitoria-Gasteiz. Qué hace la app con ellas se decide en 4.3 |
+
+### Radares municipales (`fuente: municipal`, 18/11/2026)
+
+Lector `datos/pipeline/municipales.py`, copia `datos/fuentes/municipales.json`. Solo entran publicaciones oficiales con coordenadas:
+
+- **Vitoria-Gasteiz**, 16 cabinas de radar de velocidad (capa 36 `CABINA_RADAR` de GeoVitoria, leída con la operación `identify` porque `query` no da la geometría), con `rotatoria: true`, y 6 detectores de foto rojo (colección "Foto-rojo" de GeoVitoria, solo copia). Sin límite oficial.
+- **Donostia / San Sebastián**, 12 radares (capa 41 `Radarra` del servicio `GARRAIOA`, conjunto abierto "wms-transporte"), con límite oficial de 30 o 50 km/h.
+
+No tienen carretera ni punto kilométrico: el sentido sale `no_aplica`, no llevan tramo de aproximación (`aproximacion_fiab` nulo) y la app avisa por cercanía en cualquier sentido.
 
 ## `salida/estado.json`
 
@@ -41,7 +51,8 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
   "fuentes": {
     "dgt":      { "ok": true, "radares": 0, "fecha_fuente": null, "usada_copia": false },
     "trafikoa": { "ok": true, "radares": 0, "fecha_fuente": null, "usada_copia": false },
-    "manual":   { "ok": true, "radares": 0 }
+    "manual":   { "ok": true, "radares": 0 },
+    "municipal": { "ok": true, "radares": 0, "copia_usada": [] }
   },
   "radares_publicados": 0,
   "contraste": { "trafikoa": 0, "detector_radar": 0 }

@@ -64,6 +64,7 @@ def construir(crudos, sentido, aprox, limites):
             "limite_origen": lim.get("origen"),
             "limite_fiab": lim.get("fiab"),
             "enlace": r.get("enlace_oficial"),
+            "rotatoria": bool(r.get("rotatoria")),
         })
     return out
 
@@ -81,7 +82,7 @@ def comprobar(radares, fuentes, previo=None):
         antes = len(previo)
         if antes and abs(n - antes) / antes > MAX_VARIACION:
             p.append(f"{n} radares frente a {antes} publicados (variación mayor del {MAX_VARIACION:.0%})")
-    resueltos = [r for r in radares if r["fuente"] != "manual" and r["tipo"] != "tramo"]
+    resueltos = [r for r in radares if r["fuente"] in ("dgt", "trafikoa") and r["tipo"] != "tramo"]
     if resueltos:
         con = sum(1 for r in resueltos if r["aproximacion_fiab"] is not None)
         if con / len(resueltos) < MIN_CON_APROXIMACION:
@@ -140,6 +141,8 @@ def main(argv=None):
             "trafikoa": {"ok": True, "radares": f["trafikoa"]["radares"], "fecha_fuente": None,
                          "usada_copia": f["trafikoa"].get("usada_copia", False)},
             "manual": {"ok": True, "radares": f["manual"]["radares"]},
+            "municipal": {"ok": True, "radares": f.get("municipal", {}).get("radares", 0),
+                          "copia_usada": f.get("municipal", {}).get("copia_usada", [])},
         },
         "radares_publicados": len(previo) if problemas and previo else len(radares),
     }

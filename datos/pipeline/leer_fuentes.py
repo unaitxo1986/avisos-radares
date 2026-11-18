@@ -19,7 +19,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from datos.pipeline import dgt, manual, trafikoa  # noqa: E402
+from datos.pipeline import dgt, manual, municipales, trafikoa  # noqa: E402
 from datos.pipeline.dgt import ErrorLectura  # noqa: E402
 
 # Cajas de sanidad (lat_min, lat_max, lon_min, lon_max) para detectar coordenadas rotas.
@@ -115,6 +115,8 @@ def main(argv=None):
     ap.add_argument("--trafikoa", help="fichero HTML local en vez de descargar")
     ap.add_argument("--manual", default=str(Path(__file__).resolve().parents[1] / "manual" / "anadidos.json"))
     ap.add_argument("--salida", required=True)
+    ap.add_argument("--sin-municipales-red", action="store_true",
+                    help="no descargar los municipales (usar solo su copia)")
     a = ap.parse_args(argv)
 
     problemas = []
@@ -132,6 +134,10 @@ def main(argv=None):
 
         m = manual.leer(a.manual)
         problemas += comprobar("Manual", m["radares"], CAJA_ESPANA, {})
+
+        mu = municipales.leer(None if (a.sin_municipales_red or a.dgt) else descargar,
+                              hoy=datetime.date.today().isoformat(), avisos=avisos)
+        problemas += comprobar("Municipales", mu["radares"], CAJA_EUSKADI, {})
     except (ErrorLectura, OSError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         return 2
@@ -145,7 +151,11 @@ def main(argv=None):
         RUTA_COPIA_DGT.parent.mkdir(parents=True, exist_ok=True)
         RUTA_COPIA_DGT.write_bytes(gzip.compress(xml_dgt, 9, mtime=0))
 
-    radares = d["radares"] + t["radares"] + m["radares"]
+    radares = d["radares"] + t["radares"] + m["radares"] + mu["radares"]
+    ids = [r["id"] for r in radares]
+    if len(set(ids)) != len(ids):
+        print("ERROR: identificadores repetidos entre fuentes", file=sys.stderr)
+        return 3
     out = {
         "generado_con": "datos/leer_fuentes.py",
         "fuentes": {
@@ -153,6 +163,8 @@ def main(argv=None):
                     "usada_copia": dgt_copia},
             "trafikoa": {"radares": len(t["radares"]), "url": trafikoa.URL, "usada_copia": usada_copia},
             "manual": {"radares": len(m["radares"])},
+            "municipal": {"radares": len(mu["radares"]), "copia_usada": mu["copia_usada"],
+                          "url": "datos/pipeline/municipales.py"},
         },
         "avisos": avisos,
         "radares": radares,
@@ -161,7 +173,7 @@ def main(argv=None):
     Path(a.salida).write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for av in avisos:
         print(f"AVISO: {av}", file=sys.stderr)
-    print(f"OK: {len(radares)} radares (DGT {len(d['radares'])}, Trafikoa {len(t['radares'])}, manual {len(m['radares'])})")
+    print(f"OK: {len(radares)} radares (DGT {len(d['radares'])}, Trafikoa {len(t['radares'])}, manual {len(m['radares'])}, municipales {len(mu['radares'])})")
     return 0
 
 
