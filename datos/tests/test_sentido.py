@@ -80,6 +80,17 @@ class PruebasSentido(unittest.TestCase):
         res = sentido.calcular(rs, ServicioFalso(via_doble()))
         self.assertEqual(res["a"]["resultado"], "ambos")
 
+    def test_oficial_y_destino_que_no_coinciden_da_ambos(self):
+        destinos = {"Oeste": [{"lat": 43.0, "lon": _lon(-40000), "imp": 0.5, "cat": "place", "tipo": "city", "nombre": "Oeste"}],
+                    "Este": [{"lat": 43.0, "lon": _lon(40000), "imp": 0.5, "cat": "place", "tipo": "city", "nombre": "Este"}]}
+        rs = [radar("a", 1000, 1000, sentido_oficial="creciente", destino="Oeste"), radar("b", 5000, 5000)]
+        a = sentido.calcular(rs, ServicioFalso(via_doble(), destinos))["a"]
+        self.assertEqual(a["resultado"], "ambos")
+        self.assertIn("destino", a["motivo"])
+        rs = [radar("a", 1000, 1000, sentido_oficial="creciente", destino="Este"), radar("b", 5000, 5000)]
+        a = sentido.calcular(rs, ServicioFalso(via_doble(), destinos))["a"]
+        self.assertEqual((a["resultado"], a["regla"], a["destino_coincide"]), ("resuelto", "a", True))
+
     def test_cuadra_km(self):
         self.assertTrue(sentido.cuadra_km(800, 600))
         self.assertFalse(sentido.cuadra_km(2714, 600))

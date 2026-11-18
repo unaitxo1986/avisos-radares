@@ -227,6 +227,19 @@ def _decidir(info, serv):
         info.update(elegida=0, origen="unica", regla="d")
     elif oficial in ("creciente", "decreciente") and eje:
         idx = eje["creciente"] if oficial == "creciente" else 1 - eje["creciente"]
+        # Fase 5 (18/11): si además hay destino oficial, tiene que llevar a la misma calzada. Si los dos datos
+        # oficiales no coinciden (N-240 pk 204,9 en Huesca: vecinos en la A-22 y la cámara en la N-240 antigua),
+        # no se arriesga una calzada: "ambos sentidos".
+        if r.get("destino"):
+            g = punto_destino(r, serv)
+            if g is not None:
+                dist = [serv.ruta(c["p"], c["rumbo"], (g["lat"], g["lon"]), None) for c in cands]
+                if None not in dist and abs(dist[0] - dist[1]) >= TOL_EJE_M:
+                    por_destino = 0 if dist[0] < dist[1] else 1
+                    info["destino_coincide"] = por_destino == idx
+                    if por_destino != idx:
+                        info["motivo"] = "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada"
+                        return
         info.update(elegida=idx, origen="oficial", regla="a", margen=eje["margen"])
     elif r.get("destino"):
         g = punto_destino(r, serv)
@@ -332,6 +345,8 @@ def calcular(radares, serv):
             res["destino_a_m"] = round(i["lejos"])
         if i.get("corregido"):
             res["corregido"] = True
+        if "destino_coincide" in i:
+            res["destino_coincide"] = i["destino_coincide"]
         if i.get("grupo"):
             res["grupo"] = i["grupo"]
         if not regla:
