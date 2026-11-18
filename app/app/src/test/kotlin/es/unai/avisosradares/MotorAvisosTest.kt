@@ -238,4 +238,18 @@ class MotorAvisosTest {
         assertTrue(pasa(motor2, recorridoRectoPor(latR, lonParalela, 0.0, 50.0)).isEmpty())
         assertTrue(municipal.descripcion().contains("rotatoria"))
     }
+
+    @Test
+    fun lasSinConfirmarAvisanUnos10SegundosAntesSegunElLimite() {
+        fun camara(limite: Int?) = Radar("osm-1", "fijo", "Gorliz", null, null, latR, lonR, null, limite, null, null, fuente = "osm", sinConfirmar = true)
+        // 50 km/h: 10 s son unos 139 m. 30 km/h: 83 m, pero nunca menos de 100. Sin límite: como 50.
+        // El aviso llega dos posiciones después de entrar en el radio (hay que confirmar que se acerca).
+        for ((limite, radio) in listOf(50 to 139.0, 30 to 100.0, null to 139.0, 90 to 250.0)) {
+            val motor = MotorAvisos(listOf(camara(limite)))
+            val ev = pasa(motor, recorridoRectoPor(latR, lonR, 0.0, 40.0, mitadM = 600.0))
+            assertEquals("límite $limite", listOf(TipoEvento.AVISO, TipoEvento.PASADO), tipos(ev))
+            assertTrue("límite $limite: aviso a ${ev[0].distanciaM} m, radio $radio", ev[0].distanciaM in (radio - 35.0)..radio)
+        }
+        assertEquals("RADAR? sin confirmar", etiquetaAviso(camara(null), porCarretera = false))
+    }
 }

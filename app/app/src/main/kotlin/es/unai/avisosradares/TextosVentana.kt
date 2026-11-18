@@ -14,7 +14,7 @@ fun textoDistancia(metros: Double): String =
 /**
  * Qué es lo que viene, debajo de la señal: "RADAR"; "RADAR?" si el aviso es por cercanía (sentido sin
  * confirmar); "TRAMO" en los radares de tramo; "SEMÁFORO" en los foto rojo; "rotatorio" en las cabinas que
- * pueden estar vacías.
+ * pueden estar vacías; "sin confirmar" en las cámaras que solo están en OpenStreetMap.
  */
 fun etiquetaAviso(radar: Radar, porCarretera: Boolean): String {
     val tipo = when (radar.tipo) {
@@ -24,5 +24,6 @@ fun etiquetaAviso(radar: Radar, porCarretera: Boolean): String {
     }
     val sentido = if (porCarretera) "" else "?"
     val rotatoria = if (radar.rotatoria) " rotatorio" else ""
-    return "$tipo$sentido$rotatoria"
+    val sinConfirmar = if (radar.sinConfirmar) " sin confirmar" else ""
+    return "$tipo$sentido$rotatoria$sinConfirmar"
 }

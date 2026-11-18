@@ -46,6 +46,8 @@ class Radar(
     val linea: List<DoubleArray>?,
     val fuente: String? = null,
     val rotatoria: Boolean = false,
+    /** Cámara que solo está en OpenStreetMap y nadie ha confirmado (fuente `osm`; puede ser pedagógica). */
+    val sinConfirmar: Boolean = false,
 ) {
     val municipal: Boolean get() = fuente == "municipal"
 
@@ -63,6 +65,7 @@ class Radar(
         if (pk != null) partes += "km " + String.format(java.util.Locale.ROOT, "%.1f", pk).replace('.', ',')
         if (nombre != null) partes += if (partes.isEmpty()) nombre else "($nombre)"
         if (rotatoria) partes += "[cabina rotatoria]"
+        if (sinConfirmar) partes += "[sin confirmar]"
         return partes.joinToString(" ")
     }
 }
@@ -110,6 +113,7 @@ fun leerRadares(texto: String): ListaRadares {
             linea = linea,
             fuente = r.texto("fuente"),
             rotatoria = r.logico("rotatoria") ?: false,
+            sinConfirmar = r.logico("sin_confirmar") ?: false,
         )
     }
     if (radares.isEmpty()) throw IllegalArgumentException("radares.json: lista vacía")
