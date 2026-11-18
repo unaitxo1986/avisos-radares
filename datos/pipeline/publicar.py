@@ -65,6 +65,7 @@ def construir(crudos, sentido, aprox, limites):
             "limite_fiab": lim.get("fiab"),
             "enlace": r.get("enlace_oficial"),
             "rotatoria": bool(r.get("rotatoria")),
+            "sin_confirmar": bool(r.get("sin_confirmar")),
         })
     return out
 

@@ -86,3 +86,8 @@ class PruebasOsmConfirmados(unittest.TestCase):
         self.assertTrue(all(x["id"].startswith("osm-") and x["fuente"] == "osm" for x in r))
         bi = [x for x in r if x.get("carretera") == "BI-631"]
         self.assertEqual(bi[0]["pk_m"], 4670)
+        self.assertFalse(bi[0]["sin_confirmar"])
+        sc = [x for x in r if x["sin_confirmar"]]
+        self.assertEqual(len(sc), 51)
+        self.assertEqual(sum(1 for x in sc if x["tipo"] == "fotorrojo"), 4)
+        self.assertEqual(len({x["id"] for x in r}), len(r))

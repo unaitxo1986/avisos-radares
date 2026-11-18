@@ -1,8 +1,493 @@
 {
- "comentario": "Cámaras de OpenStreetMap (highway=speed_camera) que no están en ninguna lista oficial y que Unai ha confirmado (18/11/2026). Posición, sentido y etiquetas de OpenStreetMap; ver datos/pipeline/osm_confirmados.py.",
+ "comentario": "Cámaras que solo están en OpenStreetMap (no en ninguna lista oficial). 'confirmado': Unai las ha confirmado; 'sin_confirmar': entran por decisión de Unai del 18/11/2026 (\"mete todos por si acaso\") aunque pueden ser radares pedagógicos. Origen: datos/exploracion/osm_radares_euskadi.json (extracto de Geofabrik del 17/11/2026).",
  "radares": [
-  {"osm": 992005691, "lat": 43.2603072, "lon": -2.8948342, "nombre": "BI-631 enlace de Otxarkoaga, hacia Bilbao", "carretera": "BI-631", "pk": 4.67, "destino": "BILBAO", "confirmado": "2026-11-18: Unai, \"correcto\""},
-  {"osm": 11486161352, "lat": 43.2693715, "lon": -2.9562318, "nombre": "Bilbao, calle Morgan (bajada de Enekuri a Deusto), vigila hacia el sur", "municipio": "Bilbao", "confirmado": "2026-11-18: Unai, \"más adelante a 30\" del punto de Enekuri-Asua de OpenStreetMap"},
-  {"osm": 313221430, "lat": 43.2844069, "lon": -2.8658944, "nombre": "Zamudio", "municipio": "Zamudio", "confirmado": "2026-11-18: Unai, se ve en Street View"}
+  {
+   "osm": 992005691,
+   "lat": 43.2603072,
+   "lon": -2.8948342,
+   "nombre": "BI-631 enlace de Otxarkoaga, hacia Bilbao",
+   "carretera": "BI-631",
+   "pk": 4.67,
+   "destino": "BILBAO",
+   "confirmado": "2026-11-18: Unai, \"correcto\"",
+   "confianza": "confirmado"
+  },
+  {
+   "osm": 11486161352,
+   "lat": 43.2693715,
+   "lon": -2.9562318,
+   "nombre": "Bilbao, calle Morgan (bajada de Enekuri a Deusto), vigila hacia el sur",
+   "municipio": "Bilbao",
+   "confirmado": "2026-11-18: Unai, \"más adelante a 30\" del punto de Enekuri-Asua de OpenStreetMap",
+   "confianza": "confirmado"
+  },
+  {
+   "osm": 313221430,
+   "lat": 43.2844069,
+   "lon": -2.8658944,
+   "nombre": "Zamudio",
+   "municipio": "Zamudio",
+   "confirmado": "2026-11-18: Unai, se ve en Street View",
+   "confianza": "confirmado"
+  },
+  {
+   "osm": 13767325408,
+   "lat": 43.4149962,
+   "lon": -2.9319994,
+   "nombre": "Gorliz",
+   "municipio": "Gorliz",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13767307551,
+   "lat": 43.4118173,
+   "lon": -2.9319282,
+   "nombre": "Gorliz, Axeo bidea",
+   "municipio": "Gorliz",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13767267597,
+   "lat": 43.4047273,
+   "lon": -2.94033,
+   "nombre": "Gorliz, Mungiako errepidea",
+   "municipio": "Gorliz",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13707940952,
+   "lat": 43.3952638,
+   "lon": -2.9718187,
+   "nombre": "Barrika, Goierri auzoa",
+   "municipio": "Barrika",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 7777755958,
+   "lat": 43.3837021,
+   "lon": -1.7959773,
+   "nombre": "Hondarribia, Ramon Iribarren kalea",
+   "municipio": "Hondarribia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 81736917,
+   "lat": 43.3827314,
+   "lon": -2.69828,
+   "nombre": "Busturia, Axpe auzoa (foto rojo)",
+   "municipio": "Busturia",
+   "tipo": "fotorrojo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 11553904107,
+   "lat": 43.3814203,
+   "lon": -2.9773656,
+   "nombre": "Sopela, Sabino Arana",
+   "municipio": "Sopela",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 11553904108,
+   "lat": 43.3791534,
+   "lon": -2.9859995,
+   "nombre": "Sopela, Akilino Arriola kalea",
+   "municipio": "Sopela",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 11105081489,
+   "lat": 43.3791323,
+   "lon": -2.9786414,
+   "nombre": "Sopela, Olabide kalea",
+   "municipio": "Sopela",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 11105081490,
+   "lat": 43.3791035,
+   "lon": -2.9753795,
+   "nombre": "Sopela, Olabide kalea",
+   "municipio": "Sopela",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 7777755957,
+   "lat": 43.3781127,
+   "lon": -1.7980751,
+   "nombre": "Hondarribia",
+   "municipio": "Hondarribia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13167794844,
+   "lat": 43.3742532,
+   "lon": -2.9756966,
+   "nombre": "Sopela, Gatzarriñe errepidea",
+   "municipio": "Sopela",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 7777755956,
+   "lat": 43.3729152,
+   "lon": -1.7992105,
+   "nombre": "Hondarribia, Baserritarren etorbidea",
+   "municipio": "Hondarribia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 7777755955,
+   "lat": 43.3711636,
+   "lon": -1.7997376,
+   "nombre": "Hondarribia, Baserritarren etorbidea",
+   "municipio": "Hondarribia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 14297435734,
+   "lat": 43.3684581,
+   "lon": -2.9979898,
+   "nombre": "Berango, Moreaga",
+   "municipio": "Berango",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 2334938925,
+   "lat": 43.367679,
+   "lon": -1.800927,
+   "nombre": "Hondarribia, Labreder kalea",
+   "municipio": "Hondarribia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 6817054125,
+   "lat": 43.3656111,
+   "lon": -2.9997746,
+   "nombre": "Berango, Sabino Arana",
+   "municipio": "Berango",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13465902360,
+   "lat": 43.3609856,
+   "lon": -2.9970756,
+   "nombre": "Berango, Simón Otxandategi etorbidea",
+   "municipio": "Berango",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 7777755954,
+   "lat": 43.3573947,
+   "lon": -1.7972067,
+   "nombre": "Hondarribia, Kosta kalea",
+   "municipio": "Hondarribia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13707707268,
+   "lat": 43.3555901,
+   "lon": -2.845086,
+   "nombre": "Mungia, Erribide kalea",
+   "municipio": "Mungia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13707707267,
+   "lat": 43.3555061,
+   "lon": -2.8480077,
+   "nombre": "Mungia, Zubiaga kalea",
+   "municipio": "Mungia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13707707266,
+   "lat": 43.3544433,
+   "lon": -2.8467965,
+   "nombre": "Mungia, Alkartasuna kalea",
+   "municipio": "Mungia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 7777755953,
+   "lat": 43.354082,
+   "lon": -1.7980951,
+   "nombre": "Hondarribia, Kosta kalea",
+   "municipio": "Hondarribia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10034221345,
+   "lat": 43.3468228,
+   "lon": -2.9997778,
+   "nombre": "Getxo, Makaleta etorbidea",
+   "municipio": "Getxo",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 9868796945,
+   "lat": 43.3347255,
+   "lon": -3.0054528,
+   "nombre": "Getxo, avenida de Asua",
+   "municipio": "Getxo",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10052095788,
+   "lat": 43.3336399,
+   "lon": -3.0111192,
+   "nombre": "Getxo, Zugatzarte etorbidea",
+   "municipio": "Getxo",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 12703115362,
+   "lat": 43.3261221,
+   "lon": -2.9906376,
+   "nombre": "Leioa, Aldapabarrena",
+   "municipio": "Leioa",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10182509613,
+   "lat": 43.3248359,
+   "lon": -2.986095,
+   "nombre": "Leioa, Luis Bilbao Libano",
+   "municipio": "Leioa",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10182984432,
+   "lat": 43.3228762,
+   "lon": -2.9811793,
+   "nombre": "Leioa, Iparragirre etorbidea",
+   "municipio": "Leioa",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10182984431,
+   "lat": 43.3226974,
+   "lon": -2.9858694,
+   "nombre": "Leioa, Luis Bilbao Libano",
+   "municipio": "Leioa",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 7777755950,
+   "lat": 43.3152093,
+   "lon": -2.001274,
+   "nombre": "Donostia, avenida de Zumalakarregi",
+   "municipio": "Donostia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 259270316,
+   "lat": 43.3144549,
+   "lon": -1.9928505,
+   "nombre": "Donostia, paseo de Miraconcha",
+   "municipio": "Donostia",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13767511084,
+   "lat": 43.3095096,
+   "lon": -1.9099853,
+   "nombre": "Errenteria, Beraun kalea",
+   "municipio": "Errenteria",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 5308701907,
+   "lat": 43.2634078,
+   "lon": -2.9289587,
+   "nombre": "Bilbao, Alameda Mazarredo (foto rojo)",
+   "municipio": "Bilbao",
+   "tipo": "fotorrojo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 245940388,
+   "lat": 43.2623615,
+   "lon": -2.9293453,
+   "nombre": "Bilbao, calle Ledesma (foto rojo)",
+   "municipio": "Bilbao",
+   "tipo": "fotorrojo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 992003595,
+   "lat": 43.2576185,
+   "lon": -2.935658,
+   "nombre": "Bilbao, General Concha (cruce Autonomía) (foto rojo)",
+   "municipio": "Bilbao",
+   "tipo": "fotorrojo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13767349839,
+   "lat": 43.1898914,
+   "lon": -2.4541013,
+   "nombre": "Eibar, Barrena kalea",
+   "municipio": "Eibar",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10292038364,
+   "lat": 43.1807235,
+   "lon": -2.4867783,
+   "nombre": "Eibar, Torrekua kalea",
+   "municipio": "Eibar",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10292038363,
+   "lat": 43.1805956,
+   "lon": -2.4854138,
+   "nombre": "Eibar, Otaola hiribidea",
+   "municipio": "Eibar",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13754881284,
+   "lat": 43.1532764,
+   "lon": -2.9757673,
+   "nombre": "Aiaraldea, calle Goienuri",
+   "municipio": "Aiaraldea",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13311195241,
+   "lat": 43.1447923,
+   "lon": -2.9594449,
+   "nombre": "Aiaraldea, calle Virgen del Carmen",
+   "municipio": "Aiaraldea",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13335532760,
+   "lat": 43.1429347,
+   "lon": -2.9406581,
+   "nombre": "Aiaraldea, calle Vitoria-Gasteiz",
+   "municipio": "Aiaraldea",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 14280731525,
+   "lat": 43.1249194,
+   "lon": -2.9808658,
+   "nombre": "Aiaraldea, calle Kaltzaganeta",
+   "municipio": "Aiaraldea",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10292099627,
+   "lat": 43.0675021,
+   "lon": -2.4777057,
+   "nombre": "Arrasate, Gipuzkoa etorbidea",
+   "municipio": "Arrasate",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10292105511,
+   "lat": 43.0641431,
+   "lon": -2.4872689,
+   "nombre": "Arrasate, Nafarroa etorbidea",
+   "municipio": "Arrasate",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 571649668,
+   "lat": 43.0641397,
+   "lon": -2.4781713,
+   "nombre": "Arrasate, Nafarroa etorbidea",
+   "municipio": "Arrasate",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 7491524913,
+   "lat": 43.0625662,
+   "lon": -2.4953453,
+   "nombre": "Arrasate, Arimazuri plaza",
+   "municipio": "Arrasate",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13990668479,
+   "lat": 43.0599322,
+   "lon": -2.6614373,
+   "nombre": "Otxandio, Bentabarri",
+   "municipio": "Otxandio",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 13767381509,
+   "lat": 42.8377362,
+   "lon": -2.6809828,
+   "nombre": "Vitoria-Gasteiz, Salbatierrabide",
+   "municipio": "Vitoria-Gasteiz",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 10164967084,
+   "lat": 42.8348748,
+   "lon": -2.6676895,
+   "nombre": "Vitoria-Gasteiz, Iturritxu",
+   "municipio": "Vitoria-Gasteiz",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  },
+  {
+   "osm": 8972488567,
+   "lat": 42.8344194,
+   "lon": -2.6637659,
+   "nombre": "Vitoria-Gasteiz, Iturritxu",
+   "municipio": "Vitoria-Gasteiz",
+   "tipo": "fijo",
+   "confianza": "sin_confirmar"
+  }
  ]
 }
