@@ -13,6 +13,24 @@
     "control": "Un sentido"
    },
    {
+    "OBJECTID": 4,
+    "x": 524225.12,
+    "y": 4743951.41,
+    "tipo_elemento": null,
+    "calle": "NACIONES UNIDAS, AVENIDA DE",
+    "descripcion": "Nº 31 (sentido centro)",
+    "control": "Un sentido"
+   },
+   {
+    "OBJECTID": 5,
+    "x": 527989.16,
+    "y": 4744593.56,
+    "tipo_elemento": null,
+    "calle": "MADRID",
+    "descripcion": "Nº 5 (sentido Jacinto Benavente)",
+    "control": "Un sentido"
+   },
+   {
     "OBJECTID": 404,
     "x": 527064.11,
     "y": 4745445.61,
@@ -128,24 +146,6 @@
     "calle": "BRUSELAS , AVENIDA DE",
     "descripcion": "Nº 20 (Sentido Vitoria-Gasteiz y Sentido salida ciudad)",
     "control": "Dos sentidos"
-   },
-   {
-    "OBJECTID": 4,
-    "x": 524225.12,
-    "y": 4743951.41,
-    "tipo_elemento": null,
-    "calle": "NACIONES UNIDAS, AVENIDA DE",
-    "descripcion": "Nº 31 (sentido centro)",
-    "control": "Un sentido"
-   },
-   {
-    "OBJECTID": 5,
-    "x": 527989.16,
-    "y": 4744593.56,
-    "tipo_elemento": null,
-    "calle": "MADRID",
-    "descripcion": "Nº 5 (sentido Jacinto Benavente)",
-    "control": "Un sentido"
    }
   ]
  },

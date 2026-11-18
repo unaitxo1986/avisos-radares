@@ -10922,5 +10922,141 @@
 "rumbo": 313,
 "sentido_km": null,
 "via": 25946597
+},
+"mun-donostia-0": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-1": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-10": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-11": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-2": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-3": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-4": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-5": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-6": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-7": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-8": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-donostia-9": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-3": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-4": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-404": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-405": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-406": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-407": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-408": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-409": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-410": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-411": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-412": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-413": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-414": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-415": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-416": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-cabina-5": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-fotorrojo-1": {
+"motivo": "tipo fotorrojo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-fotorrojo-2": {
+"motivo": "tipo fotorrojo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-fotorrojo-3": {
+"motivo": "tipo fotorrojo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-fotorrojo-4": {
+"motivo": "tipo fotorrojo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-fotorrojo-5": {
+"motivo": "tipo fotorrojo",
+"resultado": "no_aplica"
+},
+"mun-vitoria-fotorrojo-6": {
+"motivo": "tipo fotorrojo",
+"resultado": "no_aplica"
 }
 }
