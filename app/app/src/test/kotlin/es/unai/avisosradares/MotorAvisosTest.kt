@@ -240,17 +240,19 @@ class MotorAvisosTest {
     }
 
     @Test
-    fun lasSinConfirmarAvisanUnos10SegundosAntesSegunElLimite() {
-        fun camara(limite: Int?) = Radar("osm-1", "fijo", "Gorliz", null, null, latR, lonR, null, limite, null, null, fuente = "osm", sinConfirmar = true)
-        // 50 km/h: 10 s son unos 139 m. 30 km/h: 83 m, pero nunca menos de 100. Sin límite: como 50.
-        // El aviso llega dos posiciones después de entrar en el radio (hay que confirmar que se acerca).
-        for ((limite, radio) in listOf(50 to 139.0, 30 to 100.0, null to 139.0, 90 to 250.0)) {
-            val motor = MotorAvisos(listOf(camara(limite)))
-            val ev = pasa(motor, recorridoRectoPor(latR, lonR, 0.0, 40.0, mitadM = 600.0))
-            assertEquals("límite $limite", listOf(TipoEvento.AVISO, TipoEvento.PASADO), tipos(ev))
-            assertTrue("límite $limite: aviso a ${ev[0].distanciaM} m, radio $radio", ev[0].distanciaM in (radio - 35.0)..radio)
+    fun unSoloCriterioDeDistanciaEnCarreteraYEnCiudad() {
+        // Unai, 18/11: en ciudad (sin carretera) a 150 m, sean municipales o cámaras de OpenStreetMap; en carretera
+        // a 500 m, también una cámara de OpenStreetMap si está en una carretera (BI-631).
+        fun camara(carretera: String?, limite: Int?) =
+            Radar("osm-1", "fijo", "Gorliz", carretera, null, latR, lonR, null, limite, null, null, fuente = "osm", sinConfirmar = true)
+        for ((r, radio) in listOf(camara(null, 50) to 150.0, camara(null, null) to 150.0, camara("BI-631", null) to 500.0)) {
+            val motor = MotorAvisos(listOf(r))
+            val ev = pasa(motor, recorridoRectoPor(latR, lonR, 0.0, 40.0, mitadM = 800.0))
+            assertEquals("${r.carretera}", listOf(TipoEvento.AVISO, TipoEvento.PASADO), tipos(ev))
+            // El aviso llega dos posiciones después de entrar en el radio (hay que confirmar que se acerca).
+            assertTrue("${r.carretera}: aviso a ${ev[0].distanciaM} m, radio $radio", ev[0].distanciaM in (radio - 35.0)..radio)
         }
-        assertEquals("RADAR? sin confirmar", etiquetaAviso(camara(null), porCarretera = false))
+        assertEquals("RADAR? sin confirmar", etiquetaAviso(camara(null, null), porCarretera = false))
     }
 
     @Test

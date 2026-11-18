@@ -59,18 +59,14 @@ class ParametrosMotor(
     val posicionesFueraParaCancelar: Int = 3,
     /** Metros pasado el radar para darlo por pasado. */
     val pasadoM: Double = 10.0,
-    /** Aviso por cercanía (radares sin tramo de aproximación fiable): radio. */
-    val radioCercaniaM: Double = 500.0,
-    /** Radio de cercanía de los radares municipales, en ciudad (decisión de Unai, 18/11). */
-    val radioMunicipalM: Double = 150.0,
     /**
-     * Cámaras de OpenStreetMap (sin confirmar o confirmadas por Unai): se avisa unos segundos antes de llegar yendo a la velocidad del
-     * radar (decisión de Unai, 18/11: "según velocidad del radar para que avise con 10 segundos"). Sin límite
-     * conocido se supone la velocidad urbana; nunca menos del radio mínimo.
+     * Aviso por cercanía (radares sin tramo de aproximación fiable), con un solo criterio para todos (Unai, 18/11:
+     * "unificar criterios"): en carretera (el radar tiene carretera: DGT, Trafikoa) a 500 m, como el tramo de
+     * aproximación de los que se siguen por la carretera; en ciudad (sin carretera: municipales y cámaras urbanas
+     * de OpenStreetMap) a 150 m, para no avisar desde calles paralelas.
      */
-    val segundosAvisoSinConfirmar: Double = 10.0,
-    val velocidadSupuestaSinLimiteKmh: Double = 50.0,
-    val radioMinimoSinConfirmarM: Double = 100.0,
+    val radioCercaniaM: Double = 500.0,
+    val radioUrbanoM: Double = 150.0,
     /** Radares a menos de esto entre sí cuentan como el mismo punto: solo suena el primero. */
     val radioMismoPuntoM: Double = 30.0,
     /** Tras pasar o cancelar un radar no se vuelve a avisar de él hasta alejarse esto. */
@@ -116,7 +112,7 @@ class ParametrosMotor(
  *
  * Los radares sin línea fiable (tramo dudoso, sentido sin resolver, radares de tramo hasta la fase 5) se
  * avisan **por cercanía en cualquier sentido**: a menos de [ParametrosMotor.radioCercaniaM] en línea recta
- * y acercándose.
+ * (en ciudad, [ParametrosMotor.radioUrbanoM]) y acercándose.
  *
  * El aviso suena siempre que el coche se acerca al radar, vaya a la velocidad que vaya (Unai, 18/11). Si
  * además se conoce el límite y la velocidad lo supera, el aviso activo se marca con exceso (la ventana se pone
@@ -496,14 +492,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         private val acumulado: DoubleArray
         val largo: Double
         private val alcanceM: Double
-        val radioCercania = when {
-            radar.sinConfirmar || radar.fuente == "osm" -> maxOf(
-                p.radioMinimoSinConfirmarM,
-                (radar.limite?.toDouble() ?: p.velocidadSupuestaSinLimiteKmh) / 3.6 * p.segundosAvisoSinConfirmar,
-            )
-            radar.municipal -> p.radioMunicipalM
-            else -> p.radioCercaniaM
-        }
+        val radioCercania = if (radar.carretera.isNullOrBlank()) p.radioUrbanoM else p.radioCercaniaM
 
         init {
             val linea = radar.linea
