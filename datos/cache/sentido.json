@@ -11074,5 +11074,29 @@
 "mun-vitoria-fotorrojo-6": {
 "motivo": "tipo fotorrojo",
 "resultado": "no_aplica"
+},
+"osm-11486161352": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"osm-313221430": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"osm-992005691": {
+"candidatas": 2,
+"destino_a_m": 3267,
+"margen_m": 740,
+"motivo": "ninguna regla de confianza se cumple",
+"origen": "destino",
+"punto": [
+43.260364,
+-2.89477
+],
+"regla": null,
+"resultado": "ambos",
+"rumbo": 310,
+"sentido_km": null,
+"via": 587846342
 }
 }
