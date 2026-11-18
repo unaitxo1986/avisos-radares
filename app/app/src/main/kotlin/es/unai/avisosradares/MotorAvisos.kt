@@ -16,12 +16,29 @@ class Posicion(
     val velocidadKmh: Double? = null,
 )
 
-enum class TipoEvento { AVISO, EXCESO, PASADO, CANCELADO }
+/**
+ * AVISO, EXCESO, PASADO y CANCELADO son de los radares (y del aviso al llegar al inicio de un tramo).
+ * INICIO_TRAMO y FIN_TRAMO marcan cuándo empieza y acaba la medida de la velocidad media (fase 5); también hay
+ * CANCELADO si el coche se sale del tramo antes del fin.
+ */
+enum class TipoEvento { AVISO, EXCESO, PASADO, CANCELADO, INICIO_TRAMO, FIN_TRAMO }
 
-class Evento(val tipo: TipoEvento, val radar: Radar, val distanciaM: Double, val motivo: String = "")
+/** [mediaKmh]: velocidad media del tramo en ese momento (solo en los eventos de tramo). */
+class Evento(val tipo: TipoEvento, val radar: Radar, val distanciaM: Double, val motivo: String = "", val mediaKmh: Double? = null)
 
-/** El aviso que se enseña en la ventana: el radar avisado más cercano. */
-class AvisoActivo(val radar: Radar, val distanciaM: Double, val porCarretera: Boolean, val exceso: Boolean)
+/**
+ * El aviso que se enseña en la ventana: el radar avisado más cercano o, si no hay ninguno, el tramo en curso.
+ * En un tramo ([enTramo]), [distanciaM] es lo que falta hasta el fin, [mediaKmh] la velocidad media desde el
+ * inicio (nula los primeros metros) y [exceso] indica que la media supera el límite.
+ */
+class AvisoActivo(
+    val radar: Radar,
+    val distanciaM: Double,
+    val porCarretera: Boolean,
+    val exceso: Boolean,
+    val mediaKmh: Double? = null,
+    val enTramo: Boolean = false,
+)
 
 class Resultado(val velocidadKmh: Double?, val aviso: AvisoActivo?, val eventos: List<Evento>)
 
@@ -67,6 +84,24 @@ class ParametrosMotor(
     val pasoPitidoExcesoM: Double = 100.0,
     /** Se considera exceso si la velocidad supera el límite en más de esto (0 = en cuanto lo supere). */
     val toleranciaExcesoKmh: Double = 0.0,
+    // ---- Radares de tramo (fase 5) ----
+    /** La medida empieza si el coche cruza el inicio por la línea del tramo o aparece en ella antes de esto. */
+    val inicioTramoMaxM: Double = 250.0,
+    /** Posiciones seguidas fuera de la línea del tramo para darlo por abandonado (más que en los radares: túneles). */
+    val posicionesFueraTramo: Int = 5,
+    /** Sin posiciones durante este tiempo dentro de un tramo, se deja de medir (en túneles la medida sigue). */
+    val huecoMaximoTramoMs: Long = 20L * 60_000L,
+    /** La media no se enseña hasta recorrer esto (al principio sale muy variable). */
+    val mediaMinimaM: Double = 100.0,
+    /**
+     * Pitidos de exceso en un tramo: al pasar la media por encima del límite y, mientras siga por encima, cada
+     * esta distancia. Criterio propio **[sin verificar]**: en un tramo largo, cada 100 m sería demasiado.
+     */
+    val pasoPitidoExcesoTramoM: Double = 1000.0,
+    /** Tras pitar por pasar la media del límite, no se vuelve a pitar "al pasarlo" hasta bajar esto por debajo. */
+    val histeresisExcesoTramoKmh: Double = 2.0,
+    /** Velocidad máxima creíble, para buscar al coche en la línea del tramo tras un hueco del GPS (túnel). */
+    val velocidadMaximaMs: Double = 70.0,
 )
 
 /**
@@ -86,11 +121,26 @@ class ParametrosMotor(
  * roja) y, cada 100 m de avance hacia el radar, si en ese momento hay exceso, se emite un evento EXCESO, que
  * suena (Unai, 18/11: "pitar siempre la primera vez que te acercas al radar, y seguir pitando cada 100 m si la
  * velocidad es excesiva").
+ *
+ * **Radares de tramo (fase 5).** El aviso al llegar al inicio es el de cualquier radar (por su tramo de
+ * aproximación o por cercanía). Si además el radar trae la línea del tramo ([Radar.tramo]), el motor sigue al
+ * coche por ella con el mismo criterio (sobre la línea y avanzando): la medida empieza cuando cruza la cámara de
+ * inicio (evento INICIO_TRAMO; el momento del cruce se interpola entre dos posiciones) y la velocidad media es
+ * lo recorrido por la línea entre el tiempo transcurrido, así que no le afectan los huecos del GPS en los túneles.
+ * Acaba al pasar la cámara de fin (FIN_TRAMO, con la media final) o se cancela si el coche se sale de la línea
+ * o retrocede. Si la media supera el límite, la ventana se pone roja y hay un evento EXCESO al pasarlo y luego
+ * cada [ParametrosMotor.pasoPitidoExcesoTramoM] mientras siga por encima. Un coche que entra en la carretera a
+ * mitad del tramo no se mide (la cámara de inicio no lo ha visto).
  */
 class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = ParametrosMotor()) {
 
     private val preparados = radares.map { Preparado(it) }
     private val seguimientos = HashMap<String, Seguimiento>()
+    private val tramos = radares.filter { it.conTramo }.map { PreparadoTramo(it) }
+    private val enTramo = HashMap<String, SeguimientoTramo>()
+    /** Última posición sobre el principio de la línea de cada tramo, antes de empezar a medir. */
+    private val candidatosTramo = HashMap<String, Pair<Double, Long>>()
+    private val tramosBloqueados = HashSet<String>()
     /** Radares ya pasados o cancelados: no se vuelven a avisar hasta alejarse. */
     private val bloqueados = HashMap<String, Preparado>()
     private var anterior: Posicion? = null
@@ -130,6 +180,8 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
             }
         }
 
+        for (t in tramos) siguiendoTramo(t, pos, margen, eventos)
+
         // Exceso de velocidad en los radares avisados con límite conocido: la ventana se pone roja enseguida y,
         // cada 100 m de avance hacia el radar desde el aviso, si en ese momento hay exceso, evento EXCESO (pitido).
         for (seg in seguimientos.values) {
@@ -147,8 +199,181 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
     }
 
     private fun avisoActual(): AvisoActivo? {
-        val seg = seguimientos.values.filter { it.avisado }.minByOrNull { it.distancia } ?: return null
-        return AvisoActivo(seg.r.radar, seg.distancia, seg.r.radar.porCarretera, seg.exceso)
+        val seg = seguimientos.values.filter { it.avisado }.minByOrNull { it.distancia }
+        if (seg != null) return AvisoActivo(seg.r.radar, seg.distancia, seg.r.radar.porCarretera, seg.exceso)
+        val t = enTramo.values.minByOrNull { it.t.largo - it.sUltimo } ?: return null
+        return AvisoActivo(t.t.radar, max(0.0, t.t.largo - t.sUltimo), true, t.exceso, t.media, enTramo = true)
+    }
+
+    // ---------- Radares de tramo (fase 5) ----------
+
+    private fun siguiendoTramo(t: PreparadoTramo, pos: Posicion, margen: Double, eventos: MutableList<Evento>) {
+        val id = t.radar.id
+        val seg = enTramo[id]
+        if (seg != null) {
+            midiendo(t, seg, pos, margen, eventos)
+            return
+        }
+        if (id in tramosBloqueados) {
+            if (t.distanciaAlInicio(pos) > p.distanciaDesbloqueoM) tramosBloqueados.remove(id)
+            return
+        }
+        if (!t.cercaDelInicio(pos)) {
+            candidatosTramo.remove(id)
+            return
+        }
+        val pr = t.proyecta(pos, -p.inicioTramoMaxM, p.inicioTramoMaxM)
+        if (pr.distanciaM > margen) {
+            candidatosTramo.remove(id)
+            return
+        }
+        val c = candidatosTramo[id]
+        // Antes del inicio, o retrocediendo, o la primera vez sobre la línea: se apunta y se espera.
+        if (c == null || pr.s <= 0.0 || pr.s < c.first - 5.0) {
+            candidatosTramo[id] = pr.s to pos.tMs
+            return
+        }
+        val avance = pr.s - c.first
+        if (avance < p.avanceParaAvisarM && c.first > 0.0) return
+        val dt = (pos.tMs - c.second).toDouble()
+        if (avance <= 0.0 || dt <= 0.0) return
+        // Momento del cruce de la cámara de inicio (s = 0), interpolado entre las dos posiciones.
+        val t0 = c.second + ((0.0 - c.first) / avance * dt).toLong()
+        val nuevo = SeguimientoTramo(t, t0, pr.s, pos.tMs)
+        enTramo[id] = nuevo
+        candidatosTramo.remove(id)
+        eventos += Evento(TipoEvento.INICIO_TRAMO, t.radar, t.largo - pr.s, "tramo de ${t.largo.toInt()} m")
+    }
+
+    private fun midiendo(t: PreparadoTramo, seg: SeguimientoTramo, pos: Posicion, margen: Double, eventos: MutableList<Evento>) {
+        val dt = pos.tMs - seg.tUltimo
+        if (dt > p.huecoMaximoTramoMs) {
+            terminaTramo(seg, TipoEvento.CANCELADO, "sin GPS durante ${dt / 60_000} min", eventos)
+            return
+        }
+        val alcance = max(300.0, dt / 1000.0 * p.velocidadMaximaMs + 100.0)
+        val pr = t.proyecta(pos, seg.sUltimo - 100.0, seg.sUltimo + alcance)
+        val sTotal = pr.s + pr.pasadoM
+        if (pr.distanciaM <= margen && sTotal >= t.largo + p.pasadoM) {
+            // Pasada la cámara de fin: media hasta el momento del cruce (interpolado).
+            val v = (sTotal - seg.sUltimo) / max(1.0, dt.toDouble())
+            val tFin = if (v > 0.0) pos.tMs - ((sTotal - t.largo) / v).toLong() else pos.tMs
+            seg.sUltimo = t.largo
+            seg.tUltimo = tFin
+            seg.actualizaMedia(p.mediaMinimaM)
+            terminaTramo(seg, TipoEvento.FIN_TRAMO, "media ${seg.media?.toInt()} km/h", eventos)
+            return
+        }
+        if (pr.distanciaM > margen) {
+            seg.fuera++
+            if (seg.fuera >= p.posicionesFueraTramo) {
+                // Si se sale ya junto al fin (la carretera gira tras la cámara), cuenta como terminado.
+                if (seg.sUltimo >= t.largo - 200.0) {
+                    terminaTramo(seg, TipoEvento.FIN_TRAMO, "media ${seg.media?.toInt()} km/h (sale de la línea junto al fin)", eventos)
+                } else {
+                    terminaTramo(seg, TipoEvento.CANCELADO, "se sale del tramo", eventos)
+                }
+            }
+            return
+        }
+        seg.fuera = 0
+        if (pr.s > seg.sMax) seg.sMax = pr.s
+        if (seg.sMax - pr.s > p.retrocesoParaCancelarM) {
+            terminaTramo(seg, TipoEvento.CANCELADO, "avanza en sentido contrario", eventos)
+            return
+        }
+        if (pr.s >= seg.sUltimo) {
+            seg.sUltimo = pr.s
+            seg.tUltimo = pos.tMs
+        }
+        seg.actualizaMedia(p.mediaMinimaM)
+        val limite = t.radar.limite
+        val media = seg.media
+        seg.exceso = limite != null && media != null && media > limite + p.toleranciaExcesoKmh
+        if (limite != null && media != null && media <= limite - p.histeresisExcesoTramoKmh) seg.armado = true
+        if (seg.exceso && (seg.armado || seg.sUltimo - seg.sUltimoPitido >= p.pasoPitidoExcesoTramoM)) {
+            seg.armado = false
+            seg.sUltimoPitido = seg.sUltimo
+            eventos += Evento(TipoEvento.EXCESO, t.radar, t.largo - seg.sUltimo, "media ${media!!.toInt()} km/h con límite $limite", media)
+        }
+    }
+
+    private fun terminaTramo(seg: SeguimientoTramo, tipo: TipoEvento, motivo: String, eventos: MutableList<Evento>) {
+        enTramo.remove(seg.t.radar.id)
+        tramosBloqueados += seg.t.radar.id
+        eventos += Evento(tipo, seg.t.radar, max(0.0, seg.t.largo - seg.sUltimo), motivo, seg.media)
+    }
+
+    private class SeguimientoTramo(val t: PreparadoTramo, val t0: Long, s: Double, tMs: Long) {
+        var sUltimo = s
+        var sMax = s
+        var tUltimo = tMs
+        var fuera = 0
+        var media: Double? = null
+        var exceso = false
+        var armado = true
+        var sUltimoPitido = Double.NEGATIVE_INFINITY
+
+        fun actualizaMedia(minimoM: Double) {
+            val segundos = (tUltimo - t0) / 1000.0
+            media = if (sUltimo >= minimoM && segundos >= 5.0) sUltimo / segundos * 3.6 else null
+        }
+    }
+
+    /**
+     * Línea de un tramo en metros, en un plano local centrado en la cámara de inicio. Las distancias a lo largo
+     * de la línea se miden con el semiverseno (los tramos llegan a 33 km).
+     */
+    private inner class PreparadoTramo(val radar: Radar) {
+        private val linea = radar.tramo!!
+        private val cosLat = cos(radar.lat * PI / 180)
+        private val mPorGrado = RADIO_TIERRA_M * PI / 180
+        private val xs = DoubleArray(linea.size) { (linea[it][1] - radar.lon) * mPorGrado * cosLat }
+        private val ys = DoubleArray(linea.size) { (linea[it][0] - radar.lat) * mPorGrado }
+        private val largos = DoubleArray(linea.size - 1) { distanciaM(linea[it][0], linea[it][1], linea[it + 1][0], linea[it + 1][1]) }
+        private val acumulado = DoubleArray(linea.size).also { a -> for (i in 1 until a.size) a[i] = a[i - 1] + largos[i - 1] }
+        val largo = acumulado.last()
+        private val alcanceInicioM = p.inicioTramoMaxM + 300.0
+
+        private fun x(pos: Posicion) = (pos.lon - radar.lon) * mPorGrado * cosLat
+        private fun y(pos: Posicion) = (pos.lat - radar.lat) * mPorGrado
+
+        fun cercaDelInicio(pos: Posicion): Boolean = abs(x(pos)) <= alcanceInicioM && abs(y(pos)) <= alcanceInicioM
+
+        fun distanciaAlInicio(pos: Posicion): Double = hypot(x(pos), y(pos))
+
+        /**
+         * El punto más cercano de la línea entre [sDesde] y [sHasta] metros. Antes del inicio (s negativo) se
+         * prolonga el primer segmento hacia atrás y pasado el fin el último hacia delante ([Proyeccion.pasadoM]).
+         */
+        fun proyecta(pos: Posicion, sDesde: Double, sHasta: Double): Proyeccion {
+            val px = x(pos)
+            val py = y(pos)
+            val ultimo = xs.size - 2
+            var mejor = Proyeccion(Double.MAX_VALUE, 0.0, 0.0)
+            for (i in 0..ultimo) {
+                if (acumulado[i + 1] < sDesde && i != 0) continue
+                if (acumulado[i] > sHasta) break
+                val ax = xs[i]
+                val ay = ys[i]
+                val dx = xs[i + 1] - ax
+                val dy = ys[i + 1] - ay
+                val l2 = dx * dx + dy * dy
+                val lPlano = sqrtOr0(l2)
+                val tLibre = if (l2 == 0.0) 0.0 else ((px - ax) * dx + (py - ay) * dy) / l2
+                val tMin = if (i == 0) Double.NEGATIVE_INFINITY else 0.0
+                val tMax = if (i == ultimo) Double.POSITIVE_INFINITY else 1.0
+                val tc = tLibre.coerceIn(tMin, tMax)
+                val d = hypot(px - (ax + tc * dx), py - (ay + tc * dy))
+                if (d < mejor.distanciaM) {
+                    val escala = if (lPlano > 0.0) largos[i] / lPlano else 1.0
+                    val s = acumulado[i] + min(tc, 1.0) * lPlano * escala
+                    val pasado = if (tc > 1.0) (tc - 1.0) * lPlano * escala else 0.0
+                    mejor = Proyeccion(d, s, pasado)
+                }
+            }
+            return mejor
+        }
     }
 
     private fun termina(seg: Seguimiento, tipo: TipoEvento?, motivo: String, eventos: MutableList<Evento>) {

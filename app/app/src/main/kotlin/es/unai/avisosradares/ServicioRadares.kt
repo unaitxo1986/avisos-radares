@@ -303,6 +303,7 @@ class ServicioRadares : Service() {
                 // Decisión de Unai (18/11): el aviso de radar suena siempre la primera vez; después, cada 100 m,
                 // 3 pitidos agudos si la velocidad supera el límite.
                 TipoEvento.EXCESO -> Sonido.exceso(this, "AVISO", subirVolumen = recorrido == null)
+                // Inicio y fin de la medida de un tramo (fase 5): sin sonido; la ventana enseña la media.
                 else -> {}
             }
         }
@@ -425,7 +426,10 @@ class ServicioRadares : Service() {
     private fun pintar(velocidadKmh: Double?, aviso: AvisoActivo? = null) {
         val textoVel = velocidadKmh?.let { "${it.toInt()}" } ?: "--"
         estadoTexto = "$textoVel km/h" +
-            (aviso?.let { " · ${etiquetaAviso(it.radar, it.porCarretera)} a ${textoDistancia(it.distanciaM)}, límite ${it.radar.limite ?: "desconocido"}" } ?: "") +
+            (aviso?.let {
+                if (it.enTramo) " · TRAMO, ${textosAviso(it).first} km/h, ${textosAviso(it).second}, límite ${it.radar.limite ?: "desconocido"}"
+                else " · ${etiquetaAviso(it.radar, it.porCarretera)} a ${textoDistancia(it.distanciaM)}, límite ${it.radar.limite ?: "desconocido"}"
+            } ?: "") +
             (if (recorrido != null) " (simulación)" else "")
         val v = textoVelocidad ?: return
         v.text = textoVel
@@ -435,8 +439,9 @@ class ServicioRadares : Service() {
                 columna.visibility = View.GONE
             } else {
                 senal?.limite = aviso.radar.limite
-                vistaDistancia?.text = textoDistancia(aviso.distanciaM)
-                textoEtiqueta?.text = etiquetaAviso(aviso.radar, aviso.porCarretera)
+                val (arriba, abajo) = textosAviso(aviso)
+                vistaDistancia?.text = arriba
+                textoEtiqueta?.text = abajo
                 columna.visibility = View.VISIBLE
             }
         }

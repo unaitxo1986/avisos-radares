@@ -117,6 +117,7 @@ class MainActivity : Activity() {
             "cercano a donde estás, a 10 km/h por encima de su límite: suena el aviso, la ventana se pone roja y pita cada 100 m. Suena y se ve igual que en el coche.", 13f))
         boton("Simular paso por un radar (debe avisar)") { simular(alReves = false) }
         boton("Simular paso en sentido contrario (no debe avisar)") { simular(alReves = true) }
+        boton("Simular paso por un radar de tramo (velocidad media)") { simularTramo() }
         boton("Reproducir el último viaje grabado (×4)") { reproducirUltimo() }
 
         // Viajes
@@ -327,6 +328,36 @@ class MainActivity : Activity() {
         val recorrido = recorridoSimulado(radar.linea!!, velocidad, ruidoM = 8.0, semilla = System.currentTimeMillis(), alReves = alReves)
         val texto = (if (alReves) "sentido contrario de " else "") + radar.descripcion() + " a ${velocidad.toInt()} km/h"
         Registro.anota(this, "PANTALLA", "simulación: $texto (${radar.id})")
+        aviso("Simulando ${recorrido.size} s: $texto")
+        ServicioRadares.reproducir(this, recorrido, texto, 1.0)
+    }
+
+    /**
+     * Fase 5: recorre el radar de tramo con línea más cercano (o Trabakua) a 10 km/h por encima de su límite: avisa
+     * al llegar al inicio, la ventana enseña la media y lo que falta, se pone roja y pita al pasar la media del límite.
+     */
+    @SuppressLint("MissingPermission")
+    private fun simularTramo() {
+        if (ServicioRadares.enMarcha) {
+            aviso("Para antes el servicio (botón Parar).")
+            return
+        }
+        val tramos = GestorLista.lista(this).radares.filter { it.conTramo }
+        if (tramos.isEmpty()) return aviso("No hay radares de tramo con su línea en la lista.")
+        val gestor = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val ultima = try {
+            listOf(LocationManager.GPS_PROVIDER, LocationManager.NETWORK_PROVIDER, "fused")
+                .mapNotNull { if (gestor.allProviders.contains(it)) gestor.getLastKnownLocation(it) else null }
+                .maxByOrNull { it.time }
+        } catch (e: Throwable) {
+            null
+        }
+        val radar = if (ultima == null) tramos.firstOrNull { it.id.contains("trabakua") } ?: tramos.first()
+        else tramos.minByOrNull { distanciaM(ultima.latitude, ultima.longitude, it.lat, it.lon) }!!
+        val velocidad = (radar.limite ?: 90) + 10.0
+        val recorrido = recorridoSimulado(lineaParaSimularTramo(radar), velocidad, ruidoM = 8.0, semilla = System.currentTimeMillis())
+        val texto = radar.descripcion() + " (${textoDistancia(radar.tramoLargoM ?: 0.0)}) a ${velocidad.toInt()} km/h"
+        Registro.anota(this, "PANTALLA", "simulación de tramo: $texto (${radar.id})")
         aviso("Simulando ${recorrido.size} s: $texto")
         ServicioRadares.reproducir(this, recorrido, texto, 1.0)
     }

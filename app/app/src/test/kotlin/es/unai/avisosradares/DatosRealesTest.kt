@@ -125,6 +125,50 @@ class DatosRealesTest {
         assertTrue("radares sin aviso: $sinAviso", sinAviso.isEmpty())
     }
 
+    /**
+     * Fase 5: paso por cada radar de tramo con línea, a 100 km/h y con 10 m de error de GPS. Tiene que empezar a
+     * medir, acabar en la cámara de fin con una media de unos 100 km/h y no medir en sentido contrario.
+     */
+    @Test
+    fun simulaElPasoPorCadaTramo() {
+        val conTramo = lista.radares.filter { it.conTramo }
+        val tramos = lista.radares.filter { it.tipo == "tramo" }
+        assertTrue("tramos con línea: ${conTramo.size} de ${tramos.size}", conTramo.size >= tramos.size / 2)
+        val sinInicio = mutableListOf<String>()
+        val sinFin = mutableListOf<String>()
+        val mediaMal = mutableListOf<String>()
+        val alReves = mutableListOf<String>()
+        for ((i, radar) in conTramo.withIndex()) {
+            // La línea del tramo tiene que medir lo que dice el dato y empezar junto a la cámara de inicio.
+            val l = radar.tramo!!
+            var largo = 0.0
+            for (k in 1 until l.size) largo += distanciaM(l[k - 1][0], l[k - 1][1], l[k][0], l[k][1])
+            assertEquals(radar.id, radar.tramoLargoM!!, largo, 5.0)
+            assertTrue("${radar.id}: la línea no empieza junto a la cámara", distanciaM(l[0][0], l[0][1], radar.lat, radar.lon) < 60.0)
+
+            val m = MotorAvisos(lista.radares)
+            val ev = recorridoSimulado(lineaParaSimularTramo(radar), 100.0, ruidoM = 10.0, semilla = i.toLong())
+                .flatMap { m.procesa(it).eventos }.filter { it.radar.id == radar.id }
+            if (ev.none { it.tipo == TipoEvento.INICIO_TRAMO }) sinInicio += radar.id
+            val fin = ev.firstOrNull { it.tipo == TipoEvento.FIN_TRAMO }
+            if (fin == null) sinFin += "${radar.id} ${ev.lastOrNull()?.tipo} ${ev.lastOrNull()?.motivo}"
+            else if (kotlin.math.abs(fin.mediaKmh!! - 100.0) > 3.0) mediaMal += "${radar.id} ${fin.mediaKmh}"
+
+            val m2 = MotorAvisos(lista.radares)
+            val ev2 = recorridoSimulado(lineaParaSimularTramo(radar), 100.0, alReves = true, ruidoM = 10.0, semilla = i.toLong())
+                .flatMap { m2.procesa(it).eventos }
+            if (ev2.any { it.radar.id == radar.id && it.tipo == TipoEvento.INICIO_TRAMO }) alReves += radar.id
+        }
+        println(
+            "Simulación sobre ${conTramo.size} tramos con línea (de ${tramos.size}): sin inicio ${sinInicio.size} $sinInicio, " +
+                "sin fin ${sinFin.size} $sinFin, media mal ${mediaMal.size} $mediaMal, mide en sentido contrario ${alReves.size} $alReves"
+        )
+        assertTrue("tramos que no empiezan: $sinInicio", sinInicio.isEmpty())
+        assertTrue("tramos que no acaban: $sinFin", sinFin.isEmpty())
+        assertTrue("media equivocada: $mediaMal", mediaMal.isEmpty())
+        assertTrue("miden en sentido contrario: $alReves", alReves.isEmpty())
+    }
+
     @Test
     fun rendimientoConTodaLaLista() {
         // Una posición por segundo durante una hora de viaje debe costar muy poco.

@@ -27,3 +27,23 @@ fun etiquetaAviso(radar: Radar, porCarretera: Boolean): String {
     val sinConfirmar = if (radar.sinConfirmar) " sin confirmar" else ""
     return "$tipo$sentido$rotatoria$sinConfirmar"
 }
+
+/**
+ * Los dos textos de la columna del aviso, bajo la señal del límite: arriba (grande) y abajo (pequeño).
+ * - Radar: "460 m" y "RADAR".
+ * - Dentro de un radar de tramo (fase 5): la velocidad media desde la cámara de inicio ("media 97"; "media --"
+ *   los primeros metros) y lo que falta hasta la cámara de fin ("fin a 2,3 km").
+ */
+fun textosAviso(aviso: AvisoActivo): Pair<String, String> =
+    if (aviso.enTramo) {
+        "media ${aviso.mediaKmh?.toInt() ?: "--"}" to "fin a ${textoDistancia(aviso.distanciaM)}"
+    } else {
+        textoDistancia(aviso.distanciaM) to etiquetaAviso(aviso.radar, aviso.porCarretera)
+    }
+
+/** Recorrido para "Simular paso por un tramo": su tramo de aproximación (si lo hay) seguido de la línea del tramo. */
+fun lineaParaSimularTramo(radar: Radar): List<DoubleArray> {
+    val tramo = requireNotNull(radar.tramo)
+    val aprox = radar.linea ?: return tramo
+    return aprox.dropLast(1) + tramo
+}

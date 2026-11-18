@@ -48,10 +48,19 @@ class Radar(
     val rotatoria: Boolean = false,
     /** Cámara que solo está en OpenStreetMap y nadie ha confirmado (fuente `osm`; puede ser pedagógica). */
     val sinConfirmar: Boolean = false,
+    /**
+     * Radares de tramo (fase 5): la carretera desde la cámara de inicio hasta la de fin, en el orden de la marcha,
+     * y su longitud en metros. Solo vienen si `tramo_fiab` es `alta`; con ellos la app calcula la velocidad media.
+     */
+    val tramo: List<DoubleArray>? = null,
+    val tramoLargoM: Double? = null,
 ) {
     val municipal: Boolean get() = fuente == "municipal"
 
     val porCarretera: Boolean get() = linea != null && linea.size >= 2
+
+    /** ¿Se puede seguir el tramo para calcular la velocidad media? */
+    val conTramo: Boolean get() = tramo != null && tramo.size >= 2 && tramoLargoM != null
 
     /** Texto corto para la pantalla y el registro: "A-8 km 120,5 (MAX CENTER)". */
     fun descripcion(): String {
@@ -87,16 +96,9 @@ fun leerRadares(texto: String): ListaRadares {
         val id = r.texto("id") ?: continue
         val lat = r.numero("lat") ?: continue
         val lon = r.numero("lon") ?: continue
-        val linea = if (r.texto("aproximacion_fiab") == "alta") {
-            (r["aproximacion"] as? List<*>)?.mapNotNull { p ->
-                val par = p as? List<*>
-                val la = par?.getOrNull(0) as? Double
-                val lo = par?.getOrNull(1) as? Double
-                if (la != null && lo != null) doubleArrayOf(la, lo) else null
-            }?.takeIf { it.size >= 2 }
-        } else {
-            null
-        }
+        val linea = if (r.texto("aproximacion_fiab") == "alta") puntos(r["aproximacion"]) else null
+        val tramo = if (r.texto("tramo_fiab") == "alta") puntos(r["tramo"]) else null
+        val tramoLargo = if (tramo != null) r.numero("tramo_largo") else null
         val limiteFiab = r.texto("limite_fiab")
         val limite = if (limiteFiab == "baja") null else r.entero("limite")
         radares += Radar(
@@ -114,11 +116,22 @@ fun leerRadares(texto: String): ListaRadares {
             fuente = r.texto("fuente"),
             rotatoria = r.logico("rotatoria") ?: false,
             sinConfirmar = r.logico("sin_confirmar") ?: false,
+            tramo = if (tramoLargo != null) tramo else null,
+            tramoLargoM = tramoLargo,
         )
     }
     if (radares.isEmpty()) throw IllegalArgumentException("radares.json: lista vacía")
     return ListaRadares(raiz.texto("version"), radares)
 }
+
+/** Lista de puntos `[[lat, lon], ...]` del JSON; nula si no hay al menos dos. */
+private fun puntos(valor: Any?): List<DoubleArray>? =
+    (valor as? List<*>)?.mapNotNull { p ->
+        val par = p as? List<*>
+        val la = (par?.getOrNull(0) as? Number)?.toDouble()
+        val lo = (par?.getOrNull(1) as? Number)?.toDouble()
+        if (la != null && lo != null) doubleArrayOf(la, lo) else null
+    }?.takeIf { it.size >= 2 }
 
 /** Lo que importa de `estado.json` para avisar al usuario. */
 class EstadoDatos(val generado: String?, val ok: Boolean, val avisos: List<String>)
