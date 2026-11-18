@@ -15,7 +15,7 @@ Un radar de tramo mide la velocidad media entre dos cámaras. Para que la app la
    de inicio), con la calzada elegida en el paso 1.
 3. **El límite**: el oficial si la fuente lo da (Trabakua, 60); si no (la DGT no lo publica), el
    `maxspeed` de OpenStreetMap de la calzada en puntos repartidos cada `PASO_MUESTRA_M` a lo largo de la
-   línea. Si al menos el 80 % de los puntos con dato dan el mismo valor, ese (`osm`); si varía, el más
+   línea (y, si eso falta o es de fiabilidad baja, el de la relación de radar de tramo de OpenStreetMap). Si al menos el 80 % de los puntos con dato dan el mismo valor, ese (`osm`); si varía, el más
    bajo (`osm_tramo_minimo`), que es el que deja del lado seguro **[sin verificar]** cuál aplica la DGT
    cuando el límite cambia dentro del tramo. Con menos de la mitad de los puntos con dato, fiabilidad
    `baja` (la app no lo muestra).
@@ -165,32 +165,44 @@ def _maxspeed_en(t, lat, lon, vias):
     return num_maxspeed(mejor[1]["t"].get("maxspeed")) if mejor else None
 
 
-def limite_tramo(t, linea, serv):
-    """{'limite', 'origen', 'fiab', 'muestras'} del tramo."""
+def limite_tramo(t, linea, serv, rel=None):
+    """{'limite', 'origen', 'fiab', ...} del tramo.
+
+    `rel` es la relación de OpenStreetMap del tramo (`datos/fuentes/osm_tramos.json`, revisión de la fase 5):
+    su `maxspeed` solo **rellena** el límite cuando la carretera no lo da o lo da con fiabilidad baja (origen
+    `osm_relacion`); si los dos existen y no coinciden, manda la carretera y se anota `relacion` (en la Z-40 la
+    relación dice 100 y la carretera y la prensa 120).
+    """
     oficial, nota = limite_oficial(t)
     if oficial:
         return {"limite": oficial, "origen": "oficial", "fiab": "alta", "nota": nota}
-    if not linea:
-        return {"limite": None, "origen": None, "fiab": None}
-    pts = muestras(linea)
-    valores = []
-    for lat, lon in pts:
-        vias = serv.vias_cerca(round(lat, 5), round(lon, 5)) or serv.vias_aprox(round(lat, 5), round(lon, 5))
-        n = _maxspeed_en(t, lat, lon, vias)
-        if n:
-            valores.append(n)
-    cuenta = Counter(valores)
-    base = {"muestras": len(pts), "valores": dict(sorted(cuenta.items()))}
-    if not valores:
-        return dict(base, limite=None, origen=None, fiab=None)
-    fiab = "media" if len(valores) >= MIN_COBERTURA * len(pts) else "baja"
-    moda, n = cuenta.most_common(1)[0]
-    if n >= MIN_ACUERDO * len(valores):
-        return dict(base, limite=moda, origen="osm", fiab=fiab)
-    return dict(base, limite=min(valores), origen="osm_tramo_minimo", fiab=fiab)
+    n_rel = num_maxspeed((rel or {}).get("maxspeed"))
+    res = {"limite": None, "origen": None, "fiab": None}
+    if linea:
+        pts = muestras(linea)
+        valores = []
+        for lat, lon in pts:
+            vias = serv.vias_cerca(round(lat, 5), round(lon, 5)) or serv.vias_aprox(round(lat, 5), round(lon, 5))
+            n = _maxspeed_en(t, lat, lon, vias)
+            if n:
+                valores.append(n)
+        cuenta = Counter(valores)
+        res = {"muestras": len(pts), "valores": dict(sorted(cuenta.items())), "limite": None, "origen": None, "fiab": None}
+        if valores:
+            fiab = "media" if len(valores) >= MIN_COBERTURA * len(pts) else "baja"
+            moda, n = cuenta.most_common(1)[0]
+            if n >= MIN_ACUERDO * len(valores):
+                res.update(limite=moda, origen="osm", fiab=fiab)
+            else:
+                res.update(limite=min(valores), origen="osm_tramo_minimo", fiab=fiab)
+    if n_rel:
+        res["relacion"] = n_rel
+        if res["limite"] is None or res["fiab"] == "baja":
+            res.update(limite=n_rel, origen="osm_relacion", fiab="media")
+    return res
 
 
-def calcular_uno(t, serv):
+def calcular_uno(t, serv, rel=None):
     """Resultado de un tramo (ver datos/esquema-radares.md, `datos/cache/tramos.json`)."""
     base = {"lat_fin": t["lat_fin"], "lon_fin": t["lon_fin"], "pk_fin_m": t.get("pk_fin_m"),
             "largo_ref_m": t.get("largo_ref_m")}
@@ -202,18 +214,20 @@ def calcular_uno(t, serv):
         if c is not None and linea:
             res["aprox"] = aproximacion.construir(
                 t, {"via": c["via"], "rumbo": c["rumbo"], "punto": c["p"]}, serv.vias_aprox(t["lat"], t["lon"]))
-        res["limite"] = limite_tramo(t, linea, serv)
+        res["limite"] = limite_tramo(t, linea, serv, rel)
     except Pendiente as e:
-        return dict(base, fiab="dudosa", linea=None, aprox=None, limite=limite_tramo(t, None, serv),
+        return dict(base, fiab="dudosa", linea=None, aprox=None, limite=limite_tramo(t, None, serv, rel),
                     motivos=[f"falta en la caché: {e}"])
     except OSError as e:  # sin respuesta de un servicio: no se guarda en caché, se reintenta en la siguiente
-        return dict(base, fiab="dudosa", linea=None, aprox=None, limite=limite_tramo(t, None, serv),
+        return dict(base, fiab="dudosa", linea=None, aprox=None, limite=limite_tramo(t, None, serv, rel),
                     motivos=[f"servicio sin respuesta: {str(e)[:80]}"])
     return res
 
 
-def calcular(crudos, serv, ids=None):
-    return {t["id"]: calcular_uno(t, serv) for t in lista_tramos(crudos) if ids is None or t["id"] in ids}
+def calcular(crudos, serv, ids=None, relaciones=None):
+    relaciones = relaciones or {}
+    return {t["id"]: calcular_uno(t, serv, relaciones.get(t["id"])) for t in lista_tramos(crudos)
+            if ids is None or t["id"] in ids}
 
 
 def distancia_fin(res):

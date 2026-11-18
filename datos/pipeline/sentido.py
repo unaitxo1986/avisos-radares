@@ -20,7 +20,7 @@ import re
 import unicodedata
 from collections import defaultdict
 
-from .geo import dif_ang, haversine, proyectar
+from .geo import dif_ang, haversine, proyectar, rumbo as rumbo_entre
 from .servicios import Pendiente
 
 RADIO_CAND_M = 50.0      # calzadas candidatas a menos de esto de la cabina
@@ -38,6 +38,11 @@ TIPOS_CALCULABLES = ("fijo", "fotorrojo")
 TOL_EJE_ABS_M = 300.0
 TOL_EJE_REL = 0.2
 MAX_VECINOS = 4
+# Veto por destino (fase 5, 18/11): si la calzada elegida se aleja del destino oficial en línea recta, el radar
+# pasa a "ambos sentidos". Solo veta, nunca elige calzada, y solo con destinos fiables (en España, 15-300 km).
+VETO_ANGULO = 150.0
+VETO_DEST_MIN_M = 15000.0
+VETO_DEST_MAX_M = 300000.0
 
 
 def norm_ref(s):
@@ -227,19 +232,6 @@ def _decidir(info, serv):
         info.update(elegida=0, origen="unica", regla="d")
     elif oficial in ("creciente", "decreciente") and eje:
         idx = eje["creciente"] if oficial == "creciente" else 1 - eje["creciente"]
-        # Fase 5 (18/11): si además hay destino oficial, tiene que llevar a la misma calzada. Si los dos datos
-        # oficiales no coinciden (N-240 pk 204,9 en Huesca: vecinos en la A-22 y la cámara en la N-240 antigua),
-        # no se arriesga una calzada: "ambos sentidos".
-        if r.get("destino"):
-            g = punto_destino(r, serv)
-            if g is not None:
-                dist = [serv.ruta(c["p"], c["rumbo"], (g["lat"], g["lon"]), None) for c in cands]
-                if None not in dist and abs(dist[0] - dist[1]) >= TOL_EJE_M:
-                    por_destino = 0 if dist[0] < dist[1] else 1
-                    info["destino_coincide"] = por_destino == idx
-                    if por_destino != idx:
-                        info["motivo"] = "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada"
-                        return
         info.update(elegida=idx, origen="oficial", regla="a", margen=eje["margen"])
     elif r.get("destino"):
         g = punto_destino(r, serv)
@@ -296,6 +288,32 @@ def _confianza(info):
     return None
 
 
+def veto_destino(r, res, serv):
+    """Motivo para pasar a "ambos sentidos" un radar resuelto cuya calzada se aleja de su destino oficial.
+
+    El rumbo de la calzada y la dirección en línea recta al destino solo se comparan para vetar, con un umbral
+    muy amplio (más de 150°) y destinos lejanos y localizados en España, porque una ruta puede fallar en sitios
+    raros: en la N-240 de Huesca, OSRM daba rodeos desde las dos calzadas y la elegida iba hacia Huesca con
+    destino Barbastro. Encontró 7 de 199 el 18/11 (entre ellos, N-1 Andoain hacia Vitoria y A-2 km 202 hacia
+    Zaragoza, con una sola calzada a menos de 50 m que era la del otro sentido). Devuelve None si no hay veto.
+    """
+    if res.get("resultado") != "resuelto" or not r.get("destino"):
+        return None
+    try:
+        g = punto_destino(r, serv)
+    except Pendiente:
+        return None
+    if not g or "España" not in (g.get("nombre") or ""):
+        return None
+    d = haversine(r["lat"], r["lon"], g["lat"], g["lon"])
+    if not VETO_DEST_MIN_M <= d <= VETO_DEST_MAX_M:
+        return None
+    ang = dif_ang(res["rumbo"], rumbo_entre(r["lat"], r["lon"], g["lat"], g["lon"]))
+    if ang > VETO_ANGULO:
+        return f"la calzada elegida se aleja del destino oficial ({round(ang)}° de diferencia, a {round(d / 1000)} km)"
+    return None
+
+
 def calcular(radares, serv):
     """Calcula el sentido de cada radar. Devuelve {id: resultado}."""
     infos = {}
@@ -345,12 +363,13 @@ def calcular(radares, serv):
             res["destino_a_m"] = round(i["lejos"])
         if i.get("corregido"):
             res["corregido"] = True
-        if "destino_coincide" in i:
-            res["destino_coincide"] = i["destino_coincide"]
         if i.get("grupo"):
             res["grupo"] = i["grupo"]
         if not regla:
             res["motivo"] = "ninguna regla de confianza se cumple"
+        veto = veto_destino(i["r"], res, serv)
+        if veto:
+            res.update(resultado="ambos", motivo=veto, regla_vetada=res["regla"], regla=None)
         resultados[id_] = res
     return resultados
 

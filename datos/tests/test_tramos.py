@@ -116,6 +116,22 @@ class PruebasTramos(unittest.TestCase):
         res = tramos.calcular_uno(t, ServicioFalso(autovia([(-3000, 1000, "100"), (1000, 9000, "")])))
         self.assertEqual((res["limite"]["limite"], res["limite"]["fiab"]), (100, "baja"))
 
+    def test_la_relacion_de_osm_rellena_pero_no_corrige(self):
+        t = tramos.lista_tramos([tramo(x1=4000, ref_m=4000)])[0]
+        # Sin maxspeed en la carretera: rellena la relación.
+        res = tramos.calcular_uno(t, ServicioFalso(autovia([(-3000, 9000, "")])), {"maxspeed": "100"})
+        self.assertEqual((res["limite"]["limite"], res["limite"]["origen"], res["limite"]["fiab"]), (100, "osm_relacion", "media"))
+        # Carretera de fiabilidad baja: también.
+        res = tramos.calcular_uno(t, ServicioFalso(autovia([(-3000, 1000, "120"), (1000, 9000, "")])), {"maxspeed": "100"})
+        self.assertEqual((res["limite"]["limite"], res["limite"]["origen"]), (100, "osm_relacion"))
+        # Carretera fiable y distinta (Z-40): manda la carretera y se anota la relación.
+        res = tramos.calcular_uno(t, ServicioFalso(autovia()), {"maxspeed": "100"})
+        self.assertEqual((res["limite"]["limite"], res["limite"]["origen"], res["limite"]["relacion"]), (120, "osm", 100))
+        # Tramo dudoso (sin línea): el de la relación.
+        t2 = tramos.lista_tramos([tramo(ref_m=10000)])[0]
+        res = tramos.calcular_uno(t2, ServicioFalso(autovia()), {"maxspeed": "80"})
+        self.assertEqual((res["fiab"], res["limite"]["limite"]), ("dudosa", 80))
+
     def test_limite_oficial_prevalece(self):
         t = tramos.lista_tramos([tramo(limite_oficial=60)])[0]
         res = tramos.calcular_uno(t, ServicioFalso(autovia()))

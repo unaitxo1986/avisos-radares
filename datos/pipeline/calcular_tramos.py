@@ -26,12 +26,16 @@ def main(argv=None):
     ap.add_argument("--sin-red", action="store_true")
     ap.add_argument("--cache", default="datos/cache")
     ap.add_argument("--salida", default="datos/cache/tramos.json")
+    ap.add_argument("--relaciones", default="datos/fuentes/osm_tramos.json",
+                    help="relación de OpenStreetMap de cada tramo (copia fija; si falta, no se usa)")
     a = ap.parse_args(argv)
 
     crudos = json.loads(Path(a.radares).read_text(encoding="utf-8"))["radares"]
     serv = Servicios(a.cache, sin_red=a.sin_red)
     try:
-        res = tramos.calcular(crudos, serv)
+        rel_path = Path(a.relaciones)
+        relaciones = json.loads(rel_path.read_text(encoding="utf-8"))["tramos"] if rel_path.exists() else {}
+        res = tramos.calcular(crudos, serv, relaciones=relaciones)
     finally:
         serv.guardar()
     destino = Path(a.salida)

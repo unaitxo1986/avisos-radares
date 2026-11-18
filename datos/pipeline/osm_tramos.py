@@ -20,6 +20,35 @@ from datos.pipeline.osm_radares import dist, leer_osm  # noqa: E402
 
 CERCA_REL_M = 1000
 CERCA_CAM_M = 500
+EMPAREJAR_M = 600  # el `from` y el `to` de la relación, a menos de esto del inicio y del fin del tramo
+
+
+def destilar(exploracion):
+    """{id_tramo: relación de OpenStreetMap del mismo tramo y sentido} a partir de la lista de exploración.
+
+    Se empareja la relación cuyo miembro `from` está cerca del inicio y `to` cerca del fin (los dos a menos de
+    `EMPAREJAR_M`); si hay varias, la de menor suma de distancias.
+    """
+    out = {}
+    for t in exploracion["tramos"]:
+        if t["fin"][0] is None:
+            continue
+        mejor = None
+        for r in t["relaciones"]:
+            f = next((m for m in r["miembros"] if m["rol"] == "from"), None)
+            h = next((m for m in r["miembros"] if m["rol"] == "to"), None)
+            if not f or not h:
+                continue
+            d1 = dist(t["inicio"][0], t["inicio"][1], f["lat"], f["lon"])
+            d2 = dist(t["fin"][0], t["fin"][1], h["lat"], h["lon"])
+            if d1 <= EMPAREJAR_M and d2 <= EMPAREJAR_M and (mejor is None or d1 + d2 < mejor[0]):
+                mejor = (d1 + d2, r, f, h, d1, d2)
+        if mejor:
+            _, r, f, h, d1, d2 = mejor
+            out[t["id"]] = {"relacion": r["id"], "maxspeed": r["tags"].get("maxspeed"),
+                            "desde": [f["lat"], f["lon"]], "hasta": [h["lat"], h["lon"]],
+                            "inicio_a_m": round(d1), "fin_a_m": round(d2)}
+    return out
 
 
 def main(argv=None):
@@ -27,7 +56,12 @@ def main(argv=None):
     ap.add_argument("--osm", required=True)
     ap.add_argument("--radares", required=True)
     ap.add_argument("--salida", required=True)
+    ap.add_argument("--copia", help="escribe aquí la relación de cada tramo (datos/fuentes/osm_tramos.json)")
     a = ap.parse_args(argv)
+    if a.osm == "-":  # solo destilar una exploración ya hecha
+        exp = json.loads(Path(a.salida).read_text(encoding="utf-8"))
+        _escribir_copia(a.copia, destilar(exp), exp)
+        return 0
     nodos, rels = leer_osm(a.osm)
     rad = json.loads(Path(a.radares).read_text(encoding="utf-8"))["radares"]
     tramos = [r for r in rad if r["tipo"] in ("tramo", "tramo_extremo")]
@@ -63,10 +97,22 @@ def main(argv=None):
     Path(a.salida).parent.mkdir(parents=True, exist_ok=True)
     Path(a.salida).write_text(json.dumps({"relaciones_velocidad_media": len(medias), "camaras": len(camaras),
                                           "tramos": salida}, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    if a.copia:
+        _escribir_copia(a.copia, destilar({"tramos": salida}), {"tramos": salida})
     con = sum(1 for s in salida if s["relaciones"])
     print(f"::notice title=OSM tramos::{len(medias)} relaciones de velocidad media y {len(camaras)} cámaras en España; "
           f"{con} de {len(salida)} tramos nuestros con alguna relación cerca")
     return 0
+
+
+def _escribir_copia(ruta, rels, exp):
+    doc = {"nota": "Relación de OpenStreetMap (enforcement=average_speed) de cada radar de tramo, emparejada por "
+                   "inicio y fin. Copia fija de la exploración de la fase 5 (osm_tramos.py); no se renueva sola. "
+                   "Solo rellena el límite que no dé la carretera (tramos.py).",
+           "fuente": "OpenStreetMap (ODbL), extracto de Geofabrik", "tramos": rels}
+    Path(ruta).parent.mkdir(parents=True, exist_ok=True)
+    Path(ruta).write_text(json.dumps(doc, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    print(f"Copia: {len(rels)} de {len(exp['tramos'])} tramos con su relación de OpenStreetMap")
 
 
 if __name__ == "__main__":

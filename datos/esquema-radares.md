@@ -27,7 +27,7 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 | `aproximacion` | lista de `[lat, lon]` o nulo | Línea de la carretera por la que se llega al radar en el sentido que vigila (**500 m**, decisión de Unai del 15/11/2026), en el orden de la marcha; termina en el radar. Geometría de OpenStreetMap. Solo se publica si `aproximacion_fiab` es `alta` |
 | `aproximacion_fiab` | texto o nulo | `alta`, `dudosa` o nulo (no calculada, por ejemplo en tramos). Con `dudosa` o nulo la app avisa por cercanía en cualquier sentido |
 | `limite` | entero o nulo | km/h. Nulo si no se conoce: la app avisa sin límite |
-| `limite_origen` | texto o nulo | `oficial`, `manual`, `osm` (calzada elegida en 3.2; en tramos, el valor de al menos el 80 % de los puntos muestreados), `osm_cercana` (vía próxima de la misma carretera) u `osm_tramo_minimo` (tramo cuyo límite cambia en OpenStreetMap: el más bajo). Prioridad: oficial, manual, OpenStreetMap |
+| `limite_origen` | texto o nulo | `oficial`, `manual`, `osm` (calzada elegida en 3.2; en tramos, el valor de al menos el 80 % de los puntos muestreados), `osm_cercana` (vía próxima de la misma carretera) `osm_tramo_minimo` (tramo cuyo límite cambia en OpenStreetMap: el más bajo) u `osm_relacion` (tramo sin límite fiable en la carretera: el de su relación de radar de tramo de OpenStreetMap, `datos/fuentes/osm_tramos.json`). Prioridad: oficial, manual, OpenStreetMap |
 | `limite_fiab` | texto o nulo | `alta` (oficial o manual), `media` (`osm`) o `baja` (`osm_cercana`). Qué hace la app con `baja` se decide en 4.3 (recomendación: no mostrar el límite) |
 | `enlace` | texto o nulo | Enlace a la fuente oficial |
 | `pk_fin` | número o nulo | **Solo en tramos.** Punto kilométrico del fin, en km |
@@ -102,6 +102,7 @@ Lo escribe `datos/pipeline/calcular_sentido.py` (algoritmo en `sentido.py`, desc
 | Campo | Notas |
 |---|---|
 | `resultado` | `resuelto`, `ambos` (sin garantías: la app avisa en cualquier sentido), `no_aplica` (los tramos, fase 5) o `pendiente` (solo en modo sin red) |
+| `regla_vetada`, `motivo` | Desde la fase 5 (18/11): si la calzada elegida se aleja más de 150° de su destino oficial (en línea recta, destino en España a 15-300 km), el resultado pasa a `ambos` y `regla_vetada` guarda la regla que lo había resuelto. Además, el vecino que fija el eje kilométrico solo vale si la ruta hasta él cuadra con la diferencia de kilometraje (300 m o 20 %) |
 | `regla` | Por qué se da por bueno: `a` oficial creciente/decreciente con eje conocido; `b` grupo coherente de 2 o más radares; `c` margen de 1 km o más entre las dos calzadas; `d` calzada única; `e` carretera de doble sentido y destino a más de 2 km |
 | `origen` | `oficial`, `destino` o `unica` |
 | `via`, `rumbo`, `punto` | Vía de OpenStreetMap elegida, rumbo de marcha (grados, solo informativo: la app no compara rumbos) y punto de la calzada más cercano a la cabina |
@@ -139,7 +140,7 @@ Lo escribe `datos/pipeline/calcular_tramos.py` (algoritmo en `tramos.py`, 18/11/
 | `largo_ref_m` | Longitud según el kilometraje oficial (`|pk_fin - pk|`), con la que se valida la ruta: tiene que diferir menos de 300 m o del 15 % |
 | `lat_fin`, `lon_fin`, `pk_fin_m` | Fin del tramo (en Trabakua, el otro extremo) |
 | `aprox` | Tramo de aproximación al inicio, mismo formato que `aproximacion.json` (3.3) |
-| `limite` | `{limite, origen, fiab, muestras, valores}`: oficial si lo hay; si no, `maxspeed` de la misma carretera en un punto por kilómetro de la línea (`valores`: cuántos puntos dan cada valor). Con al menos el 80 % de acuerdo, `osm`; si cambia, el más bajo (`osm_tramo_minimo`). Fiabilidad `media`, o `baja` si menos de la mitad de los puntos tienen dato |
+| `limite` | `{limite, origen, fiab, muestras, valores}`: oficial si lo hay; si no, `maxspeed` de la misma carretera en un punto por kilómetro de la línea (`valores`: cuántos puntos dan cada valor). Con al menos el 80 % de acuerdo, `osm`; si cambia, el más bajo (`osm_tramo_minimo`). Fiabilidad `media`, o `baja` si menos de la mitad de los puntos tienen dato. Si no hay límite o es `baja`, se rellena con el `maxspeed` de la relación de OpenStreetMap del tramo (`osm_relacion`, `media`); si los dos existen y difieren, manda la carretera y `relacion` guarda el otro valor |
 | `motivos` | Por qué es `dudosa` |
 
 **Orden inicio → fin:** el de la geometría de la DGT (`from` → `to`), no el indicador creciente/decreciente, que en 10 de los 47 tramos no cuadra con el kilometraje (son parejas del mismo tramo en los dos sentidos; ver `tramos.py`).
