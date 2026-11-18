@@ -30,8 +30,8 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 | `limite_origen` | texto o nulo | `oficial`, `manual`, `osm` (calzada elegida en 3.2) u `osm_cercana` (vía próxima de la misma carretera). Prioridad: oficial, manual, OpenStreetMap |
 | `limite_fiab` | texto o nulo | `alta` (oficial o manual), `media` (`osm`) o `baja` (`osm_cercana`). Qué hace la app con `baja` se decide en 4.3 (recomendación: no mostrar el límite) |
 | `enlace` | texto o nulo | Enlace a la fuente oficial |
-| `sin_confirmar` | booleano | `true` si el radar solo está en OpenStreetMap y nadie lo ha confirmado (fuente `osm`; desde el 18/11/2026). Puede ser un radar pedagógico. Qué hace la app con ellos se decide en la fase 4 |
-| `rotatoria` | booleano | `true` si el ayuntamiento dice que los radares rotan entre cabinas (la cabina puede estar vacía). Hoy, las 16 cabinas de Vitoria-Gasteiz. Qué hace la app con ellas se decide en 4.3 |
+| `sin_confirmar` | booleano | `true` si el radar solo está en OpenStreetMap y nadie lo ha confirmado (fuente `osm`; desde el 18/11/2026). Puede ser un radar pedagógico. La app los avisa por cercanía, en cualquier sentido, a la distancia que se recorre en 10 s a la velocidad del límite (50 km/h si no hay límite; mínimo 100 m), con "sin confirmar" en la ventana (decisión de Unai, 18/11) |
+| `rotatoria` | booleano | `true` si el ayuntamiento dice que los radares rotan entre cabinas (la cabina puede estar vacía). Hoy, las 16 cabinas de Vitoria-Gasteiz. La app las avisa como cualquier radar, con "rotatorio" en la ventana (decisión de Unai, 18/11) |
 
 ### Radares municipales (`fuente: municipal`, 18/11/2026)
 
