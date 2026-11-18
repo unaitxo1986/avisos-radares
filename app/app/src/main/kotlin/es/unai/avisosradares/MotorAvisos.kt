@@ -44,6 +44,8 @@ class ParametrosMotor(
     val pasadoM: Double = 10.0,
     /** Aviso por cercanía (radares sin tramo de aproximación fiable): radio. */
     val radioCercaniaM: Double = 500.0,
+    /** Radio de cercanía de los radares municipales, en ciudad (decisión de Unai, 18/11). */
+    val radioMunicipalM: Double = 150.0,
     /** Tras pasar o cancelar un radar no se vuelve a avisar de él hasta alejarse esto. */
     val distanciaDesbloqueoM: Double = 1000.0,
     /** Se ignoran las posiciones con peor precisión que esta. */
@@ -174,10 +176,11 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
     }
 
     private fun porCercania(r: Preparado, pos: Posicion, eventos: MutableList<Evento>) {
+        val radio = r.radioCercania
         val d = r.distanciaAlRadar(pos)
         var seg = seguimientos[r.radar.id]
         if (seg == null) {
-            if (d > p.radioCercaniaM) return
+            if (d > radio) return
             seg = Seguimiento(r, 0.0)
             seg.dMin = d
             seg.dUltima = d
@@ -196,11 +199,11 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
             termina(seg, TipoEvento.PASADO, "", eventos)
             return
         }
-        if (d > seg.dMin + 150.0 || d > p.radioCercaniaM + 150.0) {
+        if (d > seg.dMin + 150.0 || d > radio + 150.0) {
             termina(seg, TipoEvento.CANCELADO, "se aleja sin pasar por el radar", eventos)
             return
         }
-        if (!seg.avisado && seg.acercandose >= 2 && d <= p.radioCercaniaM) {
+        if (!seg.avisado && seg.acercandose >= 2 && d <= radio) {
             seg.avisado = true
             eventos += Evento(TipoEvento.AVISO, r.radar, d)
         }
@@ -230,6 +233,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         private val acumulado: DoubleArray
         val largo: Double
         private val alcanceM: Double
+        val radioCercania = if (radar.municipal) p.radioMunicipalM else p.radioCercaniaM
 
         init {
             val linea = radar.linea
@@ -247,7 +251,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
                 ys = DoubleArray(0)
                 acumulado = DoubleArray(0)
                 largo = 0.0
-                alcanceM = p.radioCercaniaM + 50.0
+                alcanceM = radioCercania + 50.0
             }
         }
 

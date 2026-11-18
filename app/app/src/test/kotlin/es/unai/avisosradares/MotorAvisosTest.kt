@@ -203,4 +203,18 @@ class MotorAvisosTest {
         assertEquals(2, ev.count { it.tipo == TipoEvento.PASADO })
         assertEquals("r2", ev.first { it.tipo == TipoEvento.PASADO }.radar.id)
     }
+
+    @Test
+    fun losMunicipalesAvisanA150m() {
+        val municipal = Radar("m", "fijo", "CALLE", null, null, latR, lonR, null, 50, "oficial", null, fuente = "municipal", rotatoria = true)
+        val motor = MotorAvisos(listOf(municipal))
+        val ev = pasa(motor, recorridoRectoPor(latR, lonR, 0.0, 50.0))
+        assertEquals(listOf(TipoEvento.AVISO, TipoEvento.PASADO), tipos(ev))
+        assertTrue("distancia ${ev[0].distanciaM}", ev[0].distanciaM <= 150.0)
+        // Calle paralela a 200 m: nada.
+        val motor2 = MotorAvisos(listOf(municipal))
+        val lonParalela = lonR + 200 / (mLat * Math.cos(latR * Math.PI / 180))
+        assertTrue(pasa(motor2, recorridoRectoPor(latR, lonParalela, 0.0, 50.0)).isEmpty())
+        assertTrue(municipal.descripcion().contains("rotatoria"))
+    }
 }

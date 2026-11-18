@@ -24,10 +24,12 @@ class ListaYViajeTest {
         val texto = """{"version":"v1","radares":[
             {"id":"a","tipo":"fijo","lat":43.0,"lon":-2.0,"aproximacion":[[42.99,-2.0],[43.0,-2.0]],"aproximacion_fiab":"alta","limite":80,"limite_fiab":"media"},
             {"id":"b","tipo":"fijo","lat":43.1,"lon":-2.1,"aproximacion":null,"aproximacion_fiab":"dudosa","limite":90,"limite_fiab":"baja"},
-            {"id":"c","tipo":"tramo","lat":43.2,"lon":-2.2}]}"""
+            {"id":"c","tipo":"tramo","lat":43.2,"lon":-2.2},
+            {"id":"mun-x","tipo":"fijo","fuente":"municipal","rotatoria":true,"lat":42.85,"lon":-2.67,"limite":50,"limite_fiab":"alta"}]}"""
         val l = leerRadares(texto)
         assertEquals("v1", l.version)
-        assertEquals(3, l.radares.size)
+        assertEquals(4, l.radares.size)
+        assertTrue(l.radares[3].municipal && l.radares[3].rotatoria)
         assertTrue(l.radares[0].porCarretera)
         assertEquals(80, l.radares[0].limite)
         assertTrue(!l.radares[1].porCarretera)

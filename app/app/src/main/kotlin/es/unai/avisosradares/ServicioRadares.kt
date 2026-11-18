@@ -412,7 +412,10 @@ class ServicioRadares : Service() {
         )
     }
 
-    /** "RADAR 350 m · 100" ; "RADAR? 350 m" si el sentido no está confirmado; "TRAMO 350 m" en los tramos. */
+    /**
+     * "RADAR 350 m · 100"; "RADAR? 350 m" si el sentido no está confirmado (aviso por cercanía); "TRAMO 350 m"
+     * en los tramos; "(rotatorio)" en las cabinas que pueden estar vacías.
+     */
     private fun textoAviso(a: AvisoActivo): String {
         val tipo = when {
             a.radar.tipo == "tramo" || a.radar.tipo == "tramo_extremo" -> "TRAMO"
@@ -422,7 +425,8 @@ class ServicioRadares : Service() {
         val sentido = if (a.porCarretera) "" else "?"
         val distancia = String.format(Locale.ROOT, "%d m", (a.distanciaM / 10).toInt() * 10)
         val limite = a.radar.limite?.let { " · $it" } ?: ""
-        return "$tipo$sentido $distancia$limite"
+        val rotatoria = if (a.radar.rotatoria) " (rotatorio)" else ""
+        return "$tipo$sentido $distancia$limite$rotatoria"
     }
 
     private fun quitarVentana() {

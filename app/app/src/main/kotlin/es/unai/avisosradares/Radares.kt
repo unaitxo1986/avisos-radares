@@ -28,6 +28,9 @@ fun distanciaM(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
  *   se da **por cercanía en cualquier sentido** (tramo dudoso, sentido sin resolver, radares de tramo).
  * - [limite]: el que se muestra y con el que se compara la velocidad. Es nulo si no se conoce **o si su
  *   fiabilidad es `baja`** (decisión de Unai del 18/11: en los `osm_cercana` se avisa sin límite).
+ * - [fuente] `municipal`: radares de listas oficiales de ayuntamientos (3.7); avisan por cercanía con un radio
+ *   menor (150 m, decisión de Unai del 18/11). [rotatoria]: cabina que puede estar vacía (Vitoria-Gasteiz); se
+ *   avisa igual que las demás y la ventana lo indica (decisión de Unai del 18/11).
  */
 class Radar(
     val id: String,
@@ -41,7 +44,11 @@ class Radar(
     val limite: Int?,
     val limiteOrigen: String?,
     val linea: List<DoubleArray>?,
+    val fuente: String? = null,
+    val rotatoria: Boolean = false,
 ) {
+    val municipal: Boolean get() = fuente == "municipal"
+
     val porCarretera: Boolean get() = linea != null && linea.size >= 2
 
     /** Texto corto para la pantalla y el registro: "A-8 km 120,5 (MAX CENTER)". */
@@ -54,7 +61,8 @@ class Radar(
         }
         if (carretera != null) partes += carretera
         if (pk != null) partes += "km " + String.format(java.util.Locale.ROOT, "%.1f", pk).replace('.', ',')
-        if (nombre != null) partes += "(" + nombre + ")"
+        if (nombre != null) partes += if (partes.isEmpty()) nombre else "($nombre)"
+        if (rotatoria) partes += "[cabina rotatoria]"
         return partes.joinToString(" ")
     }
 }
@@ -100,6 +108,8 @@ fun leerRadares(texto: String): ListaRadares {
             limite = limite,
             limiteOrigen = r.texto("limite_origen"),
             linea = linea,
+            fuente = r.texto("fuente"),
+            rotatoria = r.logico("rotatoria") ?: false,
         )
     }
     if (radares.isEmpty()) throw IllegalArgumentException("radares.json: lista vacía")
