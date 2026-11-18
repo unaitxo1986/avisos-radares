@@ -47,7 +47,7 @@ class ParametrosMotor(
     /** Radio de cercanía de los radares municipales, en ciudad (decisión de Unai, 18/11). */
     val radioMunicipalM: Double = 150.0,
     /**
-     * Cámaras sin confirmar (OpenStreetMap): se avisa unos segundos antes de llegar yendo a la velocidad del
+     * Cámaras de OpenStreetMap (sin confirmar o confirmadas por Unai): se avisa unos segundos antes de llegar yendo a la velocidad del
      * radar (decisión de Unai, 18/11: "según velocidad del radar para que avise con 10 segundos"). Sin límite
      * conocido se supone la velocidad urbana; nunca menos del radio mínimo.
      */
@@ -253,7 +253,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         val largo: Double
         private val alcanceM: Double
         val radioCercania = when {
-            radar.sinConfirmar -> maxOf(
+            radar.sinConfirmar || radar.fuente == "osm" -> maxOf(
                 p.radioMinimoSinConfirmarM,
                 (radar.limite?.toDouble() ?: p.velocidadSupuestaSinLimiteKmh) / 3.6 * p.segundosAvisoSinConfirmar,
             )
