@@ -52,8 +52,11 @@ class ParametrosMotor(
     val precisionMaximaM: Double = 50.0,
     /** Sin posiciones durante este tiempo (túnel largo, GPS perdido) se olvida el seguimiento. */
     val huecoMaximoMs: Long = 120_000L,
-    /** Mientras haya exceso, el aviso de exceso se repite cada tanto. */
-    val repetirExcesoMs: Long = 4_000L,
+    /**
+     * Tras el aviso, cada vez que el coche avanza esto hacia el radar se vuelve a pitar si va por encima del
+     * límite (decisión de Unai, 18/11: "seguir pitando cada 100 m si la velocidad es excesiva").
+     */
+    val pasoPitidoExcesoM: Double = 100.0,
     /** Se considera exceso si la velocidad supera el límite en más de esto (0 = en cuanto lo supere). */
     val toleranciaExcesoKmh: Double = 0.0,
 )
@@ -72,7 +75,9 @@ class ParametrosMotor(
  *
  * El aviso suena siempre que el coche se acerca al radar, vaya a la velocidad que vaya (Unai, 18/11). Si
  * además se conoce el límite y la velocidad lo supera, el aviso activo se marca con exceso (la ventana se pone
- * roja) y se emite un evento EXCESO cada pocos segundos, que solo se anota: no suena (Unai, 18/11).
+ * roja) y, cada 100 m de avance hacia el radar, si en ese momento hay exceso, se emite un evento EXCESO, que
+ * suena (Unai, 18/11: "pitar siempre la primera vez que te acercas al radar, y seguir pitando cada 100 m si la
+ * velocidad es excesiva").
  */
 class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = ParametrosMotor()) {
 
@@ -117,16 +122,18 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
             }
         }
 
-        // Exceso de velocidad en los radares avisados con límite conocido.
+        // Exceso de velocidad en los radares avisados con límite conocido: la ventana se pone roja enseguida y,
+        // cada 100 m de avance hacia el radar desde el aviso, si en ese momento hay exceso, evento EXCESO (pitido).
         for (seg in seguimientos.values) {
             if (!seg.avisado) continue
             val limite = seg.r.radar.limite
-            val exceso = limite != null && velocidad != null && velocidad > limite + p.toleranciaExcesoKmh
-            if (exceso && (!seg.exceso || pos.tMs - seg.ultimoExcesoMs >= p.repetirExcesoMs)) {
-                eventos += Evento(TipoEvento.EXCESO, seg.r.radar, seg.distancia, "${velocidad!!.toInt()} km/h con límite $limite")
-                seg.ultimoExcesoMs = pos.tMs
+            seg.exceso = limite != null && velocidad != null && velocidad > limite + p.toleranciaExcesoKmh
+            if (seg.distancia <= seg.distanciaUltimoPaso - p.pasoPitidoExcesoM) {
+                while (seg.distancia <= seg.distanciaUltimoPaso - p.pasoPitidoExcesoM) seg.distanciaUltimoPaso -= p.pasoPitidoExcesoM
+                if (seg.exceso) {
+                    eventos += Evento(TipoEvento.EXCESO, seg.r.radar, seg.distancia, "${velocidad!!.toInt()} km/h con límite $limite")
+                }
             }
-            seg.exceso = exceso
         }
         return Resultado(velocidad, avisoActual(), eventos)
     }
@@ -171,6 +178,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         seg.distancia = max(0.0, r.largo - pr.s)
         if (!seg.avisado && seg.sMax - seg.sEntrada >= p.avanceParaAvisarM && pr.s >= seg.sUltimo - 5.0) {
             seg.avisado = true
+            seg.distanciaUltimoPaso = seg.distancia
             eventos += Evento(TipoEvento.AVISO, r.radar, seg.distancia)
         }
         seg.sUltimo = pr.s
@@ -206,6 +214,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         }
         if (!seg.avisado && seg.acercandose >= 2 && d <= radio) {
             seg.avisado = true
+            seg.distanciaUltimoPaso = d
             eventos += Evento(TipoEvento.AVISO, r.radar, d)
         }
     }
@@ -216,7 +225,8 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         var fuera = 0
         var avisado = false
         var exceso = false
-        var ultimoExcesoMs = Long.MIN_VALUE / 2
+        /** Distancia al radar en el último punto de control de 100 m (empieza en la del aviso). */
+        var distanciaUltimoPaso = Double.MAX_VALUE
         var distancia = 0.0
         var dMin = Double.MAX_VALUE
         var dUltima = Double.MAX_VALUE

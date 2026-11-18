@@ -299,8 +299,9 @@ class ServicioRadares : Service() {
                     avisos++
                     Sonido.radar(this, "AVISO")
                 }
-                // Decisión de Unai (18/11): solo suena el aviso de radar, vaya a la velocidad que vaya. El exceso
-                // no suena: solo pone la ventana en rojo y queda en el registro.
+                // Decisión de Unai (18/11): el aviso de radar suena siempre la primera vez; después, cada 100 m,
+                // 3 pitidos agudos si la velocidad supera el límite.
+                TipoEvento.EXCESO -> Sonido.exceso(this, "AVISO")
                 else -> {}
             }
         }

@@ -103,14 +103,35 @@ class MotorAvisosTest {
     }
 
     @Test
-    fun excesoSoloSiSuperaElLimiteYSeRepite() {
+    fun excesoPitaCada100mSoloSiSuperaElLimite() {
         val motor = MotorAvisos(listOf(radar(limite = 80)))
         val ev = pasa(motor, recorridoSimulado(linea, 100.0))
-        val excesos = ev.count { it.tipo == TipoEvento.EXCESO }
-        // Unos 18 s sobre la línea a 100 km/h: un aviso de exceso cada 4 s.
-        assertTrue("excesos: $excesos", excesos in 3..6)
+        val excesos = ev.filter { it.tipo == TipoEvento.EXCESO }
+        // Aviso a unos 470 m; después un pitido de exceso a los 370, 270, 170 y 70 m.
+        assertEquals(TipoEvento.AVISO, ev.first().tipo)
+        assertEquals(4, excesos.size)
+        val aviso = ev.first().distanciaM
+        for ((i, e) in excesos.withIndex()) {
+            val esperado = aviso - 100.0 * (i + 1)
+            assertTrue("pitido ${i + 1} a ${e.distanciaM} m, esperado hacia $esperado", e.distanciaM in (esperado - 30.0)..esperado)
+        }
+        // Por debajo del límite: solo el aviso.
         val motor2 = MotorAvisos(listOf(radar(limite = 80)))
-        assertTrue(pasa(motor2, recorridoSimulado(linea, 79.0)).none { it.tipo == TipoEvento.EXCESO })
+        assertEquals(listOf(TipoEvento.AVISO, TipoEvento.PASADO), tipos(pasa(motor2, recorridoSimulado(linea, 79.0))))
+    }
+
+    @Test
+    fun excesoSoloEnLosTramosDe100mEnQueSeSupera() {
+        // Llega a 70 (límite 80) y acelera a 100 a mitad de la línea: pita solo a partir de ahí.
+        val motor = MotorAvisos(listOf(radar(limite = 80)))
+        val lento = recorridoSimulado(linea, 70.0)
+        val ev = mutableListOf<Evento>()
+        for (p in lento) {
+            val rapido = p.lat > latR - 250 / mLat
+            ev += motor.procesa(Posicion(p.tMs, p.lat, p.lon, p.precisionM, if (rapido) 100.0 else 70.0)).eventos
+        }
+        val excesos = ev.filter { it.tipo == TipoEvento.EXCESO }
+        assertTrue("excesos ${excesos.map { it.distanciaM.toInt() }}", excesos.size in 2..3 && excesos.all { it.distanciaM < 250.0 })
     }
 
     @Test
