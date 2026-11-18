@@ -1,0 +1,41 @@
+name: Exploración de radares de tramo en OpenStreetMap (España)
+
+# Tarea puntual (fase 5, 18/11/2026): contrasta las coordenadas y el kilometraje de los radares de tramo
+# con las relaciones de velocidad media de OpenStreetMap. No publica nada: deja una lista en datos/exploracion/.
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/osm-tramos.yml"
+      - "datos/pipeline/osm_tramos.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar y filtrar el extracto de España
+        run: |
+          sudo apt-get install -y -qq osmium-tool > /dev/null
+          curl -sSfL -o es.osm.pbf https://download.geofabrik.de/europe/spain-latest.osm.pbf
+          ls -l es.osm.pbf
+          osmium fileinfo -e es.osm.pbf | grep -iE "timestamp" | head -2 | tr '\n' ' ' | sed 's/^/::notice title=Extracto::/'; echo
+          osmium tags-filter es.osm.pbf n/highway=speed_camera r/type=enforcement -o filtrado.osm.pbf
+          osmium cat filtrado.osm.pbf -o filtrado.osm
+          ls -l filtrado.osm
+      - name: Comparar con nuestros tramos
+        run: python3 -I datos/pipeline/osm_tramos.py --osm filtrado.osm --radares datos/salida/radares.json --salida datos/exploracion/osm_tramos_espana.json
+      - name: Guardar la lista
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/exploracion
+          git diff --cached --quiet && exit 0
+          git commit -m "Exploración: radares de tramo de OpenStreetMap en España (automático)"
+          git pull --rebase origin main
+          git push origin HEAD:main
