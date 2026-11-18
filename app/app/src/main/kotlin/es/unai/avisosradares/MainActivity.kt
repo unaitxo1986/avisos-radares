@@ -109,12 +109,11 @@ class MainActivity : Activity() {
         raiz.addView(titulo("Ventana y sonido"))
         botonVentana = boton("") { ajustes.ventana = !ajustes.ventana }
         boton("Oír el aviso de radar") { Sonido.radar(this, "PANTALLA") }
-        boton("Oír el aviso de exceso de velocidad") { Sonido.exceso(this, "PANTALLA") }
 
         // Pruebas sin conducir
         raiz.addView(titulo("Probar sin conducir"))
         raiz.addView(texto("Pasa por el motor de avisos un recorrido inventado sobre el radar con tramo de aproximación más " +
-            "cercano a donde estás, a 10 km/h por encima de su límite. Suena y se ve igual que en el coche.", 13f))
+            "cercano a donde estás, a 10 km/h por encima de su límite (la ventana se pone roja). Suena y se ve igual que en el coche.", 13f))
         boton("Simular paso por un radar (debe avisar)") { simular(alReves = false) }
         boton("Simular paso en sentido contrario (no debe avisar)") { simular(alReves = true) }
         boton("Reproducir el último viaje grabado (×4)") { reproducirUltimo() }

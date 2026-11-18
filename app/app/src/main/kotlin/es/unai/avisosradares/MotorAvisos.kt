@@ -71,7 +71,8 @@ class ParametrosMotor(
  * y acercándose.
  *
  * El aviso suena siempre que el coche se acerca al radar, vaya a la velocidad que vaya (Unai, 18/11). Si
- * además se conoce el límite y la velocidad lo supera, hay aviso de exceso, que se repite mientras dure.
+ * además se conoce el límite y la velocidad lo supera, el aviso activo se marca con exceso (la ventana se pone
+ * roja) y se emite un evento EXCESO cada pocos segundos, que solo se anota: no suena (Unai, 18/11).
  */
 class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = ParametrosMotor()) {
 
