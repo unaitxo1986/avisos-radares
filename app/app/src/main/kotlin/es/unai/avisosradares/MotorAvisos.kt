@@ -276,18 +276,16 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
 
         /**
          * Punto de la línea que corresponde al coche: distancia lateral, metros recorridos y metros pasado el
-         * radar. Sin [sAnterior] es el punto más cercano. Con él (el coche ya iba por la línea), entre los tramos
-         * a menos de [margen] se elige el que sigue al anterior, para no saltar de un lado a otro donde la línea
-         * pasa dos veces cerca del mismo sitio (rotondas, curvas cerradas).
+         * radar. [sAnterior] es el punto de la línea donde iba el coche (nulo al entrar). Ver el criterio abajo.
          */
         fun proyecta(pos: Posicion, margen: Double, sAnterior: Double?): Proyeccion {
             val px = x(pos)
             val py = y(pos)
-            var mejor = Double.MAX_VALUE
-            var mejorS = 0.0
-            var mejorPasado = 0.0
-            var mejorCriterio = Double.MAX_VALUE
             val ultimo = xs.size - 2
+            val ds = DoubleArray(ultimo + 1)
+            val ss = DoubleArray(ultimo + 1)
+            val pasados = DoubleArray(ultimo + 1)
+            var dMin = Double.MAX_VALUE
             for (i in 0..ultimo) {
                 val ax = xs[i]
                 val ay = ys[i]
@@ -296,22 +294,34 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
                 val l2 = dx * dx + dy * dy
                 val tLibre = if (l2 == 0.0) 0.0 else ((px - ax) * dx + (py - ay) * dy) / l2
                 val t = tLibre.coerceIn(0.0, 1.0)
-                val d = hypot(px - (ax + t * dx), py - (ay + t * dy))
-                val s = acumulado[i] + t * sqrtOr0(l2)
-                // Criterio: fuera del margen, la distancia. Dentro del margen, al entrar en la línea gana el
-                // tramo más cercano al principio (el coche llega desde atrás) y después, el que sigue al anterior.
+                ds[i] = hypot(px - (ax + t * dx), py - (ay + t * dy))
+                ss[i] = acumulado[i] + t * sqrtOr0(l2)
+                pasados[i] = if (i == ultimo && tLibre > 1.0) (tLibre - 1.0) * sqrtOr0(l2) else 0.0
+                if (ds[i] < dMin) dMin = ds[i]
+            }
+            // Criterio de elección del tramo (errores corregidos con la simulación del 18/11):
+            // - fuera del margen, el más cercano;
+            // - al entrar en la línea, el más cercano; si hay varios casi igual de cerca (a menos de 10 m más),
+            //   el más próximo al principio de la línea (rotonda al principio: la entrada y la salida se tocan);
+            // - ya en la línea, el más cercano entre los que caen a menos de 90 m del punto anterior, para no
+            //   saltar a otra pasada de la línea por el mismo sitio.
+            var elegido = 0
+            var mejorCriterio = Double.MAX_VALUE
+            for (i in 0..ultimo) {
                 val criterio = when {
-                    d > margen -> 1e9 + d
-                    sAnterior == null -> s
-                    else -> abs(s - sAnterior)
+                    ds[i] > margen -> 1e9 + ds[i]
+                    sAnterior == null -> if (ds[i] <= dMin + 10.0) ss[i] else 1e6 + ds[i]
+                    ss[i] in (sAnterior - 90.0)..(sAnterior + 90.0) -> ds[i]
+                    else -> 1e6 + ds[i]
                 }
                 if (criterio < mejorCriterio) {
                     mejorCriterio = criterio
-                    mejor = d
-                    mejorS = s
-                    mejorPasado = if (i == ultimo && tLibre > 1.0) (tLibre - 1.0) * sqrtOr0(l2) else 0.0
+                    elegido = i
                 }
             }
+            var mejor = ds[elegido]
+            val mejorS = ss[elegido]
+            val mejorPasado = pasados[elegido]
             // Pasado el radar el punto más cercano es el final de la línea: la distancia lateral que cuenta
             // es la perpendicular a la prolongación del último segmento, no la distancia al radar.
             if (mejorPasado > 0.0) {

@@ -55,6 +55,8 @@ class DatosRealesTest {
         val avisoAlReves = mutableListOf<String>()
         val distancias = mutableListOf<Double>()
         val conBucle = mutableListOf<String>()
+        var pasosDistancia = 0
+        var pasosAtascados = 0
         for ((i, radar) in conLinea.withIndex()) {
             // En su sentido, a 100 km/h y con 10 m de error de GPS. La simulación prolonga la línea 300 m hacia
             // atrás en línea recta; si la línea da una vuelta (rotonda al principio), esa prolongación caería
@@ -62,8 +64,19 @@ class DatosRealesTest {
             val bucle = vuelveSobreSiMisma(radar.linea!!)
             if (bucle) conBucle += radar.id
             val m = motor()
-            val ev = recorridoSimulado(radar.linea, 100.0, antesM = if (bucle) 0.0 else 300.0, ruidoM = 10.0, semilla = i.toLong())
-                .flatMap { m.procesa(it).eventos }
+            val ev = mutableListOf<Evento>()
+            var anterior: Double? = null
+            for (p in recorridoSimulado(radar.linea, 100.0, antesM = if (bucle) 0.0 else 300.0, ruidoM = 10.0, semilla = i.toLong())) {
+                val res = m.procesa(p)
+                ev += res.eventos
+                // La distancia que ve el conductor baja de forma continua: a 100 km/h son unos 28 m por segundo.
+                val d = res.aviso?.takeIf { it.radar.id == radar.id }?.distanciaM
+                if (d != null && anterior != null) {
+                    pasosDistancia++
+                    if (anterior - d < 8.0) pasosAtascados++
+                }
+                anterior = d
+            }
             val propio = ev.filter { it.radar.id == radar.id }
             val aviso = propio.firstOrNull { it.tipo == TipoEvento.AVISO }
             if (aviso == null) sinAviso += radar.id else distancias += aviso.distanciaM
@@ -81,6 +94,8 @@ class DatosRealesTest {
                 "sin 'pasado' ${sinPasado.size} ${sinPasado.take(10)}, aviso en sentido contrario ${avisoAlReves.size} " +
                 "${avisoAlReves.take(10)}, distancia mediana del aviso ${mediana.toInt()} m; líneas con bucle ${conBucle.size} $conBucle"
         )
+        println("Distancia mostrada: $pasosAtascados de $pasosDistancia segundos sin bajar al menos 8 m")
+        assertTrue("la distancia se queda quieta demasiadas veces: $pasosAtascados de $pasosDistancia", pasosAtascados * 20 <= pasosDistancia)
         assertTrue("radares sin aviso: $sinAviso", sinAviso.isEmpty())
         assertTrue("radares que avisan en sentido contrario: $avisoAlReves", avisoAlReves.isEmpty())
         assertTrue("radares que no se dan por pasados: $sinPasado", sinPasado.size <= conLinea.size / 50)
