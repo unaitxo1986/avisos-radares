@@ -2,8 +2,11 @@ name: Proceso de datos
 
 # 3.1: pruebas de los lectores y lectura de las fuentes oficiales reales.
 # 3.5: el trabajo "sentido" termina publicando datos/salida/radares.json y estado.json.
-# La tarea programada (3.6) se añadirá aquí cuando el proceso esté completo.
+# 3.6: ejecución semanal (lunes). Cada ejecución cambia `generado` en datos/salida/estado.json y se
+# confirma en el repositorio, así que GitHub no desactiva la tarea por falta de actividad (60 días).
 on:
+  schedule:
+    - cron: "17 4 * * 1"
   push:
     branches: [main]
     paths:
