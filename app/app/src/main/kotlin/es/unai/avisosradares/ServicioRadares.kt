@@ -29,7 +29,6 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.TextView
-import java.util.Locale
 
 /**
  * Servicio de la app (fases 4.1 a 4.4): en primer plano y de tipo ubicación, lee el GPS cada segundo, pasa cada
@@ -100,7 +99,10 @@ class ServicioRadares : Service() {
     // Ventana flotante
     private var ventana: LinearLayout? = null
     private var textoVelocidad: TextView? = null
-    private var textoAviso: TextView? = null
+    private var columnaAviso: LinearLayout? = null
+    private var senal: SenalLimite? = null
+    private var vistaDistancia: TextView? = null
+    private var textoEtiqueta: TextView? = null
     private var fondo: GradientDrawable? = null
 
     override fun onBind(intent: Intent?): IBinder? = null
@@ -315,25 +317,52 @@ class ServicioRadares : Service() {
         }
         try {
             val gestor = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+            val dp = resources.displayMetrics.density
+            // Izquierda: velocidad. Derecha (solo con un aviso): señal con el límite, distancia y qué es.
             val caja = LinearLayout(this)
-            caja.orientation = LinearLayout.VERTICAL
-            caja.gravity = Gravity.CENTER_HORIZONTAL
-            caja.setPadding(36, 14, 36, 14)
+            caja.orientation = LinearLayout.HORIZONTAL
+            caja.gravity = Gravity.CENTER_VERTICAL
+            caja.setPadding((14 * dp).toInt(), (8 * dp).toInt(), (14 * dp).toInt(), (8 * dp).toInt())
             val f = GradientDrawable()
-            f.cornerRadius = 36f
+            f.cornerRadius = 18 * dp
             f.setColor(COLOR_NORMAL)
             caja.background = f
+
+            val columnaVelocidad = LinearLayout(this)
+            columnaVelocidad.orientation = LinearLayout.VERTICAL
+            columnaVelocidad.gravity = Gravity.CENTER_HORIZONTAL
             val v = TextView(this)
-            v.textSize = 34f
+            v.textSize = 38f
             v.setTextColor(Color.WHITE)
             v.typeface = Typeface.DEFAULT_BOLD
             v.text = "--"
-            val a = TextView(this)
-            a.textSize = 16f
-            a.setTextColor(Color.WHITE)
-            a.visibility = View.GONE
-            caja.addView(v)
-            caja.addView(a)
+            val unidad = TextView(this)
+            unidad.textSize = 13f
+            unidad.setTextColor(Color.WHITE)
+            unidad.text = "km/h"
+            columnaVelocidad.addView(v)
+            columnaVelocidad.addView(unidad)
+            caja.addView(columnaVelocidad)
+
+            val columna = LinearLayout(this)
+            columna.orientation = LinearLayout.VERTICAL
+            columna.gravity = Gravity.CENTER_HORIZONTAL
+            columna.setPadding((14 * dp).toInt(), 0, 0, 0)
+            val sl = SenalLimite(this, (64 * dp).toInt())
+            val dist = TextView(this)
+            dist.textSize = 20f
+            dist.setTextColor(Color.WHITE)
+            dist.typeface = Typeface.DEFAULT_BOLD
+            dist.gravity = Gravity.CENTER_HORIZONTAL
+            val etiqueta = TextView(this)
+            etiqueta.textSize = 11f
+            etiqueta.setTextColor(Color.WHITE)
+            etiqueta.gravity = Gravity.CENTER_HORIZONTAL
+            columna.addView(sl)
+            columna.addView(dist)
+            columna.addView(etiqueta)
+            columna.visibility = View.GONE
+            caja.addView(columna)
 
             val parametros = WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -349,7 +378,10 @@ class ServicioRadares : Service() {
             gestor.addView(caja, parametros)
             ventana = caja
             textoVelocidad = v
-            textoAviso = a
+            columnaAviso = columna
+            senal = sl
+            vistaDistancia = dist
+            textoEtiqueta = etiqueta
             fondo = f
             pintar(null, null)
         } catch (e: Throwable) {
@@ -388,19 +420,21 @@ class ServicioRadares : Service() {
     }
 
     private fun pintar(velocidadKmh: Double?, aviso: AvisoActivo? = null) {
-        val textoVel = velocidadKmh?.let { "${it.toInt()} km/h" } ?: "-- km/h"
-        val lineaAviso = aviso?.let { textoAviso(it) }
-        estadoTexto = textoVel + (lineaAviso?.let { " · $it" } ?: "") +
-            (if (recorrido != null) " (reproducción)" else "")
+        val textoVel = velocidadKmh?.let { "${it.toInt()}" } ?: "--"
+        estadoTexto = "$textoVel km/h" +
+            (aviso?.let { " · ${etiquetaAviso(it.radar, it.porCarretera)} a ${textoDistancia(it.distanciaM)}, límite ${it.radar.limite ?: "desconocido"}" } ?: "") +
+            (if (recorrido != null) " (simulación)" else "")
         val v = textoVelocidad ?: return
         v.text = textoVel
-        val a = textoAviso
-        if (a != null) {
-            if (lineaAviso == null) {
-                a.visibility = View.GONE
+        val columna = columnaAviso
+        if (columna != null) {
+            if (aviso == null) {
+                columna.visibility = View.GONE
             } else {
-                a.text = lineaAviso
-                a.visibility = View.VISIBLE
+                senal?.limite = aviso.radar.limite
+                vistaDistancia?.text = textoDistancia(aviso.distanciaM)
+                textoEtiqueta?.text = etiquetaAviso(aviso.radar, aviso.porCarretera)
+                columna.visibility = View.VISIBLE
             }
         }
         fondo?.setColor(
@@ -412,23 +446,6 @@ class ServicioRadares : Service() {
         )
     }
 
-    /**
-     * "RADAR 350 m · 100"; "RADAR? 350 m" si el sentido no está confirmado (aviso por cercanía); "TRAMO 350 m"
-     * en los tramos; "(rotatorio)" en las cabinas que pueden estar vacías.
-     */
-    private fun textoAviso(a: AvisoActivo): String {
-        val tipo = when {
-            a.radar.tipo == "tramo" || a.radar.tipo == "tramo_extremo" -> "TRAMO"
-            a.radar.tipo == "fotorrojo" -> "SEMÁFORO"
-            else -> "RADAR"
-        }
-        val sentido = if (a.porCarretera) "" else "?"
-        val distancia = String.format(Locale.ROOT, "%d m", (a.distanciaM / 10).toInt() * 10)
-        val limite = a.radar.limite?.let { " · $it" } ?: ""
-        val rotatoria = if (a.radar.rotatoria) " (rotatorio)" else ""
-        return "$tipo$sentido $distancia$limite$rotatoria"
-    }
-
     private fun quitarVentana() {
         val v = ventana ?: return
         try {
@@ -438,7 +455,10 @@ class ServicioRadares : Service() {
         }
         ventana = null
         textoVelocidad = null
-        textoAviso = null
+        columnaAviso = null
+        senal = null
+        vistaDistancia = null
+        textoEtiqueta = null
     }
 }
 
