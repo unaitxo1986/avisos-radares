@@ -92,11 +92,11 @@ class PruebasTramos(unittest.TestCase):
         self.assertTrue(any(r[1] is not None for r in serv.rutas))  # probó también fijando la llegada
 
     def test_tolerancia_del_kilometraje(self):
-        self.assertTrue(tramos._cuadra(3450, 3000))  # 15 % de 3000 = 450 m
-        self.assertFalse(tramos._cuadra(3500, 3000))
+        self.assertTrue(tramos._cuadra(3600, 3000))  # 20 % de 3000 = 600 m
+        self.assertFalse(tramos._cuadra(3700, 3000))
         self.assertTrue(tramos._cuadra(1500, 1250))    # mínimo 300 m
-        self.assertTrue(tramos._cuadra(11500, 10000))   # 15 %
-        self.assertFalse(tramos._cuadra(11600, 10000))
+        self.assertTrue(tramos._cuadra(12000, 10000))
+        self.assertFalse(tramos._cuadra(12100, 10000))
 
     def test_limite_que_cambia_dentro_del_tramo_usa_el_mas_bajo(self):
         t = tramos.lista_tramos([tramo(x1=4000, ref_m=4000)])[0]
@@ -139,6 +139,49 @@ class PruebasTramos(unittest.TestCase):
         xs = [round(xy(p)[0]) for p in tramos.muestras(linea)]
         self.assertEqual(xs, [500, 1500, 2500])
         self.assertEqual(len(tramos.muestras([P(0), P(300)])), 1)
+
+
+class ServicioFinEnLaOtraCalzada(ServicioFalso):
+    """Sin calzada de llegada fijada, OSRM pone el fin en la calzada contraria: la ruta pasa junto al fin, da la
+    vuelta 300 m más allá y vuelve por la otra calzada (como Trabakua sentido Markina el 18/11)."""
+
+    def ruta_geom(self, o, rumbo_o, d, rumbo_d=None):
+        self.rutas.append((rumbo_o, rumbo_d))
+        x0, _ = xy(o)
+        x1, _ = xy(d)
+        if abs(rumbo_o - 90) >= 30:
+            return None
+        if rumbo_d is None:
+            pts = [P(x0, -15), P(x1 + 300, -15), P(x1 + 300, 15), P(x1, 15)]
+            return {"dist": round(x1 - x0 + 630), "puntos": pts}
+        if abs(rumbo_d - 90) < 30:
+            return {"dist": round(x1 - x0), "puntos": [P(x0, -15), P(x1, -15)]}
+        return None
+
+
+class PruebasVuelta(unittest.TestCase):
+    def test_ruta_que_vuelve_se_repite_fijando_la_llegada(self):
+        t = tramos.lista_tramos([tramo(ref_m=2800)])[0]
+        serv = ServicioFinEnLaOtraCalzada(autovia())
+        res = tramos.calcular_uno(t, serv)
+        self.assertEqual(res["fiab"], "alta", res)
+        self.assertAlmostEqual(res["largo_m"], 3000, delta=5)
+        self.assertFalse(tramos.vuelve(res["linea"]))
+
+    def test_vuelve(self):
+        self.assertFalse(tramos.vuelve([P(0), P(1000), P(2000)]))
+        self.assertTrue(tramos.vuelve([P(0, -15), P(1300, -15), P(1300, 15), P(1000, 15)]))
+        # Una curva cerrada corta (menos de 200 m de recorrido entre los dos puntos cercanos) no cuenta.
+        self.assertFalse(tramos.vuelve([P(0, -15), P(50, -15), P(50, 15), P(0, 15)]))
+
+    def test_sin_nodos_cerca_usa_el_recuadro_grande(self):
+        class SinNodosCerca(ServicioFalso):
+            def vias_cerca(self, lat, lon):
+                return []
+        t = tramos.lista_tramos([tramo()])[0]
+        res = tramos.calcular_uno(t, SinNodosCerca(autovia()))
+        self.assertEqual(res["fiab"], "alta", res)
+        self.assertEqual(res["limite"]["limite"], 120)
 
 
 class PruebasPublicarTramos(unittest.TestCase):

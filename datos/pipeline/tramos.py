@@ -7,7 +7,10 @@ Un radar de tramo mide la velocidad media entre dos cámaras. Para que la app la
    tiene que dar la vuelta y sale más larga. Se acepta si su longitud cuadra con la del kilometraje
    oficial (diferencia de menos de `TOL_ABS_M` o de `TOL_REL`); si no, se repite fijando también la
    calzada de llegada. Si sigue sin cuadrar, el tramo es `dudosa` y la app avisa por cercanía al inicio
-   sin velocidad media.
+   sin velocidad media. Además, la ruta **no puede volver sobre sí misma** (pasar a menos de 30 m de un
+   punto suyo que quedó más de 200 m atrás): eso es que OSRM ha puesto el fin en la calzada contraria y la
+   ruta da la vuelta para llegar (pasó en Trabakua sentido Markina: 3.220 m en vez de unos 2.815). En ese
+   caso también se repite fijando la calzada de llegada. Las tolerancias son criterios propios **[sin verificar]**.
 2. **El tramo de aproximación al inicio**: el mismo cálculo de 3.3 (500 m hacia atrás desde la cámara
    de inicio), con la calzada elegida en el paso 1.
 3. **El límite**: el oficial si la fuente lo da (Trabakua, 60); si no (la DGT no lo publica), el
@@ -35,7 +38,9 @@ from .sentido import candidatas
 from .servicios import Pendiente
 
 TOL_ABS_M = 300.0      # diferencia admitida entre la ruta y el kilometraje...
-TOL_REL = 0.15         # ...o esta proporción del largo oficial, lo que sea mayor
+TOL_REL = 0.20         # ...o esta proporción del largo oficial, lo que sea mayor (N-629: +17 % sin dar vueltas)
+VUELVE_LEJOS_M = 200.0 # la ruta "vuelve sobre sí misma" si pasa a menos de VUELVE_CERCA_M de un trozo
+VUELVE_CERCA_M = 40.0  # suyo que quedó más de VUELVE_LEJOS_M atrás (vuelta para entrar por la otra calzada)
 PASO_MUESTRA_M = 1000.0
 DIST_VIA_MUESTRA_M = 25.0
 MIN_ACUERDO = 0.8
@@ -73,6 +78,34 @@ def _cuadra(dist, ref):
     return ref is None or abs(dist - ref) <= max(TOL_ABS_M, TOL_REL * ref)
 
 
+def vuelve(linea, lejos=VUELVE_LEJOS_M, cerca=VUELVE_CERCA_M):
+    """¿Pasa algún punto de la línea a menos de `cerca` m de un trozo suyo que quedó más de `lejos` m atrás?
+
+    Se mide de punto a segmento, no de punto a punto: la línea está simplificada y en las rectas solo quedan
+    los extremos."""
+    acum = [0.0]
+    for a, b in zip(linea, linea[1:]):
+        acum.append(acum[-1] + haversine(a[0], a[1], b[0], b[1]))
+    for i in range(len(linea)):
+        for j in range(len(linea) - 1):
+            if acum[j + 1] > acum[i] - lejos:
+                break
+            if proyectar(linea[i][0], linea[i][1], linea[j], linea[j + 1])[0] < cerca:
+                return True
+    return False
+
+
+def _buena(ruta, ref):
+    return _cuadra(ruta[0], ref) and not vuelve(ruta[2]["puntos"])
+
+
+def _candidatas(punto, serv):
+    """Calzadas candidatas junto a un punto. En rectas largas puede no haber ningún nodo de OpenStreetMap
+    en el recuadro pequeño de 3.2 (la API solo devuelve vías con algún nodo dentro): se usa el grande de 3.3."""
+    c = candidatas(punto, serv.vias_cerca(punto["lat"], punto["lon"]))
+    return c or candidatas(punto, serv.vias_aprox(punto["lat"], punto["lon"]))
+
+
 def _rutas(t, serv, cands, cands_fin):
     """[(dist, candidata de inicio, ruta)] de cada candidata de inicio (y de llegada, si se dan)."""
     fin = (t["lat_fin"], t["lon_fin"])
@@ -89,27 +122,28 @@ def _rutas(t, serv, cands, cands_fin):
 
 
 def elegir_linea(t, serv):
-    """(candidata de inicio, línea, motivos). Línea None si no hay una ruta que cuadre."""
-    vias = serv.vias_cerca(t["lat"], t["lon"])
-    cands = candidatas(t, vias)
+    """(candidata de inicio, línea, motivos). Línea None si no hay una ruta buena."""
+    cands = _candidatas(t, serv)
     if not cands:
         return None, None, ["sin carretera de OpenStreetMap a menos de 50 m del inicio"]
     ref = t.get("largo_ref_m")
     rutas = _rutas(t, serv, cands, None)
-    mejor = min(rutas, key=lambda x: x[0]) if rutas else None
-    if mejor is None or not _cuadra(mejor[0], ref):
+    buenas = [x for x in rutas if _buena(x, ref)]
+    if not buenas:
         fin = {"lat": t["lat_fin"], "lon": t["lon_fin"], "carretera": t.get("carretera")}
-        cands_fin = candidatas(fin, serv.vias_cerca(fin["lat"], fin["lon"]))
+        cands_fin = _candidatas(fin, serv)
         if cands_fin:
             rutas += _rutas(t, serv, cands, cands_fin)
-            validas = [x for x in rutas if _cuadra(x[0], ref)]
-            mejor = min(validas or rutas, key=lambda x: x[0]) if rutas else None
-    if mejor is None:
+            buenas = [x for x in rutas if _buena(x, ref)]
+    if buenas:
+        dist, c, g = min(buenas, key=lambda x: x[0])
+        return c, simplificar(g["puntos"], SIMPLIFICAR_TRAMO_M), []
+    if not rutas:
         return None, None, ["OSRM no da ruta entre el inicio y el fin"]
-    dist, c, g = mejor
+    dist, c, g = min(rutas, key=lambda x: x[0])
     if not _cuadra(dist, ref):
         return c, None, [f"la ruta mide {dist} m y el kilometraje oficial {ref} m"]
-    return c, simplificar(g["puntos"], SIMPLIFICAR_TRAMO_M), []
+    return c, None, [f"la ruta ({dist} m) vuelve sobre sí misma"]
 
 
 def muestras(linea, paso=PASO_MUESTRA_M):
@@ -141,7 +175,8 @@ def limite_tramo(t, linea, serv):
     pts = muestras(linea)
     valores = []
     for lat, lon in pts:
-        n = _maxspeed_en(t, lat, lon, serv.vias_cerca(round(lat, 5), round(lon, 5)))
+        vias = serv.vias_cerca(round(lat, 5), round(lon, 5)) or serv.vias_aprox(round(lat, 5), round(lon, 5))
+        n = _maxspeed_en(t, lat, lon, vias)
         if n:
             valores.append(n)
     cuenta = Counter(valores)
