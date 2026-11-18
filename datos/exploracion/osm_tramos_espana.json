@@ -1,0 +1,6980 @@
+{
+ "relaciones_velocidad_media": 306,
+ "camaras": 2511,
+ "tramos": [
+  {
+   "id": "dgt-CVM_161274",
+   "carretera": "Z-40",
+   "pk": 26.6,
+   "pk_fin": 29.7,
+   "inicio": [
+    41.6088,
+    -0.915697
+   ],
+   "fin": [
+    41.6192,
+    -0.9496
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 17135243,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2024-10-04",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 11574666535,
+       "lat": 41.6087708,
+       "lon": -0.9155718,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 2378266882,
+       "lat": 41.6087959,
+       "lon": -0.9155533,
+       "tags": {
+        "direction": "280",
+        "highway": "speed_camera",
+        "maxspeed": "120",
+        "note": "radar de tramo",
+        "source": "survey"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 11574666536,
+       "lat": 41.6191942,
+       "lon": -0.9495213,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 992002534,
+       "lat": 41.6192295,
+       "lon": -0.949505,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "120",
+        "note": "radar de tramo"
+       }
+      }
+     ],
+     "a_m": 7
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 2378266882,
+      "lat": 41.6087959,
+      "lon": -0.9155533,
+      "tags": {
+       "direction": "280",
+       "highway": "speed_camera",
+       "maxspeed": "120",
+       "note": "radar de tramo",
+       "source": "survey"
+      },
+      "a_m": 12
+     }
+    ],
+    "fin": [
+     {
+      "id": 992002534,
+      "lat": 41.6192295,
+      "lon": -0.949505,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "120",
+       "note": "radar de tramo"
+      },
+      "a_m": 9
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161319",
+   "carretera": "AP-6",
+   "pk": 53.126,
+   "pk_fin": 56.608,
+   "inicio": [
+    40.699097,
+    -4.128269
+   ],
+   "fin": [
+    40.716904,
+    -4.160718
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 6319077,
+     "tags": {
+      "description": "Radar de tramo 100 kmh PK 56,8 - 49,2 Madrid",
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2025-09-28",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 13179124741,
+       "lat": 40.7142852,
+       "lon": -4.1651569,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 3324313264,
+       "lat": 40.7142726,
+       "lon": -4.1652422,
+       "tags": {
+        "description": "PREaviso AP-6 PK 56,8 Ext Túnel Guadarrama DIR Madrid.Radar de tramo hasta viaducto de La Jarosa (Guadarrama) PK 49,2",
+        "direction": "80",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13179124740,
+       "lat": 40.6698806,
+       "lon": -4.1074902,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 776424437,
+       "lat": 40.6699103,
+       "lon": -4.1075512,
+       "tags": {
+        "direction": "120",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 473
+    },
+    {
+     "id": 16535058,
+     "tags": {
+      "description": "Radar de tramo AP-6 Km 53.1 a 56.6 Túnel II DIR Coruña",
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2025-09-28",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 11279381209,
+       "lat": 40.6991001,
+       "lon": -4.1284237,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 992007020,
+       "lat": 40.6990652,
+       "lon": -4.128397,
+       "tags": {
+        "direction": "330",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13179124743,
+       "lat": 40.7168164,
+       "lon": -4.1608743,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 25997854,
+       "lat": 40.7168223,
+       "lon": -4.1607229,
+       "tags": {
+        "description": "AP-6 Km 53.1 a 56.6 Túnel II DIR Coruña",
+        "direction": "260",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 9
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 992007020,
+      "lat": 40.6990652,
+      "lon": -4.128397,
+      "tags": {
+       "direction": "330",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 11
+     }
+    ],
+    "fin": [
+     {
+      "id": 25997854,
+      "lat": 40.7168223,
+      "lon": -4.1607229,
+      "tags": {
+       "description": "AP-6 Km 53.1 a 56.6 Túnel II DIR Coruña",
+       "direction": "260",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 9
+     },
+     {
+      "id": 3324313264,
+      "lat": 40.7142726,
+      "lon": -4.1652422,
+      "tags": {
+       "description": "PREaviso AP-6 PK 56,8 Ext Túnel Guadarrama DIR Madrid.Radar de tramo hasta viaducto de La Jarosa (Guadarrama) PK 49,2",
+       "direction": "80",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 480
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161340",
+   "carretera": "AP-6",
+   "pk": 56.815,
+   "pk_fin": 49.263,
+   "inicio": [
+    40.71429,
+    -4.16522
+   ],
+   "fin": [
+    40.66991,
+    -4.10756
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 6319077,
+     "tags": {
+      "description": "Radar de tramo 100 kmh PK 56,8 - 49,2 Madrid",
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2025-09-28",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 13179124741,
+       "lat": 40.7142852,
+       "lon": -4.1651569,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 3324313264,
+       "lat": 40.7142726,
+       "lon": -4.1652422,
+       "tags": {
+        "description": "PREaviso AP-6 PK 56,8 Ext Túnel Guadarrama DIR Madrid.Radar de tramo hasta viaducto de La Jarosa (Guadarrama) PK 49,2",
+        "direction": "80",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13179124740,
+       "lat": 40.6698806,
+       "lon": -4.1074902,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 776424437,
+       "lat": 40.6699103,
+       "lon": -4.1075512,
+       "tags": {
+        "direction": "120",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 1
+    },
+    {
+     "id": 16535058,
+     "tags": {
+      "description": "Radar de tramo AP-6 Km 53.1 a 56.6 Túnel II DIR Coruña",
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2025-09-28",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 11279381209,
+       "lat": 40.6991001,
+       "lon": -4.1284237,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 992007020,
+       "lat": 40.6990652,
+       "lon": -4.128397,
+       "tags": {
+        "direction": "330",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13179124743,
+       "lat": 40.7168164,
+       "lon": -4.1608743,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 25997854,
+       "lat": 40.7168223,
+       "lon": -4.1607229,
+       "tags": {
+        "description": "AP-6 Km 53.1 a 56.6 Túnel II DIR Coruña",
+        "direction": "260",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 461
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 3324313264,
+      "lat": 40.7142726,
+      "lon": -4.1652422,
+      "tags": {
+       "description": "PREaviso AP-6 PK 56,8 Ext Túnel Guadarrama DIR Madrid.Radar de tramo hasta viaducto de La Jarosa (Guadarrama) PK 49,2",
+       "direction": "80",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 3
+     },
+     {
+      "id": 25997854,
+      "lat": 40.7168223,
+      "lon": -4.1607229,
+      "tags": {
+       "description": "AP-6 Km 53.1 a 56.6 Túnel II DIR Coruña",
+       "direction": "260",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 471
+     }
+    ],
+    "fin": [
+     {
+      "id": 776424437,
+      "lat": 40.6699103,
+      "lon": -4.1075512,
+      "tags": {
+       "direction": "120",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 1
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161341",
+   "carretera": "A-4",
+   "pk": 248.359,
+   "pk_fin": 245.229,
+   "inicio": [
+    38.378616,
+    -3.508122
+   ],
+   "fin": [
+    38.405853,
+    -3.4982207
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 15974337,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-20",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 10973705314,
+       "lat": 38.3782574,
+       "lon": -3.5084329,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 10902022991,
+       "lat": 38.3786279,
+       "lon": -3.5080831,
+       "tags": {
+        "direction": "30",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 10973705315,
+       "lat": 38.4058465,
+       "lon": -3.4981505,
+       "tags": {
+        "direction": "350",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 1147348839,
+       "lat": 38.4058271,
+       "lon": -3.4982495,
+       "tags": {}
+      }
+     ],
+     "a_m": 4
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 10902022991,
+      "lat": 38.3786279,
+      "lon": -3.5080831,
+      "tags": {
+       "direction": "30",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 4
+     }
+    ],
+    "fin": [
+     {
+      "id": 10973705315,
+      "lat": 38.4058465,
+      "lon": -3.4981505,
+      "tags": {
+       "direction": "350",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 6
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161420",
+   "carretera": "AG-55",
+   "pk": 14.848,
+   "pk_fin": 11.713,
+   "inicio": [
+    43.278763,
+    -8.526375
+   ],
+   "fin": [
+    43.28963,
+    -8.498611
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 19366197,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-07",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13009336499,
+       "lat": 43.2788691,
+       "lon": -8.5262746,
+       "tags": {
+        "direction": "340",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 285172025,
+       "lat": 43.278789,
+       "lon": -8.5263657,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13009350423,
+       "lat": 43.2895658,
+       "lon": -8.4987488,
+       "tags": {
+        "direction": "60",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 285172357,
+       "lat": 43.2896541,
+       "lon": -8.4985485,
+       "tags": {}
+      }
+     ],
+     "a_m": 3
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13009336499,
+      "lat": 43.2788691,
+      "lon": -8.5262746,
+      "tags": {
+       "direction": "340",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 14
+     }
+    ],
+    "fin": [
+     {
+      "id": 13009350423,
+      "lat": 43.2895658,
+      "lon": -8.4987488,
+      "tags": {
+       "direction": "60",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 13
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161427",
+   "carretera": "A-8",
+   "pk": 550.28,
+   "pk_fin": 545.115,
+   "inicio": [
+    43.377068,
+    -7.407799
+   ],
+   "fin": [
+    43.3832,
+    -7.349219
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20181703,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-06",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 2637918466,
+       "lat": 43.3815883,
+       "lon": -7.353676,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13528971890,
+       "lat": 43.3815229,
+       "lon": -7.3539987,
+       "tags": {
+        "direction": "260",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 7126154511,
+       "lat": 43.3776,
+       "lon": -7.4071856,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 13528971892,
+       "lat": 43.3776233,
+       "lon": -7.4072919,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 74
+    },
+    {
+     "id": 20181704,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-06",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 2637918518,
+       "lat": 43.3831965,
+       "lon": -7.3494066,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13528971889,
+       "lat": 43.383085,
+       "lon": -7.3494676,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 2636394526,
+       "lat": 43.3770294,
+       "lon": -7.4079683,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13528971891,
+       "lat": 43.3771558,
+       "lon": -7.4078869,
+       "tags": {
+        "direction": "70",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 12
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13528971891,
+      "lat": 43.3771558,
+      "lon": -7.4078869,
+      "tags": {
+       "direction": "70",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 12
+     },
+     {
+      "id": 13528971892,
+      "lat": 43.3776233,
+      "lon": -7.4072919,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 74
+     }
+    ],
+    "fin": [
+     {
+      "id": 13528971889,
+      "lat": 43.383085,
+      "lon": -7.3494676,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 24
+     },
+     {
+      "id": 13528971890,
+      "lat": 43.3815229,
+      "lon": -7.3539987,
+      "tags": {
+       "direction": "260",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 428
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161436",
+   "carretera": "AP-9F",
+   "pk": 29.935,
+   "pk_fin": 31.137,
+   "inicio": [
+    43.4824,
+    -8.157314
+   ],
+   "fin": [
+    43.49301,
+    -8.156919
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 1907383,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-06",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 11246943987,
+       "lat": 43.4823519,
+       "lon": -8.1572732,
+       "tags": {
+        "direction": "10",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 8040893769,
+       "lat": 43.4824581,
+       "lon": -8.1573094,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 2378267338,
+       "lat": 43.4930099,
+       "lon": -8.1570102,
+       "tags": {
+        "direction": "330",
+        "highway": "speed_camera",
+        "maxspeed": "90",
+        "source": "Survey"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13436370606,
+       "lat": 43.4930575,
+       "lon": -8.1570467,
+       "tags": {}
+      }
+     ],
+     "a_m": 6
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 11246943987,
+      "lat": 43.4823519,
+      "lon": -8.1572732,
+      "tags": {
+       "direction": "10",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 6
+     }
+    ],
+    "fin": [
+     {
+      "id": 2378267338,
+      "lat": 43.4930099,
+      "lon": -8.1570102,
+      "tags": {
+       "direction": "330",
+       "highway": "speed_camera",
+       "maxspeed": "90",
+       "source": "Survey"
+      },
+      "a_m": 7
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161445",
+   "carretera": "AG-64",
+   "pk": 18.43,
+   "pk_fin": 12.825,
+   "inicio": [
+    43.499447,
+    -8.034757
+   ],
+   "fin": [
+    43.524937,
+    -8.086475
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20171243,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "120",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-04",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 1806710700,
+       "lat": 43.4993401,
+       "lon": -8.0344237,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13523727022,
+       "lat": 43.4993592,
+       "lon": -8.0347209,
+       "tags": {
+        "direction": "270",
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 1806776839,
+       "lat": 43.5251918,
+       "lon": -8.0874039,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 1806776799,
+       "lat": 43.5252247,
+       "lon": -8.087359,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13523727021,
+       "lat": 43.524906,
+       "lon": -8.0865301,
+       "tags": {
+        "direction": "290",
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      }
+     ],
+     "a_m": 6
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13523727022,
+      "lat": 43.4993592,
+      "lon": -8.0347209,
+      "tags": {
+       "direction": "270",
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 10
+     }
+    ],
+    "fin": [
+     {
+      "id": 13523727021,
+      "lat": 43.524906,
+      "lon": -8.0865301,
+      "tags": {
+       "direction": "290",
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 6
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161489",
+   "carretera": "AP-66",
+   "pk": 99.15,
+   "pk_fin": 101.5,
+   "inicio": [
+    42.863,
+    -5.8757
+   ],
+   "fin": [
+    42.8471,
+    -5.8753
+   ],
+   "tramo_fiab": "dudosa",
+   "relaciones": [
+    {
+     "id": 20142909,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-27",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 992004756,
+       "lat": 42.8613588,
+       "lon": -5.8738843,
+       "tags": {
+        "direction": "160",
+        "highway": "speed_camera",
+        "maxspeed": "100",
+        "note": "TUCE A300 100 AP-66 Km 101.2 Ext Túnel Barrios Luna DIR León"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 31060205,
+       "lat": 42.8612735,
+       "lon": -5.8738532,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 31060210,
+       "lat": 42.8471403,
+       "lon": -5.8751978,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 2378267200,
+       "lat": 42.8471214,
+       "lon": -5.8752047,
+       "tags": {
+        "direction": "200",
+        "highway": "speed_camera",
+        "maxspeed": "100",
+        "source": "Survey"
+       }
+      }
+     ],
+     "a_m": 8
+    },
+    {
+     "id": 20142910,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-27",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 992004756,
+       "lat": 42.8613588,
+       "lon": -5.8738843,
+       "tags": {
+        "direction": "160",
+        "highway": "speed_camera",
+        "maxspeed": "100",
+        "note": "TUCE A300 100 AP-66 Km 101.2 Ext Túnel Barrios Luna DIR León"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 31060205,
+       "lat": 42.8612735,
+       "lon": -5.8738532,
+       "tags": {}
+      },
+      {
+       "rol": "from",
+       "id": 31060210,
+       "lat": 42.8471403,
+       "lon": -5.8751978,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 2378267200,
+       "lat": 42.8471214,
+       "lon": -5.8752047,
+       "tags": {
+        "direction": "200",
+        "highway": "speed_camera",
+        "maxspeed": "100",
+        "source": "Survey"
+       }
+      }
+     ],
+     "a_m": 8
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 992004756,
+      "lat": 42.8613588,
+      "lon": -5.8738843,
+      "tags": {
+       "direction": "160",
+       "highway": "speed_camera",
+       "maxspeed": "100",
+       "note": "TUCE A300 100 AP-66 Km 101.2 Ext Túnel Barrios Luna DIR León"
+      },
+      "a_m": 235
+     }
+    ],
+    "fin": [
+     {
+      "id": 2378267200,
+      "lat": 42.8471214,
+      "lon": -5.8752047,
+      "tags": {
+       "direction": "200",
+       "highway": "speed_camera",
+       "maxspeed": "100",
+       "source": "Survey"
+      },
+      "a_m": 8
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161570",
+   "carretera": "A-7",
+   "pk": 1024.854,
+   "pk_fin": 1019.7,
+   "inicio": [
+    36.498386,
+    -4.687859
+   ],
+   "fin": [
+    36.508537,
+    -4.637342
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 6464184,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-10-29",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 4351691052,
+       "lat": 36.5085774,
+       "lon": -4.6374476,
+       "tags": {
+        "description": "Inicio de Radar de Tramo. Velocidad Maxima 80Km/h durante 5Km. \nStart of Section Radar. Maximum speed 80Km/h for 5Km",
+        "direction": "220",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1081042199,
+       "lat": 36.5085398,
+       "lon": -4.6374882,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 4338718345,
+       "lat": 36.4984503,
+       "lon": -4.6879997,
+       "tags": {
+        "description": "Fin de Radar de Tramo. \nEnd of Section Radar.",
+        "direction": "210",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 1254365345,
+       "lat": 36.4983823,
+       "lon": -4.6880547,
+       "tags": {}
+      }
+     ],
+     "a_m": 10
+    },
+    {
+     "id": 6464310,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-10-29",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 2378266360,
+       "lat": 36.4984093,
+       "lon": -4.6878919,
+       "tags": {
+        "description": "Inicio de Radar de Tramo. Velocidad Maxima 80Km/h durante 5Km. \nStart of Section Radar. Maximum speed 80Km/h for 5Km",
+        "direction": "35",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1254365307,
+       "lat": 36.4984705,
+       "lon": -4.6878403,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 4338712564,
+       "lat": 36.5085213,
+       "lon": -4.6373431,
+       "tags": {
+        "description": "Fin de Radar de Tramo.\nEnd of Section Radar.",
+        "direction": "35",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 192696350,
+       "lat": 36.5085916,
+       "lon": -4.6372724,
+       "tags": {}
+      }
+     ],
+     "a_m": 2
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 2378266360,
+      "lat": 36.4984093,
+      "lon": -4.6878919,
+      "tags": {
+       "description": "Inicio de Radar de Tramo. Velocidad Maxima 80Km/h durante 5Km. \nStart of Section Radar. Maximum speed 80Km/h for 5Km",
+       "direction": "35",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 4
+     },
+     {
+      "id": 4338718345,
+      "lat": 36.4984503,
+      "lon": -4.6879997,
+      "tags": {
+       "description": "Fin de Radar de Tramo. \nEnd of Section Radar.",
+       "direction": "210",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 14
+     }
+    ],
+    "fin": [
+     {
+      "id": 4338712564,
+      "lat": 36.5085213,
+      "lon": -4.6373431,
+      "tags": {
+       "description": "Fin de Radar de Tramo.\nEnd of Section Radar.",
+       "direction": "35",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 2
+     },
+     {
+      "id": 4351691052,
+      "lat": 36.5085774,
+      "lon": -4.6374476,
+      "tags": {
+       "description": "Inicio de Radar de Tramo. Velocidad Maxima 80Km/h durante 5Km. \nStart of Section Radar. Maximum speed 80Km/h for 5Km",
+       "direction": "220",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 10
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161588",
+   "carretera": "A-7",
+   "pk": 1019.7,
+   "pk_fin": 1024.854,
+   "inicio": [
+    36.5086,
+    -4.63743
+   ],
+   "fin": [
+    36.49846,
+    -4.687993
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 6464184,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-10-29",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 4351691052,
+       "lat": 36.5085774,
+       "lon": -4.6374476,
+       "tags": {
+        "description": "Inicio de Radar de Tramo. Velocidad Maxima 80Km/h durante 5Km. \nStart of Section Radar. Maximum speed 80Km/h for 5Km",
+        "direction": "220",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1081042199,
+       "lat": 36.5085398,
+       "lon": -4.6374882,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 4338718345,
+       "lat": 36.4984503,
+       "lon": -4.6879997,
+       "tags": {
+        "description": "Fin de Radar de Tramo. \nEnd of Section Radar.",
+        "direction": "210",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 1254365345,
+       "lat": 36.4983823,
+       "lon": -4.6880547,
+       "tags": {}
+      }
+     ],
+     "a_m": 1
+    },
+    {
+     "id": 6464310,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-10-29",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 2378266360,
+       "lat": 36.4984093,
+       "lon": -4.6878919,
+       "tags": {
+        "description": "Inicio de Radar de Tramo. Velocidad Maxima 80Km/h durante 5Km. \nStart of Section Radar. Maximum speed 80Km/h for 5Km",
+        "direction": "35",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1254365307,
+       "lat": 36.4984705,
+       "lon": -4.6878403,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 4338712564,
+       "lat": 36.5085213,
+       "lon": -4.6373431,
+       "tags": {
+        "description": "Fin de Radar de Tramo.\nEnd of Section Radar.",
+        "direction": "35",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 192696350,
+       "lat": 36.5085916,
+       "lon": -4.6372724,
+       "tags": {}
+      }
+     ],
+     "a_m": 11
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 4351691052,
+      "lat": 36.5085774,
+      "lon": -4.6374476,
+      "tags": {
+       "description": "Inicio de Radar de Tramo. Velocidad Maxima 80Km/h durante 5Km. \nStart of Section Radar. Maximum speed 80Km/h for 5Km",
+       "direction": "220",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 3
+     },
+     {
+      "id": 4338712564,
+      "lat": 36.5085213,
+      "lon": -4.6373431,
+      "tags": {
+       "description": "Fin de Radar de Tramo.\nEnd of Section Radar.",
+       "direction": "35",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 12
+     }
+    ],
+    "fin": [
+     {
+      "id": 4338718345,
+      "lat": 36.4984503,
+      "lon": -4.6879997,
+      "tags": {
+       "description": "Fin de Radar de Tramo. \nEnd of Section Radar.",
+       "direction": "210",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 1
+     },
+     {
+      "id": 2378266360,
+      "lat": 36.4984093,
+      "lon": -4.6878919,
+      "tags": {
+       "description": "Inicio de Radar de Tramo. Velocidad Maxima 80Km/h durante 5Km. \nStart of Section Radar. Maximum speed 80Km/h for 5Km",
+       "direction": "35",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 11
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161609",
+   "carretera": "A-45",
+   "pk": 134.178,
+   "pk_fin": 140.276,
+   "inicio": [
+    36.82034,
+    -4.445579
+   ],
+   "fin": [
+    36.77529,
+    -4.425749
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 19982489,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-17",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 538850610,
+       "lat": 36.8204066,
+       "lon": -4.4455375,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 538850504,
+       "lat": 36.7753943,
+       "lon": -4.4256876,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 6573462986,
+       "lat": 36.7753675,
+       "lon": -4.4256865,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 5574813318,
+       "lat": 36.8203515,
+       "lon": -4.4455601,
+       "tags": {
+        "direction": "2000",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      }
+     ],
+     "a_m": 2
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 5574813318,
+      "lat": 36.8203515,
+      "lon": -4.4455601,
+      "tags": {
+       "direction": "2000",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 2
+     }
+    ],
+    "fin": [
+     {
+      "id": 538850504,
+      "lat": 36.7753943,
+      "lon": -4.4256876,
+      "tags": {
+       "direction": "180",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 13
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_161629",
+   "carretera": "A-45",
+   "pk": 125.958,
+   "pk_fin": 128.78,
+   "inicio": [
+    36.883026,
+    -4.423358
+   ],
+   "fin": [
+    36.862186,
+    -4.437532
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 17907416,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2024-08-04",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 538857071,
+       "lat": 36.8837396,
+       "lon": -4.4231235,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 12092134372,
+       "lat": 36.8622315,
+       "lon": -4.4376048,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12092129737,
+       "lat": 36.883049,
+       "lon": -4.4234455,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 538853952,
+       "lat": 36.86233,
+       "lon": -4.437606,
+       "tags": {
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      }
+     ],
+     "a_m": 8
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 12092129737,
+      "lat": 36.883049,
+      "lon": -4.4234455,
+      "tags": {
+       "direction": "180",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 8
+     }
+    ],
+    "fin": [
+     {
+      "id": 538853952,
+      "lat": 36.86233,
+      "lon": -4.437606,
+      "tags": {
+       "direction": "190",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 17
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_162907",
+   "carretera": "N-525",
+   "pk": 242.248,
+   "pk_fin": 245.985,
+   "inicio": [
+    42.368458,
+    -7.854629
+   ],
+   "fin": [
+    42.39616,
+    -7.850268
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20183369,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "70",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-06",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 1330868270,
+       "lat": 42.3683053,
+       "lon": -7.8547612,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 992003506,
+       "lat": 42.3683607,
+       "lon": -7.854646,
+       "tags": {
+        "direction": "10",
+        "highway": "speed_camera",
+        "maxspeed": "70",
+        "note": "F080 CORT YTQL N-525 Km 242.23 Orense-O Viso DIR Santiago CL"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 181312168,
+       "lat": 42.3957993,
+       "lon": -7.8499603,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13529839265,
+       "lat": 42.3957501,
+       "lon": -7.8498182,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "70"
+       }
+      }
+     ],
+     "a_m": 11
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 992003506,
+      "lat": 42.3683607,
+      "lon": -7.854646,
+      "tags": {
+       "direction": "10",
+       "highway": "speed_camera",
+       "maxspeed": "70",
+       "note": "F080 CORT YTQL N-525 Km 242.23 Orense-O Viso DIR Santiago CL"
+      },
+      "a_m": 11
+     }
+    ],
+    "fin": [
+     {
+      "id": 13529839265,
+      "lat": 42.3957501,
+      "lon": -7.8498182,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "70"
+      },
+      "a_m": 59
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_162916",
+   "carretera": "N-550",
+   "pk": 54.627,
+   "pk_fin": 56.116,
+   "inicio": [
+    42.926373,
+    -8.4832
+   ],
+   "fin": [
+    42.917484,
+    -8.495357
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 7431334,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-05",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 5004629030,
+       "lat": 42.9263376,
+       "lon": -8.4830052,
+       "tags": {
+        "direction": "160",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 764905617,
+       "lat": 42.9262386,
+       "lon": -8.4829573,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 5004629031,
+       "lat": 42.9174508,
+       "lon": -8.4950702,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 3822509526,
+       "lat": 42.9173949,
+       "lon": -8.4951658,
+       "tags": {
+        "direction": "50",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      }
+     ],
+     "a_m": 16
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 5004629030,
+      "lat": 42.9263376,
+      "lon": -8.4830052,
+      "tags": {
+       "direction": "160",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 16
+     }
+    ],
+    "fin": [
+     {
+      "id": 3822509526,
+      "lat": 42.9173949,
+      "lon": -8.4951658,
+      "tags": {
+       "direction": "50",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 18
+     },
+     {
+      "id": 5092398245,
+      "lat": 42.9192665,
+      "lon": -8.491824,
+      "tags": {
+       "direction": "20",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 349
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_162925",
+   "carretera": "AP-9",
+   "pk": 155.0,
+   "pk_fin": 149.48,
+   "inicio": [
+    42.24053,
+    -8.664367
+   ],
+   "fin": [
+    42.27333,
+    -8.664771
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 8812728,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-05-11",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 5982839746,
+       "lat": 42.2405212,
+       "lon": -8.6643821,
+       "tags": {
+        "direction": "270",
+        "highway": "speed_camera",
+        "maxspeed": "100",
+        "source": "DGT"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 29961820,
+       "lat": 42.2405591,
+       "lon": -8.6646097,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 5982839747,
+       "lat": 42.2733644,
+       "lon": -8.664886,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "100",
+        "source": "DGT"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 29955961,
+       "lat": 42.2736783,
+       "lon": -8.665264,
+       "tags": {}
+      }
+     ],
+     "a_m": 2
+    },
+    {
+     "id": 20189733,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-08",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 29969868,
+       "lat": 42.21625,
+       "lon": -8.654965,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13534175238,
+       "lat": 42.2163263,
+       "lon": -8.6549597,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 29968872,
+       "lat": 42.2404456,
+       "lon": -8.6612689,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13534175239,
+       "lat": 42.2403377,
+       "lon": -8.6610301,
+       "tags": {
+        "direction": "100",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 255
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 5982839746,
+      "lat": 42.2405212,
+      "lon": -8.6643821,
+      "tags": {
+       "direction": "270",
+       "highway": "speed_camera",
+       "maxspeed": "100",
+       "source": "DGT"
+      },
+      "a_m": 2
+     },
+     {
+      "id": 13534175239,
+      "lat": 42.2403377,
+      "lon": -8.6610301,
+      "tags": {
+       "direction": "100",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 275
+     }
+    ],
+    "fin": [
+     {
+      "id": 5982839747,
+      "lat": 42.2733644,
+      "lon": -8.664886,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "100",
+       "source": "DGT"
+      },
+      "a_m": 10
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_163339",
+   "carretera": "A-7",
+   "pk": 636.053,
+   "pk_fin": 634.5,
+   "inicio": [
+    37.67441,
+    -1.70734
+   ],
+   "fin": [
+    37.67935,
+    -1.7097
+   ],
+   "tramo_fiab": "dudosa",
+   "relaciones": [
+    {
+     "id": 10026551,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2025-10-22",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 29095584,
+       "lat": 37.6727399,
+       "lon": -1.7078123,
+       "tags": {
+        "direction": "21",
+        "highway": "speed_camera",
+        "maxspeed": "80",
+        "note": "F100 XABI A-7 Km 593.28 Lorca DIR Valencia CL"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 7847018896,
+       "lat": 37.6844527,
+       "lon": -1.7105629,
+       "tags": {
+        "direction": "1",
+        "highway": "speed_camera",
+        "maxspeed": "80",
+        "note": "F100 A300 A-7 Km 594.45 Lorca DIR Cádiz CL"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 7847018895,
+       "lat": 37.6727414,
+       "lon": -1.7078178,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 6787661204,
+       "lat": 37.6844495,
+       "lon": -1.7106051,
+       "tags": {}
+      }
+     ],
+     "a_m": 190
+    },
+    {
+     "id": 11547740,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2025-10-22",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 992004964,
+       "lat": 37.6832799,
+       "lon": -1.7108528,
+       "tags": {
+        "direction": "170",
+        "highway": "speed_camera",
+        "maxspeed": "80",
+        "note": "F100 A300 A-7 Km 594.45 Lorca DIR Cádiz CL"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 7847018894,
+       "lat": 37.6712248,
+       "lon": -1.7096699,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1225611669,
+       "lat": 37.683277,
+       "lon": -1.7108038,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 7847018893,
+       "lat": 37.6712191,
+       "lon": -1.7096276,
+       "tags": {}
+      }
+     ],
+     "a_m": 407
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 29095584,
+      "lat": 37.6727399,
+      "lon": -1.7078123,
+      "tags": {
+       "direction": "21",
+       "highway": "speed_camera",
+       "maxspeed": "80",
+       "note": "F100 XABI A-7 Km 593.28 Lorca DIR Valencia CL"
+      },
+      "a_m": 190
+     },
+     {
+      "id": 7847018894,
+      "lat": 37.6712248,
+      "lon": -1.7096699,
+      "tags": {
+       "direction": "180",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 409
+     }
+    ],
+    "fin": [
+     {
+      "id": 992004964,
+      "lat": 37.6832799,
+      "lon": -1.7108528,
+      "tags": {
+       "direction": "170",
+       "highway": "speed_camera",
+       "maxspeed": "80",
+       "note": "F100 A300 A-7 Km 594.45 Lorca DIR Cádiz CL"
+      },
+      "a_m": 448
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_163340",
+   "carretera": "A-7",
+   "pk": 634.615,
+   "pk_fin": 635.951,
+   "inicio": [
+    37.67964,
+    -1.71095
+   ],
+   "fin": [
+    37.67074,
+    -1.7097
+   ],
+   "tramo_fiab": "dudosa",
+   "relaciones": [
+    {
+     "id": 10026551,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2025-10-22",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 29095584,
+       "lat": 37.6727399,
+       "lon": -1.7078123,
+       "tags": {
+        "direction": "21",
+        "highway": "speed_camera",
+        "maxspeed": "80",
+        "note": "F100 XABI A-7 Km 593.28 Lorca DIR Valencia CL"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 7847018896,
+       "lat": 37.6844527,
+       "lon": -1.7105629,
+       "tags": {
+        "direction": "1",
+        "highway": "speed_camera",
+        "maxspeed": "80",
+        "note": "F100 A300 A-7 Km 594.45 Lorca DIR Cádiz CL"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 7847018895,
+       "lat": 37.6727414,
+       "lon": -1.7078178,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 6787661204,
+       "lat": 37.6844495,
+       "lon": -1.7106051,
+       "tags": {}
+      }
+     ],
+     "a_m": 277
+    },
+    {
+     "id": 11547740,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2025-10-22",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 992004964,
+       "lat": 37.6832799,
+       "lon": -1.7108528,
+       "tags": {
+        "direction": "170",
+        "highway": "speed_camera",
+        "maxspeed": "80",
+        "note": "F100 A300 A-7 Km 594.45 Lorca DIR Cádiz CL"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 7847018894,
+       "lat": 37.6712248,
+       "lon": -1.7096699,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1225611669,
+       "lat": 37.683277,
+       "lon": -1.7108038,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 7847018893,
+       "lat": 37.6712191,
+       "lon": -1.7096276,
+       "tags": {}
+      }
+     ],
+     "a_m": 54
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 992004964,
+      "lat": 37.6832799,
+      "lon": -1.7108528,
+      "tags": {
+       "direction": "170",
+       "highway": "speed_camera",
+       "maxspeed": "80",
+       "note": "F100 A300 A-7 Km 594.45 Lorca DIR Cádiz CL"
+      },
+      "a_m": 404
+     }
+    ],
+    "fin": [
+     {
+      "id": 7847018894,
+      "lat": 37.6712248,
+      "lon": -1.7096699,
+      "tags": {
+       "direction": "180",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 54
+     },
+     {
+      "id": 29095584,
+      "lat": 37.6727399,
+      "lon": -1.7078123,
+      "tags": {
+       "direction": "21",
+       "highway": "speed_camera",
+       "maxspeed": "80",
+       "note": "F100 XABI A-7 Km 593.28 Lorca DIR Valencia CL"
+      },
+      "a_m": 277
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_163929",
+   "carretera": "RM-603",
+   "pk": 2.65,
+   "pk_fin": 1.4,
+   "inicio": [
+    37.93577,
+    -1.189986
+   ],
+   "fin": [
+    37.939655,
+    -1.175882
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 8102473,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2025-11-02",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 7947822674,
+       "lat": 37.9395243,
+       "lon": -1.175982,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 4136904470,
+       "lat": 37.9396577,
+       "lon": -1.1757183,
+       "tags": {
+        "description": "Radar 60 kmh",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 4136904469,
+       "lat": 37.9357488,
+       "lon": -1.1900988,
+       "tags": {
+        "description": "Radar 60 kmh",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 4136930972,
+       "lat": 37.935667,
+       "lon": -1.1901351,
+       "tags": {}
+      }
+     ],
+     "a_m": 10
+    },
+    {
+     "id": 16732699,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2025-11-02",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 7947822674,
+       "lat": 37.9395243,
+       "lon": -1.175982,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 4136904470,
+       "lat": 37.9396577,
+       "lon": -1.1757183,
+       "tags": {
+        "description": "Radar 60 kmh",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 4136904469,
+       "lat": 37.9357488,
+       "lon": -1.1900988,
+       "tags": {
+        "description": "Radar 60 kmh",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 4136930972,
+       "lat": 37.935667,
+       "lon": -1.1901351,
+       "tags": {}
+      }
+     ],
+     "a_m": 10
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 4136904469,
+      "lat": 37.9357488,
+      "lon": -1.1900988,
+      "tags": {
+       "description": "Radar 60 kmh",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 10
+     }
+    ],
+    "fin": [
+     {
+      "id": 4136904470,
+      "lat": 37.9396577,
+      "lon": -1.1757183,
+      "tags": {
+       "description": "Radar 60 kmh",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 14
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164150",
+   "carretera": "A-8",
+   "pk": 545.5,
+   "pk_fin": 550.2,
+   "inicio": [
+    43.38156,
+    -7.353846
+   ],
+   "fin": [
+    43.37759,
+    -7.407311
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20181703,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-06",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 2637918466,
+       "lat": 43.3815883,
+       "lon": -7.353676,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13528971890,
+       "lat": 43.3815229,
+       "lon": -7.3539987,
+       "tags": {
+        "direction": "260",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 7126154511,
+       "lat": 43.3776,
+       "lon": -7.4071856,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 13528971892,
+       "lat": 43.3776233,
+       "lon": -7.4072919,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 4
+    },
+    {
+     "id": 20181704,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "100",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-06",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 2637918518,
+       "lat": 43.3831965,
+       "lon": -7.3494066,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13528971889,
+       "lat": 43.383085,
+       "lon": -7.3494676,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 2636394526,
+       "lat": 43.3770294,
+       "lon": -7.4079683,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13528971891,
+       "lat": 43.3771558,
+       "lon": -7.4078869,
+       "tags": {
+        "direction": "70",
+        "highway": "speed_camera",
+        "maxspeed": "100"
+       }
+      }
+     ],
+     "a_m": 67
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13528971890,
+      "lat": 43.3815229,
+      "lon": -7.3539987,
+      "tags": {
+       "direction": "260",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 13
+     },
+     {
+      "id": 13528971889,
+      "lat": 43.383085,
+      "lon": -7.3494676,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 392
+     }
+    ],
+    "fin": [
+     {
+      "id": 13528971892,
+      "lat": 43.3776233,
+      "lon": -7.4072919,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 4
+     },
+     {
+      "id": 13528971891,
+      "lat": 43.3771558,
+      "lon": -7.4078869,
+      "tags": {
+       "direction": "70",
+       "highway": "speed_camera",
+       "maxspeed": "100"
+      },
+      "a_m": 67
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164230",
+   "carretera": "A-8",
+   "pk": 505.09,
+   "pk_fin": 506.28,
+   "inicio": [
+    43.54311,
+    -7.02694
+   ],
+   "fin": [
+    43.54287,
+    -7.04189
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20181657,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "120",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-06",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 304722669,
+       "lat": 43.5430687,
+       "lon": -7.027209,
+       "tags": {
+        "direction": "260",
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1733616529,
+       "lat": 43.5430532,
+       "lon": -7.0278381,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 13528954826,
+       "lat": 43.5429048,
+       "lon": -7.0421521,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 304722686,
+       "lat": 43.5429064,
+       "lon": -7.0416643,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      }
+     ],
+     "a_m": 19
+    },
+    {
+     "id": 20181658,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "120",
+      "type": "enforcement"
+     },
+     "fecha": "2026-05-11",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 5465518783,
+       "lat": 43.5429428,
+       "lon": -7.02783,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 304721519,
+       "lat": 43.542953,
+       "lon": -7.0271864,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 183548227,
+       "lat": 43.5428245,
+       "lon": -7.0409013,
+       "tags": {
+        "direction": "90",
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 183548245,
+       "lat": 43.542795,
+       "lon": -7.0418148,
+       "tags": {}
+      }
+     ],
+     "a_m": 10
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 304722669,
+      "lat": 43.5430687,
+      "lon": -7.027209,
+      "tags": {
+       "direction": "260",
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 22
+     },
+     {
+      "id": 304721519,
+      "lat": 43.542953,
+      "lon": -7.0271864,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 26
+     }
+    ],
+    "fin": [
+     {
+      "id": 304722686,
+      "lat": 43.5429064,
+      "lon": -7.0416643,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 19
+     },
+     {
+      "id": 183548227,
+      "lat": 43.5428245,
+      "lon": -7.0409013,
+      "tags": {
+       "direction": "90",
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 80
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164237",
+   "carretera": "A-8",
+   "pk": 506.2,
+   "pk_fin": 505.05,
+   "inicio": [
+    43.54282,
+    -7.04073
+   ],
+   "fin": [
+    43.54286,
+    -7.02717
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20181657,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "120",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-06",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 304722669,
+       "lat": 43.5430687,
+       "lon": -7.027209,
+       "tags": {
+        "direction": "260",
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1733616529,
+       "lat": 43.5430532,
+       "lon": -7.0278381,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 13528954826,
+       "lat": 43.5429048,
+       "lon": -7.0421521,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 304722686,
+       "lat": 43.5429064,
+       "lon": -7.0416643,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      }
+     ],
+     "a_m": 23
+    },
+    {
+     "id": 20181658,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "120",
+      "type": "enforcement"
+     },
+     "fecha": "2026-05-11",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 5465518783,
+       "lat": 43.5429428,
+       "lon": -7.02783,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 304721519,
+       "lat": 43.542953,
+       "lon": -7.0271864,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 183548227,
+       "lat": 43.5428245,
+       "lon": -7.0409013,
+       "tags": {
+        "direction": "90",
+        "highway": "speed_camera",
+        "maxspeed": "120"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 183548245,
+       "lat": 43.542795,
+       "lon": -7.0418148,
+       "tags": {}
+      }
+     ],
+     "a_m": 10
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 183548227,
+      "lat": 43.5428245,
+      "lon": -7.0409013,
+      "tags": {
+       "direction": "90",
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 14
+     },
+     {
+      "id": 304722686,
+      "lat": 43.5429064,
+      "lon": -7.0416643,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 76
+     }
+    ],
+    "fin": [
+     {
+      "id": 304721519,
+      "lat": 43.542953,
+      "lon": -7.0271864,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 10
+     },
+     {
+      "id": 304722669,
+      "lat": 43.5430687,
+      "lon": -7.027209,
+      "tags": {
+       "direction": "260",
+       "highway": "speed_camera",
+       "maxspeed": "120"
+      },
+      "a_m": 23
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164265",
+   "carretera": "RM-603",
+   "pk": 1.4,
+   "pk_fin": 2.65,
+   "inicio": [
+    37.939655,
+    -1.175882
+   ],
+   "fin": [
+    37.93577,
+    -1.189986
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 8102473,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2025-11-02",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 7947822674,
+       "lat": 37.9395243,
+       "lon": -1.175982,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 4136904470,
+       "lat": 37.9396577,
+       "lon": -1.1757183,
+       "tags": {
+        "description": "Radar 60 kmh",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 4136904469,
+       "lat": 37.9357488,
+       "lon": -1.1900988,
+       "tags": {
+        "description": "Radar 60 kmh",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 4136930972,
+       "lat": 37.935667,
+       "lon": -1.1901351,
+       "tags": {}
+      }
+     ],
+     "a_m": 10
+    },
+    {
+     "id": 16732699,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2025-11-02",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 7947822674,
+       "lat": 37.9395243,
+       "lon": -1.175982,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 4136904470,
+       "lat": 37.9396577,
+       "lon": -1.1757183,
+       "tags": {
+        "description": "Radar 60 kmh",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 4136904469,
+       "lat": 37.9357488,
+       "lon": -1.1900988,
+       "tags": {
+        "description": "Radar 60 kmh",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 4136930972,
+       "lat": 37.935667,
+       "lon": -1.1901351,
+       "tags": {}
+      }
+     ],
+     "a_m": 10
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 4136904470,
+      "lat": 37.9396577,
+      "lon": -1.1757183,
+      "tags": {
+       "description": "Radar 60 kmh",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 14
+     }
+    ],
+    "fin": [
+     {
+      "id": 4136904469,
+      "lat": 37.9357488,
+      "lon": -1.1900988,
+      "tags": {
+       "description": "Radar 60 kmh",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 10
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164566",
+   "carretera": "N-601",
+   "pk": 226.4,
+   "pk_fin": 228.2,
+   "inicio": [
+    41.8381,
+    -5.0108
+   ],
+   "fin": [
+    41.8533,
+    -5.0133
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 6785317,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2025-10-22",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 4549614630,
+       "lat": 41.8380403,
+       "lon": -5.0107262,
+       "tags": {
+        "description": "Radar de tramo",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 4549614629,
+       "lat": 41.8540468,
+       "lon": -5.0139949,
+       "tags": {
+        "description": "Radar de tramo",
+        "direction": "118",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 2136604166,
+       "lat": 41.8380151,
+       "lon": -5.0108322,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 286325318,
+       "lat": 41.854065,
+       "lon": -5.0139013,
+       "tags": {}
+      }
+     ],
+     "a_m": 9
+    },
+    {
+     "id": 6785318,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2025-10-22",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 4549614629,
+       "lat": 41.8540468,
+       "lon": -5.0139949,
+       "tags": {
+        "description": "Radar de tramo",
+        "direction": "118",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 4549614630,
+       "lat": 41.8380403,
+       "lon": -5.0107262,
+       "tags": {
+        "description": "Radar de tramo",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 286325318,
+       "lat": 41.854065,
+       "lon": -5.0139013,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 2136604166,
+       "lat": 41.8380151,
+       "lon": -5.0108322,
+       "tags": {}
+      }
+     ],
+     "a_m": 9
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 4549614630,
+      "lat": 41.8380403,
+      "lon": -5.0107262,
+      "tags": {
+       "description": "Radar de tramo",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 9
+     }
+    ],
+    "fin": [
+     {
+      "id": 4549614629,
+      "lat": 41.8540468,
+      "lon": -5.0139949,
+      "tags": {
+       "description": "Radar de tramo",
+       "direction": "118",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 101
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164567",
+   "carretera": "N-601",
+   "pk": 228.2,
+   "pk_fin": 226.4,
+   "inicio": [
+    41.8533,
+    -5.0133
+   ],
+   "fin": [
+    41.8381,
+    -5.0108
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 6785317,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2025-10-22",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 4549614630,
+       "lat": 41.8380403,
+       "lon": -5.0107262,
+       "tags": {
+        "description": "Radar de tramo",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 4549614629,
+       "lat": 41.8540468,
+       "lon": -5.0139949,
+       "tags": {
+        "description": "Radar de tramo",
+        "direction": "118",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 2136604166,
+       "lat": 41.8380151,
+       "lon": -5.0108322,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 286325318,
+       "lat": 41.854065,
+       "lon": -5.0139013,
+       "tags": {}
+      }
+     ],
+     "a_m": 9
+    },
+    {
+     "id": 6785318,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2025-10-22",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 4549614629,
+       "lat": 41.8540468,
+       "lon": -5.0139949,
+       "tags": {
+        "description": "Radar de tramo",
+        "direction": "118",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 4549614630,
+       "lat": 41.8380403,
+       "lon": -5.0107262,
+       "tags": {
+        "description": "Radar de tramo",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 286325318,
+       "lat": 41.854065,
+       "lon": -5.0139013,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 2136604166,
+       "lat": 41.8380151,
+       "lon": -5.0108322,
+       "tags": {}
+      }
+     ],
+     "a_m": 9
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 4549614629,
+      "lat": 41.8540468,
+      "lon": -5.0139949,
+      "tags": {
+       "description": "Radar de tramo",
+       "direction": "118",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 101
+     }
+    ],
+    "fin": [
+     {
+      "id": 4549614630,
+      "lat": 41.8380403,
+      "lon": -5.0107262,
+      "tags": {
+       "description": "Radar de tramo",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 9
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164860",
+   "carretera": "CL-615",
+   "pk": 38.312,
+   "pk_fin": 49.975,
+   "inicio": [
+    42.3524,
+    -4.6245
+   ],
+   "fin": [
+    42.4439,
+    -4.6942
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 11698405,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-06",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 7962712231,
+       "lat": 42.3519653,
+       "lon": -4.624316,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 7617895750,
+       "lat": 42.3520028,
+       "lon": -4.6242394,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "90",
+        "source": "Nota 1959462"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 7191012573,
+       "lat": 42.443723,
+       "lon": -4.6939478,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13433667384,
+       "lat": 42.4437541,
+       "lon": -4.694057,
+       "tags": {
+        "direction": "130",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 20
+    },
+    {
+     "id": 11698406,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-06",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 7962712231,
+       "lat": 42.3519653,
+       "lon": -4.624316,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 7617895750,
+       "lat": 42.3520028,
+       "lon": -4.6242394,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "90",
+        "source": "Nota 1959462"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 7191012573,
+       "lat": 42.443723,
+       "lon": -4.6939478,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13433667384,
+       "lat": 42.4437541,
+       "lon": -4.694057,
+       "tags": {
+        "direction": "130",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 20
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 7617895750,
+      "lat": 42.3520028,
+      "lon": -4.6242394,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "90",
+       "source": "Nota 1959462"
+      },
+      "a_m": 49
+     }
+    ],
+    "fin": [
+     {
+      "id": 13433667384,
+      "lat": 42.4437541,
+      "lon": -4.694057,
+      "tags": {
+       "direction": "130",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 20
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164861",
+   "carretera": "CL-615",
+   "pk": 49.975,
+   "pk_fin": 38.312,
+   "inicio": [
+    42.4439,
+    -4.6942
+   ],
+   "fin": [
+    42.3524,
+    -4.6245
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 11698405,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-06",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 7962712231,
+       "lat": 42.3519653,
+       "lon": -4.624316,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 7617895750,
+       "lat": 42.3520028,
+       "lon": -4.6242394,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "90",
+        "source": "Nota 1959462"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 7191012573,
+       "lat": 42.443723,
+       "lon": -4.6939478,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13433667384,
+       "lat": 42.4437541,
+       "lon": -4.694057,
+       "tags": {
+        "direction": "130",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 20
+    },
+    {
+     "id": 11698406,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-06",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 7962712231,
+       "lat": 42.3519653,
+       "lon": -4.624316,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 7617895750,
+       "lat": 42.3520028,
+       "lon": -4.6242394,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "90",
+        "source": "Nota 1959462"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 7191012573,
+       "lat": 42.443723,
+       "lon": -4.6939478,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13433667384,
+       "lat": 42.4437541,
+       "lon": -4.694057,
+       "tags": {
+        "direction": "130",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 20
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13433667384,
+      "lat": 42.4437541,
+      "lon": -4.694057,
+      "tags": {
+       "direction": "130",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 20
+     }
+    ],
+    "fin": [
+     {
+      "id": 7617895750,
+      "lat": 42.3520028,
+      "lon": -4.6242394,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "90",
+       "source": "Nota 1959462"
+      },
+      "a_m": 49
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164997",
+   "carretera": "CL-615",
+   "pk": 1.706,
+   "pk_fin": 34.61,
+   "inicio": [
+    42.0378,
+    -4.5596
+   ],
+   "fin": [
+    42.3241,
+    -4.6042
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 13040121,
+     "tags": {
+      "description": "Radar de tramo Villoldo-Palencia modificado por DGT, anteriormente Carrión-Palencia.,",
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-28",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13507060040,
+       "lat": 42.2377625,
+       "lon": -4.6070709,
+       "tags": {
+        "description": "Radar de Tramo: Villoldo-Palencia (anteriormente Carrión-Palencia, modificado por DGT)",
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1109722428,
+       "lat": 42.2387485,
+       "lon": -4.606348,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 264325263,
+       "lat": 42.0400003,
+       "lon": -4.5600018,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 8968186514,
+       "lat": 42.040118,
+       "lon": -4.5599328,
+       "tags": {
+        "description": "Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 246
+    },
+    {
+     "id": 13040122,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-28",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 264325263,
+       "lat": 42.0400003,
+       "lon": -4.5600018,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 8968186514,
+       "lat": 42.040118,
+       "lon": -4.5599328,
+       "tags": {
+        "description": "Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 8968186513,
+       "lat": 42.3240738,
+       "lon": -4.6041661,
+       "tags": {
+        "description": "Radar de Tramo: Palencia a Carrión. Anteriormente ambos sentidos, hasta modificación por DGT a Villoldo-Palencia.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 8968186515,
+       "lat": 42.3240616,
+       "lon": -4.6042727,
+       "tags": {}
+      }
+     ],
+     "a_m": 4
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 8968186514,
+      "lat": 42.040118,
+      "lon": -4.5599328,
+      "tags": {
+       "description": "Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 259
+     }
+    ],
+    "fin": [
+     {
+      "id": 8968186513,
+      "lat": 42.3240738,
+      "lon": -4.6041661,
+      "tags": {
+       "description": "Radar de Tramo: Palencia a Carrión. Anteriormente ambos sentidos, hasta modificación por DGT a Villoldo-Palencia.",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 4
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164998",
+   "carretera": "CL-613",
+   "pk": 11.92,
+   "pk_fin": 15.41,
+   "inicio": [
+    42.1175,
+    -4.6457
+   ],
+   "fin": [
+    42.141,
+    -4.6731
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 16457794,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-04",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 12758539660,
+       "lat": 42.1174817,
+       "lon": -4.6455855,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6770625377,
+       "lat": 42.117519,
+       "lon": -4.6457922,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 16457795,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-04",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6770625377,
+       "lat": 42.117519,
+       "lon": -4.6457922,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 12758539660,
+       "lat": 42.1174817,
+       "lon": -4.6455855,
+       "tags": {}
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 20144596,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-04-15",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13505007513,
+       "lat": 42.2149778,
+       "lon": -4.847803,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 267715812,
+       "lat": 42.2148023,
+       "lon": -4.8473857,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 20147014,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-04-15",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 267715812,
+       "lat": 42.2148023,
+       "lon": -4.8473857,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13505007513,
+       "lat": 42.2149778,
+       "lon": -4.847803,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 6770625377,
+      "lat": 42.117519,
+      "lon": -4.6457922,
+      "tags": {
+       "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 8
+     }
+    ],
+    "fin": [
+     {
+      "id": 12758539661,
+      "lat": 42.1409997,
+      "lon": -4.6730993,
+      "tags": {
+       "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 0
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_164999",
+   "carretera": "CL-613",
+   "pk": 32.7,
+   "pk_fin": 15.41,
+   "inicio": [
+    42.215,
+    -4.8479
+   ],
+   "fin": [
+    42.141,
+    -4.6731
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 16457794,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-04",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 12758539660,
+       "lat": 42.1174817,
+       "lon": -4.6455855,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6770625377,
+       "lat": 42.117519,
+       "lon": -4.6457922,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 16457795,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-04",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6770625377,
+       "lat": 42.117519,
+       "lon": -4.6457922,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 12758539660,
+       "lat": 42.1174817,
+       "lon": -4.6455855,
+       "tags": {}
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 20144596,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-04-15",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13505007513,
+       "lat": 42.2149778,
+       "lon": -4.847803,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 267715812,
+       "lat": 42.2148023,
+       "lon": -4.8473857,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 20147014,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-04-15",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 267715812,
+       "lat": 42.2148023,
+       "lon": -4.8473857,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13505007513,
+       "lat": 42.2149778,
+       "lon": -4.847803,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13505007513,
+      "lat": 42.2149778,
+      "lon": -4.847803,
+      "tags": {
+       "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 8
+     }
+    ],
+    "fin": [
+     {
+      "id": 12758539661,
+      "lat": 42.1409997,
+      "lon": -4.6730993,
+      "tags": {
+       "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 0
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165000",
+   "carretera": "CL-613",
+   "pk": 15.41,
+   "pk_fin": 11.92,
+   "inicio": [
+    42.141,
+    -4.6731
+   ],
+   "fin": [
+    42.1175,
+    -4.6457
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 16457794,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-04",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 12758539660,
+       "lat": 42.1174817,
+       "lon": -4.6455855,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6770625377,
+       "lat": 42.117519,
+       "lon": -4.6457922,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 16457795,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-04",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6770625377,
+       "lat": 42.117519,
+       "lon": -4.6457922,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 12758539660,
+       "lat": 42.1174817,
+       "lon": -4.6455855,
+       "tags": {}
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 20144596,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-04-15",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13505007513,
+       "lat": 42.2149778,
+       "lon": -4.847803,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 267715812,
+       "lat": 42.2148023,
+       "lon": -4.8473857,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 20147014,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-04-15",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 267715812,
+       "lat": 42.2148023,
+       "lon": -4.8473857,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13505007513,
+       "lat": 42.2149778,
+       "lon": -4.847803,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 12758539661,
+      "lat": 42.1409997,
+      "lon": -4.6730993,
+      "tags": {
+       "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 0
+     }
+    ],
+    "fin": [
+     {
+      "id": 6770625377,
+      "lat": 42.117519,
+      "lon": -4.6457922,
+      "tags": {
+       "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 8
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165001",
+   "carretera": "CL-613",
+   "pk": 15.41,
+   "pk_fin": 32.7,
+   "inicio": [
+    42.141,
+    -4.6731
+   ],
+   "fin": [
+    42.215,
+    -4.8479
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 16457794,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-04",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 12758539660,
+       "lat": 42.1174817,
+       "lon": -4.6455855,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6770625377,
+       "lat": 42.117519,
+       "lon": -4.6457922,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 16457795,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-04",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6770625377,
+       "lat": 42.117519,
+       "lon": -4.6457922,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Becerril de Campos a Paredes de Nava y de Becerril de Campos a Cisneros.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 12758539660,
+       "lat": 42.1174817,
+       "lon": -4.6455855,
+       "tags": {}
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 20144596,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-04-15",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13505007513,
+       "lat": 42.2149778,
+       "lon": -4.847803,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 267715812,
+       "lat": 42.2148023,
+       "lon": -4.8473857,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    },
+    {
+     "id": 20147014,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-04-15",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 1515484182,
+       "lat": 42.1408526,
+       "lon": -4.6731181,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 12758539661,
+       "lat": 42.1409997,
+       "lon": -4.6730993,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 267715812,
+       "lat": 42.2148023,
+       "lon": -4.8473857,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13505007513,
+       "lat": 42.2149778,
+       "lon": -4.847803,
+       "tags": {
+        "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 0
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 12758539661,
+      "lat": 42.1409997,
+      "lon": -4.6730993,
+      "tags": {
+       "description": "Radar de Tramo ambos sentidos: de Paredes de Nava a Becerril de Campos y de Becerril de Campos a Paredes de Nava.",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 0
+     }
+    ],
+    "fin": [
+     {
+      "id": 13505007513,
+      "lat": 42.2149778,
+      "lon": -4.847803,
+      "tags": {
+       "description": "Radar de Tramo ambos sentidos: de Cisneros a Paredes de Nava y de Becerril de Campos a Cisneros",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 8
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165285",
+   "carretera": "N-629",
+   "pk": 83.37,
+   "pk_fin": 81.15,
+   "inicio": [
+    43.3675,
+    -3.4225
+   ],
+   "fin": [
+    43.3511,
+    -3.4144
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 16567705,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-11",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 7004557400,
+       "lat": 43.3678937,
+       "lon": -3.4238571,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 11291713477,
+       "lat": 43.3678382,
+       "lon": -3.4239072,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 31145738,
+       "lat": 43.3558485,
+       "lon": -3.416398,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13543199725,
+       "lat": 43.3562582,
+       "lon": -3.4167208,
+       "tags": {
+        "direction": "310",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      }
+     ],
+     "a_m": 118
+    },
+    {
+     "id": 16567706,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2023-10-26",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 11291713476,
+       "lat": 43.3513297,
+       "lon": -3.4147107,
+       "tags": {
+        "direction": "325",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 11084061424,
+       "lat": 43.3513994,
+       "lon": -3.4145887,
+       "tags": {}
+      },
+      {
+       "rol": "from",
+       "id": 7004557400,
+       "lat": 43.3678937,
+       "lon": -3.4238571,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 11291713477,
+       "lat": 43.3678382,
+       "lon": -3.4239072,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      }
+     ],
+     "a_m": 36
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 11291713477,
+      "lat": 43.3678382,
+      "lon": -3.4239072,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 120
+     }
+    ],
+    "fin": [
+     {
+      "id": 11291713476,
+      "lat": 43.3513297,
+      "lon": -3.4147107,
+      "tags": {
+       "direction": "325",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 36
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165289",
+   "carretera": "N-629",
+   "pk": 81.7,
+   "pk_fin": 83.37,
+   "inicio": [
+    43.3563,
+    -3.4167
+   ],
+   "fin": [
+    43.3675,
+    -3.4225
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 16567705,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-02-11",
+     "miembros": [
+      {
+       "rol": "to",
+       "id": 7004557400,
+       "lat": 43.3678937,
+       "lon": -3.4238571,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 11291713477,
+       "lat": 43.3678382,
+       "lon": -3.4239072,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 31145738,
+       "lat": 43.3558485,
+       "lon": -3.416398,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13543199725,
+       "lat": 43.3562582,
+       "lon": -3.4167208,
+       "tags": {
+        "direction": "310",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      }
+     ],
+     "a_m": 5
+    },
+    {
+     "id": 16567706,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2023-10-26",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 11291713476,
+       "lat": 43.3513297,
+       "lon": -3.4147107,
+       "tags": {
+        "direction": "325",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 11084061424,
+       "lat": 43.3513994,
+       "lon": -3.4145887,
+       "tags": {}
+      },
+      {
+       "rol": "from",
+       "id": 7004557400,
+       "lat": 43.3678937,
+       "lon": -3.4238571,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 11291713477,
+       "lat": 43.3678382,
+       "lon": -3.4239072,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      }
+     ],
+     "a_m": 118
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13543199725,
+      "lat": 43.3562582,
+      "lon": -3.4167208,
+      "tags": {
+       "direction": "310",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 5
+     }
+    ],
+    "fin": [
+     {
+      "id": 11291713477,
+      "lat": 43.3678382,
+      "lon": -3.4239072,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 120
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165308",
+   "carretera": "TF-5",
+   "pk": 20.66,
+   "pk_fin": 22.4,
+   "inicio": [
+    28.47274,
+    -16.42682
+   ],
+   "fin": [
+    28.46483,
+    -16.43921
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [],
+   "camaras": {
+    "inicio": [],
+    "fin": []
+   }
+  },
+  {
+   "id": "dgt-CVM_165315",
+   "carretera": "TF-5",
+   "pk": 22.4,
+   "pk_fin": 20.66,
+   "inicio": [
+    28.47246,
+    -16.42673
+   ],
+   "fin": [
+    28.46436,
+    -16.4397
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [],
+   "camaras": {
+    "inicio": [],
+    "fin": []
+   }
+  },
+  {
+   "id": "dgt-CVM_165336",
+   "carretera": "CA-33",
+   "pk": 9.052,
+   "pk_fin": 12.2,
+   "inicio": [
+    36.469574,
+    -6.205308
+   ],
+   "fin": [
+    36.467777,
+    -6.176094
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 19947241,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-17",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 9214499522,
+       "lat": 36.4674518,
+       "lon": -6.1705773,
+       "tags": {
+        "description": "Incio de Radar de tramo",
+        "direction": "260",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 2339103628,
+       "lat": 36.4674556,
+       "lon": -6.170787,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13367943448,
+       "lat": 36.4698776,
+       "lon": -6.2053035,
+       "tags": {
+        "direction": "200",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13367943447,
+       "lat": 36.469781,
+       "lon": -6.2053821,
+       "tags": {}
+      }
+     ],
+     "a_m": 24
+    },
+    {
+     "id": 20031512,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-17",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13420704700,
+       "lat": 36.4694455,
+       "lon": -6.2053731,
+       "tags": {
+        "direction": "30",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 13420704699,
+       "lat": 36.4695674,
+       "lon": -6.2052931,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13420722501,
+       "lat": 36.4677902,
+       "lon": -6.1761038,
+       "tags": {
+        "direction": "120",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13367916837,
+       "lat": 36.4677163,
+       "lon": -6.1759154,
+       "tags": {}
+      }
+     ],
+     "a_m": 2
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13420704700,
+      "lat": 36.4694455,
+      "lon": -6.2053731,
+      "tags": {
+       "direction": "30",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 15
+     },
+     {
+      "id": 13367943448,
+      "lat": 36.4698776,
+      "lon": -6.2053035,
+      "tags": {
+       "direction": "200",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 34
+     }
+    ],
+    "fin": [
+     {
+      "id": 13420722501,
+      "lat": 36.4677902,
+      "lon": -6.1761038,
+      "tags": {
+       "direction": "120",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 2
+     },
+     {
+      "id": 9214499522,
+      "lat": 36.4674518,
+      "lon": -6.1705773,
+      "tags": {
+       "description": "Incio de Radar de tramo",
+       "direction": "260",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 494
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165337",
+   "carretera": "CA-33",
+   "pk": 12.772,
+   "pk_fin": 9.16,
+   "inicio": [
+    36.4675,
+    -6.17053
+   ],
+   "fin": [
+    36.46985,
+    -6.205366
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 19947241,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-17",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 9214499522,
+       "lat": 36.4674518,
+       "lon": -6.1705773,
+       "tags": {
+        "description": "Incio de Radar de tramo",
+        "direction": "260",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 2339103628,
+       "lat": 36.4674556,
+       "lon": -6.170787,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13367943448,
+       "lat": 36.4698776,
+       "lon": -6.2053035,
+       "tags": {
+        "direction": "200",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13367943447,
+       "lat": 36.469781,
+       "lon": -6.2053821,
+       "tags": {}
+      }
+     ],
+     "a_m": 6
+    },
+    {
+     "id": 20031512,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "80",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-17",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13420704700,
+       "lat": 36.4694455,
+       "lon": -6.2053731,
+       "tags": {
+        "direction": "30",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 13420704699,
+       "lat": 36.4695674,
+       "lon": -6.2052931,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13420722501,
+       "lat": 36.4677902,
+       "lon": -6.1761038,
+       "tags": {
+        "direction": "120",
+        "highway": "speed_camera",
+        "maxspeed": "80"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13367916837,
+       "lat": 36.4677163,
+       "lon": -6.1759154,
+       "tags": {}
+      }
+     ],
+     "a_m": 32
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 9214499522,
+      "lat": 36.4674518,
+      "lon": -6.1705773,
+      "tags": {
+       "description": "Incio de Radar de tramo",
+       "direction": "260",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 7
+     },
+     {
+      "id": 13420722501,
+      "lat": 36.4677902,
+      "lon": -6.1761038,
+      "tags": {
+       "direction": "120",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 499
+     }
+    ],
+    "fin": [
+     {
+      "id": 13367943448,
+      "lat": 36.4698776,
+      "lon": -6.2053035,
+      "tags": {
+       "direction": "200",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 6
+     },
+     {
+      "id": 13420704700,
+      "lat": 36.4694455,
+      "lon": -6.2053731,
+      "tags": {
+       "direction": "30",
+       "highway": "speed_camera",
+       "maxspeed": "80"
+      },
+      "a_m": 45
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165410",
+   "carretera": "CL-615",
+   "pk": 24.812,
+   "pk_fin": 1.706,
+   "inicio": [
+    42.2377,
+    -4.6072
+   ],
+   "fin": [
+    42.0378,
+    -4.5596
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 13040121,
+     "tags": {
+      "description": "Radar de tramo Villoldo-Palencia modificado por DGT, anteriormente Carrión-Palencia.,",
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-28",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13507060040,
+       "lat": 42.2377625,
+       "lon": -4.6070709,
+       "tags": {
+        "description": "Radar de Tramo: Villoldo-Palencia (anteriormente Carrión-Palencia, modificado por DGT)",
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 1109722428,
+       "lat": 42.2387485,
+       "lon": -4.606348,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 264325263,
+       "lat": 42.0400003,
+       "lon": -4.5600018,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 8968186514,
+       "lat": 42.040118,
+       "lon": -4.5599328,
+       "tags": {
+        "description": "Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 13
+    },
+    {
+     "id": 13040122,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-28",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 264325263,
+       "lat": 42.0400003,
+       "lon": -4.5600018,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 8968186514,
+       "lat": 42.040118,
+       "lon": -4.5599328,
+       "tags": {
+        "description": "Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "device",
+       "id": 8968186513,
+       "lat": 42.3240738,
+       "lon": -4.6041661,
+       "tags": {
+        "description": "Radar de Tramo: Palencia a Carrión. Anteriormente ambos sentidos, hasta modificación por DGT a Villoldo-Palencia.",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 8968186515,
+       "lat": 42.3240616,
+       "lon": -4.6042727,
+       "tags": {}
+      }
+     ],
+     "a_m": 246
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13507060040,
+      "lat": 42.2377625,
+      "lon": -4.6070709,
+      "tags": {
+       "description": "Radar de Tramo: Villoldo-Palencia (anteriormente Carrión-Palencia, modificado por DGT)",
+       "direction": "190",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 13
+     }
+    ],
+    "fin": [
+     {
+      "id": 8968186514,
+      "lat": 42.040118,
+      "lon": -4.5599328,
+      "tags": {
+       "description": "Radar de Tramo: Palencia-Carrión y Villoldo-Palencia (anteriormente ambos sentidos Carrión-Palencia, modificado por DGT)",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 259
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165414",
+   "carretera": "N-120",
+   "pk": 319.6,
+   "pk_fin": 317.6,
+   "inicio": [
+    42.5416,
+    -5.7333
+   ],
+   "fin": [
+    42.5536,
+    -5.714
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 10002560,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-11",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 6774105391,
+       "lat": 42.5414808,
+       "lon": -5.7332671,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6774105394,
+       "lat": 42.5415877,
+       "lon": -5.7332674,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 6774105392,
+       "lat": 42.5535137,
+       "lon": -5.7140266,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6774105393,
+       "lat": 42.5536029,
+       "lon": -5.7140242,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 2
+    },
+    {
+     "id": 10002561,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-11",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 6774105393,
+       "lat": 42.5536029,
+       "lon": -5.7140242,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 6774105392,
+       "lat": 42.5535137,
+       "lon": -5.7140266,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 6774105391,
+       "lat": 42.5414808,
+       "lon": -5.7332671,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6774105394,
+       "lat": 42.5415877,
+       "lon": -5.7332674,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 2
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 6774105394,
+      "lat": 42.5415877,
+      "lon": -5.7332674,
+      "tags": {
+       "direction": "180",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 3
+     }
+    ],
+    "fin": [
+     {
+      "id": 6774105393,
+      "lat": 42.5536029,
+      "lon": -5.7140242,
+      "tags": {
+       "direction": "180",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 2
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_165415",
+   "carretera": "N-120",
+   "pk": 317.6,
+   "pk_fin": 319.6,
+   "inicio": [
+    42.5536,
+    -5.714
+   ],
+   "fin": [
+    42.5416,
+    -5.7333
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 10002560,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-11",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 6774105391,
+       "lat": 42.5414808,
+       "lon": -5.7332671,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6774105394,
+       "lat": 42.5415877,
+       "lon": -5.7332674,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 6774105392,
+       "lat": 42.5535137,
+       "lon": -5.7140266,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6774105393,
+       "lat": 42.5536029,
+       "lon": -5.7140242,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 2
+    },
+    {
+     "id": 10002561,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "90",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-11",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 6774105393,
+       "lat": 42.5536029,
+       "lon": -5.7140242,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 6774105392,
+       "lat": 42.5535137,
+       "lon": -5.7140266,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 6774105391,
+       "lat": 42.5414808,
+       "lon": -5.7332671,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6774105394,
+       "lat": 42.5415877,
+       "lon": -5.7332674,
+       "tags": {
+        "direction": "180",
+        "highway": "speed_camera",
+        "maxspeed": "90"
+       }
+      }
+     ],
+     "a_m": 2
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 6774105393,
+      "lat": 42.5536029,
+      "lon": -5.7140242,
+      "tags": {
+       "direction": "180",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 2
+     }
+    ],
+    "fin": [
+     {
+      "id": 6774105394,
+      "lat": 42.5415877,
+      "lon": -5.7332674,
+      "tags": {
+       "direction": "180",
+       "highway": "speed_camera",
+       "maxspeed": "90"
+      },
+      "a_m": 3
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_166399",
+   "carretera": "CL-602",
+   "pk": 98.6,
+   "pk_fin": 99.65,
+   "inicio": [
+    41.390297,
+    -4.474615
+   ],
+   "fin": [
+    41.39613,
+    -4.466612
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 10057409,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "50",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-11",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 6811592462,
+       "lat": 41.3902954,
+       "lon": -4.4746246,
+       "tags": {
+        "direction": "0",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 2521944317,
+       "lat": 41.3905198,
+       "lon": -4.4746231,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6811592461,
+       "lat": 41.3961515,
+       "lon": -4.4665711,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 577399171,
+       "lat": 41.3961989,
+       "lon": -4.4664683,
+       "tags": {}
+      }
+     ],
+     "a_m": 1
+    },
+    {
+     "id": 10057410,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "50",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-11",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 577399171,
+       "lat": 41.3961989,
+       "lon": -4.4664683,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6811592461,
+       "lat": 41.3961515,
+       "lon": -4.4665711,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 2521944317,
+       "lat": 41.3905198,
+       "lon": -4.4746231,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6811592462,
+       "lat": 41.3902954,
+       "lon": -4.4746246,
+       "tags": {
+        "direction": "0",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      }
+     ],
+     "a_m": 1
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 6811592462,
+      "lat": 41.3902954,
+      "lon": -4.4746246,
+      "tags": {
+       "direction": "0",
+       "highway": "speed_camera",
+       "maxspeed": "50"
+      },
+      "a_m": 1
+     }
+    ],
+    "fin": [
+     {
+      "id": 6811592461,
+      "lat": 41.3961515,
+      "lon": -4.4665711,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "50"
+      },
+      "a_m": 4
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_166402",
+   "carretera": "CL-602",
+   "pk": 99.65,
+   "pk_fin": 98.6,
+   "inicio": [
+    41.39613,
+    -4.466612
+   ],
+   "fin": [
+    41.390297,
+    -4.474615
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 10057409,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "50",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-11",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 6811592462,
+       "lat": 41.3902954,
+       "lon": -4.4746246,
+       "tags": {
+        "direction": "0",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 2521944317,
+       "lat": 41.3905198,
+       "lon": -4.4746231,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6811592461,
+       "lat": 41.3961515,
+       "lon": -4.4665711,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 577399171,
+       "lat": 41.3961989,
+       "lon": -4.4664683,
+       "tags": {}
+      }
+     ],
+     "a_m": 1
+    },
+    {
+     "id": 10057410,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "50",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-11",
+     "miembros": [
+      {
+       "rol": "from",
+       "id": 577399171,
+       "lat": 41.3961989,
+       "lon": -4.4664683,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6811592461,
+       "lat": 41.3961515,
+       "lon": -4.4665711,
+       "tags": {
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 2521944317,
+       "lat": 41.3905198,
+       "lon": -4.4746231,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6811592462,
+       "lat": 41.3902954,
+       "lon": -4.4746246,
+       "tags": {
+        "direction": "0",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      }
+     ],
+     "a_m": 1
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 6811592461,
+      "lat": 41.3961515,
+      "lon": -4.4665711,
+      "tags": {
+       "highway": "speed_camera",
+       "maxspeed": "50"
+      },
+      "a_m": 4
+     }
+    ],
+    "fin": [
+     {
+      "id": 6811592462,
+      "lat": 41.3902954,
+      "lon": -4.4746246,
+      "tags": {
+       "direction": "0",
+       "highway": "speed_camera",
+       "maxspeed": "50"
+      },
+      "a_m": 1
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_166405",
+   "carretera": "CL-602",
+   "pk": 102.8,
+   "pk_fin": 105.7,
+   "inicio": [
+    41.401524,
+    -4.431199
+   ],
+   "fin": [
+    41.40546,
+    -4.397475
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20133947,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "50",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-24",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13482315748,
+       "lat": 41.405535,
+       "lon": -4.3974964,
+       "tags": {
+        "direction": "both",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 6381090611,
+       "lat": 41.4055405,
+       "lon": -4.3973649,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 577399311,
+       "lat": 41.4015246,
+       "lon": -4.4310814,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13482315747,
+       "lat": 41.4014865,
+       "lon": -4.431143,
+       "tags": {
+        "direction": "both",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      }
+     ],
+     "a_m": 6
+    },
+    {
+     "id": 20133948,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "50",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-24",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13482315747,
+       "lat": 41.4014865,
+       "lon": -4.431143,
+       "tags": {
+        "direction": "both",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 577399311,
+       "lat": 41.4015246,
+       "lon": -4.4310814,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 6381090611,
+       "lat": 41.4055405,
+       "lon": -4.3973649,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13482315748,
+       "lat": 41.405535,
+       "lon": -4.3974964,
+       "tags": {
+        "direction": "both",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      }
+     ],
+     "a_m": 6
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13482315747,
+      "lat": 41.4014865,
+      "lon": -4.431143,
+      "tags": {
+       "direction": "both",
+       "highway": "speed_camera",
+       "maxspeed": "50"
+      },
+      "a_m": 6
+     }
+    ],
+    "fin": [
+     {
+      "id": 13482315748,
+      "lat": 41.405535,
+      "lon": -4.3974964,
+      "tags": {
+       "direction": "both",
+       "highway": "speed_camera",
+       "maxspeed": "50"
+      },
+      "a_m": 9
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_166407",
+   "carretera": "CL-602",
+   "pk": 105.7,
+   "pk_fin": 102.8,
+   "inicio": [
+    41.40546,
+    -4.397475
+   ],
+   "fin": [
+    41.401524,
+    -4.431199
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20133947,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "50",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-24",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13482315748,
+       "lat": 41.405535,
+       "lon": -4.3974964,
+       "tags": {
+        "direction": "both",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 6381090611,
+       "lat": 41.4055405,
+       "lon": -4.3973649,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 577399311,
+       "lat": 41.4015246,
+       "lon": -4.4310814,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13482315747,
+       "lat": 41.4014865,
+       "lon": -4.431143,
+       "tags": {
+        "direction": "both",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      }
+     ],
+     "a_m": 6
+    },
+    {
+     "id": 20133948,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "50",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-24",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 13482315747,
+       "lat": 41.4014865,
+       "lon": -4.431143,
+       "tags": {
+        "direction": "both",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 577399311,
+       "lat": 41.4015246,
+       "lon": -4.4310814,
+       "tags": {}
+      },
+      {
+       "rol": "to",
+       "id": 6381090611,
+       "lat": 41.4055405,
+       "lon": -4.3973649,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13482315748,
+       "lat": 41.405535,
+       "lon": -4.3974964,
+       "tags": {
+        "direction": "both",
+        "highway": "speed_camera",
+        "maxspeed": "50"
+       }
+      }
+     ],
+     "a_m": 6
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 13482315748,
+      "lat": 41.405535,
+      "lon": -4.3974964,
+      "tags": {
+       "direction": "both",
+       "highway": "speed_camera",
+       "maxspeed": "50"
+      },
+      "a_m": 9
+     }
+    ],
+    "fin": [
+     {
+      "id": 13482315747,
+      "lat": 41.4014865,
+      "lon": -4.431143,
+      "tags": {
+       "direction": "both",
+       "highway": "speed_camera",
+       "maxspeed": "50"
+      },
+      "a_m": 6
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_169183",
+   "carretera": "A-397",
+   "pk": 28.02,
+   "pk_fin": 30.05,
+   "inicio": [
+    36.59244,
+    -5.068924
+   ],
+   "fin": [
+    36.581997,
+    -5.067223
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 16362670,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2023-09-21",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 6378268046,
+       "lat": 36.592247,
+       "lon": -5.0690748,
+       "tags": {
+        "direction": "160",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 10877121128,
+       "lat": 36.5922543,
+       "lon": -5.0689967,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6378274953,
+       "lat": 36.5814653,
+       "lon": -5.0677141,
+       "tags": {
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 10877108339,
+       "lat": 36.5814232,
+       "lon": -5.0676485,
+       "tags": {}
+      }
+     ],
+     "a_m": 22
+    },
+    {
+     "id": 16362671,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2023-09-21",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 6378268046,
+       "lat": 36.592247,
+       "lon": -5.0690748,
+       "tags": {
+        "direction": "160",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 10877121128,
+       "lat": 36.5922543,
+       "lon": -5.0689967,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6378274953,
+       "lat": 36.5814653,
+       "lon": -5.0677141,
+       "tags": {
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 10877108339,
+       "lat": 36.5814232,
+       "lon": -5.0676485,
+       "tags": {}
+      }
+     ],
+     "a_m": 22
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 6378268046,
+      "lat": 36.592247,
+      "lon": -5.0690748,
+      "tags": {
+       "direction": "160",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 25
+     }
+    ],
+    "fin": [
+     {
+      "id": 6378274953,
+      "lat": 36.5814653,
+      "lon": -5.0677141,
+      "tags": {
+       "direction": "190",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 73
+     }
+    ]
+   }
+  },
+  {
+   "id": "dgt-CVM_169184",
+   "carretera": "A-397",
+   "pk": 30.05,
+   "pk_fin": 28.02,
+   "inicio": [
+    36.581997,
+    -5.067223
+   ],
+   "fin": [
+    36.59244,
+    -5.068924
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 16362670,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2023-09-21",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 6378268046,
+       "lat": 36.592247,
+       "lon": -5.0690748,
+       "tags": {
+        "direction": "160",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 10877121128,
+       "lat": 36.5922543,
+       "lon": -5.0689967,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6378274953,
+       "lat": 36.5814653,
+       "lon": -5.0677141,
+       "tags": {
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 10877108339,
+       "lat": 36.5814232,
+       "lon": -5.0676485,
+       "tags": {}
+      }
+     ],
+     "a_m": 22
+    },
+    {
+     "id": 16362671,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2023-09-21",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 6378268046,
+       "lat": 36.592247,
+       "lon": -5.0690748,
+       "tags": {
+        "direction": "160",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 10877121128,
+       "lat": 36.5922543,
+       "lon": -5.0689967,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 6378274953,
+       "lat": 36.5814653,
+       "lon": -5.0677141,
+       "tags": {
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 10877108339,
+       "lat": 36.5814232,
+       "lon": -5.0676485,
+       "tags": {}
+      }
+     ],
+     "a_m": 22
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 6378274953,
+      "lat": 36.5814653,
+      "lon": -5.0677141,
+      "tags": {
+       "direction": "190",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 73
+     }
+    ],
+    "fin": [
+     {
+      "id": 6378268046,
+      "lat": 36.592247,
+      "lon": -5.0690748,
+      "tags": {
+       "direction": "160",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 25
+     }
+    ]
+   }
+  },
+  {
+   "id": "eus-bi-633-36990-trabakua-tramo-1",
+   "carretera": "BI-633",
+   "pk": 36.99,
+   "pk_fin": 39.8,
+   "inicio": [
+    43.195965,
+    -2.561779
+   ],
+   "fin": [
+    43.211414,
+    -2.544827
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20080012,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-12",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 21121193,
+       "lat": 43.1959758,
+       "lon": -2.5617558,
+       "tags": {
+        "direction": "40",
+        "highway": "speed_camera",
+        "maxspeed": "60",
+        "note": "Radar de tramo: control velocidad media tramo"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 4902223477,
+       "lat": 43.1960931,
+       "lon": -2.5616576,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 11787684163,
+       "lat": 43.2111414,
+       "lon": -2.5448598,
+       "tags": {
+        "description": "Tarteko radarra",
+        "description:es": "Radar de tramo",
+        "direction": "30",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 293009014,
+       "lat": 43.2112842,
+       "lon": -2.5447794,
+       "tags": {}
+      }
+     ],
+     "a_m": 2
+    },
+    {
+     "id": 20080013,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-12",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 11787768766,
+       "lat": 43.2114171,
+       "lon": -2.5447904,
+       "tags": {
+        "description": "Tarteko radarra",
+        "description:es": "Radar de tramo",
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 3809196258,
+       "lat": 43.211338,
+       "lon": -2.5448099,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13451575952,
+       "lat": 43.1961649,
+       "lon": -2.5617346,
+       "tags": {
+        "direction": "230",
+        "highway": "speed_camera",
+        "maxspeed": "60",
+        "note": "Radar de tramo: control velocidad media tramo"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13451575951,
+       "lat": 43.1959634,
+       "lon": -2.5621782,
+       "tags": {}
+      }
+     ],
+     "a_m": 3
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 21121193,
+      "lat": 43.1959758,
+      "lon": -2.5617558,
+      "tags": {
+       "direction": "40",
+       "highway": "speed_camera",
+       "maxspeed": "60",
+       "note": "Radar de tramo: control velocidad media tramo"
+      },
+      "a_m": 2
+     },
+     {
+      "id": 13451575952,
+      "lat": 43.1961649,
+      "lon": -2.5617346,
+      "tags": {
+       "direction": "230",
+       "highway": "speed_camera",
+       "maxspeed": "60",
+       "note": "Radar de tramo: control velocidad media tramo"
+      },
+      "a_m": 22
+     }
+    ],
+    "fin": [
+     {
+      "id": 11787768766,
+      "lat": 43.2114171,
+      "lon": -2.5447904,
+      "tags": {
+       "description": "Tarteko radarra",
+       "description:es": "Radar de tramo",
+       "direction": "190",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 3
+     },
+     {
+      "id": 11787684163,
+      "lat": 43.2111414,
+      "lon": -2.5448598,
+      "tags": {
+       "description": "Tarteko radarra",
+       "description:es": "Radar de tramo",
+       "direction": "30",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 30
+     }
+    ]
+   }
+  },
+  {
+   "id": "eus-bi-633-39800-trabakua-tramo-2",
+   "carretera": "BI-633",
+   "pk": 39.8,
+   "pk_fin": 36.99,
+   "inicio": [
+    43.211414,
+    -2.544827
+   ],
+   "fin": [
+    43.195965,
+    -2.561779
+   ],
+   "tramo_fiab": "alta",
+   "relaciones": [
+    {
+     "id": 20080012,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-12",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 21121193,
+       "lat": 43.1959758,
+       "lon": -2.5617558,
+       "tags": {
+        "direction": "40",
+        "highway": "speed_camera",
+        "maxspeed": "60",
+        "note": "Radar de tramo: control velocidad media tramo"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 4902223477,
+       "lat": 43.1960931,
+       "lon": -2.5616576,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 11787684163,
+       "lat": 43.2111414,
+       "lon": -2.5448598,
+       "tags": {
+        "description": "Tarteko radarra",
+        "description:es": "Radar de tramo",
+        "direction": "30",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 293009014,
+       "lat": 43.2112842,
+       "lon": -2.5447794,
+       "tags": {}
+      }
+     ],
+     "a_m": 2
+    },
+    {
+     "id": 20080013,
+     "tags": {
+      "enforcement": "average_speed",
+      "maxspeed": "60",
+      "type": "enforcement"
+     },
+     "fecha": "2026-01-12",
+     "miembros": [
+      {
+       "rol": "device",
+       "id": 11787768766,
+       "lat": 43.2114171,
+       "lon": -2.5447904,
+       "tags": {
+        "description": "Tarteko radarra",
+        "description:es": "Radar de tramo",
+        "direction": "190",
+        "highway": "speed_camera",
+        "maxspeed": "60"
+       }
+      },
+      {
+       "rol": "from",
+       "id": 3809196258,
+       "lat": 43.211338,
+       "lon": -2.5448099,
+       "tags": {}
+      },
+      {
+       "rol": "device",
+       "id": 13451575952,
+       "lat": 43.1961649,
+       "lon": -2.5617346,
+       "tags": {
+        "direction": "230",
+        "highway": "speed_camera",
+        "maxspeed": "60",
+        "note": "Radar de tramo: control velocidad media tramo"
+       }
+      },
+      {
+       "rol": "to",
+       "id": 13451575951,
+       "lat": 43.1959634,
+       "lon": -2.5621782,
+       "tags": {}
+      }
+     ],
+     "a_m": 3
+    }
+   ],
+   "camaras": {
+    "inicio": [
+     {
+      "id": 11787768766,
+      "lat": 43.2114171,
+      "lon": -2.5447904,
+      "tags": {
+       "description": "Tarteko radarra",
+       "description:es": "Radar de tramo",
+       "direction": "190",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 3
+     },
+     {
+      "id": 11787684163,
+      "lat": 43.2111414,
+      "lon": -2.5448598,
+      "tags": {
+       "description": "Tarteko radarra",
+       "description:es": "Radar de tramo",
+       "direction": "30",
+       "highway": "speed_camera",
+       "maxspeed": "60"
+      },
+      "a_m": 30
+     }
+    ],
+    "fin": [
+     {
+      "id": 21121193,
+      "lat": 43.1959758,
+      "lon": -2.5617558,
+      "tags": {
+       "direction": "40",
+       "highway": "speed_camera",
+       "maxspeed": "60",
+       "note": "Radar de tramo: control velocidad media tramo"
+      },
+      "a_m": 2
+     },
+     {
+      "id": 13451575952,
+      "lat": 43.1961649,
+      "lon": -2.5617346,
+      "tags": {
+       "direction": "230",
+       "highway": "speed_camera",
+       "maxspeed": "60",
+       "note": "Radar de tramo: control velocidad media tramo"
+      },
+      "a_m": 22
+     }
+    ]
+   }
+  }
+ ]
+}
