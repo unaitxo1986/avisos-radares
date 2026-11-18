@@ -17,7 +17,7 @@ import androidx.lifecycle.Observer
 /**
  * Aviso emergente en la pantalla de Android Auto (fase 7), encima de Google Maps o de lo que haya: "RADAR · 500 m",
  * el límite (con la señal dibujada) y la velocidad, actualizados cada segundo (los metros y, en los tramos, la media);
- * vuelve a saltar en rojo si se pasa del límite. Solo se usa
+ * se renueva cada 3 s para que no se esconda y vuelve a saltar en rojo si se pasa del límite. Solo se usa
  * mientras el móvil está conectado a Android Auto (fuera del coche ya está la ventana flotante). Sin sonido: los
  * pitidos siguen saliendo por el altavoz del móvil (decisión del 15/11). Al tocarlo se abre la app en el coche.
  *
@@ -68,14 +68,16 @@ class AvisosEnCoche(contexto: Context) {
         val (accion, nuevo) = decidirAvisoCoche(estado, aviso, "$titulo|$texto", System.currentTimeMillis())
         estado = nuevo
         when (accion) {
-            AccionAvisoCoche.MOSTRAR -> publicar(aviso!!, titulo, texto, saltar = true)
-            AccionAvisoCoche.ACTUALIZAR -> publicar(aviso!!, titulo, texto, saltar = false)
+            AccionAvisoCoche.MOSTRAR -> publicar(aviso!!, titulo, texto, saltar = true, nuevo = true)
+            AccionAvisoCoche.RENOVAR -> publicar(aviso!!, titulo, texto, saltar = true, nuevo = false)
+            AccionAvisoCoche.ACTUALIZAR -> publicar(aviso!!, titulo, texto, saltar = false, nuevo = false)
             AccionAvisoCoche.QUITAR -> quitar()
             AccionAvisoCoche.NADA -> {}
         }
     }
 
-    private fun publicar(aviso: AvisoActivo, titulo: String, texto: String, saltar: Boolean) {
+    /** [saltar]: con aviso emergente. [nuevo]: se quita antes el anterior (radar nuevo o exceso). */
+    private fun publicar(aviso: AvisoActivo, titulo: String, texto: String, saltar: Boolean, nuevo: Boolean) {
         try {
             val abrirApp = CarPendingIntent.getCarApp(
                 ctx, 0, Intent(Intent.ACTION_VIEW).setComponent(ComponentName(ctx, CocheServicio::class.java)), 0,
@@ -97,10 +99,9 @@ class AvisosEnCoche(contexto: Context) {
                         .setImportance(NotificationManagerCompat.IMPORTANCE_HIGH)
                         .build()
                 )
-            // Para que vuelva a saltar (radar nuevo, exceso) se quita antes el anterior.
-            if (saltar) CarNotificationManager.from(ctx).cancel(ID)
+            if (nuevo) CarNotificationManager.from(ctx).cancel(ID)
             CarNotificationManager.from(ctx).notify(ID, notificacion)
-            if (saltar) Registro.anota(ctx, "COCHE", "aviso emergente en Android Auto: $titulo | $texto")
+            if (nuevo) Registro.anota(ctx, "COCHE", "aviso emergente en Android Auto: $titulo | $texto")
         } catch (e: Throwable) {
             Registro.anota(ctx, "COCHE", "ERROR al avisar en Android Auto: ${e.javaClass.name}: ${e.message}")
         }

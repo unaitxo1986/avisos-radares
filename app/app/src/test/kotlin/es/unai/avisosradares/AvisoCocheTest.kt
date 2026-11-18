@@ -30,8 +30,8 @@ class AvisoCocheTest {
         decidirAvisoCoche(estado, aviso(m = 430.0), "RADAR · 430 m", 1000).let { accion = it.first; estado = it.second }
         assertEquals(AccionAvisoCoche.ACTUALIZAR, accion)
         assertEquals("RADAR · 430 m", estado!!.textos)
-        // A los 10 s de saltar, en un radar, vuelve a saltar (Android Auto ya lo habrá quitado de la vista).
-        assertEquals(AccionAvisoCoche.MOSTRAR, decidirAvisoCoche(estado, aviso(m = 200.0), "RADAR · 200 m", 10_000).first)
+        // A los 3 s de saltar se renueva, para que Android Auto no lo esconda.
+        assertEquals(AccionAvisoCoche.RENOVAR, decidirAvisoCoche(estado, aviso(m = 380.0), "RADAR · 380 m", 3_000).first)
     }
 
     @Test
@@ -46,13 +46,16 @@ class AvisoCocheTest {
     }
 
     @Test
-    fun enUnTramoLaMediaSeActualizaPeroNoSaltaCadaDiezSegundos() {
+    fun enUnTramoLaMediaSeActualizaYSeRenuevaCadaTresSegundos() {
         val (_, e1) = decidirAvisoCoche(null, tramo(3000.0, null), "a", 0)
-        val (a2, e2) = decidirAvisoCoche(e1, tramo(2900.0, 98.0), "b", 15_000)
+        val (a2, e2) = decidirAvisoCoche(e1, tramo(2970.0, 98.0), "b", 1_000)
         assertEquals(AccionAvisoCoche.ACTUALIZAR, a2)
-        // Al pasarse del límite, salta; mientras siga por encima, no vuelve a saltar.
-        val (a3, e3) = decidirAvisoCoche(e2, tramo(2800.0, 101.0, exceso = true), "c", 16_000)
-        assertEquals(AccionAvisoCoche.MOSTRAR, a3)
-        assertEquals(AccionAvisoCoche.ACTUALIZAR, decidirAvisoCoche(e3, tramo(2700.0, 102.0, exceso = true), "d", 40_000).first)
+        val (a3, e3) = decidirAvisoCoche(e2, tramo(2900.0, 98.0), "c", 3_000)
+        assertEquals(AccionAvisoCoche.RENOVAR, a3)
+        // Al pasarse del límite, aviso nuevo (en rojo); después, sigue renovándose.
+        val (a4, e4) = decidirAvisoCoche(e3, tramo(2870.0, 101.0, exceso = true), "d", 4_000)
+        assertEquals(AccionAvisoCoche.MOSTRAR, a4)
+        assertEquals(AccionAvisoCoche.ACTUALIZAR, decidirAvisoCoche(e4, tramo(2840.0, 102.0, exceso = true), "e", 5_000).first)
+        assertEquals(AccionAvisoCoche.RENOVAR, decidirAvisoCoche(e4, tramo(2780.0, 102.0, exceso = true), "f", 7_000).first)
     }
 }

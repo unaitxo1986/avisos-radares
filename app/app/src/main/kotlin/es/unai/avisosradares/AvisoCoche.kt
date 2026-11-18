@@ -7,14 +7,14 @@ package es.unai.avisosradares
  *
  * Unai (18/11): el aviso tiene que ir cambiando con los metros que quedan y, en los tramos, con la media. Se
  * actualiza cada segundo con la misma distancia que la ventana flotante (de 10 en 10 m). Como Android Auto quita
- * el aviso emergente al cabo de unos segundos, en los radares vuelve a saltar cada [ParametrosAvisoCoche.repetirMs]
- * mientras dure el aviso; en los tramos (que duran minutos) solo salta al empezar y al pasarse del límite.
+ * el aviso emergente al cabo de unos segundos, se renueva cada [ParametrosAvisoCoche.repetirMs] mientras dure el
+ * aviso, en los radares y en los tramos (Unai, 18/11: "actualizaría cada 2-3 segundos para que nunca se esconda").
  */
 class ParametrosAvisoCoche(
     /** Como mucho una actualización por segundo. */
     val actualizarMs: Long = 1000,
-    /** Vuelve a saltar en los radares (no en los tramos) si sigue el aviso. Criterio propio [sin verificar]. */
-    val repetirMs: Long = 10_000,
+    /** Se renueva para que no se esconda mientras siga el aviso (Unai, 18/11). */
+    val repetirMs: Long = 3_000,
 )
 
 /** Título y texto del aviso: "RADAR · 460 m" y "Límite 80 · vas a 92 km/h"; en un tramo, la media y lo que falta. */
@@ -30,7 +30,12 @@ fun textosAvisoCoche(aviso: AvisoActivo, velocidadKmh: Double?): Pair<String, St
     return titulo to "$exceso$limite$vas"
 }
 
-enum class AccionAvisoCoche { NADA, MOSTRAR, ACTUALIZAR, QUITAR }
+/**
+ * MOSTRAR: aviso nuevo (radar nuevo o exceso), se quita el anterior y salta. RENOVAR: el mismo aviso se vuelve a
+ * publicar con aviso emergente, sin quitarlo antes, para que no se esconda. ACTUALIZAR: cambian los textos, en
+ * silencio. QUITAR: ya no hay aviso.
+ */
+enum class AccionAvisoCoche { NADA, MOSTRAR, RENOVAR, ACTUALIZAR, QUITAR }
 
 /**
  * Lo que está en la pantalla del coche: de qué radar, si era de exceso, qué textos, cuándo se cambió y cuándo
@@ -46,7 +51,7 @@ data class EstadoAvisoCoche(
 
 /**
  * - Radar nuevo, o el mismo radar pasa a exceso: MOSTRAR (salta el aviso emergente).
- * - Radar (no tramo) que sigue avisado [ParametrosAvisoCoche.repetirMs] después de saltar: MOSTRAR otra vez.
+ * - Aviso que sigue [ParametrosAvisoCoche.repetirMs] después de saltar: RENOVAR.
  * - Cambian los textos (metros, media, velocidad): ACTUALIZAR en silencio, como mucho cada segundo.
  * - Sin aviso: QUITAR.
  */
@@ -62,7 +67,7 @@ fun decidirAvisoCoche(
     return when {
         anterior == null || anterior.radarId != aviso.radar.id -> AccionAvisoCoche.MOSTRAR to salta
         aviso.exceso && !anterior.exceso -> AccionAvisoCoche.MOSTRAR to salta
-        !aviso.enTramo && ahoraMs - anterior.saltadoMs >= p.repetirMs -> AccionAvisoCoche.MOSTRAR to salta
+        ahoraMs - anterior.saltadoMs >= p.repetirMs -> AccionAvisoCoche.RENOVAR to salta
         textos != anterior.textos && ahoraMs - anterior.cambiadoMs >= p.actualizarMs ->
             AccionAvisoCoche.ACTUALIZAR to anterior.copy(exceso = aviso.exceso, textos = textos, cambiadoMs = ahoraMs)
         // Nada que enseñar: se conserva el estado (también si vuelve a ir por debajo del límite).
