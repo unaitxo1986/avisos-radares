@@ -143,6 +143,7 @@ def main(argv=None):
             "manual": {"ok": True, "radares": f["manual"]["radares"]},
             "municipal": {"ok": True, "radares": f.get("municipal", {}).get("radares", 0),
                           "copia_usada": f.get("municipal", {}).get("copia_usada", [])},
+            "osm": {"ok": True, "radares": f.get("osm", {}).get("radares", 0)},
         },
         "radares_publicados": len(previo) if problemas and previo else len(radares),
     }

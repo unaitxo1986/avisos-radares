@@ -76,3 +76,13 @@ class PruebasMunicipales(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PruebasOsmConfirmados(unittest.TestCase):
+    def test_copia_real(self):
+        from datos.pipeline import osm_confirmados
+        r = osm_confirmados.leer()["radares"]
+        self.assertTrue(r)
+        self.assertTrue(all(x["id"].startswith("osm-") and x["fuente"] == "osm" for x in r))
+        bi = [x for x in r if x.get("carretera") == "BI-631"]
+        self.assertEqual(bi[0]["pk_m"], 4670)

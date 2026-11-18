@@ -14,10 +14,10 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 
 | Campo | Tipo | Descripción |
 |---|---|---|
-| `id` | texto | Identificador estable. Prefijo de la fuente: `dgt-`, `eus-`, `man-`, `mun-` (municipales, desde el 18/11/2026) |
+| `id` | texto | Identificador estable. Prefijo de la fuente: `dgt-`, `eus-`, `man-`, `mun-` (municipales, desde el 18/11/2026), `osm-` (cámaras de OpenStreetMap confirmadas por Unai) |
 | `tipo` | texto | `fijo`, `tramo`, `fotorrojo` o `tramo_extremo` (Trabakua, sin emparejar hasta la fase 5) |
 | `nombre` | texto | Nombre o ubicación |
-| `fuente` | texto | `dgt`, `trafikoa`, `manual` o `municipal` (publicación oficial de un ayuntamiento, ver abajo) |
+| `fuente` | texto | `dgt`, `trafikoa`, `manual`, `municipal` (publicación de un ayuntamiento, ver abajo) u `osm` (solo en OpenStreetMap, confirmada por Unai: `datos/fuentes/osm_confirmados.json`) |
 | `lat`, `lon` | número | WGS84 (en tramos, punto de inicio) |
 | `lat_fin`, `lon_fin` | número o nulo | Fin del tramo; solo en `tramo` |
 | `carretera` | texto o nulo | Por ejemplo `A-8`, `BI-633` |

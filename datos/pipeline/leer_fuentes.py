@@ -19,7 +19,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from datos.pipeline import dgt, manual, municipales, trafikoa  # noqa: E402
+from datos.pipeline import dgt, manual, municipales, osm_confirmados, trafikoa  # noqa: E402
 from datos.pipeline.dgt import ErrorLectura  # noqa: E402
 
 # Cajas de sanidad (lat_min, lat_max, lon_min, lon_max) para detectar coordenadas rotas.
@@ -138,6 +138,9 @@ def main(argv=None):
         mu = municipales.leer(None if (a.sin_municipales_red or a.dgt) else descargar,
                               hoy=datetime.date.today().isoformat(), avisos=avisos)
         problemas += comprobar("Municipales", mu["radares"], CAJA_EUSKADI, {})
+
+        oc = osm_confirmados.leer()
+        problemas += comprobar("OSM confirmados", oc["radares"], CAJA_EUSKADI, {})
     except (ErrorLectura, OSError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         return 2
@@ -151,7 +154,7 @@ def main(argv=None):
         RUTA_COPIA_DGT.parent.mkdir(parents=True, exist_ok=True)
         RUTA_COPIA_DGT.write_bytes(gzip.compress(xml_dgt, 9, mtime=0))
 
-    radares = d["radares"] + t["radares"] + m["radares"] + mu["radares"]
+    radares = d["radares"] + t["radares"] + m["radares"] + mu["radares"] + oc["radares"]
     ids = [r["id"] for r in radares]
     if len(set(ids)) != len(ids):
         print("ERROR: identificadores repetidos entre fuentes", file=sys.stderr)
@@ -165,6 +168,7 @@ def main(argv=None):
             "manual": {"radares": len(m["radares"])},
             "municipal": {"radares": len(mu["radares"]), "copia_usada": mu["copia_usada"],
                           "url": "datos/pipeline/municipales.py"},
+            "osm": {"radares": len(oc["radares"]), "url": "datos/fuentes/osm_confirmados.json"},
         },
         "avisos": avisos,
         "radares": radares,
@@ -173,7 +177,7 @@ def main(argv=None):
     Path(a.salida).write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for av in avisos:
         print(f"AVISO: {av}", file=sys.stderr)
-    print(f"OK: {len(radares)} radares (DGT {len(d['radares'])}, Trafikoa {len(t['radares'])}, manual {len(m['radares'])}, municipales {len(mu['radares'])})")
+    print(f"OK: {len(radares)} radares (DGT {len(d['radares'])}, Trafikoa {len(t['radares'])}, manual {len(m['radares'])}, municipales {len(mu['radares'])}, OSM confirmados {len(oc['radares'])})")
     return 0
 
 

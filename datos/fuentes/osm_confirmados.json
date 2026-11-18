@@ -1,0 +1,8 @@
+{
+ "comentario": "Cámaras de OpenStreetMap (highway=speed_camera) que no están en ninguna lista oficial y que Unai ha confirmado (18/11/2026). Posición, sentido y etiquetas de OpenStreetMap; ver datos/pipeline/osm_confirmados.py.",
+ "radares": [
+  {"osm": 992005691, "lat": 43.2603072, "lon": -2.8948342, "nombre": "BI-631 enlace de Otxarkoaga, hacia Bilbao", "carretera": "BI-631", "pk": 4.67, "destino": "BILBAO", "confirmado": "2026-11-18: Unai, \"correcto\""},
+  {"osm": 11486161352, "lat": 43.2693715, "lon": -2.9562318, "nombre": "Bilbao, calle Morgan (bajada de Enekuri a Deusto), vigila hacia el sur", "municipio": "Bilbao", "confirmado": "2026-11-18: Unai, \"más adelante a 30\" del punto de Enekuri-Asua de OpenStreetMap"},
+  {"osm": 313221430, "lat": 43.2844069, "lon": -2.8658944, "nombre": "Zamudio", "municipio": "Zamudio", "confirmado": "2026-11-18: Unai, se ve en Street View"}
+ ]
+}
