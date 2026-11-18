@@ -1,0 +1,39 @@
+name: Exploración de cámaras en OpenStreetMap (Euskadi)
+
+# Tarea puntual (18/11/2026): busca en el extracto de Geofabrik las cámaras de control de OpenStreetMap
+# en Euskadi que no estén en datos/salida/radares.json. No publica nada: deja una lista en datos/exploracion/.
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/osm-radares.yml"
+      - "datos/pipeline/osm_radares.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar y filtrar el extracto de Euskadi
+        run: |
+          sudo apt-get install -y -qq osmium-tool > /dev/null
+          curl -sSfL -o pv.osm.pbf https://download.geofabrik.de/europe/spain/pais-vasco-latest.osm.pbf
+          ls -l pv.osm.pbf
+          osmium fileinfo -e pv.osm.pbf | grep -iE "timestamp|Number of" | head -8 | tr '\n' ' ' | sed 's/^/::notice title=Extracto::/'; echo
+          osmium tags-filter pv.osm.pbf n/highway=speed_camera r/type=enforcement -o filtrado.osm.pbf
+          osmium cat filtrado.osm.pbf -o filtrado.osm
+      - name: Comparar con nuestros radares
+        run: python3 -I datos/pipeline/osm_radares.py --osm filtrado.osm --radares datos/salida/radares.json --salida datos/exploracion/osm_radares_euskadi.json
+      - name: Guardar la lista
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/exploracion
+          git diff --cached --quiet && exit 0
+          git commit -m "Exploración: cámaras de OpenStreetMap en Euskadi (automático)"
+          git pull --rebase origin main
+          git push origin HEAD:main
