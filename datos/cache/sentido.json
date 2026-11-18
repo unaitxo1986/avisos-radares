@@ -14,6 +14,7 @@
 },
 "dgt-CABINACINEMOMETRO_120002": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1972,
 "origen": "oficial",
 "punto": [
@@ -41,6 +42,7 @@
 },
 "dgt-CABINACINEMOMETRO_120004": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5621,
 "origen": "oficial",
 "punto": [
@@ -55,6 +57,7 @@
 },
 "dgt-CABINACINEMOMETRO_120005": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4690,
 "origen": "oficial",
 "punto": [
@@ -82,20 +85,13 @@
 },
 "dgt-CABINACINEMOMETRO_120007": {
 "candidatas": 2,
-"margen_m": 2715,
-"origen": "oficial",
-"punto": [
-42.519684,
--0.350563
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 301,
-"sentido_km": "creciente",
-"via": 162567998
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120008": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3586,
 "origen": "oficial",
 "punto": [
@@ -110,6 +106,7 @@
 },
 "dgt-CABINACINEMOMETRO_120009": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 903,
 "origen": "oficial",
 "punto": [
@@ -136,6 +133,7 @@
 },
 "dgt-CABINACINEMOMETRO_120012": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 228,
 "origen": "oficial",
 "punto": [
@@ -150,6 +148,7 @@
 },
 "dgt-CABINACINEMOMETRO_120013": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 21011,
 "origen": "oficial",
 "punto": [
@@ -164,6 +163,7 @@
 },
 "dgt-CABINACINEMOMETRO_120014": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 21757,
 "origen": "oficial",
 "punto": [
@@ -178,6 +178,7 @@
 },
 "dgt-CABINACINEMOMETRO_120015": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 802,
 "origen": "oficial",
 "punto": [
@@ -192,6 +193,7 @@
 },
 "dgt-CABINACINEMOMETRO_120016": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4521,
 "origen": "oficial",
 "punto": [
@@ -206,6 +208,7 @@
 },
 "dgt-CABINACINEMOMETRO_120017": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4937,
 "origen": "oficial",
 "punto": [
@@ -220,6 +223,7 @@
 },
 "dgt-CABINACINEMOMETRO_120018": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 54401,
 "origen": "oficial",
 "punto": [
@@ -234,6 +238,7 @@
 },
 "dgt-CABINACINEMOMETRO_120019": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1857,
 "origen": "oficial",
 "punto": [
@@ -263,17 +268,9 @@
 },
 "dgt-CABINACINEMOMETRO_120021": {
 "candidatas": 2,
-"margen_m": 359,
-"origen": "oficial",
-"punto": [
-42.527563,
--0.361024
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 288,
-"sentido_km": "creciente",
-"via": 847275430
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120022": {
 "candidatas": 1,
@@ -290,6 +287,7 @@
 },
 "dgt-CABINACINEMOMETRO_120023": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 625,
 "origen": "oficial",
 "punto": [
@@ -320,6 +318,7 @@
 },
 "dgt-CABINACINEMOMETRO_120026": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 946,
 "origen": "oficial",
 "punto": [
@@ -750,6 +749,7 @@
 },
 "dgt-CABINACINEMOMETRO_120062": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 333,
 "origen": "oficial",
 "punto": [
@@ -764,6 +764,7 @@
 },
 "dgt-CABINACINEMOMETRO_120063": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 13486,
 "origen": "oficial",
 "punto": [
@@ -778,20 +779,13 @@
 },
 "dgt-CABINACINEMOMETRO_120064": {
 "candidatas": 2,
-"margen_m": 1313,
-"origen": "oficial",
-"punto": [
-42.727941,
--8.715558
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 253,
-"sentido_km": "creciente",
-"via": 900445751
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120065": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3227,
 "origen": "oficial",
 "punto": [
@@ -806,6 +800,7 @@
 },
 "dgt-CABINACINEMOMETRO_120069": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1373,
 "origen": "oficial",
 "punto": [
@@ -835,6 +830,7 @@
 },
 "dgt-CABINACINEMOMETRO_120072": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4524,
 "origen": "oficial",
 "punto": [
@@ -864,6 +860,7 @@
 },
 "dgt-CABINACINEMOMETRO_120074": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 15721,
 "origen": "oficial",
 "punto": [
@@ -878,6 +875,7 @@
 },
 "dgt-CABINACINEMOMETRO_120075": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 23091,
 "origen": "oficial",
 "punto": [
@@ -906,6 +904,7 @@
 },
 "dgt-CABINACINEMOMETRO_120077": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 11347,
 "origen": "oficial",
 "punto": [
@@ -933,6 +932,7 @@
 },
 "dgt-CABINACINEMOMETRO_120080": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 6108,
 "origen": "oficial",
 "punto": [
@@ -947,6 +947,7 @@
 },
 "dgt-CABINACINEMOMETRO_120081": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5279,
 "origen": "oficial",
 "punto": [
@@ -961,6 +962,7 @@
 },
 "dgt-CABINACINEMOMETRO_120082": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3146,
 "origen": "oficial",
 "punto": [
@@ -975,17 +977,9 @@
 },
 "dgt-CABINACINEMOMETRO_120083": {
 "candidatas": 2,
-"margen_m": 2793,
-"origen": "oficial",
-"punto": [
-42.217367,
--8.68458
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 285,
-"sentido_km": "decreciente",
-"via": 126083303
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120084": {
 "candidatas": 2,
@@ -1018,6 +1012,7 @@
 },
 "dgt-CABINACINEMOMETRO_120086": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8746,
 "origen": "oficial",
 "punto": [
@@ -1032,6 +1027,7 @@
 },
 "dgt-CABINACINEMOMETRO_120088": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3308,
 "origen": "oficial",
 "punto": [
@@ -1046,6 +1042,7 @@
 },
 "dgt-CABINACINEMOMETRO_120089": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4842,
 "origen": "oficial",
 "punto": [
@@ -1060,6 +1057,7 @@
 },
 "dgt-CABINACINEMOMETRO_120091": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 7636,
 "origen": "oficial",
 "punto": [
@@ -1141,6 +1139,7 @@
 },
 "dgt-CABINACINEMOMETRO_120100": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1290,
 "origen": "oficial",
 "punto": [
@@ -1171,6 +1170,7 @@
 },
 "dgt-CABINACINEMOMETRO_120102": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2050,
 "origen": "oficial",
 "punto": [
@@ -1200,6 +1200,7 @@
 },
 "dgt-CABINACINEMOMETRO_120107": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4500,
 "origen": "oficial",
 "punto": [
@@ -1214,6 +1215,7 @@
 },
 "dgt-CABINACINEMOMETRO_120108": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 324,
 "origen": "oficial",
 "punto": [
@@ -1228,6 +1230,7 @@
 },
 "dgt-CABINACINEMOMETRO_120110": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 16038,
 "origen": "oficial",
 "punto": [
@@ -1242,6 +1245,7 @@
 },
 "dgt-CABINACINEMOMETRO_120111": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2802,
 "origen": "oficial",
 "punto": [
@@ -1256,6 +1260,7 @@
 },
 "dgt-CABINACINEMOMETRO_120113": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 720,
 "origen": "oficial",
 "punto": [
@@ -1284,6 +1289,7 @@
 },
 "dgt-CABINACINEMOMETRO_120115": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 384,
 "origen": "oficial",
 "punto": [
@@ -1428,6 +1434,7 @@
 },
 "dgt-CABINACINEMOMETRO_120129": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 388,
 "origen": "oficial",
 "punto": [
@@ -1457,6 +1464,7 @@
 },
 "dgt-CABINACINEMOMETRO_120131": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 394,
 "origen": "oficial",
 "punto": [
@@ -1471,6 +1479,7 @@
 },
 "dgt-CABINACINEMOMETRO_120132": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 6803,
 "origen": "oficial",
 "punto": [
@@ -1485,6 +1494,7 @@
 },
 "dgt-CABINACINEMOMETRO_120133": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1804,
 "origen": "oficial",
 "punto": [
@@ -1559,6 +1569,7 @@
 },
 "dgt-CABINACINEMOMETRO_120138": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 7612,
 "origen": "oficial",
 "punto": [
@@ -1588,6 +1599,7 @@
 },
 "dgt-CABINACINEMOMETRO_120140": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 459,
 "origen": "oficial",
 "punto": [
@@ -1602,6 +1614,7 @@
 },
 "dgt-CABINACINEMOMETRO_120141": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 346,
 "origen": "oficial",
 "punto": [
@@ -2253,6 +2266,7 @@
 },
 "dgt-CABINACINEMOMETRO_120208": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8948,
 "origen": "oficial",
 "punto": [
@@ -2295,6 +2309,7 @@
 },
 "dgt-CABINACINEMOMETRO_120211": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 450,
 "origen": "oficial",
 "punto": [
@@ -2309,6 +2324,7 @@
 },
 "dgt-CABINACINEMOMETRO_120212": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 838,
 "origen": "oficial",
 "punto": [
@@ -2323,6 +2339,7 @@
 },
 "dgt-CABINACINEMOMETRO_120213": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 798,
 "origen": "oficial",
 "punto": [
@@ -2353,6 +2370,7 @@
 },
 "dgt-CABINACINEMOMETRO_120215": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1903,
 "origen": "oficial",
 "punto": [
@@ -2367,6 +2385,7 @@
 },
 "dgt-CABINACINEMOMETRO_120216": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2482,
 "origen": "oficial",
 "punto": [
@@ -2381,6 +2400,7 @@
 },
 "dgt-CABINACINEMOMETRO_120217": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 929,
 "origen": "oficial",
 "punto": [
@@ -2410,6 +2430,7 @@
 },
 "dgt-CABINACINEMOMETRO_120219": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 208,
 "origen": "oficial",
 "punto": [
@@ -2424,6 +2445,7 @@
 },
 "dgt-CABINACINEMOMETRO_120220": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1470,
 "origen": "oficial",
 "punto": [
@@ -3488,6 +3510,7 @@
 },
 "dgt-CABINACINEMOMETRO_120336": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 7636,
 "origen": "oficial",
 "punto": [
@@ -3502,6 +3525,7 @@
 },
 "dgt-CABINACINEMOMETRO_120337": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 365,
 "origen": "oficial",
 "punto": [
@@ -3785,6 +3809,7 @@
 },
 "dgt-CABINACINEMOMETRO_120370": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2728,
 "origen": "oficial",
 "punto": [
@@ -3799,6 +3824,7 @@
 },
 "dgt-CABINACINEMOMETRO_120371": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 879,
 "origen": "oficial",
 "punto": [
@@ -4055,6 +4081,7 @@
 },
 "dgt-CABINACINEMOMETRO_120396": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 7652,
 "origen": "oficial",
 "punto": [
@@ -4084,6 +4111,7 @@
 },
 "dgt-CABINACINEMOMETRO_120398": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 347,
 "origen": "oficial",
 "punto": [
@@ -4113,6 +4141,7 @@
 },
 "dgt-CABINACINEMOMETRO_120400": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 17209,
 "origen": "oficial",
 "punto": [
@@ -4127,6 +4156,7 @@
 },
 "dgt-CABINACINEMOMETRO_120401": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2845,
 "origen": "oficial",
 "punto": [
@@ -4141,20 +4171,13 @@
 },
 "dgt-CABINACINEMOMETRO_120402": {
 "candidatas": 2,
-"margen_m": 700,
-"origen": "oficial",
-"punto": [
-41.6338,
--5.797998
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 346,
-"sentido_km": "decreciente",
-"via": 693685769
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120403": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 7961,
 "origen": "oficial",
 "punto": [
@@ -4169,6 +4192,7 @@
 },
 "dgt-CABINACINEMOMETRO_120404": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1537,
 "origen": "oficial",
 "punto": [
@@ -4183,6 +4207,7 @@
 },
 "dgt-CABINACINEMOMETRO_120405": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1349,
 "origen": "oficial",
 "punto": [
@@ -4203,6 +4228,7 @@
 },
 "dgt-CABINACINEMOMETRO_120407": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2016,
 "origen": "oficial",
 "punto": [
@@ -4217,17 +4243,9 @@
 },
 "dgt-CABINACINEMOMETRO_120408": {
 "candidatas": 2,
-"margen_m": 1408,
-"origen": "oficial",
-"punto": [
-42.577148,
--5.649433
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 64,
-"sentido_km": "decreciente",
-"via": 4869440
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120409": {
 "candidatas": 2,
@@ -4246,6 +4264,7 @@
 },
 "dgt-CABINACINEMOMETRO_120410": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1553,
 "origen": "oficial",
 "punto": [
@@ -4260,6 +4279,7 @@
 },
 "dgt-CABINACINEMOMETRO_120411": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3217,
 "origen": "oficial",
 "punto": [
@@ -4289,6 +4309,7 @@
 },
 "dgt-CABINACINEMOMETRO_120413": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2977,
 "origen": "oficial",
 "punto": [
@@ -4303,6 +4324,7 @@
 },
 "dgt-CABINACINEMOMETRO_120414": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1022,
 "origen": "oficial",
 "punto": [
@@ -4317,6 +4339,7 @@
 },
 "dgt-CABINACINEMOMETRO_120415": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 483,
 "origen": "oficial",
 "punto": [
@@ -4331,6 +4354,7 @@
 },
 "dgt-CABINACINEMOMETRO_120416": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2070,
 "origen": "oficial",
 "punto": [
@@ -4345,6 +4369,7 @@
 },
 "dgt-CABINACINEMOMETRO_120418": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 220,
 "origen": "oficial",
 "punto": [
@@ -4359,6 +4384,7 @@
 },
 "dgt-CABINACINEMOMETRO_120419": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2910,
 "origen": "oficial",
 "punto": [
@@ -4373,6 +4399,7 @@
 },
 "dgt-CABINACINEMOMETRO_120420": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2042,
 "origen": "oficial",
 "punto": [
@@ -4387,6 +4414,7 @@
 },
 "dgt-CABINACINEMOMETRO_120421": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8224,
 "origen": "oficial",
 "punto": [
@@ -4401,6 +4429,7 @@
 },
 "dgt-CABINACINEMOMETRO_120423": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5636,
 "origen": "oficial",
 "punto": [
@@ -4415,6 +4444,7 @@
 },
 "dgt-CABINACINEMOMETRO_120424": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 15820,
 "origen": "oficial",
 "punto": [
@@ -4429,6 +4459,7 @@
 },
 "dgt-CABINACINEMOMETRO_120425": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 10758,
 "origen": "oficial",
 "punto": [
@@ -4443,6 +4474,7 @@
 },
 "dgt-CABINACINEMOMETRO_120426": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 16981,
 "origen": "oficial",
 "punto": [
@@ -4457,20 +4489,13 @@
 },
 "dgt-CABINACINEMOMETRO_120427": {
 "candidatas": 2,
-"margen_m": 5032,
-"origen": "oficial",
-"punto": [
-43.355507,
--5.828368
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 8,
-"sentido_km": "decreciente",
-"via": 55219849
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120429": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 10274,
 "origen": "oficial",
 "punto": [
@@ -4515,6 +4540,7 @@
 },
 "dgt-CABINACINEMOMETRO_120435": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1894,
 "origen": "oficial",
 "punto": [
@@ -4544,6 +4570,7 @@
 },
 "dgt-CABINACINEMOMETRO_120442": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 6702,
 "origen": "oficial",
 "punto": [
@@ -4571,6 +4598,7 @@
 },
 "dgt-CABINACINEMOMETRO_120444": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5935,
 "origen": "oficial",
 "punto": [
@@ -4591,6 +4619,7 @@
 },
 "dgt-CABINACINEMOMETRO_120446": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8045,
 "origen": "oficial",
 "punto": [
@@ -4620,6 +4649,7 @@
 },
 "dgt-CABINACINEMOMETRO_120450": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1557,
 "origen": "oficial",
 "punto": [
@@ -4634,6 +4664,7 @@
 },
 "dgt-CABINACINEMOMETRO_120451": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2517,
 "origen": "oficial",
 "punto": [
@@ -4752,6 +4783,7 @@
 },
 "dgt-CABINACINEMOMETRO_120463": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1682,
 "origen": "oficial",
 "punto": [
@@ -4766,6 +4798,7 @@
 },
 "dgt-CABINACINEMOMETRO_120465": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 652,
 "origen": "oficial",
 "punto": [
@@ -4780,6 +4813,7 @@
 },
 "dgt-CABINACINEMOMETRO_120466": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1324,
 "origen": "oficial",
 "punto": [
@@ -4794,20 +4828,13 @@
 },
 "dgt-CABINACINEMOMETRO_120467": {
 "candidatas": 2,
-"margen_m": 1891,
-"origen": "oficial",
-"punto": [
-41.606351,
--0.691224
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 131,
-"sentido_km": "creciente",
-"via": 510506875
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120469": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 7037,
 "origen": "oficial",
 "punto": [
@@ -4836,6 +4863,7 @@
 },
 "dgt-CABINACINEMOMETRO_120471": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1931,
 "origen": "oficial",
 "punto": [
@@ -4850,6 +4878,7 @@
 },
 "dgt-CABINACINEMOMETRO_120472": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2234,
 "origen": "oficial",
 "punto": [
@@ -4864,6 +4893,7 @@
 },
 "dgt-CABINACINEMOMETRO_120473": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2832,
 "origen": "oficial",
 "punto": [
@@ -4878,6 +4908,7 @@
 },
 "dgt-CABINACINEMOMETRO_120474": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2832,
 "origen": "oficial",
 "punto": [
@@ -4892,6 +4923,7 @@
 },
 "dgt-CABINACINEMOMETRO_120475": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1045,
 "origen": "oficial",
 "punto": [
@@ -4906,6 +4938,7 @@
 },
 "dgt-CABINACINEMOMETRO_120476": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1045,
 "origen": "oficial",
 "punto": [
@@ -4920,31 +4953,15 @@
 },
 "dgt-CABINACINEMOMETRO_120477": {
 "candidatas": 2,
-"margen_m": 8131,
-"origen": "oficial",
-"punto": [
-42.252958,
--8.684288
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 36,
-"sentido_km": "decreciente",
-"via": 140096341
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120478": {
 "candidatas": 2,
-"margen_m": 392,
-"origen": "oficial",
-"punto": [
-42.66849,
--8.635893
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 164,
-"sentido_km": "creciente",
-"via": 1429833051
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120479": {
 "candidatas": 2,
@@ -5161,6 +5178,7 @@
 },
 "dgt-CABINACINEMOMETRO_120504": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 341,
 "origen": "oficial",
 "punto": [
@@ -5175,6 +5193,7 @@
 },
 "dgt-CABINACINEMOMETRO_120506": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 164,
 "origen": "oficial",
 "punto": [
@@ -5189,6 +5208,7 @@
 },
 "dgt-CABINACINEMOMETRO_120507": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4640,
 "origen": "oficial",
 "punto": [
@@ -5203,6 +5223,7 @@
 },
 "dgt-CABINACINEMOMETRO_120508": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2970,
 "origen": "oficial",
 "punto": [
@@ -5217,6 +5238,7 @@
 },
 "dgt-CABINACINEMOMETRO_120509": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2335,
 "origen": "oficial",
 "punto": [
@@ -5231,6 +5253,7 @@
 },
 "dgt-CABINACINEMOMETRO_120510": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8878,
 "origen": "oficial",
 "punto": [
@@ -5259,6 +5282,7 @@
 },
 "dgt-CABINACINEMOMETRO_120512": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 723,
 "origen": "oficial",
 "punto": [
@@ -5273,6 +5297,7 @@
 },
 "dgt-CABINACINEMOMETRO_120513": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2975,
 "origen": "oficial",
 "punto": [
@@ -5287,6 +5312,7 @@
 },
 "dgt-CABINACINEMOMETRO_120514": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 6476,
 "origen": "oficial",
 "punto": [
@@ -5301,6 +5327,7 @@
 },
 "dgt-CABINACINEMOMETRO_120517": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 17890,
 "origen": "oficial",
 "punto": [
@@ -5315,20 +5342,13 @@
 },
 "dgt-CABINACINEMOMETRO_120518": {
 "candidatas": 2,
-"margen_m": 1565,
-"origen": "oficial",
-"punto": [
-40.941912,
--5.660702
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 83,
-"sentido_km": "decreciente",
-"via": 45496809
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120519": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3046,
 "origen": "oficial",
 "punto": [
@@ -5343,6 +5363,7 @@
 },
 "dgt-CABINACINEMOMETRO_120520": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3113,
 "origen": "oficial",
 "punto": [
@@ -5357,6 +5378,7 @@
 },
 "dgt-CABINACINEMOMETRO_120521": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2080,
 "origen": "oficial",
 "punto": [
@@ -5384,6 +5406,7 @@
 },
 "dgt-CABINACINEMOMETRO_120523": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5496,
 "origen": "oficial",
 "punto": [
@@ -5411,6 +5434,7 @@
 },
 "dgt-CABINACINEMOMETRO_120525": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 13055,
 "origen": "oficial",
 "punto": [
@@ -5425,6 +5449,7 @@
 },
 "dgt-CABINACINEMOMETRO_120526": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2424,
 "origen": "oficial",
 "punto": [
@@ -5439,6 +5464,7 @@
 },
 "dgt-CABINACINEMOMETRO_120527": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1674,
 "origen": "oficial",
 "punto": [
@@ -5453,6 +5479,7 @@
 },
 "dgt-CABINACINEMOMETRO_120528": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2096,
 "origen": "oficial",
 "punto": [
@@ -5467,6 +5494,7 @@
 },
 "dgt-CABINACINEMOMETRO_120530": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2600,
 "origen": "oficial",
 "punto": [
@@ -5481,6 +5509,7 @@
 },
 "dgt-CABINACINEMOMETRO_120531": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 13736,
 "origen": "oficial",
 "punto": [
@@ -5495,6 +5524,7 @@
 },
 "dgt-CABINACINEMOMETRO_120532": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8929,
 "origen": "oficial",
 "punto": [
@@ -5509,6 +5539,7 @@
 },
 "dgt-CABINACINEMOMETRO_120533": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 6252,
 "origen": "oficial",
 "punto": [
@@ -5523,6 +5554,7 @@
 },
 "dgt-CABINACINEMOMETRO_120534": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 10017,
 "origen": "oficial",
 "punto": [
@@ -5537,6 +5569,7 @@
 },
 "dgt-CABINACINEMOMETRO_120535": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8734,
 "origen": "oficial",
 "punto": [
@@ -5551,6 +5584,7 @@
 },
 "dgt-CABINACINEMOMETRO_120537": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 7624,
 "origen": "oficial",
 "punto": [
@@ -5565,6 +5599,7 @@
 },
 "dgt-CABINACINEMOMETRO_120538": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 24984,
 "origen": "oficial",
 "punto": [
@@ -5594,6 +5629,7 @@
 },
 "dgt-CABINACINEMOMETRO_120541": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1985,
 "origen": "oficial",
 "punto": [
@@ -5608,6 +5644,7 @@
 },
 "dgt-CABINACINEMOMETRO_120542": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 166,
 "origen": "oficial",
 "punto": [
@@ -5666,6 +5703,7 @@
 },
 "dgt-CABINACINEMOMETRO_120547": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2823,
 "origen": "oficial",
 "punto": [
@@ -5680,20 +5718,13 @@
 },
 "dgt-CABINACINEMOMETRO_120548": {
 "candidatas": 2,
-"margen_m": 2759,
-"origen": "oficial",
-"punto": [
-42.325782,
--3.682893
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 255,
-"sentido_km": "decreciente",
-"via": 1239166762
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_120549": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3011,
 "origen": "oficial",
 "punto": [
@@ -5708,6 +5739,7 @@
 },
 "dgt-CABINACINEMOMETRO_120550": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 9053,
 "origen": "oficial",
 "punto": [
@@ -5722,6 +5754,7 @@
 },
 "dgt-CABINACINEMOMETRO_120551": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3390,
 "origen": "oficial",
 "punto": [
@@ -5749,6 +5782,7 @@
 },
 "dgt-CABINACINEMOMETRO_120553": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5056,
 "origen": "oficial",
 "punto": [
@@ -5763,6 +5797,7 @@
 },
 "dgt-CABINACINEMOMETRO_120554": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8578,
 "origen": "oficial",
 "punto": [
@@ -5777,6 +5812,7 @@
 },
 "dgt-CABINACINEMOMETRO_120555": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3432,
 "origen": "oficial",
 "punto": [
@@ -5791,6 +5827,7 @@
 },
 "dgt-CABINACINEMOMETRO_120556": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 427,
 "origen": "oficial",
 "punto": [
@@ -5819,6 +5856,7 @@
 },
 "dgt-CABINACINEMOMETRO_120558": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3867,
 "origen": "oficial",
 "punto": [
@@ -5847,6 +5885,7 @@
 },
 "dgt-CABINACINEMOMETRO_120561": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3787,
 "origen": "oficial",
 "punto": [
@@ -5889,6 +5928,7 @@
 },
 "dgt-CABINACINEMOMETRO_120564": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4475,
 "origen": "oficial",
 "punto": [
@@ -5917,6 +5957,7 @@
 },
 "dgt-CABINACINEMOMETRO_120566": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3819,
 "origen": "oficial",
 "punto": [
@@ -5945,6 +5986,7 @@
 },
 "dgt-CABINACINEMOMETRO_120568": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1474,
 "origen": "oficial",
 "punto": [
@@ -6781,6 +6823,7 @@
 },
 "dgt-CABINACINEMOMETRO_120645": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1746,
 "origen": "oficial",
 "punto": [
@@ -6985,6 +7028,7 @@
 },
 "dgt-CABINACINEMOMETRO_120666": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1888,
 "origen": "oficial",
 "punto": [
@@ -6999,6 +7043,7 @@
 },
 "dgt-CABINACINEMOMETRO_120667": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 443,
 "origen": "oficial",
 "punto": [
@@ -7013,6 +7058,7 @@
 },
 "dgt-CABINACINEMOMETRO_120668": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1315,
 "origen": "oficial",
 "punto": [
@@ -7027,6 +7073,7 @@
 },
 "dgt-CABINACINEMOMETRO_120669": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 2873,
 "origen": "oficial",
 "punto": [
@@ -7041,6 +7088,7 @@
 },
 "dgt-CABINACINEMOMETRO_120670": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 21608,
 "origen": "oficial",
 "punto": [
@@ -7055,6 +7103,7 @@
 },
 "dgt-CABINACINEMOMETRO_120671": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 29999,
 "origen": "oficial",
 "punto": [
@@ -7069,6 +7118,7 @@
 },
 "dgt-CABINACINEMOMETRO_120672": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 12901,
 "origen": "oficial",
 "punto": [
@@ -7083,6 +7133,7 @@
 },
 "dgt-CABINACINEMOMETRO_120673": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 714,
 "origen": "oficial",
 "punto": [
@@ -7097,6 +7148,7 @@
 },
 "dgt-CABINACINEMOMETRO_120674": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 3778,
 "origen": "oficial",
 "punto": [
@@ -7111,6 +7163,7 @@
 },
 "dgt-CABINACINEMOMETRO_120675": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 7804,
 "origen": "oficial",
 "punto": [
@@ -7125,6 +7178,7 @@
 },
 "dgt-CABINACINEMOMETRO_120676": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5968,
 "origen": "oficial",
 "punto": [
@@ -7139,6 +7193,7 @@
 },
 "dgt-CABINACINEMOMETRO_120677": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 20997,
 "origen": "oficial",
 "punto": [
@@ -7305,6 +7360,7 @@
 },
 "dgt-CABINACINEMOMETRO_162754": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4026,
 "origen": "oficial",
 "punto": [
@@ -7348,6 +7404,7 @@
 },
 "dgt-CABINACINEMOMETRO_162926": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1426,
 "origen": "oficial",
 "punto": [
@@ -7430,6 +7487,7 @@
 },
 "dgt-CABINACINEMOMETRO_163708": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5244,
 "origen": "oficial",
 "punto": [
@@ -7553,6 +7611,7 @@
 },
 "dgt-CABINACINEMOMETRO_164595": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1034,
 "origen": "oficial",
 "punto": [
@@ -7567,6 +7626,7 @@
 },
 "dgt-CABINACINEMOMETRO_164597": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 14266,
 "origen": "oficial",
 "punto": [
@@ -7886,6 +7946,7 @@
 },
 "dgt-CABINACINEMOMETRO_165670": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1095,
 "origen": "oficial",
 "punto": [
@@ -7900,6 +7961,7 @@
 },
 "dgt-CABINACINEMOMETRO_165803": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1476,
 "origen": "oficial",
 "punto": [
@@ -7914,6 +7976,7 @@
 },
 "dgt-CABINACINEMOMETRO_165804": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 4229,
 "origen": "oficial",
 "punto": [
@@ -7942,17 +8005,9 @@
 },
 "dgt-CABINACINEMOMETRO_165807": {
 "candidatas": 2,
-"margen_m": 56667,
-"origen": "oficial",
-"punto": [
-42.685301,
--7.462519
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 191,
-"sentido_km": "creciente",
-"via": 424761090
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_165808": {
 "candidatas": 1,
@@ -7984,6 +8039,7 @@
 },
 "dgt-CABINACINEMOMETRO_165813": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 1036,
 "origen": "oficial",
 "punto": [
@@ -7998,6 +8054,7 @@
 },
 "dgt-CABINACINEMOMETRO_165814": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 224,
 "origen": "oficial",
 "punto": [
@@ -8012,6 +8069,7 @@
 },
 "dgt-CABINACINEMOMETRO_165816": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 5273,
 "origen": "oficial",
 "punto": [
@@ -8226,17 +8284,9 @@
 },
 "dgt-CABINACINEMOMETRO_166669": {
 "candidatas": 2,
-"margen_m": 601,
-"origen": "oficial",
-"punto": [
-42.512655,
--8.642758
-],
-"regla": "a",
-"resultado": "resuelto",
-"rumbo": 173,
-"sentido_km": "creciente",
-"via": 56058770
+"motivo": "el sentido creciente/decreciente y el destino oficiales no llevan a la misma calzada",
+"regla": null,
+"resultado": "ambos"
 },
 "dgt-CABINACINEMOMETRO_166687": {
 "candidatas": 2,
@@ -8443,6 +8493,7 @@
 },
 "dgt-CABINACINEMOMETRO_167168": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 781,
 "origen": "oficial",
 "punto": [
@@ -8457,6 +8508,7 @@
 },
 "dgt-CABINACINEMOMETRO_167169": {
 "candidatas": 2,
+"destino_coincide": true,
 "margen_m": 8403,
 "origen": "oficial",
 "punto": [
