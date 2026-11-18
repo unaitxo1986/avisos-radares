@@ -13,6 +13,9 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <!-- Para pedir "batería sin restricciones" con el diálogo directo de Android (pantalla principal). -->
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <!-- Android Auto (fase 7): plantilla de navegación y dibujar en la pantalla del coche. -->
+    <uses-permission android:name="androidx.car.app.NAVIGATION_TEMPLATES" />
+    <uses-permission android:name="androidx.car.app.ACCESS_SURFACE" />
 
     <application
         android:name=".AppRadares"
@@ -48,6 +51,25 @@
                 <action android:name="android.bluetooth.device.action.ACL_DISCONNECTED" />
             </intent-filter>
         </receiver>
+
+        <!-- Android Auto (fase 7). Categoría de navegación: la única que deja dibujar lo que se quiera en la pantalla
+             del coche. La app no está en Google Play: en Android Auto hay que activar "Fuentes desconocidas". -->
+        <meta-data
+            android:name="com.google.android.gms.car.application"
+            android:resource="@xml/automotive_app_desc" />
+        <meta-data
+            android:name="androidx.car.app.minCarApiLevel"
+            android:value="1" />
+        <service
+            android:name=".CocheServicio"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="Avisos radares">
+            <intent-filter>
+                <action android:name="androidx.car.app.CarAppService" />
+                <category android:name="androidx.car.app.category.NAVIGATION" />
+            </intent-filter>
+        </service>
 
         <service
             android:name=".ServicioRadares"

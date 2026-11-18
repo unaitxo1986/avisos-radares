@@ -106,6 +106,8 @@ class ServicioRadares : Service() {
     private var avisos = 0
     private var recorrido: List<Posicion>? = null
     private var descripcionRecorrido = ""
+    /** Aviso emergente en Android Auto (fase 7). */
+    private var avisosCoche: AvisosEnCoche? = null
 
     // Ventana flotante
     private var ventana: LinearLayout? = null
@@ -155,6 +157,7 @@ class ServicioRadares : Service() {
             Registro.anota(this, "SERVICIO", "lista de ${lista.radares.size} radares, versión ${lista.version}")
         }
         arrancarVentana()
+        avisosCoche = AvisosEnCoche(this).also { it.empezar() }
 
         val r = recorrido
         if (r != null) {
@@ -183,6 +186,8 @@ class ServicioRadares : Service() {
         }
         grabador?.cierra()
         quitarVentana()
+        avisosCoche?.terminar()
+        avisosCoche = null
         enMarcha = false
         estadoTexto = ""
         velocidadKmh = null
@@ -443,6 +448,7 @@ class ServicioRadares : Service() {
         Companion.velocidadKmh = velocidadKmh
         avisoActual = aviso
         simulando = recorrido != null
+        avisosCoche?.actualizar(aviso, velocidadKmh)
         estadoTexto = "$textoVel km/h" +
             (aviso?.let {
                 if (it.enTramo) " · TRAMO, ${textosAviso(it).first} km/h, ${textosAviso(it).second}, límite ${it.radar.limite ?: "desconocido"}"

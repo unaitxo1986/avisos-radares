@@ -66,5 +66,9 @@ android {
 }
 
 dependencies {
+    // Android Auto (fase 7): librería de Google para apps de coche (versión estable 1.7.0, julio de 2025).
+    implementation("androidx.car.app:app:1.7.0")
+    implementation("androidx.car.app:app-projected:1.7.0")
+    implementation("androidx.core:core:1.13.1")
     testImplementation("junit:junit:4.13.2")
 }
