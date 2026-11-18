@@ -1,0 +1,5632 @@
+{
+ "total": 198,
+ "nuevos": 62,
+ "camaras": [
+  {
+   "id": 13767325408,
+   "lat": 43.4149962,
+   "lon": -2.9319994,
+   "tags": {
+    "direction": "250",
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "1",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.414956,
+    -2.9317414
+   ],
+   "hacia": [
+    43.4149629,
+    -2.9320637
+   ],
+   "relacion": 20595459,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 9020
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13767307551,
+   "lat": 43.4118173,
+   "lon": -2.9319282,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.4121564,
+    -2.9325427
+   ],
+   "hacia": [
+    43.4118076,
+    -2.9320345
+   ],
+   "relacion": 20595450,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 8734
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13767267597,
+   "lat": 43.4047273,
+   "lon": -2.94033,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.404785,
+    -2.9414005
+   ],
+   "hacia": [
+    43.4047752,
+    -2.9403247
+   ],
+   "relacion": 20595440,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 7701
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13707940952,
+   "lat": 43.3952638,
+   "lon": -2.9718187,
+   "tags": {
+    "direction": "120",
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "1",
+   "fecha": "2026-04-05",
+   "control": "maxspeed",
+   "desde": [
+    43.3949493,
+    -2.971509
+   ],
+   "hacia": [
+    43.3952301,
+    -2.9717368
+   ],
+   "relacion": 20412631,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 5588
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7777755958,
+   "lat": 43.3837021,
+   "lon": -1.7959773,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "3",
+   "fecha": "2026-04-28",
+   "control": "maxspeed",
+   "desde": [
+    43.3809031,
+    -1.7982418
+   ],
+   "hacia": [
+    43.3838132,
+    -1.7957903
+   ],
+   "relacion": 20598619,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-gi-3440-18045-hondarribia-santaengrazi",
+    "nombre": "HONDARRIBIA SANTAENGRAZI",
+    "m": 2207
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 81736917,
+   "lat": 43.3827314,
+   "lon": -2.69828,
+   "tags": {
+    "highway": "traffic_signals",
+    "traffic_signals": "signal"
+   },
+   "version": "6",
+   "fecha": "2026-04-04",
+   "control": "traffic_signals",
+   "desde": [
+    43.3822836,
+    -2.6985008
+   ],
+   "hacia": null,
+   "relacion": 20410125,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "eus-bi-3234-45620-ibarrangelu",
+    "nombre": "IBARRANGELU",
+    "m": 3041
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 11553904107,
+   "lat": 43.3814203,
+   "lon": -2.9773656,
+   "tags": {
+    "direction": "250",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2024-01-26",
+   "control": "maxspeed",
+   "desde": [
+    43.3814472,
+    -2.9783114
+   ],
+   "hacia": [
+    43.3813551,
+    -2.97742
+   ],
+   "relacion": 17083087,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 3991
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 11553904108,
+   "lat": 43.3791534,
+   "lon": -2.9859995,
+   "tags": {
+    "direction": "15",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2024-01-26",
+   "control": "maxspeed",
+   "desde": [
+    43.3794284,
+    -2.9858203
+   ],
+   "hacia": [
+    43.3791933,
+    -2.986028
+   ],
+   "relacion": 17083089,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 3553
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 11105081489,
+   "lat": 43.3791323,
+   "lon": -2.9786414,
+   "tags": {
+    "direction": "45",
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "1",
+   "fecha": "2023-08-10",
+   "control": "maxspeed",
+   "desde": [
+    43.379213,
+    -2.9771047
+   ],
+   "hacia": [
+    43.3791643,
+    -2.9786269
+   ],
+   "relacion": 17065485,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 3717
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 11105081490,
+   "lat": 43.3791035,
+   "lon": -2.9753795,
+   "tags": {
+    "direction": "295",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "2",
+   "fecha": "2024-01-22",
+   "control": "maxspeed",
+   "desde": [
+    43.3791776,
+    -2.9760308
+   ],
+   "hacia": [
+    43.3791537,
+    -2.9754113
+   ],
+   "relacion": 17065487,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 3815
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7777755957,
+   "lat": 43.3781127,
+   "lon": -1.7980751,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "3",
+   "fecha": "2026-04-28",
+   "control": "maxspeed",
+   "desde": [
+    43.3770412,
+    -1.7977514
+   ],
+   "hacia": [
+    43.3781925,
+    -1.7980265
+   ],
+   "relacion": 20598611,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-gi-3440-18045-hondarribia-santaengrazi",
+    "nombre": "HONDARRIBIA SANTAENGRAZI",
+    "m": 1566
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13167794844,
+   "lat": 43.3742532,
+   "lon": -2.9756966,
+   "tags": {
+    "direction": "100",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "1",
+   "fecha": "2025-09-24",
+   "control": "maxspeed",
+   "desde": [
+    43.3732963,
+    -2.9716142
+   ],
+   "hacia": [
+    43.3742788,
+    -2.9756175
+   ],
+   "relacion": 19644712,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 3320
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7777755956,
+   "lat": 43.3729152,
+   "lon": -1.7992105,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "5",
+   "fecha": "2026-04-28",
+   "control": "maxspeed",
+   "desde": [
+    43.3735534,
+    -1.7988731
+   ],
+   "hacia": [
+    43.3729786,
+    -1.799232
+   ],
+   "relacion": 20598600,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-gi-3440-18045-hondarribia-santaengrazi",
+    "nombre": "HONDARRIBIA SANTAENGRAZI",
+    "m": 982
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7777755955,
+   "lat": 43.3711636,
+   "lon": -1.7997376,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "5",
+   "fecha": "2026-04-28",
+   "control": "maxspeed",
+   "desde": [
+    43.3706817,
+    -1.7996948
+   ],
+   "hacia": [
+    43.3711846,
+    -1.7996669
+   ],
+   "relacion": 20598590,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-gi-3440-18045-hondarribia-santaengrazi",
+    "nombre": "HONDARRIBIA SANTAENGRAZI",
+    "m": 783
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 14297435734,
+   "lat": 43.3684581,
+   "lon": -2.9979898,
+   "tags": {
+    "direction": "350",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2026-10-18",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 2305
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 2334938925,
+   "lat": 43.367679,
+   "lon": -1.800927,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30",
+    "note": "F050 BBS caceres222 Labreder Kalea 9-11 Hondarribia @"
+   },
+   "version": "7",
+   "fecha": "2026-06-17",
+   "control": "maxspeed",
+   "desde": [
+    43.3670775,
+    -1.801554
+   ],
+   "hacia": [
+    43.3676599,
+    -1.8009473
+   ],
+   "relacion": 20595892,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-gi-3440-18045-hondarribia-santaengrazi",
+    "nombre": "HONDARRIBIA SANTAENGRAZI",
+    "m": 385
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 6817054125,
+   "lat": 43.3656111,
+   "lon": -2.9997746,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "4",
+   "fecha": "2022-10-16",
+   "control": "maxspeed",
+   "desde": [
+    43.3658367,
+    -2.9996366
+   ],
+   "hacia": [
+    43.3656481,
+    -2.9998378
+   ],
+   "relacion": 14701727,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 2014
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13465902360,
+   "lat": 43.3609856,
+   "lon": -2.9970756,
+   "tags": {
+    "direction": "50",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2026-01-19",
+   "control": "maxspeed",
+   "desde": [
+    43.3612769,
+    -2.996874
+   ],
+   "hacia": [
+    43.3609904,
+    -2.9970062
+   ],
+   "relacion": 20110524,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 1473
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7777755954,
+   "lat": 43.3573947,
+   "lon": -1.7972067,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "4",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.3579331,
+    -1.7971636
+   ],
+   "hacia": [
+    43.3574232,
+    -1.7972726
+   ],
+   "relacion": 20595859,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-gi-3440-18500-hondarribia-biteri",
+    "nombre": "HONDARRIBIA BITERI",
+    "m": 517
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13707707268,
+   "lat": 43.3555901,
+   "lon": -2.845086,
+   "tags": {
+    "direction": "330",
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "1",
+   "fecha": "2026-04-05",
+   "control": "maxspeed",
+   "desde": [
+    43.3553592,
+    -2.8444475
+   ],
+   "hacia": [
+    43.3556742,
+    -2.8451909
+   ],
+   "relacion": 20412364,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-n-633-10280-derio",
+    "nombre": "DERIO",
+    "m": 7746
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13707707267,
+   "lat": 43.3555061,
+   "lon": -2.8480077,
+   "tags": {
+    "direction": "330",
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "1",
+   "fecha": "2026-04-05",
+   "control": "maxspeed",
+   "desde": [
+    43.3553307,
+    -2.8475722
+   ],
+   "hacia": [
+    43.3556129,
+    -2.8481558
+   ],
+   "relacion": 20412363,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-n-633-10280-derio",
+    "nombre": "DERIO",
+    "m": 7653
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13707707266,
+   "lat": 43.3544433,
+   "lon": -2.8467965,
+   "tags": {
+    "direction": "120",
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "1",
+   "fecha": "2026-04-05",
+   "control": "maxspeed",
+   "desde": [
+    43.3544367,
+    -2.8476885
+   ],
+   "hacia": [
+    43.3544022,
+    -2.846701
+   ],
+   "relacion": 20412362,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-n-633-10280-derio",
+    "nombre": "DERIO",
+    "m": 7577
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7777755953,
+   "lat": 43.354082,
+   "lon": -1.7980951,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "3",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.3543541,
+    -1.7981304
+   ],
+   "hacia": [
+    43.3541055,
+    -1.7980982
+   ],
+   "relacion": 20595856,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-gi-636-13-288-hondarribia-amutalde",
+    "nombre": "HONDARRIBIA AMUTALDE",
+    "m": 743
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10034221345,
+   "lat": 43.3468228,
+   "lon": -2.9997778,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2022-09-18",
+   "control": "maxspeed",
+   "desde": [
+    43.3468413,
+    -2.9999081
+   ],
+   "hacia": [
+    43.3470978,
+    -2.9999348
+   ],
+   "relacion": 14595437,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 406
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 9868796945,
+   "lat": 43.3347255,
+   "lon": -3.0054528,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "2",
+   "fecha": "2022-09-18",
+   "control": "maxspeed",
+   "desde": [
+    43.3347534,
+    -3.0053983
+   ],
+   "hacia": [
+    43.3345698,
+    -3.0050799
+   ],
+   "relacion": 14594448,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-bi-637-13690-artatza",
+    "nombre": "ARTATZA",
+    "m": 396
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10052095788,
+   "lat": 43.3336399,
+   "lon": -3.0111192,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2022-09-25",
+   "control": "maxspeed",
+   "desde": [
+    43.333614,
+    -3.0110175
+   ],
+   "hacia": [
+    43.3333334,
+    -3.0111512
+   ],
+   "relacion": 14623010,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-13690-artatza",
+    "nombre": "ARTATZA",
+    "m": 866
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 12703115362,
+   "lat": 43.3261221,
+   "lon": -2.9906376,
+   "tags": {
+    "direction": "115",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2025-03-26",
+   "control": "maxspeed",
+   "desde": [
+    43.3258747,
+    -2.9901538
+   ],
+   "hacia": [
+    43.3261495,
+    -2.9905704
+   ],
+   "relacion": 19018940,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-10845-eroski-leioa",
+    "nombre": "EROSKI LEIOA",
+    "m": 1213
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10182509613,
+   "lat": 43.3248359,
+   "lon": -2.986095,
+   "tags": {
+    "direction": "100",
+    "highway": "speed_camera",
+    "maxspeed": "30",
+    "start_date": "2022-11-14"
+   },
+   "version": "5",
+   "fecha": "2022-11-14",
+   "control": "maxspeed",
+   "desde": [
+    43.324824,
+    -2.9858753
+   ],
+   "hacia": [
+    43.3246078,
+    -2.9854653
+   ],
+   "relacion": 14888709,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-10845-eroski-leioa",
+    "nombre": "EROSKI LEIOA",
+    "m": 825
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10182984432,
+   "lat": 43.3228762,
+   "lon": -2.9811793,
+   "tags": {
+    "direction": "290",
+    "highway": "speed_camera",
+    "maxspeed": "30",
+    "start_date": "2022-11-14"
+   },
+   "version": "4",
+   "fecha": "2026-06-10",
+   "control": "maxspeed",
+   "desde": [
+    43.3228691,
+    -2.9812727
+   ],
+   "hacia": [
+    43.3230573,
+    -2.9816407
+   ],
+   "relacion": 20962638,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-10845-eroski-leioa",
+    "nombre": "EROSKI LEIOA",
+    "m": 374
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10182984431,
+   "lat": 43.3226974,
+   "lon": -2.9858694,
+   "tags": {
+    "direction": "335",
+    "highway": "speed_camera",
+    "maxspeed": "20",
+    "start_date": "2022-11-14"
+   },
+   "version": "4",
+   "fecha": "2022-11-29",
+   "control": "maxspeed",
+   "desde": [
+    43.3226801,
+    -2.9859638
+   ],
+   "hacia": [
+    43.3230702,
+    -2.9859784
+   ],
+   "relacion": 14890897,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-637-10845-eroski-leioa",
+    "nombre": "EROSKI LEIOA",
+    "m": 708
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7777755950,
+   "lat": 43.3152093,
+   "lon": -2.001274,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera"
+   },
+   "version": "4",
+   "fecha": "2025-05-02",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "mun-donostia-8",
+    "nombre": "Tolosa hiribidea",
+    "m": 1029
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 259270316,
+   "lat": 43.3144549,
+   "lon": -1.9928505,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "40"
+   },
+   "version": "7",
+   "fecha": "2023-12-18",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "mun-donostia-4",
+    "nombre": "Bizkaia pasealekua",
+    "m": 1146
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 992004415,
+   "lat": 43.3105183,
+   "lon": -1.9506839,
+   "tags": {
+    "direction": "100",
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "note": "F050 GOVI San Sebastión Paseo Otxoki DIR Garbera CL"
+   },
+   "version": "8",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.3105454,
+    -1.9529074
+   ],
+   "hacia": [
+    43.3104721,
+    -1.9504002
+   ],
+   "relacion": 20595769,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-6",
+    "nombre": "Otxoki pasealekua",
+    "m": 176
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13767511084,
+   "lat": 43.3095096,
+   "lon": -1.9099853,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.3092997,
+    -1.9088943
+   ],
+   "hacia": [
+    43.3094889,
+    -1.9101326
+   ],
+   "relacion": 20595835,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-gi-636-1220-tunel-molinao",
+    "nombre": "TUNEL MOLINAO",
+    "m": 704
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 1762935077,
+   "lat": 43.3064417,
+   "lon": -2.0078443,
+   "tags": {
+    "direction": "1",
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "surface": "asphalt"
+   },
+   "version": "7",
+   "fecha": "2026-05-13",
+   "control": "maxspeed",
+   "desde": [
+    43.3055105,
+    -2.0068974
+   ],
+   "hacia": [
+    43.3067461,
+    -2.0080562
+   ],
+   "relacion": 20595548,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-8",
+    "nombre": "Tolosa hiribidea",
+    "m": 255
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7775524801,
+   "lat": 43.2933526,
+   "lon": -2.0447759,
+   "tags": {
+    "direction": "115",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "3",
+   "fecha": "2023-12-18",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "eus-ap-8-29298-aritzeta",
+    "nombre": "ARITZETA",
+    "m": 1099
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 313221430,
+   "lat": 43.2844069,
+   "lon": -2.8658944,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "6",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.2839803,
+    -2.8655564
+   ],
+   "hacia": [
+    43.2845106,
+    -2.8660084
+   ],
+   "relacion": 20595482,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-n-633-10280-derio",
+    "nombre": "DERIO",
+    "m": 1398
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 3480792602,
+   "lat": 43.2763034,
+   "lon": -2.9548184,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "5",
+   "fecha": "2023-12-18",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "eus-a-8-120031-zorroza",
+    "nombre": "ZORROZA",
+    "m": 1130
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 11486161352,
+   "lat": 43.2693715,
+   "lon": -2.9562318,
+   "tags": {
+    "direction": "160",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2024-01-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2693757,
+    -2.9561456
+   ],
+   "hacia": [
+    43.2688712,
+    -2.956058
+   ],
+   "relacion": 16934280,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-a-8-119430-monolito",
+    "nombre": "MONOLITO",
+    "m": 667
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 5308701907,
+   "lat": 43.2634078,
+   "lon": -2.9289587,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "1",
+   "fecha": "2017-12-28",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "mun-bilbao-7200247188",
+    "nombre": "Alameda Rekalde (entre los números 25 y 27), vigila hacia el norte (puente de La Salve)",
+    "m": 447
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 245940388,
+   "lat": 43.2623615,
+   "lon": -2.9293453,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "8",
+   "fecha": "2017-12-28",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "mun-bilbao-7200247188",
+    "nombre": "Alameda Rekalde (entre los números 25 y 27), vigila hacia el norte (puente de La Salve)",
+    "m": 463
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 992005691,
+   "lat": 43.2603072,
+   "lon": -2.8948342,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "70",
+    "note": "F080 A300 CHAT BI-631 Km 4.67 Enlace Otxarkoaga DIR Bilbao CL"
+   },
+   "version": "7",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.2608643,
+    -2.8957117
+   ],
+   "hacia": [
+    43.2597554,
+    -2.8940237
+   ],
+   "relacion": 7769261,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "mun-bilbao-992001590",
+    "nombre": "Avenida Zumalakarregi (curva tras la rotonda de Ibarsusi), vigila subida, hacia el centro de Bilbao",
+    "m": 1292
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 992003595,
+   "lat": 43.2576185,
+   "lon": -2.935658,
+   "tags": {
+    "description": "Radar control semáforo paso en rojo.",
+    "direction": "200",
+    "highway": "speed_camera",
+    "note": "SEM KOYA Bilbao General Concha CRUCE Autonomia DIR Vistalegre CL"
+   },
+   "version": "7",
+   "fecha": "2026-04-09",
+   "control": "traffic_signals",
+   "desde": [
+    43.2577554,
+    -2.9355571
+   ],
+   "hacia": [
+    43.2575005,
+    -2.9356621
+   ],
+   "relacion": 20426141,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "mun-bilbao-7200247188",
+    "nombre": "Alameda Rekalde (entre los números 25 y 27), vigila hacia el norte (puente de La Salve)",
+    "m": 768
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 1760285628,
+   "lat": 43.2346393,
+   "lon": -2.0274808,
+   "tags": {
+    "direction": "320",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 GOVI TKTS N-I Km 448.8 Andoaón DIR Irún Mediana CL"
+   },
+   "version": "10",
+   "fecha": "2026-04-09",
+   "control": "maxspeed",
+   "desde": [
+    43.2322506,
+    -2.0254684
+   ],
+   "hacia": [
+    43.235115,
+    -2.0281198
+   ],
+   "relacion": 20362061,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-1-448829-bazkardo",
+    "nombre": "BAZKARDO",
+    "m": 191
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13767349839,
+   "lat": 43.1898914,
+   "lon": -2.4541013,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.1897889,
+    -2.4535441
+   ],
+   "hacia": [
+    43.1898575,
+    -2.4543223
+   ],
+   "relacion": 20595527,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-ap-8-69700-maltzaga",
+    "nombre": "MALTZAGA",
+    "m": 1609
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10292038364,
+   "lat": 43.1807235,
+   "lon": -2.4867783,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "3",
+   "fecha": "2026-04-15",
+   "control": "maxspeed",
+   "desde": [
+    43.1820001,
+    -2.4838484
+   ],
+   "hacia": [
+    43.1807406,
+    -2.4868243
+   ],
+   "relacion": 20453924,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-ap-8-77400-ermua",
+    "nombre": "ERMUA",
+    "m": 2597
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10292038363,
+   "lat": 43.1805956,
+   "lon": -2.4854138,
+   "tags": {
+    "direction": "76",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "3",
+   "fecha": "2023-07-04",
+   "control": "maxspeed",
+   "desde": [
+    43.1802582,
+    -2.4873123
+   ],
+   "hacia": [
+    43.180617,
+    -2.4852816
+   ],
+   "relacion": 20577523,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-ap-8-77400-ermua",
+    "nombre": "ERMUA",
+    "m": 2702
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13668638644,
+   "lat": 43.1709523,
+   "lon": -2.0126587,
+   "tags": {
+    "direction": "150",
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "1",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.1771394,
+    -2.0144784
+   ],
+   "hacia": [
+    43.1693159,
+    -2.0120696
+   ],
+   "relacion": 20361853,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-a-15-149700-inicio-tunel-belabieta",
+    "nombre": "INICIO TUNEL BELABIETA",
+    "m": 182
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13754881284,
+   "lat": 43.1532764,
+   "lon": -2.9757673,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "1",
+   "fecha": "2026-04-23",
+   "control": "maxspeed",
+   "desde": [
+    43.1526088,
+    -2.9751551
+   ],
+   "hacia": [
+    43.1539448,
+    -2.9766322
+   ],
+   "relacion": 20577548,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-bi-625-376300-arrankudiaga",
+    "nombre": "ARRANKUDIAGA",
+    "m": 4831
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 992006195,
+   "lat": 43.1531268,
+   "lon": -2.0044947,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "note": "TUFI A300 PREaviso F100 2R A-15 Km 148.8 149.7 Belavieta DIR S.S-"
+   },
+   "version": "8",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.1693159,
+    -2.0120696
+   ],
+   "hacia": [
+    43.1523286,
+    -2.0044872
+   ],
+   "relacion": 20361995,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-a-15-148775-tunel-belabieta",
+    "nombre": "TUNEL BELABIETA",
+    "m": 967
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13311195241,
+   "lat": 43.1447923,
+   "lon": -2.9594449,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2025-11-17",
+   "control": "maxspeed",
+   "desde": [
+    43.1447989,
+    -2.959375
+   ],
+   "hacia": [
+    43.1447108,
+    -2.9594518
+   ],
+   "relacion": 19849787,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-625-376300-arrankudiaga",
+    "nombre": "ARRANKUDIAGA",
+    "m": 4208
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13335532760,
+   "lat": 43.1429347,
+   "lon": -2.9406581,
+   "tags": {
+    "direction": "both",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2025-11-27",
+   "control": "maxspeed",
+   "desde": [
+    43.1423863,
+    -2.9402906
+   ],
+   "hacia": [
+    43.1433467,
+    -2.9409584
+   ],
+   "relacion": 20577538,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-bi-625-376300-arrankudiaga",
+    "nombre": "ARRANKUDIAGA",
+    "m": 3417
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 14280731525,
+   "lat": 43.1249194,
+   "lon": -2.9808658,
+   "tags": {
+    "direction": "10",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "1",
+   "fecha": "2026-10-13",
+   "control": "maxspeed",
+   "desde": [
+    43.1240981,
+    -2.9816639
+   ],
+   "hacia": [
+    43.125063,
+    -2.9808241
+   ],
+   "relacion": 21646598,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-a-625-365895-gardea",
+    "nombre": "GARDEA",
+    "m": 2058
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10292099627,
+   "lat": 43.0675021,
+   "lon": -2.4777057,
+   "tags": {
+    "height": "2.5",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "3",
+   "fecha": "2026-04-15",
+   "control": "maxspeed",
+   "desde": [
+    43.0669088,
+    -2.478673
+   ],
+   "hacia": [
+    43.0675077,
+    -2.4777726
+   ],
+   "relacion": 20453931,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-ap-8-79100-zaldibar",
+    "nombre": "ZALDIBAR",
+    "m": 12431
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10292105511,
+   "lat": 43.0641431,
+   "lon": -2.4872689,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "2",
+   "fecha": "2026-04-23",
+   "control": "maxspeed",
+   "desde": [
+    43.0640364,
+    -2.4863334
+   ],
+   "hacia": [
+    43.0642156,
+    -2.4875198
+   ],
+   "relacion": 20577496,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-ap-8-79100-zaldibar",
+    "nombre": "ZALDIBAR",
+    "m": 12514
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 571649668,
+   "lat": 43.0641397,
+   "lon": -2.4781713,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "40"
+   },
+   "version": "3",
+   "fecha": "2026-04-23",
+   "control": "maxspeed",
+   "desde": [
+    43.063475,
+    -2.4786601
+   ],
+   "hacia": [
+    43.0645036,
+    -2.4778937
+   ],
+   "relacion": 20577478,
+   "limite_rel": "40",
+   "mas_cercano": {
+    "id": "eus-ap-8-79100-zaldibar",
+    "nombre": "ZALDIBAR",
+    "m": 12764
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 7491524913,
+   "lat": 43.0625662,
+   "lon": -2.4953453,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "20"
+   },
+   "version": "4",
+   "fecha": "2026-04-23",
+   "control": "maxspeed",
+   "desde": [
+    43.0628835,
+    -2.4956902
+   ],
+   "hacia": [
+    43.0622028,
+    -2.4949229
+   ],
+   "relacion": 20577520,
+   "limite_rel": "20",
+   "mas_cercano": {
+    "id": "eus-ap-8-79100-zaldibar",
+    "nombre": "ZALDIBAR",
+    "m": 12493
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13990668479,
+   "lat": 43.0599322,
+   "lon": -2.6614373,
+   "tags": {
+    "direction": "30",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "1",
+   "fecha": "2026-07-05",
+   "control": "maxspeed",
+   "desde": [
+    43.0593148,
+    -2.6611459
+   ],
+   "hacia": [
+    43.059952,
+    -2.6613858
+   ],
+   "relacion": 21067945,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-n-240-38430-alto-barazar",
+    "nombre": "ALTO BARAZAR",
+    "m": 3985
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13767381509,
+   "lat": 42.8377362,
+   "lon": -2.6809828,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    42.8377129,
+    -2.6817241
+   ],
+   "hacia": [
+    42.8375879,
+    -2.6806786
+   ],
+   "relacion": 20595537,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-1",
+    "nombre": "Foto rojo ADRIANO VI, 15",
+    "m": 1069
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 10164967084,
+   "lat": 42.8348748,
+   "lon": -2.6676895,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "2",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8346929,
+    -2.6666484
+   ],
+   "hacia": [
+    42.8348335,
+    -2.6678877
+   ],
+   "relacion": 18015518,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-3",
+    "nombre": "Foto rojo PLAZA DEL RENACIMIENTO, 13",
+    "m": 791
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 8972488567,
+   "lat": 42.8344194,
+   "lon": -2.6637659,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "2",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8343193,
+    -2.6632915
+   ],
+   "hacia": [
+    42.8345042,
+    -2.6649148
+   ],
+   "relacion": 18015519,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-3",
+    "nombre": "Foto rojo PLAZA DEL RENACIMIENTO, 13",
+    "m": 860
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 13509284461,
+   "lat": 42.7043325,
+   "lon": -2.9580354,
+   "tags": {
+    "direction": "260",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "1",
+   "fecha": "2026-01-29",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "eus-ap-1-82300-arminon",
+    "nombre": "ARMIÑON",
+    "m": 7267
+   },
+   "ya_esta": false
+  },
+  {
+   "id": 12952765432,
+   "lat": 43.4065663,
+   "lon": -2.6798984,
+   "tags": {
+    "direction": "50",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "3",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    43.4055724,
+    -2.6819311
+   ],
+   "hacia": [
+    43.4068174,
+    -2.67933
+   ],
+   "relacion": 20355280,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-bi-3234-45620-ibarrangelu",
+    "nombre": "IBARRANGELU",
+    "m": 9
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2538488064,
+   "lat": 43.3642459,
+   "lon": -1.8016414,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "6",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.3631899,
+    -1.8001787
+   ],
+   "hacia": [
+    43.3652168,
+    -1.8019784
+   ],
+   "relacion": 20362196,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-gi-3440-18045-hondarribia-santaengrazi",
+    "nombre": "HONDARRIBIA SANTAENGRAZI",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2378267320,
+   "lat": 43.3620556,
+   "lon": -1.797274,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "source": "Survey"
+   },
+   "version": "5",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.3626925,
+    -1.7990326
+   ],
+   "hacia": [
+    43.3613245,
+    -1.7955528
+   ],
+   "relacion": 20362190,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-gi-3440-18500-hondarribia-biteri",
+    "nombre": "HONDARRIBIA BITERI",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3467862621,
+   "lat": 43.3477316,
+   "lon": -2.9947215,
+   "tags": {
+    "direction": "backward",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F100 BI-637 Km 15.33 Guetxo DIR Bilbao CL"
+   },
+   "version": "5",
+   "fecha": "2023-07-26",
+   "control": "maxspeed",
+   "desde": [
+    43.3500738,
+    -2.9974687
+   ],
+   "hacia": [
+    43.3476141,
+    -2.9945079
+   ],
+   "relacion": 20595432,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-bi-637-15300-curva-pajaritos",
+    "nombre": "CURVA PAJARITOS",
+    "m": 19
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2334938923,
+   "lat": 43.3477079,
+   "lon": -1.8009241,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30",
+    "note": "Amutalde Auzoa"
+   },
+   "version": "7",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.3487919,
+    -1.8003588
+   ],
+   "hacia": [
+    43.3471614,
+    -1.8013368
+   ],
+   "relacion": 20362158,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-gi-636-13-288-hondarribia-amutalde",
+    "nombre": "HONDARRIBIA AMUTALDE",
+    "m": 2
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 11069964096,
+   "lat": 43.3430746,
+   "lon": -2.9952182,
+   "tags": {
+    "direction": "40",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F100 BI-637 Km 14.69 Parque Artea DIR Berango CL"
+   },
+   "version": "1",
+   "fecha": "2023-07-26",
+   "control": "maxspeed",
+   "desde": [
+    43.343103,
+    -2.9954646
+   ],
+   "hacia": [
+    43.3435464,
+    -2.9945049
+   ],
+   "relacion": 16131669,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-bi-637-14600-artea",
+    "nombre": "ARTEA",
+    "m": 11
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355468093,
+   "lat": 43.3415721,
+   "lon": -3.1292604,
+   "tags": {
+    "description": "F100 BBS A-8/E-70 Km 137.15 Muskiz DIR Irun",
+    "direction": "60",
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "8",
+   "fecha": "2025-09-30",
+   "control": "maxspeed",
+   "desde": [
+    43.3425961,
+    -3.1386664
+   ],
+   "hacia": [
+    43.3416529,
+    -3.1290953
+   ],
+   "relacion": 7221131,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-a-8-137100-pobena",
+    "nombre": "POBEÑA",
+    "m": 69
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355506422,
+   "lat": 43.3379011,
+   "lon": -3.1055053,
+   "tags": {
+    "description": "F100 JON ADRI A-8 Km 134.96 Muskiz DIR Santander CL",
+    "direction": "300",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "8",
+   "fecha": "2025-09-30",
+   "control": "maxspeed",
+   "desde": [
+    43.3298017,
+    -3.0983224
+   ],
+   "hacia": [
+    43.3379403,
+    -3.10561
+   ],
+   "relacion": 7221631,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-134960-petronor",
+    "nombre": "PETRONOR",
+    "m": 11
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 243085565,
+   "lat": 43.3345673,
+   "lon": -3.0007766,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "note": "F060 SMUR BI-637 Km 13.75 Antes Túnel Artaza DIR A-8 CL"
+   },
+   "version": "11",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.3368105,
+    -2.9994629
+   ],
+   "hacia": [
+    43.3341585,
+    -3.0010739
+   ],
+   "relacion": 7336071,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-bi-637-13690-artatza",
+    "nombre": "ARTATZA",
+    "m": 54
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13576155390,
+   "lat": 43.322464,
+   "lon": -1.966314,
+   "tags": {
+    "direction": "300",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2026-02-18",
+   "control": "maxspeed",
+   "desde": [
+    43.322091,
+    -1.9656591
+   ],
+   "hacia": [
+    43.3225758,
+    -1.9665328
+   ],
+   "relacion": 20233697,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "mun-donostia-0",
+    "nombre": "Nafarroa hiribidea",
+    "m": 37
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 1763638392,
+   "lat": 43.3214035,
+   "lon": -1.9527778,
+   "tags": {
+    "description": "F050 BBS caceres222 Av del Alcalde José Elosegi 193 dir gros Donostia",
+    "direction": "290",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "7",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.3213508,
+    -1.9504584
+   ],
+   "hacia": [
+    43.3214446,
+    -1.9529119
+   ],
+   "relacion": 19679940,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-2",
+    "nombre": "Jose Elosegi Alkatearen hiribidea",
+    "m": 9
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 293468997,
+   "lat": 43.3213141,
+   "lon": -1.9486258,
+   "tags": {
+    "highway": "traffic_signals"
+   },
+   "version": "8",
+   "fecha": "2025-02-26",
+   "control": "traffic_signals",
+   "desde": null,
+   "hacia": null,
+   "relacion": 2193803,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "mun-donostia-1",
+    "nombre": "Jose Elosegi Alkatearen hiribidea",
+    "m": 33
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001697,
+   "lat": 43.3212743,
+   "lon": -1.9488225,
+   "tags": {
+    "direction": "50",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "9",
+   "fecha": "2026-02-18",
+   "control": "maxspeed",
+   "desde": [
+    43.3213298,
+    -1.9518286
+   ],
+   "hacia": [
+    43.3213125,
+    -1.9487818
+   ],
+   "relacion": 2193802,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-1",
+    "nombre": "Jose Elosegi Alkatearen hiribidea",
+    "m": 22
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 10137446617,
+   "lat": 43.3208475,
+   "lon": -2.9774673,
+   "tags": {
+    "direction": "290",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "3",
+   "fecha": "2022-11-15",
+   "control": "maxspeed",
+   "desde": [
+    43.3207927,
+    -2.9775193
+   ],
+   "hacia": [
+    43.3213672,
+    -2.9786593
+   ],
+   "relacion": 14744878,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-bi-637-10845-eroski-leioa",
+    "nombre": "EROSKI LEIOA",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2334938915,
+   "lat": 43.3196882,
+   "lon": -1.9617606,
+   "tags": {
+    "direction": "180",
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "note": "F050 BBS caceres222 C\\\\fernando sasiain dir intxaurrondo"
+   },
+   "version": "8",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.3202366,
+    -1.9618566
+   ],
+   "hacia": [
+    43.3195747,
+    -1.9617959
+   ],
+   "relacion": 20595573,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-3",
+    "nombre": "Fernando Sasiain",
+    "m": 29
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2334938916,
+   "lat": 43.3153849,
+   "lon": -1.9614873,
+   "tags": {
+    "direction": "270",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "8",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.3151168,
+    -1.9605316
+   ],
+   "hacia": [
+    43.3154134,
+    -1.9615108
+   ],
+   "relacion": 20595758,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-10",
+    "nombre": "Sibilia",
+    "m": 13
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 12613260539,
+   "lat": 43.314689,
+   "lon": -1.9774264,
+   "tags": {
+    "direction": "200",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "3",
+   "fecha": "2026-04-09",
+   "control": "maxspeed",
+   "desde": [
+    43.315451,
+    -1.9773846
+   ],
+   "hacia": [
+    43.3140967,
+    -1.9775626
+   ],
+   "relacion": 20426153,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-11",
+    "nombre": "Federico Garcia Lorca pasealekua",
+    "m": 4
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 7396246901,
+   "lat": 43.3137606,
+   "lon": -1.9164745,
+   "tags": {
+    "direction": "50",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "5",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.3117053,
+    -1.9175121
+   ],
+   "hacia": [
+    43.3142761,
+    -1.9158723
+   ],
+   "relacion": 20362147,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-gi-636-1220-tunel-molinao",
+    "nombre": "TUNEL MOLINAO",
+    "m": 5
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001913,
+   "lat": 43.313291,
+   "lon": -2.9656188,
+   "tags": {
+    "direction": "310",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 KILU BI-637 Km 9.55 Salida Universidad DIR Guecho CL"
+   },
+   "version": "12",
+   "fecha": "2022-11-15",
+   "control": "maxspeed",
+   "desde": [
+    43.309853,
+    -2.9622654
+   ],
+   "hacia": [
+    43.3134203,
+    -2.9658576
+   ],
+   "relacion": 19839023,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-bi-637-9545-universidad",
+    "nombre": "UNIVERSIDAD",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2334938933,
+   "lat": 43.3113359,
+   "lon": -1.9792475,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "note": "F050 BBS caceres222 guipuzkoa"
+   },
+   "version": "5",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.3099901,
+    -1.9789543
+   ],
+   "hacia": [
+    43.3114346,
+    -1.9792656
+   ],
+   "relacion": 20595803,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-4",
+    "nombre": "Bizkaia pasealekua",
+    "m": 6
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 5186145606,
+   "lat": 43.3111486,
+   "lon": -1.9734816,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "4",
+   "fecha": "2026-05-08",
+   "control": "maxspeed",
+   "desde": [
+    43.3116781,
+    -1.9735179
+   ],
+   "hacia": [
+    43.3110719,
+    -1.9734763
+   ],
+   "relacion": 20595781,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-5",
+    "nombre": "Loiolako Erribera pasealekua",
+    "m": 56
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3147129935,
+   "lat": 43.310667,
+   "lon": -1.9374608,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "100",
+    "note": "F100 SIMP A-8 Km 16.8 Pasajes DIR Francia CL"
+   },
+   "version": "9",
+   "fecha": "2026-05-02",
+   "control": "maxspeed",
+   "desde": [
+    43.310938,
+    -1.9391397
+   ],
+   "hacia": [
+    43.3104936,
+    -1.9356273
+   ],
+   "relacion": 8409921,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-gi-20-4200-pasaia",
+    "nombre": "PASAIA",
+    "m": 3
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3147129934,
+   "lat": 43.3104725,
+   "lon": -1.9340326,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "100",
+    "note": "F100 SIMP A-8 Km 16.5 Pasajes DIR Bilbao CL"
+   },
+   "version": "8",
+   "fecha": "2026-05-04",
+   "control": "maxspeed",
+   "desde": [
+    43.3102627,
+    -1.9325902
+   ],
+   "hacia": [
+    43.3106109,
+    -1.9360074
+   ],
+   "relacion": 7775119,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-gi-20-4000-pasaia-bilbao",
+    "nombre": "PASAIA BILBAO",
+    "m": 6
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 7777755951,
+   "lat": 43.3058759,
+   "lon": -1.9699116,
+   "tags": {
+    "direction": "30",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "3",
+   "fecha": "2026-04-27",
+   "control": "maxspeed",
+   "desde": [
+    43.3053021,
+    -1.9702788
+   ],
+   "hacia": [
+    43.3058777,
+    -1.9698641
+   ],
+   "relacion": 20595778,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-donostia-9",
+    "nombre": "Zorroaga pasealekua",
+    "m": 21
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 1760308236,
+   "lat": 43.3054767,
+   "lon": -1.9690598,
+   "tags": {
+    "description": "F080 GOVI MANU A-8 Km 20.6 Donosti Curva Lasalle DIR Bilbao CL",
+    "direction": "180",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "12",
+   "fecha": "2026-01-04",
+   "control": "maxspeed",
+   "desde": [
+    43.3070563,
+    -1.968394
+   ],
+   "hacia": [
+    43.3053547,
+    -1.9690578
+   ],
+   "relacion": 2193790,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "mun-donostia-9",
+    "nombre": "Zorroaga pasealekua",
+    "m": 83
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 243085649,
+   "lat": 43.3029542,
+   "lon": -2.9626211,
+   "tags": {
+    "direction": "backward",
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "source": "Survey"
+   },
+   "version": "6",
+   "fecha": "2023-04-04",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "eus-bi-30-ramal-r-03-11120-kukularra-txorierri",
+    "nombre": "KUKULARRA TXORIERRI",
+    "m": 48
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 528561,
+   "lat": 43.302696,
+   "lon": -1.9785039,
+   "tags": {
+    "direction": "355",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "7",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.3017369,
+    -1.9784009
+   ],
+   "hacia": [
+    43.3029563,
+    -1.9785974
+   ],
+   "relacion": 20362137,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-gi-20-9-2-s-675-carlos-i",
+    "nombre": "CARLOS I",
+    "m": 3
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 297102149,
+   "lat": 43.3021249,
+   "lon": -2.2035919,
+   "tags": {
+    "direction": "155",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "7",
+   "fecha": "2024-08-08",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "eus-n-634-22634-foto-rojo-getaria",
+    "nombre": "FOTO-ROJO GETARIA",
+    "m": 24
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2378267306,
+   "lat": 43.3017801,
+   "lon": -2.9603389,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "source": "Survey"
+   },
+   "version": "7",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.3004482,
+    -2.9580519
+   ],
+   "hacia": [
+    43.3018266,
+    -2.9609864
+   ],
+   "relacion": 7334561,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-637-11475-kukularra",
+    "nombre": "KUKULARRA",
+    "m": 11
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 1358301478,
+   "lat": 43.301682,
+   "lon": -2.9604353,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "source": "Survey"
+   },
+   "version": "6",
+   "fecha": "2023-12-18",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "eus-n-637-11475-kukularra",
+    "nombre": "KUKULARRA",
+    "m": 14
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 1762923013,
+   "lat": 43.2973861,
+   "lon": -1.9927935,
+   "tags": {
+    "direction": "250",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "9",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.2983893,
+    -1.9833847
+   ],
+   "hacia": [
+    43.297265,
+    -1.9935314
+   ],
+   "relacion": 20362118,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-gi-20-10800-tunel-ayete",
+    "nombre": "TUNEL AYETE",
+    "m": 8
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001330,
+   "lat": 43.2972066,
+   "lon": -2.9670282,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 ALAN N-637 Km 10.65 Pte. Rontegui DIR Guecho-Sondica CL"
+   },
+   "version": "13",
+   "fecha": "2022-09-18",
+   "control": "maxspeed",
+   "desde": [
+    43.2972776,
+    -2.9670805
+   ],
+   "hacia": [
+    43.2977705,
+    -2.9665235
+   ],
+   "relacion": 7336611,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-637-10660-arrontegi",
+    "nombre": "ARRONTEGI",
+    "m": 50
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 4539704571,
+   "lat": 43.2948982,
+   "lon": -2.0581993,
+   "tags": {
+    "direction": "100",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "8",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.2930045,
+    -2.0655725
+   ],
+   "hacia": [
+    43.2948665,
+    -2.0565593
+   ],
+   "relacion": 20357459,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-ap-8-29298-aritzeta",
+    "nombre": "ARITZETA",
+    "m": 2
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 10685512103,
+   "lat": 43.2917148,
+   "lon": -1.9735557,
+   "tags": {
+    "description": "F040 GOVI San Sebastión Dr Beguiristain DIR Hospital CL",
+    "highway": "speed_camera",
+    "maxspeed": "30",
+    "name": "Paseo del Doctor Beguiristáin",
+    "name:es": "Paseo del Doctor Beguiristáin",
+    "name:eu": "Begiristain doktorearen pasealekua"
+   },
+   "version": "5",
+   "fecha": "2026-05-08",
+   "control": "maxspeed",
+   "desde": [
+    43.2926484,
+    -1.971919
+   ],
+   "hacia": [
+    43.2917191,
+    -1.9736496
+   ],
+   "relacion": 20048054,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "mun-donostia-7",
+    "nombre": "Begiristain Doktorearen pasealekua",
+    "m": 11
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992006931,
+   "lat": 43.2910238,
+   "lon": -2.8809509,
+   "tags": {
+    "description": "F080 A300 CHAT BI-631 Km 10.2 Derio DIR Bilbao CL",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "10",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2961949,
+    -2.8819716
+   ],
+   "hacia": [
+    43.2909101,
+    -2.8807576
+   ],
+   "relacion": 19679921,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-633-10280-derio",
+    "nombre": "DERIO",
+    "m": 27
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 301545697,
+   "lat": 43.2910034,
+   "lon": -3.0097605,
+   "tags": {
+    "description": "F080 UFO A-8 Km 124.55 MaxCenter DIR Santander CL",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "8",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2902409,
+    -3.0082056
+   ],
+   "hacia": [
+    43.2910248,
+    -3.0100102
+   ],
+   "relacion": 7221628,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-124400-recta-max-center",
+    "nombre": "RECTA MAX CENTER",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355519302,
+   "lat": 43.2907235,
+   "lon": -2.9854613,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 ALAN N-637 Km 8.97 Baracaldo DIR Santander CL"
+   },
+   "version": "6",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.2918489,
+    -2.9847974
+   ],
+   "hacia": [
+    43.2904266,
+    -2.9855553
+   ],
+   "relacion": 8421995,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-637-8900-bec",
+    "nombre": "BEC",
+    "m": 7
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992000717,
+   "lat": 43.2875589,
+   "lon": -2.9857984,
+   "tags": {
+    "fixme": "Ahora mismo a 60km/h por obras, sino estaria a 80. Habria que actualizar mas adelante.\nRight now it's set at 60km/h because the road ahead is aprtially under construction, in a normal scenario it would be 80km/h. Will have to update it in the future.",
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "note": "F080 JON LAGU N-637 Km 8.61 Baracaldo DIR Pte Rontegui CL"
+   },
+   "version": "8",
+   "fecha": "2022-09-18",
+   "control": "maxspeed",
+   "desde": [
+    43.2875724,
+    -2.985875
+   ],
+   "hacia": [
+    43.2880584,
+    -2.9857624
+   ],
+   "relacion": 7336610,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-n-637-8600-enlace-cruces",
+    "nombre": "ENLACE CRUCES",
+    "m": 5
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 11196368289,
+   "lat": 43.287261,
+   "lon": -2.8924355,
+   "tags": {
+    "direction": "65",
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "1",
+   "fecha": "2023-09-16",
+   "control": "maxspeed",
+   "desde": [
+    43.2873468,
+    -2.8919463
+   ],
+   "hacia": [
+    43.2873112,
+    -2.8924492
+   ],
+   "relacion": 16338485,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "eus-n-637-ramal-r-02-90-derio-loiu",
+    "nombre": "DERIO LOIU",
+    "m": 136
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 5733341602,
+   "lat": 43.2865045,
+   "lon": -3.0002307,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 SIMP A-8 Km 123.54 MaxCenter DIR Irún CL"
+   },
+   "version": "4",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2880547,
+    -3.0037521
+   ],
+   "hacia": [
+    43.2863305,
+    -2.9998411
+   ],
+   "relacion": 7221629,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-123500-max-center",
+    "nombre": "MAX CENTER",
+    "m": 12
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 283047745,
+   "lat": 43.2858807,
+   "lon": -2.892788,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "9",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2866255,
+    -2.8932874
+   ],
+   "hacia": [
+    43.2857854,
+    -2.8927789
+   ],
+   "relacion": 19679955,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-n-637-ramal-r-02-90-derio-loiu",
+    "nombre": "DERIO LOIU",
+    "m": 25
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 746641686,
+   "lat": 43.2849731,
+   "lon": -2.0184854,
+   "tags": {
+    "direction": "330",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "8",
+   "fecha": "2025-11-08",
+   "control": "maxspeed",
+   "desde": [
+    43.2821845,
+    -2.0184868
+   ],
+   "hacia": [
+    43.2851483,
+    -2.0186678
+   ],
+   "relacion": 19807786,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-gi-11-1700-usurbil-irun",
+    "nombre": "USURBIL IRUN",
+    "m": 3
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13602970481,
+   "lat": 43.2846688,
+   "lon": -2.3353562,
+   "tags": {
+    "direction": "270",
+    "highway": "speed_camera",
+    "natural": "80"
+   },
+   "version": "2",
+   "fecha": "2026-02-26",
+   "control": "maxspeed",
+   "desde": [
+    43.2846121,
+    -2.3333345
+   ],
+   "hacia": [
+    43.2846039,
+    -2.3357957
+   ],
+   "relacion": 20266494,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-ap-8-55252-tunel-itziar",
+    "nombre": "TUNEL ITZIAR",
+    "m": 41
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13604483260,
+   "lat": 43.2845983,
+   "lon": -2.3353042,
+   "tags": {
+    "direction": "269",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "1",
+   "fecha": "2026-02-27",
+   "control": null,
+   "desde": null,
+   "hacia": null,
+   "relacion": null,
+   "mas_cercano": {
+    "id": "eus-ap-8-55252-tunel-itziar",
+    "nombre": "TUNEL ITZIAR",
+    "m": 37
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 280570867,
+   "lat": 43.284368,
+   "lon": -2.3574346,
+   "tags": {
+    "direction": "200",
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "11",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.2857177,
+    -2.3511462
+   ],
+   "hacia": [
+    43.2840777,
+    -2.3575366
+   ],
+   "relacion": 20357420,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-ap-8-57250-istina",
+    "nombre": "ISTIÑA",
+    "m": 53
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 7775524802,
+   "lat": 43.2816495,
+   "lon": -2.0188172,
+   "tags": {
+    "direction": "160",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "4",
+   "fecha": "2025-11-08",
+   "control": "maxspeed",
+   "desde": [
+    43.2857285,
+    -2.0189869
+   ],
+   "hacia": [
+    43.2814798,
+    -2.0187365
+   ],
+   "relacion": 19807787,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-gi-11-1370-usurbil-madrid",
+    "nombre": "USURBIL MADRID",
+    "m": 4
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355525314,
+   "lat": 43.2783295,
+   "lon": -2.9811944,
+   "tags": {
+    "description": "F080 ALAN A-8 Km 121.54 Puente Cruces DIR Santander CL",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "6",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2755799,
+    -2.9790746
+   ],
+   "hacia": [
+    43.2783639,
+    -2.9814376
+   ],
+   "relacion": 7221610,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-121480-curvas-cruces",
+    "nombre": "CURVAS CRUCES",
+    "m": 2
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 4539838485,
+   "lat": 43.2777724,
+   "lon": -2.2480147,
+   "tags": {
+    "direction": "250",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "8",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.2795852,
+    -2.2404041
+   ],
+   "hacia": [
+    43.2777003,
+    -2.2487551
+   ],
+   "relacion": 20357430,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-ap-8-46025-curva-bedua-bi",
+    "nombre": "CURVA BEDUA BI",
+    "m": 3
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 276042692,
+   "lat": 43.2748641,
+   "lon": -2.2553392,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "8",
+   "fecha": "2025-08-31",
+   "control": "maxspeed",
+   "desde": [
+    43.2740994,
+    -2.2556413
+   ],
+   "hacia": [
+    43.2757138,
+    -2.2551124
+   ],
+   "relacion": 8409923,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-ap-8-46811-curvas-bedua",
+    "nombre": "CURVAS BEDUA",
+    "m": 9
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355525313,
+   "lat": 43.274239,
+   "lon": -2.9726947,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 ALAN A-8 Km 120.5 Curva Zorroza DIR Irún"
+   },
+   "version": "8",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2741858,
+    -2.9739915
+   ],
+   "hacia": [
+    43.2743335,
+    -2.9725244
+   ],
+   "relacion": 7221127,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-120530-zorroza-ss",
+    "nombre": "ZORROZA SS",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355525312,
+   "lat": 43.2722552,
+   "lon": -2.967626,
+   "tags": {
+    "direction": "310",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "7",
+   "fecha": "2026-01-02",
+   "control": "maxspeed",
+   "desde": [
+    43.2703053,
+    -2.9665266
+   ],
+   "hacia": [
+    43.2724857,
+    -2.9679562
+   ],
+   "relacion": 7221622,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-120031-zorroza",
+    "nombre": "ZORROZA",
+    "m": 46
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355525311,
+   "lat": 43.2685598,
+   "lon": -2.9652425,
+   "tags": {
+    "description": "F080 KILU A-8 Km 119.57 Kadagua DIR Irún CL",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "6",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.27104,
+    -2.9672158
+   ],
+   "hacia": [
+    43.2682725,
+    -2.9649944
+   ],
+   "relacion": 7221618,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-119560-salida-balmaseda",
+    "nombre": "SALIDA BALMASEDA",
+    "m": 15
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 7200247189,
+   "lat": 43.2678935,
+   "lon": -2.9330888,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "2",
+   "fecha": "2022-09-22",
+   "control": "maxspeed",
+   "desde": [
+    43.2678813,
+    -2.9330166
+   ],
+   "hacia": [
+    43.2675983,
+    -2.9331312
+   ],
+   "relacion": 10697711,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "mun-bilbao-7200247189",
+    "nombre": "Alameda Rekalde (a la altura de Alameda Mazarredo), vigila hacia el sur (Moyua)",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355525310,
+   "lat": 43.2674485,
+   "lon": -2.9641697,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 KILU A-8 Km 119.43 Kadagua DIR Santander CL"
+   },
+   "version": "5",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.2668435,
+    -2.9637776
+   ],
+   "hacia": [
+    43.2685953,
+    -2.9650662
+   ],
+   "relacion": 7769262,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-119430-monolito",
+    "nombre": "MONOLITO",
+    "m": 9
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 7200247188,
+   "lat": 43.2644648,
+   "lon": -2.9342915,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "30"
+   },
+   "version": "2",
+   "fecha": "2022-09-23",
+   "control": "maxspeed",
+   "desde": [
+    43.2645007,
+    -2.9343701
+   ],
+   "hacia": [
+    43.2647931,
+    -2.9342521
+   ],
+   "relacion": 10697710,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "mun-bilbao-7200247188",
+    "nombre": "Alameda Rekalde (entre los números 25 y 27), vigila hacia el norte (puente de La Salve)",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3467916286,
+   "lat": 43.2577358,
+   "lon": -2.953171,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "4",
+   "fecha": "2026-04-02",
+   "control": "maxspeed",
+   "desde": [
+    43.2572042,
+    -2.9529898
+   ],
+   "hacia": [
+    43.2581141,
+    -2.9534729
+   ],
+   "relacion": 7221615,
+   "limite_rel": "70",
+   "mas_cercano": {
+    "id": "eus-a-8-117990-sabino-arana",
+    "nombre": "SABINO ARANA",
+    "m": 8
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3354317288,
+   "lat": 43.2573017,
+   "lon": -2.3860548,
+   "tags": {
+    "direction": "220",
+    "highway": "speed_camera",
+    "maxspeed": "100",
+    "note": "F120 JBSP GOVI A-8 Km 61.1 Mendaro-Túnel Iztiña DIR Bilbao CL"
+   },
+   "version": "7",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.2604735,
+    -2.3806821
+   ],
+   "hacia": [
+    43.2570337,
+    -2.386911
+   ],
+   "relacion": 20357412,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-ap-8-61000-mendaro",
+    "nombre": "MENDARO",
+    "m": 8
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 1760308231,
+   "lat": 43.253132,
+   "lon": -2.022236,
+   "tags": {
+    "direction": "200",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "8",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.2574528,
+    -2.0204195
+   ],
+   "hacia": [
+    43.2518083,
+    -2.0227856
+   ],
+   "relacion": 20362100,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-1-451219-lasarte",
+    "nombre": "LASARTE",
+    "m": 18
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992000965,
+   "lat": 43.25137,
+   "lon": -2.9071,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "note": "F050 POLO N-634 BI-631 Km 2.7 Av Zumalak. DIR Donosti CL / F050 BBS JOVI BI-631/N-634 KM 2 DIRECC. ETXEBARRI"
+   },
+   "version": "6",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.2523201,
+    -2.9078324
+   ],
+   "hacia": [
+    43.2508917,
+    -2.9066278
+   ],
+   "relacion": 7343326,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-bilbao-992000965",
+    "nombre": "Avenida Zumalakarregi (Txurdinaga, junto al polideportivo), vigila bajada, hacia Galdakao",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001590,
+   "lat": 43.25006,
+   "lon": -2.90241,
+   "tags": {
+    "description": "F050 POLO ALAN N-634 BI-631 Km 3.1 Av Zumalak. DIR Bilbao CL",
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "7",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2506465,
+    -2.9016759
+   ],
+   "hacia": [
+    43.250013,
+    -2.9025604
+   ],
+   "relacion": 19679883,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-bilbao-992001590",
+    "nombre": "Avenida Zumalakarregi (curva tras la rotonda de Ibarsusi), vigila subida, hacia el centro de Bilbao",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355524098,
+   "lat": 43.2494433,
+   "lon": -2.9428435,
+   "tags": {
+    "description": "F080 BBS ES JOVI A-8 KM 116 Dir Bilbao",
+    "direction": "300",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "6",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2481584,
+    -2.9417402
+   ],
+   "hacia": [
+    43.249563,
+    -2.9431045
+   ],
+   "relacion": 7221614,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-116670-errekalde",
+    "nombre": "ERREKALDE",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 4539713173,
+   "lat": 43.2475737,
+   "lon": -2.3940383,
+   "tags": {
+    "direction": "1",
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "7",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.2428695,
+    -2.3984116
+   ],
+   "hacia": [
+    43.2481451,
+    -2.3939084
+   ],
+   "relacion": 20357408,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-ap-8-62464-mendaro-ss",
+    "nombre": "MENDARO SS",
+    "m": 16
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355538137,
+   "lat": 43.2405763,
+   "lon": -2.9271866,
+   "tags": {
+    "description": "F080 BBS ES JOVI A-8 KM 114 Dir Irun",
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "7",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2411012,
+    -2.9273838
+   ],
+   "hacia": [
+    43.2404976,
+    -2.9270341
+   ],
+   "relacion": 7221613,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-114880-miraflores",
+    "nombre": "MIRAFLORES",
+    "m": 18
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 280597624,
+   "lat": 43.2362389,
+   "lon": -2.4019014,
+   "tags": {
+    "direction": "50",
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "10",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.2340323,
+    -2.404458
+   ],
+   "hacia": [
+    43.2365853,
+    -2.4013906
+   ],
+   "relacion": 20357406,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-ap-8-63933-elgoibar",
+    "nombre": "ELGOIBAR",
+    "m": 3
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 243084607,
+   "lat": 43.2337792,
+   "lon": -2.9082084,
+   "tags": {
+    "description": "F080 SIMP A-8 Km 113.03 Ext. tunel Malmasin DIR Santander CL",
+    "direction": "240",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "11",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2336791,
+    -2.9069804
+   ],
+   "hacia": [
+    43.2337292,
+    -2.9084636
+   ],
+   "relacion": 1731750,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-113000-fin-malmasin-can",
+    "nombre": "FIN MALMASIN CAN",
+    "m": 2
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 99107171,
+   "lat": 43.2334723,
+   "lon": -2.9082094,
+   "tags": {
+    "direction": "70",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 SIMP A-8 Km 113.03 Ext tunel Malmasin DIR Irun CL"
+   },
+   "version": "9",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2339451,
+    -2.9163113
+   ],
+   "hacia": [
+    43.2335384,
+    -2.9079209
+   ],
+   "relacion": 1731749,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-113020-inicio-malmasin-ss",
+    "nombre": "INICIO MALMASIN SS",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 252023638,
+   "lat": 43.2328334,
+   "lon": -2.914994,
+   "tags": {
+    "description": "F080 CHAT AP-68 Km 0.27 Enlace A-8 DIR Bilbao CL",
+    "direction": "320",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "10",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2275942,
+    -2.9153461
+   ],
+   "hacia": [
+    43.2330339,
+    -2.9152317
+   ],
+   "relacion": 4264359,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-ap-68-270-buia",
+    "nombre": "BUIA",
+    "m": 4
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3227787432,
+   "lat": 43.2326896,
+   "lon": -2.8987826,
+   "tags": {
+    "description": "F080 A300 A-8 Km 112.25 Int. tunel Malmasin DIR Santander CL",
+    "direction": "280",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "6",
+   "fecha": "2026-01-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2316298,
+    -2.8909253
+   ],
+   "hacia": [
+    43.2326927,
+    -2.8988161
+   ],
+   "relacion": 4264293,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-112260-tunel-malmasin-can",
+    "nombre": "TUNEL MALMASIN CAN",
+    "m": 72
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3227787431,
+   "lat": 43.2326294,
+   "lon": -2.899376,
+   "tags": {
+    "description": "F080 A300 A-8 Km 112.29 Int. túnel Malmasín DIR Irún CL",
+    "direction": "100",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "6",
+   "fecha": "2026-01-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2335064,
+    -2.9070089
+   ],
+   "hacia": [
+    43.2326277,
+    -2.8993612
+   ],
+   "relacion": 4264294,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-112260-tunel-malmasin-can",
+    "nombre": "TUNEL MALMASIN CAN",
+    "m": 31
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3467916287,
+   "lat": 43.2315052,
+   "lon": -2.8899418,
+   "tags": {
+    "description": "F080 SIMP A-8 Km 111.5 Entrada Tunel Malmasin DIR Santander CL",
+    "direction": "280",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "5",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.2311762,
+    -2.8874071
+   ],
+   "hacia": [
+    43.2315518,
+    -2.8903058
+   ],
+   "relacion": 4262678,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-111500-inicio-malmasin-can",
+    "nombre": "INICIO MALMASIN CAN",
+    "m": 8
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3467916288,
+   "lat": 43.2313581,
+   "lon": -2.8901229,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 A300 A-8 Km 111.5 Ext Tunel Malmasin DIR Irun CL"
+   },
+   "version": "4",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.2314672,
+    -2.8909932
+   ],
+   "hacia": [
+    43.2312904,
+    -2.8895774
+   ],
+   "relacion": 4264295,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-8-111500-fin-malmasin-ss",
+    "nombre": "FIN MALMASIN SS",
+    "m": 14
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 11198497625,
+   "lat": 43.2245713,
+   "lon": -2.0256384,
+   "tags": {
+    "direction": "155",
+    "highway": "speed_camera",
+    "maxspeed": "70"
+   },
+   "version": "2",
+   "fecha": "2026-11-14",
+   "control": "maxspeed",
+   "desde": [
+    43.223931,
+    -2.0257262
+   ],
+   "hacia": [
+    43.2243852,
+    -2.0256188
+   ],
+   "relacion": 19804647,
+   "limite_rel": "70",
+   "mas_cercano": {
+    "id": "eus-a-15-158800-andoain-bif",
+    "nombre": "ANDOAIN BIF",
+    "m": 2
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 1760285621,
+   "lat": 43.2129431,
+   "lon": -2.0292618,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "9",
+   "fecha": "2025-12-24",
+   "control": "maxspeed",
+   "desde": [
+    43.2145695,
+    -2.0247419
+   ],
+   "hacia": [
+    43.2126297,
+    -2.0301572
+   ],
+   "relacion": 20362087,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-1-446000-andoain-vitoria",
+    "nombre": "ANDOAIN VITORIA",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 301356217,
+   "lat": 43.212859,
+   "lon": -2.0292065,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "10",
+   "fecha": "2025-12-24",
+   "control": "maxspeed",
+   "desde": [
+    43.2106165,
+    -2.0334791
+   ],
+   "hacia": [
+    43.2131826,
+    -2.0281925
+   ],
+   "relacion": 20362091,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-1-446000-andoain-irun",
+    "nombre": "ANDOAIN IRUN",
+    "m": 2
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 11787768766,
+   "lat": 43.2114171,
+   "lon": -2.5447904,
+   "tags": {
+    "description": "Tarteko radarra",
+    "description:es": "Radar de tramo",
+    "direction": "190",
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "3",
+   "fecha": "2026-01-12",
+   "control": "average_speed",
+   "desde": [
+    43.211338,
+    -2.5448099
+   ],
+   "hacia": [
+    43.1959634,
+    -2.5621782
+   ],
+   "relacion": 20080013,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-bi-633-39800-trabakua-tramo-2",
+    "nombre": "TRABAKUA TRAMO 2",
+    "m": 3
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 11787684163,
+   "lat": 43.2111414,
+   "lon": -2.5448598,
+   "tags": {
+    "description": "Tarteko radarra",
+    "description:es": "Radar de tramo",
+    "direction": "30",
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "3",
+   "fecha": "2026-01-12",
+   "control": "average_speed",
+   "desde": [
+    43.1960931,
+    -2.5616576
+   ],
+   "hacia": [
+    43.2112842,
+    -2.5447794
+   ],
+   "relacion": 20080012,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-bi-633-39800-trabakua-tramo-2",
+    "nombre": "TRABAKUA TRAMO 2",
+    "m": 30
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001796,
+   "lat": 43.1997723,
+   "lon": -2.0370793,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 LUCA A-15 Km 155.5 Enlace N-I DIR Donosti CL"
+   },
+   "version": "8",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.1992426,
+    -2.0370883
+   ],
+   "hacia": [
+    43.1999518,
+    -2.0370605
+   ],
+   "relacion": 3599869,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-15-155525-curva-billabona",
+    "nombre": "CURVA BILLABONA",
+    "m": 8
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13451575952,
+   "lat": 43.1961649,
+   "lon": -2.5617346,
+   "tags": {
+    "direction": "230",
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "note": "Radar de tramo: control velocidad media tramo"
+   },
+   "version": "1",
+   "fecha": "2026-01-12",
+   "control": "average_speed",
+   "desde": [
+    43.211338,
+    -2.5448099
+   ],
+   "hacia": [
+    43.1959634,
+    -2.5621782
+   ],
+   "relacion": 20080013,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-bi-633-36990-trabakua-tramo-1",
+    "nombre": "TRABAKUA TRAMO 1",
+    "m": 22
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 21121193,
+   "lat": 43.1959758,
+   "lon": -2.5617558,
+   "tags": {
+    "direction": "40",
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "note": "Radar de tramo: control velocidad media tramo"
+   },
+   "version": "6",
+   "fecha": "2026-01-12",
+   "control": "average_speed",
+   "desde": [
+    43.1960931,
+    -2.5616576
+   ],
+   "hacia": [
+    43.2112842,
+    -2.5447794
+   ],
+   "relacion": 20080012,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-bi-633-36990-trabakua-tramo-1",
+    "nombre": "TRABAKUA TRAMO 1",
+    "m": 2
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 26491516,
+   "lat": 43.1959427,
+   "lon": -2.4361512,
+   "tags": {
+    "direction": "forward",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "9",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.1955343,
+    -2.4368269
+   ],
+   "hacia": [
+    43.196433,
+    -2.4353358
+   ],
+   "relacion": 8409920,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-ap-8-69700-maltzaga",
+    "nombre": "MALTZAGA",
+    "m": 10
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13820218949,
+   "lat": 43.195227,
+   "lon": -2.4352454,
+   "tags": {
+    "direction": "30",
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "1",
+   "fecha": "2026-05-12",
+   "control": "maxspeed",
+   "desde": [
+    43.1944784,
+    -2.4351155
+   ],
+   "hacia": [
+    43.1952089,
+    -2.4351654
+   ],
+   "relacion": 20675144,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-ap-1-145950-tunel-maltzaga-salida",
+    "nombre": "TUNEL MALTZAGA SALIDA",
+    "m": 79
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13820265606,
+   "lat": 43.1928751,
+   "lon": -2.4341892,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "1",
+   "fecha": "2026-05-12",
+   "control": "maxspeed",
+   "desde": [
+    43.1914891,
+    -2.4319955
+   ],
+   "hacia": [
+    43.1929893,
+    -2.4343082
+   ],
+   "relacion": 20675146,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-ap-1-145505-tunel-maltzaga",
+    "nombre": "TUNEL MALTZAGA",
+    "m": 118
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 1760258725,
+   "lat": 43.1881936,
+   "lon": -2.0255779,
+   "tags": {
+    "direction": "230",
+    "highway": "speed_camera",
+    "maxspeed": "100",
+    "note": "F100 ARF A-15 Km 151.9 Ext Tunel Oindolar DIR Donosti CL"
+   },
+   "version": "9",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.1862475,
+    -2.0189432
+   ],
+   "hacia": [
+    43.1879169,
+    -2.0263804
+   ],
+   "relacion": 20361774,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-a-15-152025-oindolar",
+    "nombre": "OINDOLAR",
+    "m": 9
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992004155,
+   "lat": 43.1793318,
+   "lon": -2.8994262,
+   "tags": {
+    "description": "F120 CHAT AP-68 Km 7.45 Miraballes DIR Bilbao CL",
+    "direction": "30",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "11",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.1750123,
+    -2.9071763
+   ],
+   "hacia": [
+    43.1796133,
+    -2.8992113
+   ],
+   "relacion": 7769266,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-ap-68-7400-arrigorriaga",
+    "nombre": "ARRIGORRIAGA",
+    "m": 4
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 26386170,
+   "lat": 43.1756074,
+   "lon": -2.5181808,
+   "tags": {
+    "direction": "260",
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "7",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.1746474,
+    -2.5073729
+   ],
+   "hacia": [
+    43.1758226,
+    -2.5200041
+   ],
+   "relacion": 20357400,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-ap-8-77400-ermua",
+    "nombre": "ERMUA",
+    "m": 8
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3355550725,
+   "lat": 43.1712069,
+   "lon": -2.5365022,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 TROK A-8 Km 79.13 Túnel Zaldibar DIR Irún CL"
+   },
+   "version": "5",
+   "fecha": "2026-04-15",
+   "control": "maxspeed",
+   "desde": [
+    43.1695863,
+    -2.5420933
+   ],
+   "hacia": [
+    43.1712565,
+    -2.5364246
+   ],
+   "relacion": 8409917,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-ap-8-79100-zaldibar",
+    "nombre": "ZALDIBAR",
+    "m": 80
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3467924491,
+   "lat": 43.1700361,
+   "lon": -2.9206001,
+   "tags": {
+    "direction": "321",
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "note": "F050 BI-625 KM 376 DIRECC. Bilbao"
+   },
+   "version": "6",
+   "fecha": "2026-06-04",
+   "control": "maxspeed",
+   "desde": [
+    43.1685181,
+    -2.9212985
+   ],
+   "hacia": [
+    43.1700717,
+    -2.9206576
+   ],
+   "relacion": 20355306,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-bi-625-376300-arrankudiaga",
+    "nombre": "ARRANKUDIAGA",
+    "m": 11
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 246577670,
+   "lat": 43.1693924,
+   "lon": -2.0118365,
+   "tags": {
+    "direction": "1",
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "note": "F100 ARF A-15 Km 149.7 Ext Túnel Belavieta DIR Donosti CL"
+   },
+   "version": "11",
+   "fecha": "2026-03-22",
+   "control": "maxspeed",
+   "desde": [
+    43.1539363,
+    -2.004528
+   ],
+   "hacia": [
+    43.1700062,
+    -2.0120636
+   ],
+   "relacion": 20361802,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-a-15-149700-inicio-tunel-belabieta",
+    "nombre": "INICIO TUNEL BELABIETA",
+    "m": 5
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992002712,
+   "lat": 43.1613769,
+   "lon": -2.0063308,
+   "tags": {
+    "direction": "1",
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "note": "F100 ARF A-15 Km 148.8 Int Túnel Belavieta DIR Donosti CL"
+   },
+   "version": "9",
+   "fecha": "2026-04-21",
+   "control": "maxspeed",
+   "desde": [
+    43.1539363,
+    -2.004528
+   ],
+   "hacia": [
+    43.1694129,
+    -2.0117623
+   ],
+   "relacion": 20361856,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-a-15-148775-tunel-belabieta",
+    "nombre": "TUNEL BELABIETA",
+    "m": 44
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001957,
+   "lat": 43.1150975,
+   "lon": -2.0926313,
+   "tags": {
+    "direction": "150",
+    "highway": "speed_camera",
+    "maxspeed": "80",
+    "note": "F080 GOVI N-I Km 432.3 E.S. Tolosa-Alegia DIR Madrid CL"
+   },
+   "version": "8",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.1177987,
+    -2.0916566
+   ],
+   "hacia": [
+    43.1147099,
+    -2.0924073
+   ],
+   "relacion": 20357496,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-n-1-432300-aldaba-txiki",
+    "nombre": "ALDABA TXIKI",
+    "m": 2
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3260153931,
+   "lat": 43.1098423,
+   "lon": -2.9951016,
+   "tags": {
+    "description": "F070 TRAP A-625 Km 365.9 Luyaondo DIR Llodio CL",
+    "direction": "15",
+    "highway": "speed_camera",
+    "maxspeed": "70"
+   },
+   "version": "6",
+   "fecha": "2026-04-06",
+   "control": "maxspeed",
+   "desde": [
+    43.1064837,
+    -2.9974556
+   ],
+   "hacia": [
+    43.1099569,
+    -2.9950876
+   ],
+   "relacion": 20418605,
+   "limite_rel": "70",
+   "mas_cercano": {
+    "id": "eus-a-625-365895-gardea",
+    "nombre": "GARDEA",
+    "m": 27
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992004741,
+   "lat": 43.1063422,
+   "lon": -2.0973297,
+   "tags": {
+    "direction": "320",
+    "highway": "speed_camera",
+    "maxspeed": "100",
+    "note": "F100 ION GOVI N-I Km 431 Curvas Alegia DIR Irún CL"
+   },
+   "version": "8",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.1022112,
+    -2.097375
+   ],
+   "hacia": [
+    43.1066303,
+    -2.0975397
+   ],
+   "relacion": 20357494,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-n-1-431035-alegia",
+    "nombre": "ALEGIA",
+    "m": 42
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3260153930,
+   "lat": 43.1031916,
+   "lon": -2.9989334,
+   "tags": {
+    "direction": "15",
+    "highway": "speed_camera",
+    "maxspeed": "70",
+    "note": "F070 TRAP A-625 Km 365.1 Luyaondo DIR Amurrio CL"
+   },
+   "version": "6",
+   "fecha": "2023-12-18",
+   "control": "maxspeed",
+   "desde": [
+    43.1108559,
+    -2.9938965
+   ],
+   "hacia": [
+    43.102316,
+    -2.9992421
+   ],
+   "relacion": 4441626,
+   "limite_rel": "70",
+   "mas_cercano": {
+    "id": "eus-a-625-365000-luiaondo",
+    "nombre": "LUIAONDO",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992002500,
+   "lat": 43.0888495,
+   "lon": -2.7412577,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "60",
+    "note": "F060 ALBZ N-240 Km 32.5 Barazar DIR Bilbao CL"
+   },
+   "version": "9",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    43.0893092,
+    -2.7442643
+   ],
+   "hacia": [
+    43.0888037,
+    -2.7413639
+   ],
+   "relacion": 20355375,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-n-240-32490-barazar",
+    "nombre": "BARAZAR",
+    "m": 5
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 4696946624,
+   "lat": 43.0643082,
+   "lon": -2.7102622,
+   "tags": {
+    "description": "N-240 Km 38,435 Zeanuri DIR Bilbao CL",
+    "direction": "300",
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "7",
+   "fecha": "2025-10-03",
+   "control": "maxspeed",
+   "desde": [
+    43.0594592,
+    -2.7059939
+   ],
+   "hacia": [
+    43.0644368,
+    -2.7104758
+   ],
+   "relacion": 6998421,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-n-240-38430-alto-barazar",
+    "nombre": "ALTO BARAZAR",
+    "m": 7
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2491235912,
+   "lat": 43.0462065,
+   "lon": -2.2392428,
+   "tags": {
+    "direction": "100",
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "7",
+   "fecha": "2026-03-21",
+   "control": "maxspeed",
+   "desde": [
+    43.045577,
+    -2.2439611
+   ],
+   "hacia": [
+    43.0460208,
+    -2.237619
+   ],
+   "relacion": 20357464,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-gi-632-2670-ormaiztegi",
+    "nombre": "ORMAIZTEGI",
+    "m": 23
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 6026068172,
+   "lat": 43.0105414,
+   "lon": -2.9025473,
+   "tags": {
+    "description": "F120 NICO AP-68 Km 29.65 Enlace Amurrio DIR Miranda Ebro CL",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "6",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    43.0170166,
+    -2.9079809
+   ],
+   "hacia": [
+    43.0102178,
+    -2.9021232
+   ],
+   "relacion": 8409918,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-ap-68-29600-ziorroga",
+    "nombre": "ZIORROGA",
+    "m": 26
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992004568,
+   "lat": 42.9900863,
+   "lon": -2.872605,
+   "tags": {
+    "description": "F120 Kx0- AP-68 Km 33.06 Alto Altube DIR Bilbao CL",
+    "direction": "315",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "11",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    42.9841591,
+    -2.8697159
+   ],
+   "hacia": [
+    42.990408,
+    -2.8730807
+   ],
+   "relacion": 7221849,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-ap-68-33000-altube",
+    "nombre": "ALTUBE",
+    "m": 12
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 833819,
+   "lat": 42.9876541,
+   "lon": -2.2351709,
+   "tags": {
+    "direction": "10",
+    "highway": "speed_camera",
+    "maxspeed": "100",
+    "note": "F100 URIB N-I Km 411.2 Final Echegarate DIR Irún CL"
+   },
+   "version": "9",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    42.9843937,
+    -2.2378001
+   ],
+   "hacia": [
+    42.9878383,
+    -2.235165
+   ],
+   "relacion": 20355387,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-n-1-411400-idiazabal",
+    "nombre": "IDIAZABAL",
+    "m": 19
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992006815,
+   "lat": 42.9783573,
+   "lon": -2.6445574,
+   "tags": {
+    "description": "F060 PULL N-240 Km 16.1 Legutiano DIR Bilbao CL",
+    "highway": "speed_camera",
+    "maxspeed": "60"
+   },
+   "version": "9",
+   "fecha": "2026-03-26",
+   "control": "maxspeed",
+   "desde": [
+    42.9754308,
+    -2.6438315
+   ],
+   "hacia": [
+    42.9784007,
+    -2.644668
+   ],
+   "relacion": 20355372,
+   "limite_rel": "60",
+   "mas_cercano": {
+    "id": "eus-n-240-16120-legutio",
+    "nombre": "LEGUTIO",
+    "m": 19
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 252943499,
+   "lat": 42.9546763,
+   "lon": -2.2342425,
+   "tags": {
+    "direction": "320",
+    "highway": "speed_camera",
+    "maxspeed": "100",
+    "note": "F100 URIB N-I Km 407 Inicio Echegarate DIR Irún CL"
+   },
+   "version": "5",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    42.9523718,
+    -2.2302982
+   ],
+   "hacia": [
+    42.9549726,
+    -2.2346891
+   ],
+   "relacion": 20355384,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-n-1-407700-etxegarate",
+    "nombre": "ETXEGARATE",
+    "m": 18
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001242,
+   "lat": 42.9427225,
+   "lon": -2.7760085,
+   "tags": {
+    "description": "F120 MORR N-622 Km 15.4 Puente Aiurdín DIR Vitoria CL",
+    "direction": "105",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "8",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    42.9485256,
+    -2.7946115
+   ],
+   "hacia": [
+    42.9426862,
+    -2.7757615
+   ],
+   "relacion": 19675544,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-n-622-15400-aiurdin",
+    "nombre": "AIURDIN",
+    "m": 24
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992003845,
+   "lat": 42.9340351,
+   "lon": -2.7458717,
+   "tags": {
+    "description": "F100 MORR N-622 Km 12.3 Letona DIR Vitoria CL",
+    "direction": "130",
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "8",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    42.9413465,
+    -2.7616111
+   ],
+   "hacia": [
+    42.9339219,
+    -2.7456484
+   ],
+   "relacion": 9181968,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-n-622-12200-letona",
+    "nombre": "LETONA",
+    "m": 24
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992000606,
+   "lat": 42.9314317,
+   "lon": -2.7422326,
+   "tags": {
+    "description": "F100 MORR N-622 Km 11.9 Letona DIR Bilbao CL",
+    "direction": "290",
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "7",
+   "fecha": "2025-10-04",
+   "control": "maxspeed",
+   "desde": [
+    42.9247835,
+    -2.7310814
+   ],
+   "hacia": [
+    42.931523,
+    -2.7425088
+   ],
+   "relacion": 9181969,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-n-622-11870-gopegi",
+    "nombre": "GOPEGI",
+    "m": 6
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2451604294,
+   "lat": 42.8692677,
+   "lon": -2.6593899,
+   "tags": {},
+   "version": "2",
+   "fecha": "2023-04-18",
+   "control": "traffic_signals",
+   "desde": [
+    42.8694148,
+    -2.6593281
+   ],
+   "hacia": null,
+   "relacion": 16216736,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-4",
+    "nombre": "Foto rojo PORTAL DE GAMARRA, 19",
+    "m": 43
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992003014,
+   "lat": 42.8681097,
+   "lon": -2.6976878,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "6",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8679665,
+    -2.6976825
+   ],
+   "hacia": [
+    42.8681416,
+    -2.6978087
+   ],
+   "relacion": 18014649,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-3",
+    "nombre": "DUQUE DE WELLINGTON Nº 52A (sentido Norte)",
+    "m": 27
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001082,
+   "lat": 42.8651118,
+   "lon": -2.2525671,
+   "tags": {
+    "description": "F120 CMPN JAIT N-I Km 390.7 Egino DIR Burgos CL",
+    "direction": "250",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "8",
+   "fecha": "2026-01-04",
+   "control": "maxspeed",
+   "desde": [
+    42.8658719,
+    -2.2475335
+   ],
+   "hacia": [
+    42.8650882,
+    -2.2527086
+   ],
+   "relacion": 19881527,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-a-1-390700-egino-madrid",
+    "nombre": "EGINO MADRID",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992003606,
+   "lat": 42.8649479,
+   "lon": -2.2525334,
+   "tags": {
+    "description": "F120 CMPN JAIT N-I Km 390.7 Egino DIR Irún CL",
+    "direction": "70",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "8",
+   "fecha": "2026-01-04",
+   "control": "maxspeed",
+   "desde": [
+    42.8645016,
+    -2.25844
+   ],
+   "hacia": [
+    42.8649651,
+    -2.2523644
+   ],
+   "relacion": 19881528,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-a-1-390700-egino-irun",
+    "nombre": "EGINO IRUN",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992000826,
+   "lat": 42.8612075,
+   "lon": -2.6692314,
+   "tags": {
+    "description": "Radar 50 kmh",
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "note": "F050 BBS guaje47 Calle de Zaramaga 01013 Vitoria-Gasteiz @"
+   },
+   "version": "6",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8611522,
+    -2.6693407
+   ],
+   "hacia": [
+    42.8610973,
+    -2.6690388
+   ],
+   "relacion": 18014655,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-405",
+    "nombre": "ZARAMAGA Nº2 (Sentido calle Madrid)",
+    "m": 5
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2334938912,
+   "lat": 42.8610463,
+   "lon": -2.6683605,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "5",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8610694,
+    -2.668154
+   ],
+   "hacia": [
+    42.861158,
+    -2.6686075
+   ],
+   "relacion": 18014654,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-404",
+    "nombre": "ZARAMAGA Nº 2 (Sentido Juan de Garay)",
+    "m": 29
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13685958737,
+   "lat": 42.8574744,
+   "lon": -2.6153664,
+   "tags": {
+    "direction": "220",
+    "highway": "speed_camera",
+    "maxspeed": "70"
+   },
+   "version": "2",
+   "fecha": "2026-04-08",
+   "control": "maxspeed",
+   "desde": [
+    42.8576833,
+    -2.6136686
+   ],
+   "hacia": [
+    42.8572126,
+    -2.6164306
+   ],
+   "relacion": 20423307,
+   "limite_rel": "70",
+   "mas_cercano": {
+    "id": "eus-n-104-356080-arkaute",
+    "nombre": "ARKAUTE",
+    "m": 6
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2334938935,
+   "lat": 42.8540855,
+   "lon": -2.7011544,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "50",
+    "note": "F050 BBS guaje47 Av de los Huetos 18 01010 Vitoria-Gasteiz"
+   },
+   "version": "6",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8540731,
+    -2.7009327
+   ],
+   "hacia": [
+    42.8541516,
+    -2.7012926
+   ],
+   "relacion": 18014645,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-406",
+    "nombre": "LOS HUETOS, AVENIDA DE Nº 21 (Sentido Asteguieta)",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992006940,
+   "lat": 42.8540627,
+   "lon": -2.7010524,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "7",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8540839,
+    -2.701314
+   ],
+   "hacia": [
+    42.8540065,
+    -2.700969
+   ],
+   "relacion": 18014644,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-407",
+    "nombre": "LOS HUETOS, AVENIDA DE Nº21 (sentido Seminario)",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992006262,
+   "lat": 42.8533536,
+   "lon": -2.6574297,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "7",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8544331,
+    -2.6574385
+   ],
+   "hacia": [
+    42.8531725,
+    -2.6575334
+   ],
+   "relacion": 18015508,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-5",
+    "nombre": "MADRID Nº 5 (sentido Jacinto Benavente)",
+    "m": 7
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 599273608,
+   "lat": 42.8526906,
+   "lon": -2.687676,
+   "tags": {
+    "button_operated": "no",
+    "crossing": "traffic_signals",
+    "highway": "crossing",
+    "tactile_paving": "yes",
+    "traffic_signals:sound": "yes",
+    "traffic_signals:vibration": "no"
+   },
+   "version": "11",
+   "fecha": "2024-08-13",
+   "control": "traffic_signals",
+   "desde": [
+    42.852734,
+    -2.6876595
+   ],
+   "hacia": null,
+   "relacion": 16216730,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-2",
+    "nombre": "Foto rojo MEXICO, 4",
+    "m": 22
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992006437,
+   "lat": 42.8519575,
+   "lon": -2.8935265,
+   "tags": {
+    "description": "F120 Kx0- AP-68 Km 50.27 Subijana DIR Miranda Ebro CL",
+    "direction": "180",
+    "highway": "speed_camera",
+    "maxspeed": "120"
+   },
+   "version": "10",
+   "fecha": "2026-03-26",
+   "control": "maxspeed",
+   "desde": [
+    42.858002,
+    -2.8933323
+   ],
+   "hacia": [
+    42.8516451,
+    -2.893575
+   ],
+   "relacion": 7209054,
+   "limite_rel": "120",
+   "mas_cercano": {
+    "id": "eus-ap-68-50500-subijana",
+    "nombre": "SUBIJANA",
+    "m": 11
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 12159973291,
+   "lat": 42.8511812,
+   "lon": -2.6943538,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "1",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8509361,
+    -2.6943413
+   ],
+   "hacia": [
+    42.8513421,
+    -2.6942101
+   ],
+   "relacion": 18014640,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-413",
+    "nombre": "ZABALGANA, AVENIDA DE Nº 14 (Sentido la Antonia, Norte-Sur, y Sentido Txagorritxu, Sur-Norte)",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 3225131224,
+   "lat": 42.8501777,
+   "lon": -2.6809823,
+   "tags": {
+    "button_operated": "no",
+    "crossing:signals": "yes",
+    "highway": "crossing"
+   },
+   "version": "6",
+   "fecha": "2024-09-02",
+   "control": "traffic_signals",
+   "desde": [
+    42.8503207,
+    -2.6809429
+   ],
+   "hacia": null,
+   "relacion": 16216727,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-5",
+    "nombre": "Foto rojo AVENIDA DE GASTEIZ, 73",
+    "m": 30
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2561668260,
+   "lat": 42.8495646,
+   "lon": -2.6781437,
+   "tags": {
+    "crossing:signals": "yes",
+    "highway": "crossing",
+    "tactile_paving": "yes"
+   },
+   "version": "5",
+   "fecha": "2024-10-02",
+   "control": "traffic_signals",
+   "desde": [
+    42.8495242,
+    -2.6781559
+   ],
+   "hacia": null,
+   "relacion": 16216728,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-6",
+    "nombre": "Foto rojo RAMIRO DE MAEZTU, 22",
+    "m": 27
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 12160561865,
+   "lat": 42.8483925,
+   "lon": -2.6404415,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "1",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8484902,
+    -2.6411857
+   ],
+   "hacia": [
+    42.8481006,
+    -2.6393706
+   ],
+   "relacion": 18015507,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-416",
+    "nombre": "BRUSELAS, AVENIDA DE Nº 20 (Sentido Vitoria-Gasteiz y Sentido salida ciudad)",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 12159958669,
+   "lat": 42.8477215,
+   "lon": -2.7034521,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "1",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8477519,
+    -2.7036221
+   ],
+   "hacia": [
+    42.8476079,
+    -2.7033943
+   ],
+   "relacion": 18014632,
+   "limite_rel": "30",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-412",
+    "nombre": "NACIONES UNIDAS, AVENIDA DE Nº 31 (Sentido Jundiz)",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 1257126729,
+   "lat": 42.8473271,
+   "lon": -2.6819743,
+   "tags": {
+    "crossing:signals": "yes",
+    "highway": "crossing"
+   },
+   "version": "5",
+   "fecha": "2026-08-09",
+   "control": "traffic_signals",
+   "desde": [
+    42.847358,
+    -2.6820653
+   ],
+   "hacia": null,
+   "relacion": 16216729,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-1",
+    "nombre": "Foto rojo ADRIANO VI, 15",
+    "m": 18
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2499175761,
+   "lat": 42.8420605,
+   "lon": -2.6664006,
+   "tags": {
+    "highway": "crossing"
+   },
+   "version": "3",
+   "fecha": "2019-06-21",
+   "control": "traffic_signals",
+   "desde": [
+    42.8420195,
+    -2.6664117
+   ],
+   "hacia": null,
+   "relacion": 16216726,
+   "limite_rel": null,
+   "mas_cercano": {
+    "id": "mun-vitoria-fotorrojo-3",
+    "nombre": "Foto rojo PLAZA DEL RENACIMIENTO, 13",
+    "m": 15
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 4539876520,
+   "lat": 42.8381881,
+   "lon": -2.8945132,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "9",
+   "fecha": "2026-03-26",
+   "control": "maxspeed",
+   "desde": [
+    42.8423977,
+    -2.8938455
+   ],
+   "hacia": [
+    42.8380183,
+    -2.8943486
+   ],
+   "relacion": 7221848,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-ap-68-51800-subijana-za-cabina",
+    "nombre": "SUBIJANA ZA CABINA",
+    "m": 48
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001602,
+   "lat": 42.8360898,
+   "lon": -2.7028887,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "6",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8358482,
+    -2.7035216
+   ],
+   "hacia": [
+    42.8361246,
+    -2.7026132
+   ],
+   "relacion": 18014616,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-408",
+    "nombre": "ARMENTIA, ALTO DE Nº20 (Sentido Vitoria-Gasteiz)",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 12159914535,
+   "lat": 42.8360819,
+   "lon": -2.7029174,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "1",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8364688,
+    -2.7017909
+   ],
+   "hacia": [
+    42.835833,
+    -2.7039075
+   ],
+   "relacion": 18014615,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-408",
+    "nombre": "ARMENTIA, ALTO DE Nº20 (Sentido Vitoria-Gasteiz)",
+    "m": 1
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 2334938947,
+   "lat": 42.8349205,
+   "lon": -2.7068059,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "5",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8350084,
+    -2.7067746
+   ],
+   "hacia": [
+    42.8347064,
+    -2.7078048
+   ],
+   "relacion": 18014614,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-411",
+    "nombre": "ARMENTIA, ALTO DE Nº42 (sentido Salida ciudad)",
+    "m": 0
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 12159914534,
+   "lat": 42.8348185,
+   "lon": -2.7071443,
+   "tags": {
+    "highway": "speed_camera"
+   },
+   "version": "1",
+   "fecha": "2024-09-06",
+   "control": "maxspeed",
+   "desde": [
+    42.8346457,
+    -2.7075251
+   ],
+   "hacia": [
+    42.8348804,
+    -2.7067339
+   ],
+   "relacion": 18014613,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "mun-vitoria-cabina-411",
+    "nombre": "ARMENTIA, ALTO DE Nº42 (sentido Salida ciudad)",
+    "m": 30
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 5509472971,
+   "lat": 42.8188768,
+   "lon": -2.8946646,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "100"
+   },
+   "version": "5",
+   "fecha": "2026-03-26",
+   "control": "maxspeed",
+   "desde": [
+    42.8117931,
+    -2.9040332
+   ],
+   "hacia": [
+    42.8191375,
+    -2.8944638
+   ],
+   "relacion": 7769258,
+   "limite_rel": "100",
+   "mas_cercano": {
+    "id": "eus-ap-68-54070-subijana-bi-cabina",
+    "nombre": "SUBIJANA BI CABINA",
+    "m": 18
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13567316441,
+   "lat": 42.7103541,
+   "lon": -2.8695878,
+   "tags": {
+    "direction": "10",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "1",
+   "fecha": "2026-02-15",
+   "control": "maxspeed",
+   "desde": [
+    42.7099226,
+    -2.8701776
+   ],
+   "hacia": [
+    42.7103866,
+    -2.8696981
+   ],
+   "relacion": 20222895,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-ap-1-82300-arminon",
+    "nombre": "ARMIÑON",
+    "m": 34
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 7777625389,
+   "lat": 42.577583,
+   "lon": -2.6424712,
+   "tags": {
+    "description": "A-124 Pk 58.460",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "3",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    42.5776083,
+    -2.6443256
+   ],
+   "hacia": [
+    42.5775485,
+    -2.6425431
+   ],
+   "relacion": 20355340,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-124-58460-leza-vi",
+    "nombre": "LEZA VI",
+    "m": 3
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 7777625390,
+   "lat": 42.5770412,
+   "lon": -2.6466959,
+   "tags": {
+    "description": "A-124 PK 58.015",
+    "highway": "speed_camera",
+    "maxspeed": "80"
+   },
+   "version": "4",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    42.576218,
+    -2.6494937
+   ],
+   "hacia": [
+    42.5770988,
+    -2.6466558
+   ],
+   "relacion": 20355319,
+   "limite_rel": "80",
+   "mas_cercano": {
+    "id": "eus-a-124-58015-leza-lo",
+    "nombre": "LEZA LO",
+    "m": 4
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13665343674,
+   "lat": 42.5530225,
+   "lon": -2.5828693,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "50"
+   },
+   "version": "1",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    42.5549291,
+    -2.5835215
+   ],
+   "hacia": [
+    42.5507024,
+    -2.5825308
+   ],
+   "relacion": 20355347,
+   "limite_rel": "50",
+   "mas_cercano": {
+    "id": "eus-a-124-64300-laguardia-tra",
+    "nombre": "LAGUARDIA TRA.",
+    "m": 4
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992005240,
+   "lat": 42.5326297,
+   "lon": -2.5449258,
+   "tags": {
+    "direction": "300",
+    "highway": "speed_camera",
+    "maxspeed": "90",
+    "note": "F100 AMOS GOVA A-124 Km 68.7 Curva Castejones DIR Laguardia CL"
+   },
+   "version": "7",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    42.5301084,
+    -2.5411641
+   ],
+   "hacia": [
+    42.5326418,
+    -2.5450903
+   ],
+   "relacion": 20355356,
+   "limite_rel": "90",
+   "mas_cercano": {
+    "id": "eus-a-124-68600-laguardia-vi",
+    "nombre": "LAGUARDIA VI",
+    "m": 26
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 992001775,
+   "lat": 42.5318489,
+   "lon": -2.5436366,
+   "tags": {
+    "direction": "120",
+    "highway": "speed_camera",
+    "maxspeed": "90",
+    "note": "F100 AMOS GOVA A-124 Km 68.8 Curva Castejones DIR Logroño CL"
+   },
+   "version": "7",
+   "fecha": "2026-03-20",
+   "control": "maxspeed",
+   "desde": [
+    42.5337522,
+    -2.5474458
+   ],
+   "hacia": [
+    42.5317497,
+    -2.5433219
+   ],
+   "relacion": 20355357,
+   "limite_rel": "90",
+   "mas_cercano": {
+    "id": "eus-a-124-68700-laguardia-lo",
+    "nombre": "LAGUARDIA LO",
+    "m": 8
+   },
+   "ya_esta": true
+  },
+  {
+   "id": 13510260117,
+   "lat": 42.5053509,
+   "lon": -2.499688,
+   "tags": {
+    "highway": "speed_camera",
+    "maxspeed": "70"
+   },
+   "version": "2",
+   "fecha": "2026-03-26",
+   "control": "maxspeed",
+   "desde": [
+    42.5014877,
+    -2.4950071
+   ],
+   "hacia": [
+    42.5053257,
+    -2.4995422
+   ],
+   "relacion": 20377805,
+   "limite_rel": "70",
+   "mas_cercano": {
+    "id": "eus-a-124-74510-laserna",
+    "nombre": "LASERNA",
+    "m": 9
+   },
+   "ya_esta": true
+  }
+ ]
+}
