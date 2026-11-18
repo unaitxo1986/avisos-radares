@@ -19,7 +19,7 @@ import urllib.request
 from pathlib import Path
 
 from .cache import Cache
-from .geo import haversine
+from .geo import haversine, simplificar
 
 AGENTE = "avisos-radares/0.1 (+https://github.com/unaitxo1986/avisos-radares)"
 URL_OSM = "https://api.openstreetmap.org/api/0.6/map.json"
@@ -55,6 +55,7 @@ class Servicios:
         self.osm = Cache(d / "osm.json")
         self.osm_aprox = Cache(d / "osm_aprox.json")
         self.osrm = Cache(d / "osrm.json")
+        self.osrm_tramos = Cache(d / "osrm_tramos.json")
         self.nominatim = Cache(d / "nominatim.json")
         self.carto = Cache(d / "cartociudad.json")
         self.sin_red = sin_red
@@ -63,7 +64,7 @@ class Servicios:
         self.peticiones = 0
 
     def guardar(self):
-        for c in (self.osm, self.osm_aprox, self.osrm, self.nominatim, self.carto):
+        for c in (self.osm, self.osm_aprox, self.osrm, self.osrm_tramos, self.nominatim, self.carto):
             c.guardar()
 
     # ---- red ----
@@ -200,6 +201,36 @@ class Servicios:
             dist = None
         self.osrm.set(clave, dist)
         return dist
+
+    def ruta_geom(self, o, rumbo_o, d, rumbo_d=None):
+        """Ruta completa de `o` a `d` para los radares de tramo (fase 5).
+
+        Como `ruta`, pero devuelve también la línea: {'dist': metros, 'puntos': [[lat, lon], ...]}
+        (simplificada a 2 m para que la caché, que se versiona, no crezca de más), o None si no hay ruta.
+        """
+        rd = "" if rumbo_d is None else str(round(rumbo_d))
+        clave = f"{_clave_punto(*o)},{round(rumbo_o)}>{_clave_punto(*d)},{rd}"
+        if clave in self.osrm_tramos:
+            return self.osrm_tramos.get(clave)
+        if self.sin_red:
+            raise Pendiente(f"osrm_tramos {clave}")
+        coord = f"{o[1]:.6f},{o[0]:.6f};{d[1]:.6f},{d[0]:.6f}"
+        bearings = f"{round(rumbo_o)},25;" + ("" if rumbo_d is None else f"{round(rumbo_d)},25")
+        radios = "40;" + ("60" if rumbo_d is None else "40")
+        url = (f"{URL_OSRM}{coord}?overview=full&geometries=geojson"
+               f"&bearings={urllib.parse.quote(bearings, safe=',;')}&radiuses={radios}")
+        try:
+            datos = self._get(url)
+            rutas = datos.get("routes") or []
+            if datos.get("code") == "Ok" and rutas:
+                pts = [[round(c[1], 6), round(c[0], 6)] for c in rutas[0]["geometry"]["coordinates"]]
+                res = {"dist": round(rutas[0]["distance"]), "puntos": simplificar(pts, 2.0)}
+            else:
+                res = None
+        except urllib.error.HTTPError:  # 400: no hay segmento cercano con ese rumbo
+            res = None
+        self.osrm_tramos.set(clave, res)
+        return res
 
     # ---- destinos ----
     def geocodificar(self, texto):

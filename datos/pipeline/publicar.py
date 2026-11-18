@@ -1,5 +1,5 @@
-"""Une la lectura de fuentes (3.1) con el sentido (3.2), el tramo de aproximación (3.3)
-y el límite (3.4) y escribe los ficheros que lee la app (3.5).
+"""Une la lectura de fuentes (3.1) con el sentido (3.2), el tramo de aproximación (3.3),
+el límite (3.4) y los radares de tramo (fase 5) y escribe los ficheros que lee la app (3.5).
 
 Uso:
   python3 -I datos/pipeline/publicar.py --radares crudos.json [--cache datos/cache] \
@@ -31,14 +31,19 @@ def _km(pk_m):
     return None if pk_m is None else round(pk_m / 1000, 3)
 
 
-def construir(crudos, sentido, aprox, limites):
+def construir(crudos, sentido, aprox, limites, tramos=None):
     """Lista de radares publicables, en el orden de las fuentes."""
+    tramos = tramos or {}
     out = []
     for r in crudos:
         i = r["id"]
         s = sentido.get(i) or {}
-        a = aprox.get(i)
+        t = tramos.get(i)
+        a = t.get("aprox") if t else aprox.get(i)
         lim = limites.get(i) or {}
+        if t and lim.get("limite") is None:
+            tl = t.get("limite") or {}
+            lim = {"limite": tl.get("limite"), "origen": tl.get("origen"), "fiab": tl.get("fiab")}
         linea = a.get("puntos") if a else None
         if a is None:
             fiab = None
@@ -47,6 +52,10 @@ def construir(crudos, sentido, aprox, limites):
         else:
             fiab = "dudosa"
         sk = s.get("sentido_km")
+        if t:  # radar de tramo (fase 5): el sentido del kilometraje sale del orden inicio -> fin
+            r = dict(r, tipo="tramo", lat_fin=t["lat_fin"], lon_fin=t["lon_fin"], pk_fin_m=t.get("pk_fin_m"))
+            pk0, pk1 = r.get("pk_m"), r.get("pk_fin_m")
+            sk = None if pk0 is None or pk1 is None or pk0 == pk1 else ("creciente" if pk1 > pk0 else "decreciente")
         out.append({
             "id": i,
             "tipo": r["tipo"],
@@ -67,6 +76,14 @@ def construir(crudos, sentido, aprox, limites):
             "rotatoria": bool(r.get("rotatoria")),
             "sin_confirmar": bool(r.get("sin_confirmar")),
         })
+        if r["tipo"] == "tramo":
+            tf = t.get("fiab") if t else None
+            out[-1].update({
+                "pk_fin": _km(r.get("pk_fin_m")),
+                "tramo": t.get("linea") if tf == "alta" else None,
+                "tramo_largo": t.get("largo_m") if tf == "alta" else None,
+                "tramo_fiab": tf,
+            })
     return out
 
 
@@ -95,6 +112,9 @@ def comprobar(radares, fuentes, previo=None):
         if r["aproximacion_fiab"] == "alta" and not r["aproximacion"]:
             p.append(f"{r['id']}: fiabilidad alta sin línea")
             break
+        if r.get("tramo_fiab") == "alta" and not (r.get("tramo") and r.get("tramo_largo")):
+            p.append(f"{r['id']}: tramo con fiabilidad alta sin línea")
+            break
     return p
 
 
@@ -120,10 +140,11 @@ def main(argv=None):
     sentido = _leer(cache / "sentido.json", {})
     aprox = _leer(cache / "aproximacion.json", {})
     limites = _leer(cache / "limites.json", {})
+    tramos = _leer(cache / "tramos.json", {})
     previo_doc = _leer(salida / "radares.json")
     previo = previo_doc["radares"] if previo_doc else None
 
-    radares = construir(crudos["radares"], sentido, aprox, limites)
+    radares = construir(crudos["radares"], sentido, aprox, limites, tramos)
     problemas = comprobar(radares, crudos["fuentes"], previo)
     avisos = list(crudos.get("avisos") or [])
 
@@ -164,6 +185,7 @@ def main(argv=None):
     print(f"{'OK' if not problemas else 'NO PUBLICADO'}: {len(radares)} radares {dict(c)}")
     print("Aproximación:", dict(Counter(r["aproximacion_fiab"] for r in radares)))
     print("Límite:", dict(Counter(r["limite_origen"] for r in radares)))
+    print("Tramos:", dict(Counter(r.get("tramo_fiab") for r in radares if r["tipo"] == "tramo")))
     for x in problemas:
         print(f"ERROR: {x}", file=sys.stderr)
     return 0 if not problemas else 3

@@ -15,7 +15,7 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 | Campo | Tipo | Descripción |
 |---|---|---|
 | `id` | texto | Identificador estable. Prefijo de la fuente: `dgt-`, `eus-`, `man-`, `mun-` (municipales, desde el 18/11/2026), `osm-` (cámaras de OpenStreetMap confirmadas por Unai) |
-| `tipo` | texto | `fijo`, `tramo`, `fotorrojo` o `tramo_extremo` (Trabakua, sin emparejar hasta la fase 5) |
+| `tipo` | texto | `fijo`, `tramo` o `fotorrojo`. (`tramo_extremo` solo si un extremo de tramo de Trafikoa queda sin emparejar; desde la fase 5 los dos de Trabakua salen como dos `tramo`, uno por sentido, con el id del extremo por el que se entra) |
 | `nombre` | texto | Nombre o ubicación |
 | `fuente` | texto | `dgt`, `trafikoa`, `manual`, `municipal` (publicación de un ayuntamiento, ver abajo) u `osm` (solo en OpenStreetMap, confirmada por Unai: `datos/fuentes/osm_confirmados.json`) |
 | `lat`, `lon` | número | WGS84 (en tramos, punto de inicio) |
@@ -23,13 +23,17 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 | `carretera` | texto o nulo | Por ejemplo `A-8`, `BI-633` |
 | `pk` | número o nulo | Punto kilométrico en **km** |
 | `sentido` | texto o nulo | Sentido oficial tal como lo da la fuente: destino (`CANTABRIA`) si lo hay; si no, `creciente`/`decreciente` |
-| `sentido_km` | `creciente`, `decreciente` o nulo | Sentido en que crece o decrece el kilometraje, deducido en 3.2 sobre la carretera. Nulo si la carretera es de sentido único o no se pudo resolver. Informativo para la app |
+| `sentido_km` | `creciente`, `decreciente` o nulo | Sentido en que crece o decrece el kilometraje, deducido en 3.2 sobre la carretera. Nulo si la carretera es de sentido único o no se pudo resolver. En tramos, sale del orden inicio → fin (`pk` → `pk_fin`). Informativo para la app |
 | `aproximacion` | lista de `[lat, lon]` o nulo | Línea de la carretera por la que se llega al radar en el sentido que vigila (**500 m**, decisión de Unai del 15/11/2026), en el orden de la marcha; termina en el radar. Geometría de OpenStreetMap. Solo se publica si `aproximacion_fiab` es `alta` |
 | `aproximacion_fiab` | texto o nulo | `alta`, `dudosa` o nulo (no calculada, por ejemplo en tramos). Con `dudosa` o nulo la app avisa por cercanía en cualquier sentido |
 | `limite` | entero o nulo | km/h. Nulo si no se conoce: la app avisa sin límite |
-| `limite_origen` | texto o nulo | `oficial`, `manual`, `osm` (calzada elegida en 3.2) u `osm_cercana` (vía próxima de la misma carretera). Prioridad: oficial, manual, OpenStreetMap |
+| `limite_origen` | texto o nulo | `oficial`, `manual`, `osm` (calzada elegida en 3.2; en tramos, el valor de al menos el 80 % de los puntos muestreados), `osm_cercana` (vía próxima de la misma carretera) u `osm_tramo_minimo` (tramo cuyo límite cambia en OpenStreetMap: el más bajo). Prioridad: oficial, manual, OpenStreetMap |
 | `limite_fiab` | texto o nulo | `alta` (oficial o manual), `media` (`osm`) o `baja` (`osm_cercana`). Qué hace la app con `baja` se decide en 4.3 (recomendación: no mostrar el límite) |
 | `enlace` | texto o nulo | Enlace a la fuente oficial |
+| `pk_fin` | número o nulo | **Solo en tramos.** Punto kilométrico del fin, en km |
+| `tramo` | lista de `[lat, lon]` o nulo | **Solo en tramos.** Línea de la carretera desde la cámara de inicio hasta la de fin, en el orden de la marcha (ruta de OSRM sobre OpenStreetMap, simplificada a 3 m). Solo si `tramo_fiab` es `alta`. La app sigue al coche por ella para calcular la velocidad media (fase 5) |
+| `tramo_largo` | entero o nulo | **Solo en tramos.** Longitud de esa línea en metros |
+| `tramo_fiab` | texto o nulo | **Solo en tramos.** `alta` (la ruta cuadra con el kilometraje oficial), `dudosa` (no hay ruta o no cuadra: la app avisa por cercanía al inicio, sin velocidad media) o nulo (no calculado) |
 | `sin_confirmar` | booleano | `true` si el radar solo está en OpenStreetMap y nadie lo ha confirmado (fuente `osm`; desde el 18/11/2026). Puede ser un radar pedagógico. La app los avisa por cercanía, en cualquier sentido, a la distancia que se recorre en 10 s a la velocidad del límite (50 km/h si no hay límite; mínimo 100 m), con "sin confirmar" en la ventana (decisión de Unai, 18/11) |
 | `rotatoria` | booleano | `true` si el ayuntamiento dice que los radares rotan entre cabinas (la cabina puede estar vacía). Hoy, las 16 cabinas de Vitoria-Gasteiz. La app las avisa como cualquier radar, con "rotatorio" en la ventana (decisión de Unai, 18/11) |
 
@@ -123,6 +127,22 @@ Cómo se construye: se parte de la vía, el rumbo y el punto de `sentido.json` y
 
 Datos de entrada: recuadro de unos 1,2 km por radar de la API de OpenStreetMap (`osm_aprox.json`, una petición por radar). **Esa respuesta cruda no se versiona** (unos 28 KB por radar, unos 20 MB en total; está en `.gitignore`): vive en la caché de Actions (`actions/cache`), y si se pierde se vuelve a pedir (unos 45 minutos). Lo que se versiona es `aproximacion.json` (unos 175 KB). Las vías se guardan en trozos continuos y con el primer nodo de fuera del radio a cada lado, porque en rectas y túneles los nodos están muy separados.
 
+
+## Radares de tramo (fase 5): `datos/cache/tramos.json`
+
+Lo escribe `datos/pipeline/calcular_tramos.py` (algoritmo en `tramos.py`, 18/11/2026). Un objeto por tramo: los 47 de la DGT y los dos sentidos de Trabakua (con el id del extremo por el que se entra). Rutas de OSRM en `datos/cache/osrm_tramos.json`.
+
+| Campo | Notas |
+|---|---|
+| `fiab` | `alta` o `dudosa` |
+| `linea`, `largo_m` | Línea del inicio al fin en el orden de la marcha y su longitud (nulas si `dudosa`) |
+| `largo_ref_m` | Longitud según el kilometraje oficial (`|pk_fin - pk|`), con la que se valida la ruta: tiene que diferir menos de 300 m o del 15 % |
+| `lat_fin`, `lon_fin`, `pk_fin_m` | Fin del tramo (en Trabakua, el otro extremo) |
+| `aprox` | Tramo de aproximación al inicio, mismo formato que `aproximacion.json` (3.3) |
+| `limite` | `{limite, origen, fiab, muestras, valores}`: oficial si lo hay; si no, `maxspeed` de la misma carretera en un punto por kilómetro de la línea (`valores`: cuántos puntos dan cada valor). Con al menos el 80 % de acuerdo, `osm`; si cambia, el más bajo (`osm_tramo_minimo`). Fiabilidad `media`, o `baja` si menos de la mitad de los puntos tienen dato |
+| `motivos` | Por qué es `dudosa` |
+
+**Orden inicio → fin:** el de la geometría de la DGT (`from` → `to`), no el indicador creciente/decreciente, que en 10 de los 47 tramos no cuadra con el kilometraje (son parejas del mismo tramo en los dos sentidos; ver `tramos.py`).
 
 ## Límite de cada radar (3.4): `datos/cache/limites.json`
 

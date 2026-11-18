@@ -18,7 +18,7 @@ Los umbrales son criterios propios, **[sin verificar]** contra uso real (se ajus
 """
 import math
 
-from .geo import dif_ang, haversine, proyectar, rumbo as rumbo_entre
+from .geo import dif_ang, haversine, proyectar, rumbo as rumbo_entre, simplificar
 from .sentido import norm_ref, sentido_unico
 
 LARGO_M = 500.0        # longitud del tramo de aproximación
@@ -123,33 +123,7 @@ def _elegir_predecesor(nodo, actual_d, via_actual, entran, carretera_ref):
 
 def _simplificar(pts, tol=SIMPLIFICAR_M):
     """Douglas-Peucker sobre coordenadas planas locales; conserva primero y último."""
-    if len(pts) < 3:
-        return list(pts)
-    lat0 = pts[0][0]
-    ky = 6371008.8 * math.pi / 180
-    kx = ky * math.cos(math.radians(lat0))
-    xy = [((p[1]) * kx, (p[0]) * ky) for p in pts]
-
-    def dist(i, a, b):
-        (px, py), (ax, ay), (bx, by) = xy[i], xy[a], xy[b]
-        dx, dy = bx - ax, by - ay
-        l2 = dx * dx + dy * dy
-        t = 0 if l2 == 0 else max(0, min(1, ((px - ax) * dx + (py - ay) * dy) / l2))
-        return math.hypot(px - (ax + t * dx), py - (ay + t * dy))
-
-    mantener = {0, len(pts) - 1}
-    pila = [(0, len(pts) - 1)]
-    while pila:
-        a, b = pila.pop()
-        mx, mi = 0.0, None
-        for i in range(a + 1, b):
-            d = dist(i, a, b)
-            if d > mx:
-                mx, mi = d, i
-        if mi is not None and mx > tol:
-            mantener.add(mi)
-            pila += [(a, mi), (mi, b)]
-    return [pts[i] for i in sorted(mantener)]
+    return simplificar(pts, tol)
 
 
 def construir(radar, res, vias, largo=LARGO_M):

@@ -42,3 +42,56 @@ def proyectar(lat, lon, a, b):
     t = 0.0 if l2 == 0 else max(0.0, min(1.0, -(ax * dx + ay * dy) / l2))
     px, py = ax + t * dx, ay + t * dy
     return math.hypot(px, py), (lat + py / ky, lon + px / kx), (math.degrees(math.atan2(dx, dy)) + 360) % 360
+
+
+def simplificar(pts, tol):
+    """Douglas-Peucker sobre coordenadas planas locales; conserva el primer y el último punto."""
+    if len(pts) < 3:
+        return list(pts)
+    ky = R_TIERRA * math.pi / 180
+    kx = ky * math.cos(math.radians(pts[0][0]))
+    xy = [(p[1] * kx, p[0] * ky) for p in pts]
+
+    def dist(i, a, b):
+        (px, py), (ax, ay), (bx, by) = xy[i], xy[a], xy[b]
+        dx, dy = bx - ax, by - ay
+        l2 = dx * dx + dy * dy
+        t = 0 if l2 == 0 else max(0, min(1, ((px - ax) * dx + (py - ay) * dy) / l2))
+        return math.hypot(px - (ax + t * dx), py - (ay + t * dy))
+
+    mantener = {0, len(pts) - 1}
+    pila = [(0, len(pts) - 1)]
+    while pila:
+        a, b = pila.pop()
+        mx, mi = 0.0, None
+        for i in range(a + 1, b):
+            d = dist(i, a, b)
+            if d > mx:
+                mx, mi = d, i
+        if mi is not None and mx > tol:
+            mantener.add(mi)
+            pila += [(a, mi), (mi, b)]
+    return [pts[i] for i in sorted(mantener)]
+
+
+def largo(pts):
+    """Longitud en metros de una línea [[lat, lon], ...]."""
+    return sum(haversine(a[0], a[1], b[0], b[1]) for a, b in zip(pts, pts[1:]))
+
+
+def puntos_a_lo_largo(pts, distancias):
+    """Puntos (lat, lon) de la línea a esas distancias desde el principio (ordenadas, en metros)."""
+    res, acum, i = [], 0.0, 0
+    for d in distancias:
+        while i < len(pts) - 1:
+            seg = haversine(pts[i][0], pts[i][1], pts[i + 1][0], pts[i + 1][1])
+            if acum + seg >= d:
+                f = 0.0 if seg == 0 else (d - acum) / seg
+                res.append((pts[i][0] + (pts[i + 1][0] - pts[i][0]) * f,
+                            pts[i][1] + (pts[i + 1][1] - pts[i][1]) * f))
+                break
+            acum += seg
+            i += 1
+        else:
+            res.append(tuple(pts[-1]))
+    return res
