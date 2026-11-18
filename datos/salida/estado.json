@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-18T08:55:20Z",
+ "generado": "2026-11-18T09:22:44Z",
  "ok": true,
  "avisos": [
   "Trafikoa no se pudo leer (no se pudo descargar https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo: <urlopen error timed out>); se usa la copia guardada: Copia de la página oficial de Trafikoa leída con Chrome el 2026-11-15 (98 radares)."
@@ -23,13 +23,14 @@
   },
   "municipal": {
    "ok": true,
-   "radares": 34,
+   "radares": 38,
    "copia_usada": [
-    "vitoria_fotorrojo"
+    "vitoria_fotorrojo",
+    "bilbao_cabinas"
    ]
   }
  },
- "radares_publicados": 869,
+ "radares_publicados": 873,
  "contraste": {
   "trafikoa": 98,
   "detector_radar": 98
