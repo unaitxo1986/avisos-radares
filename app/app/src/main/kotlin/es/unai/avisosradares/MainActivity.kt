@@ -1,145 +1,158 @@
 package es.unai.avisosradares
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.app.Activity
-import android.app.ActivityManager
-import android.app.AlertDialog
-import android.bluetooth.BluetoothManager
-import android.content.ClipData
-import android.content.ClipboardManager
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
-import android.graphics.Typeface
-import android.location.LocationManager
-import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.PowerManager
-import android.provider.Settings
-import android.widget.Button
+import android.view.Gravity
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
-import android.widget.Toast
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
 /**
- * Pantalla principal de la versión 1: estado, permisos, Bluetooth del coche, lista de radares, pruebas sin
- * conducir (simulación y reproducción de viajes), viajes grabados y registro de diagnóstico.
+ * Pantalla principal, pensada para usarla sin pensar: el botón START/STOP (con la velocidad en marcha), el
+ * Bluetooth del coche, la "puesta a punto" solo si falta algo y la entrada al modo pro, donde está todo lo demás.
  */
 class MainActivity : Activity() {
 
     private lateinit var ajustes: Ajustes
-    private lateinit var raiz: LinearLayout
-    private lateinit var textoServicio: TextView
-    private lateinit var textoLista: TextView
-    private lateinit var textoAvisosLista: TextView
-    private lateinit var textoPermisos: TextView
-    private lateinit var textoViajes: TextView
-    private lateinit var textoRegistro: TextView
-    private lateinit var botonServicio: Button
-    private lateinit var botonCoche: Button
-    private lateinit var botonArranque: Button
-    private lateinit var botonCiclo: Button
-    private lateinit var botonVentana: Button
+    private lateinit var estadoPista: TextView
+    private lateinit var boton: BotonArranque
+    private lateinit var lineaAviso: TextView
+    private lateinit var nombreCoche: TextView
+    private lateinit var etiquetaCoche: TextView
+    private lateinit var tarjetaCoche: LinearLayout
+    private lateinit var tarjetaPuesta: LinearLayout
+    private lateinit var listaPuesta: LinearLayout
+    private lateinit var tituloPuesta: TextView
+    private lateinit var resumenLista: TextView
+
     private val manejador = Handler(Looper.getMainLooper())
     private val refrescoPeriodico = object : Runnable {
         override fun run() {
-            refrescarServicio()
-            manejador.postDelayed(this, 1000)
+            refrescarMarcha()
+            manejador.postDelayed(this, 500)
         }
     }
+
+    private fun dp(v: Float) = Estilo.dp(this, v)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ajustes = Ajustes(this)
-        raiz = LinearLayout(this)
-        raiz.orientation = LinearLayout.VERTICAL
-        raiz.setPadding(28, 28, 28, 28)
 
-        @Suppress("DEPRECATION")
-        val info = packageManager.getPackageInfo(packageName, 0)
-        @Suppress("DEPRECATION")
-        val cabecera = texto("Avisos de radares\n" + etiquetaVersion(info.versionName ?: "?", info.versionCode.toLong()), 20f)
-        cabecera.setTypeface(cabecera.typeface, Typeface.BOLD)
+        val raiz = LinearLayout(this)
+        raiz.orientation = LinearLayout.VERTICAL
+        raiz.setPadding(dp(20f), dp(18f), dp(20f), dp(28f))
+
+        // Cabecera: nombre de la app en cursiva y las franjas.
+        val cabecera = LinearLayout(this)
+        cabecera.orientation = LinearLayout.HORIZONTAL
+        cabecera.gravity = Gravity.CENTER_VERTICAL
+        val nombre = LinearLayout(this)
+        nombre.orientation = LinearLayout.VERTICAL
+        nombre.addView(Estilo.texto(this, "RADAR", 34f, Estilo.TEXTO, Estilo.RACING))
+        nombre.addView(Estilo.texto(this, "AVISOS", 34f, Estilo.ROJO, Estilo.RACING).apply { setPadding(0, dp(-6f), 0, 0) })
+        cabecera.addView(nombre, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
+        cabecera.addView(FranjasRacing(this))
         raiz.addView(cabecera)
 
-        // Servicio
-        textoServicio = texto("", 16f)
-        raiz.addView(textoServicio)
-        botonServicio = boton("") {
-            if (ServicioRadares.enMarcha) ServicioRadares.parar(this) else ServicioRadares.arrancar(this, "botón de la pantalla")
+        // Estado (en boxes / en pista / simulación).
+        estadoPista = Estilo.texto(this, "", 13f, Estilo.GRIS, Estilo.ESTRECHA)
+        estadoPista.letterSpacing = 0.2f
+        estadoPista.gravity = Gravity.CENTER
+        estadoPista.setPadding(dp(16f), dp(7f), dp(16f), dp(7f))
+        val filaEstado = LinearLayout(this)
+        filaEstado.gravity = Gravity.CENTER
+        filaEstado.addView(estadoPista)
+        Estilo.margenes(filaEstado, arriba = dp(22f))
+        raiz.addView(filaEstado)
+
+        // Botón START/STOP con el cuentarrevoluciones.
+        boton = BotonArranque(this)
+        boton.setOnClickListener {
+            Estilo.vibra(boton)
+            if (ServicioRadares.enMarcha) ServicioRadares.parar(this) else ServicioRadares.arrancar(this, "botón START")
+            manejador.postDelayed({ refrescar() }, 300)
         }
+        Estilo.margenes(boton, arriba = dp(8f))
+        raiz.addView(boton)
 
-        // Lista de radares
-        raiz.addView(titulo("Lista de radares"))
-        textoLista = texto("", 14f)
-        raiz.addView(textoLista)
-        textoAvisosLista = texto("", 14f)
-        textoAvisosLista.setTextColor(Color.parseColor("#B71C1C"))
-        raiz.addView(textoAvisosLista)
-        boton("Buscar datos nuevos ahora") { GestorLista.comprobar(this, forzar = true) }
+        lineaAviso = Estilo.texto(this, "", 16f, Estilo.TEXTO, Estilo.ESTRECHA)
+        lineaAviso.gravity = Gravity.CENTER
+        lineaAviso.minHeight = dp(24f)
+        Estilo.margenes(lineaAviso, arriba = dp(4f))
+        raiz.addView(lineaAviso)
 
-        // Arranque automático
-        raiz.addView(titulo("Arranque con el coche"))
-        botonCoche = boton("") { elegirCoche() }
-        botonArranque = boton("") { ajustes.arranqueBluetooth = !ajustes.arranqueBluetooth }
-        botonCiclo = boton("") { ajustes.sonidosCiclo = !ajustes.sonidosCiclo }
-
-        // Permisos
-        raiz.addView(titulo("Permisos"))
-        textoPermisos = texto("", 13f)
-        textoPermisos.typeface = Typeface.MONOSPACE
-        raiz.addView(textoPermisos)
-        boton("1. Ubicación, Bluetooth y notificaciones") { pedirPermisos() }
-        boton("2. Ubicación «permitir siempre»") { pedirSiempre() }
-        boton("3. Ventana flotante") { startActivity(Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))) }
-        boton("4. Ajustes de la app (batería sin restricciones)") {
-            startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.parse("package:$packageName")))
+        // Bluetooth del coche.
+        tarjetaCoche = Estilo.tarjeta(this)
+        tarjetaCoche.orientation = LinearLayout.HORIZONTAL
+        tarjetaCoche.gravity = Gravity.CENTER_VERTICAL
+        val textosCoche = LinearLayout(this)
+        textosCoche.orientation = LinearLayout.VERTICAL
+        etiquetaCoche = Estilo.etiqueta(this, "Tu coche")
+        textosCoche.addView(etiquetaCoche)
+        nombreCoche = Estilo.texto(this, "", 20f, Estilo.TEXTO, Estilo.RACING)
+        nombreCoche.setPadding(0, dp(4f), 0, 0)
+        textosCoche.addView(nombreCoche)
+        tarjetaCoche.addView(textosCoche, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
+        tarjetaCoche.addView(Estilo.texto(this, "›", 30f, Estilo.GRIS, Estilo.ESTRECHA))
+        tarjetaCoche.isClickable = true
+        tarjetaCoche.setOnClickListener {
+            Estilo.vibra(tarjetaCoche)
+            Acciones.elegirCoche(this, ajustes) { refrescar() }
         }
+        Estilo.margenes(tarjetaCoche, arriba = dp(18f))
+        raiz.addView(tarjetaCoche)
 
-        // Ventana y sonido
-        raiz.addView(titulo("Ventana y sonido"))
-        botonVentana = boton("") { ajustes.ventana = !ajustes.ventana }
-        boton("Oír el aviso de radar (5 pitidos)") { Sonido.radar(this, "PANTALLA") }
-        boton("Oír el pitido de exceso, cada 100 m (3 pitidos)") { Sonido.exceso(this, "PANTALLA") }
+        // Puesta a punto: solo aparece si falta algo.
+        tarjetaPuesta = Estilo.tarjeta(this, Estilo.AMARILLO)
+        tituloPuesta = Estilo.texto(this, "", 20f, Estilo.AMARILLO, Estilo.RACING)
+        tarjetaPuesta.addView(tituloPuesta)
+        listaPuesta = LinearLayout(this)
+        listaPuesta.orientation = LinearLayout.VERTICAL
+        tarjetaPuesta.addView(listaPuesta)
+        Estilo.margenes(tarjetaPuesta, arriba = dp(14f))
+        raiz.addView(tarjetaPuesta)
 
-        // Pruebas sin conducir
-        raiz.addView(titulo("Probar sin conducir"))
-        raiz.addView(texto("Pasa por el motor de avisos un recorrido inventado sobre el radar con tramo de aproximación más " +
-            "cercano a donde estás, a 10 km/h por encima de su límite: suena el aviso, la ventana se pone roja y pita cada 100 m. Suena y se ve igual que en el coche.", 13f))
-        boton("Simular paso por un radar (debe avisar)") { simular(alReves = false) }
-        boton("Simular paso en sentido contrario (no debe avisar)") { simular(alReves = true) }
-        boton("Simular paso por un radar de tramo (velocidad media)") { simularTramo() }
-        boton("Reproducir el último viaje grabado (×4)") { reproducirUltimo() }
+        // Modo pro, sobre una bandera a cuadros.
+        val pro = LinearLayout(this)
+        pro.orientation = LinearLayout.HORIZONTAL
+        pro.gravity = Gravity.CENTER_VERTICAL
+        pro.background = BanderaCuadros(dp(18f).toFloat(), dp(9f).toFloat())
+        pro.setPadding(dp(20f), dp(20f), dp(20f), dp(20f))
+        val textosPro = LinearLayout(this)
+        textosPro.orientation = LinearLayout.VERTICAL
+        textosPro.gravity = Gravity.END
+        textosPro.addView(Estilo.texto(this, "MODO PRO", 22f, Estilo.TEXTO, Estilo.RACING).apply { gravity = Gravity.END })
+        textosPro.addView(Estilo.etiqueta(this, "Simulación · viajes · ajustes").apply { gravity = Gravity.END; setPadding(0, dp(3f), 0, 0) })
+        pro.addView(textosPro, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
+        pro.addView(Estilo.texto(this, "  ›", 30f, Estilo.ROJO, Estilo.ESTRECHA))
+        pro.isClickable = true
+        pro.setOnClickListener {
+            Estilo.vibra(pro)
+            startActivity(Intent(this, ModoProActivity::class.java))
+        }
+        Estilo.margenes(pro, arriba = dp(14f))
+        raiz.addView(pro)
 
-        // Viajes
-        raiz.addView(titulo("Viajes grabados"))
-        textoViajes = texto("", 13f)
-        raiz.addView(textoViajes)
-        boton("Exportar el último viaje a Descargas") { exportarUltimo() }
-        boton("Copiar los avisos del último viaje") { copiarAvisosUltimo() }
-
-        // Diagnóstico
-        raiz.addView(titulo("Registro de diagnóstico"))
-        boton("Copiar el registro al portapapeles") { copiar("registro", Registro.lee(this, 400)) }
-        boton("Anotar motivos de cierre recientes de la app") { anotarMotivosDeCierre() }
-        boton("Borrar el registro") { Registro.borra(this) }
-        textoRegistro = texto("", 10f)
-        textoRegistro.typeface = Typeface.MONOSPACE
-        textoRegistro.setTextIsSelectable(true)
-        raiz.addView(textoRegistro)
+        resumenLista = Estilo.etiqueta(this, "")
+        resumenLista.gravity = Gravity.CENTER
+        Estilo.margenes(resumenLista, arriba = dp(18f))
+        raiz.addView(resumenLista)
 
         val desplazable = ScrollView(this)
         desplazable.fitsSystemWindows = true
+        desplazable.isFillViewport = true
+        desplazable.setBackgroundColor(Estilo.FONDO)
         desplazable.addView(raiz)
+        window.decorView.setBackgroundColor(Estilo.FONDO)
         setContentView(desplazable)
     }
 
@@ -166,252 +179,103 @@ class MainActivity : Activity() {
         refrescar()
     }
 
-    // ---------- Construcción de la pantalla ----------
+    /** Lo que cambia cada medio segundo: estado, velocidad y aviso en curso. */
+    private fun refrescarMarcha() {
+        val enMarcha = ServicioRadares.enMarcha
+        val estado = pista(enMarcha, ServicioRadares.simulando)
+        val colorEstado = when (estado) {
+            Pista.BOXES -> Estilo.GRIS
+            Pista.PISTA -> Estilo.VERDE
+            Pista.SIMULACION -> Estilo.AMARILLO
+        }
+        estadoPista.text = "●  " + estado.texto
+        estadoPista.setTextColor(colorEstado)
+        estadoPista.background = Estilo.redondeado(Estilo.TARJETA, dp(20f).toFloat(), colorEstado, dp(1.5f))
 
-    private fun texto(t: String, tamano: Float): TextView {
-        val v = TextView(this)
-        v.text = t
-        v.textSize = tamano
-        v.setPadding(0, 6, 0, 6)
-        return v
+        val aviso = ServicioRadares.avisoActual
+        boton.enMarcha = enMarcha
+        boton.velocidadKmh = ServicioRadares.velocidadKmh
+        boton.colorAro = when {
+            !enMarcha -> Estilo.ROJO
+            aviso == null -> Estilo.VERDE
+            aviso.exceso -> Estilo.ROJO
+            else -> Estilo.NARANJA
+        }
+        boton.latiendo = enMarcha && aviso?.exceso == true
+
+        if (aviso != null) {
+            val (arriba, abajo) = textosAviso(aviso)
+            val limite = aviso.radar.limite?.let { " · LÍMITE $it" } ?: ""
+            lineaAviso.text = if (aviso.enTramo) "TRAMO · ${arriba.uppercase()} · ${abajo.uppercase()}$limite" else "${abajo.uppercase()} · $arriba$limite"
+            lineaAviso.setTextColor(if (aviso.exceso) Estilo.ROJO else Estilo.NARANJA)
+        } else {
+            lineaAviso.text = if (enMarcha) "Sin radares cerca" else ""
+            lineaAviso.setTextColor(Estilo.GRIS)
+        }
     }
 
-    private fun titulo(t: String): TextView {
-        val v = texto(t, 17f)
-        v.setTypeface(v.typeface, Typeface.BOLD)
-        v.setPadding(0, 40, 0, 8)
-        return v
+    private fun refrescar() {
+        refrescarMarcha()
+
+        // Coche.
+        val sinCoche = ajustes.nombreCoche.isEmpty()
+        nombreCoche.text = if (sinCoche) "Elige su Bluetooth" else ajustes.nombreCoche
+        nombreCoche.setTextColor(if (sinCoche) Estilo.AMARILLO else Estilo.TEXTO)
+        etiquetaCoche.text = (if (ajustes.arranqueBluetooth) "Tu coche · arranca y para sola" else "Tu coche · arranque automático apagado").uppercase()
+        tarjetaCoche.background = Estilo.redondeado(Estilo.TARJETA, dp(18f).toFloat(), if (sinCoche) Estilo.AMARILLO else Estilo.BORDE, dp(1.5f))
+
+        // Puesta a punto: pasos pendientes y problemas de la lista.
+        val pasos = pasosPendientes(Acciones.estadoMovil(this, ajustes)).filter { it != PasoPendiente.COCHE }
+        val avisosLista = GestorLista.avisos(this)
+        listaPuesta.removeAllViews()
+        for (paso in pasos) {
+            listaPuesta.addView(filaPaso(paso.texto, paso.detalle) {
+                Acciones.dar(this, paso, ajustes) { refrescar() }
+            })
+        }
+        for (a in avisosLista) {
+            listaPuesta.addView(filaPaso("Lista de radares", a) {
+                GestorLista.comprobar(this, forzar = true)
+                Acciones.aviso(this, "Buscando datos nuevos…")
+            })
+        }
+        val total = pasos.size + avisosLista.size
+        tarjetaPuesta.visibility = if (total == 0) View.GONE else View.VISIBLE
+        tituloPuesta.text = if (total == 1) "PIT STOP · FALTA 1 AJUSTE" else "PIT STOP · FALTAN $total AJUSTES"
+
+        // Resumen de la lista.
+        val lista = try { GestorLista.lista(this) } catch (e: Throwable) { null }
+        resumenLista.text = if (lista == null) "Sin lista de radares" else {
+            val fecha = isoAMs(lista.version)?.let { SimpleDateFormat("dd/MM/yyyy", Locale.ROOT).format(Date(it)) } ?: lista.version
+            "${lista.radares.size} radares cargados · datos del $fecha"
+        }
     }
 
-    private fun boton(t: String, accion: () -> Unit): Button {
-        val b = Button(this)
-        b.text = t
-        b.isAllCaps = false
-        b.setOnClickListener {
+    /** Una fila de la puesta a punto: qué falta, para qué sirve y un botón para arreglarlo. */
+    private fun filaPaso(titulo: String, detalle: String, accion: () -> Unit): View {
+        val fila = LinearLayout(this)
+        fila.orientation = LinearLayout.HORIZONTAL
+        fila.gravity = Gravity.CENTER_VERTICAL
+        fila.setPadding(0, dp(12f), 0, 0)
+        val textos = LinearLayout(this)
+        textos.orientation = LinearLayout.VERTICAL
+        textos.addView(Estilo.texto(this, titulo, 16f, Estilo.TEXTO, Estilo.ESTRECHA))
+        textos.addView(Estilo.texto(this, detalle, 13f, Estilo.GRIS).apply { setPadding(0, dp(2f), 0, 0) })
+        fila.addView(textos, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
+        val arreglar = Estilo.texto(this, "ARREGLAR", 13f, Estilo.FONDO, Estilo.RACING)
+        arreglar.letterSpacing = 0.1f
+        arreglar.background = Estilo.redondeado(Estilo.AMARILLO, dp(16f).toFloat())
+        arreglar.setPadding(dp(14f), dp(9f), dp(14f), dp(9f))
+        arreglar.setOnClickListener {
+            Estilo.vibra(arreglar)
             try {
                 accion()
             } catch (e: Throwable) {
                 Registro.anota(this, "PANTALLA", "ERROR: ${e.javaClass.name}: ${e.message}")
-                aviso("Error: ${e.message}")
+                Acciones.aviso(this, "Error: ${e.message}")
             }
-            manejador.postDelayed({ refrescar() }, 300)
         }
-        raiz.addView(b)
-        return b
-    }
-
-    private fun si(valor: Boolean) = if (valor) "sí" else "NO"
-
-    private fun refrescarServicio() {
-        val enMarcha = ServicioRadares.enMarcha
-        textoServicio.text = if (enMarcha) "EN MARCHA: " + ServicioRadares.estadoTexto else "Parado"
-        textoServicio.setTextColor(Color.parseColor(if (enMarcha) "#1B5E20" else "#555555"))
-        botonServicio.text = if (enMarcha) "Parar" else "Arrancar ahora (sin esperar al coche)"
-    }
-
-    private fun refrescar() {
-        refrescarServicio()
-        val formato = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.ROOT)
-        val lista = try { GestorLista.lista(this) } catch (e: Throwable) { null }
-        val estado = GestorLista.estado(this)
-        val sb = StringBuilder()
-        if (lista == null) {
-            sb.append("No se puede leer la lista de radares.\n")
-        } else {
-            val conLinea = lista.radares.count { it.porCarretera }
-            sb.append("${lista.radares.size} radares ($conLinea con aviso por carretera y sentido, ${lista.radares.size - conLinea} por cercanía).\n")
-            sb.append("Datos cambiados por última vez: ${isoAMs(lista.version)?.let { formato.format(Date(it)) } ?: lista.version}\n")
-        }
-        estado?.generado?.let { g -> sb.append("Última ejecución del proceso de datos: ${isoAMs(g)?.let { formato.format(Date(it)) } ?: g}\n") }
-        val ok = ajustes.ultimaComprobacionOkMs
-        sb.append("Última comprobación desde el móvil: ${if (ok > 0) formato.format(Date(ok)) else "nunca"}")
-        if (GestorLista.comprobando) sb.append(" (comprobando…)")
-        if (ajustes.ultimoResultado.isNotEmpty()) sb.append("\nResultado: ${ajustes.ultimoResultado}")
-        textoLista.text = sb.toString()
-        val avisos = GestorLista.avisos(this)
-        textoAvisosLista.text = avisos.joinToString("\n") { "⚠ $it" }
-
-        botonCoche.text = "Bluetooth del coche: " + ajustes.nombreCoche.ifEmpty { "SIN ELEGIR (toca para elegirlo)" }
-        botonArranque.text = "Arrancar y parar solo con el coche: " + (if (ajustes.arranqueBluetooth) "SÍ" else "NO")
-        botonCiclo.text = "Pitidos al arrancar (1) y al parar (2): " + (if (ajustes.sonidosCiclo) "SÍ" else "NO")
-        botonVentana.text = "Ventana flotante con la velocidad: " + (if (ajustes.ventana) "SÍ" else "NO")
-
-        val energia = getSystemService(Context.POWER_SERVICE) as PowerManager
-        val p = StringBuilder()
-        p.append("Ubicación precisa:       ").append(si(Diagnostico.concedido(this, Manifest.permission.ACCESS_FINE_LOCATION))).append("\n")
-        p.append("Ubicación «siempre»:     ").append(si(Diagnostico.concedido(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION))).append("\n")
-        if (Build.VERSION.SDK_INT >= 31) {
-            p.append("Bluetooth cercano:       ").append(si(Diagnostico.concedido(this, Manifest.permission.BLUETOOTH_CONNECT))).append("\n")
-        }
-        if (Build.VERSION.SDK_INT >= 33) {
-            p.append("Notificaciones:          ").append(si(Diagnostico.concedido(this, Manifest.permission.POST_NOTIFICATIONS))).append("\n")
-        }
-        p.append("Ventana flotante:        ").append(si(Settings.canDrawOverlays(this))).append("\n")
-        p.append("Batería sin restricción: ").append(si(energia.isIgnoringBatteryOptimizations(packageName)))
-        textoPermisos.text = p.toString()
-
-        val viajes = Viajes.lista(this)
-        textoViajes.text = if (viajes.isEmpty()) "Ninguno todavía." else
-            "${viajes.size} guardados. Último: ${viajes.first().name} (${viajes.first().length() / 1024} KB)"
-        textoRegistro.text = Registro.lee(this, 80)
-    }
-
-    // ---------- Acciones ----------
-
-    private fun pedirPermisos() {
-        val lista = mutableListOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION)
-        if (Build.VERSION.SDK_INT >= 31) lista.add(Manifest.permission.BLUETOOTH_CONNECT)
-        if (Build.VERSION.SDK_INT >= 33) lista.add(Manifest.permission.POST_NOTIFICATIONS)
-        requestPermissions(lista.toTypedArray(), 1)
-    }
-
-    private fun pedirSiempre() {
-        if (!Diagnostico.concedido(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-            aviso("Primero el paso 1: acepta la ubicación.")
-            return
-        }
-        requestPermissions(arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION), 2)
-    }
-
-    @SuppressLint("MissingPermission")
-    private fun elegirCoche() {
-        if (Build.VERSION.SDK_INT >= 31 && !Diagnostico.concedido(this, Manifest.permission.BLUETOOTH_CONNECT)) {
-            aviso("Falta el permiso de Bluetooth cercano (permiso 1).")
-            return
-        }
-        val adaptador = (getSystemService(Context.BLUETOOTH_SERVICE) as BluetoothManager).adapter
-        val emparejados = try {
-            adaptador?.bondedDevices?.toList() ?: emptyList()
-        } catch (e: SecurityException) {
-            emptyList()
-        }
-        if (emparejados.isEmpty()) {
-            aviso("No hay dispositivos Bluetooth emparejados.")
-            return
-        }
-        val nombres = emparejados.map { it.name ?: it.address }
-        AlertDialog.Builder(this)
-            .setTitle("¿Cuál es el Bluetooth del coche?")
-            .setItems(nombres.toTypedArray()) { _, i ->
-                ajustes.direccionCoche = emparejados[i].address
-                ajustes.nombreCoche = nombres[i]
-                Registro.anota(this, "PANTALLA", "coche elegido: ${nombres[i]}")
-                refrescar()
-            }
-            .show()
-    }
-
-    /** El radar con tramo de aproximación más cercano a la última posición conocida (o uno de Bizkaia). */
-    @SuppressLint("MissingPermission")
-    private fun radarParaSimular(): Radar? {
-        val radares = GestorLista.lista(this).radares.filter { it.porCarretera }
-        if (radares.isEmpty()) return null
-        val gestor = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val ultima = try {
-            listOf(LocationManager.GPS_PROVIDER, LocationManager.NETWORK_PROVIDER, "fused")
-                .mapNotNull { if (gestor.allProviders.contains(it)) gestor.getLastKnownLocation(it) else null }
-                .maxByOrNull { it.time }
-        } catch (e: Throwable) {
-            null
-        }
-        if (ultima == null) return radares.firstOrNull { it.id.startsWith("eus-a-8") && it.limite != null } ?: radares.first()
-        return radares.minByOrNull { distanciaM(ultima.latitude, ultima.longitude, it.lat, it.lon) }
-    }
-
-    private fun simular(alReves: Boolean) {
-        if (ServicioRadares.enMarcha) {
-            aviso("Para antes el servicio (botón Parar).")
-            return
-        }
-        val radar = radarParaSimular() ?: return aviso("No hay radares con tramo de aproximación en la lista.")
-        val velocidad = (radar.limite ?: 90) + 10.0
-        val recorrido = recorridoSimulado(radar.linea!!, velocidad, ruidoM = 8.0, semilla = System.currentTimeMillis(), alReves = alReves)
-        val texto = (if (alReves) "sentido contrario de " else "") + radar.descripcion() + " a ${velocidad.toInt()} km/h"
-        Registro.anota(this, "PANTALLA", "simulación: $texto (${radar.id})")
-        aviso("Simulando ${recorrido.size} s: $texto")
-        ServicioRadares.reproducir(this, recorrido, texto, 1.0)
-    }
-
-    /**
-     * Fase 5: recorre el radar de tramo con línea más cercano (o Trabakua) a 10 km/h por encima de su límite: avisa
-     * al llegar al inicio, la ventana enseña la media y lo que falta, se pone roja y pita al pasar la media del límite.
-     */
-    @SuppressLint("MissingPermission")
-    private fun simularTramo() {
-        if (ServicioRadares.enMarcha) {
-            aviso("Para antes el servicio (botón Parar).")
-            return
-        }
-        val tramos = GestorLista.lista(this).radares.filter { it.conTramo }
-        if (tramos.isEmpty()) return aviso("No hay radares de tramo con su línea en la lista.")
-        val gestor = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        val ultima = try {
-            listOf(LocationManager.GPS_PROVIDER, LocationManager.NETWORK_PROVIDER, "fused")
-                .mapNotNull { if (gestor.allProviders.contains(it)) gestor.getLastKnownLocation(it) else null }
-                .maxByOrNull { it.time }
-        } catch (e: Throwable) {
-            null
-        }
-        val radar = if (ultima == null) tramos.firstOrNull { it.id.contains("trabakua") } ?: tramos.first()
-        else tramos.minByOrNull { distanciaM(ultima.latitude, ultima.longitude, it.lat, it.lon) }!!
-        val velocidad = (radar.limite ?: 90) + 10.0
-        val recorrido = recorridoSimulado(lineaParaSimularTramo(radar), velocidad, ruidoM = 8.0, semilla = System.currentTimeMillis())
-        val texto = radar.descripcion() + " (${textoDistancia(radar.tramoLargoM ?: 0.0)}) a ${velocidad.toInt()} km/h"
-        Registro.anota(this, "PANTALLA", "simulación de tramo: $texto (${radar.id})")
-        aviso("Simulando ${recorrido.size} s: $texto")
-        ServicioRadares.reproducir(this, recorrido, texto, 1.0)
-    }
-
-    private fun reproducirUltimo() {
-        if (ServicioRadares.enMarcha) {
-            aviso("Para antes el servicio (botón Parar).")
-            return
-        }
-        val ultimo = Viajes.lista(this).firstOrNull() ?: return aviso("No hay viajes grabados.")
-        val posiciones = FormatoViaje.posiciones(ultimo.readText())
-        if (posiciones.size < 2) return aviso("El último viaje no tiene posiciones.")
-        ServicioRadares.reproducir(this, posiciones, ultimo.name, 4.0)
-    }
-
-    private fun exportarUltimo() {
-        val ultimo = Viajes.lista(this).firstOrNull() ?: return aviso("No hay viajes grabados.")
-        val donde = Viajes.exportar(this, ultimo)
-        Registro.anota(this, "PANTALLA", "viaje exportado a $donde")
-        aviso("Guardado en $donde")
-    }
-
-    private fun copiarAvisosUltimo() {
-        val ultimo = Viajes.lista(this).firstOrNull() ?: return aviso("No hay viajes grabados.")
-        val lineas = FormatoViaje.resumenEventos(ultimo.readText())
-        copiar("avisos", (listOf("# " + ultimo.name) + lineas.takeLast(300)).joinToString("\n"))
-    }
-
-    private fun copiar(etiqueta: String, t: String) {
-        if (t.isEmpty()) return aviso("No hay nada que copiar todavía.")
-        val portapapeles = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-        portapapeles.setPrimaryClip(ClipData.newPlainText(etiqueta, t))
-        aviso("Copiado: ${t.lines().size} líneas. Pégalo en la conversación.")
-    }
-
-    private fun anotarMotivosDeCierre() {
-        if (Build.VERSION.SDK_INT < 30) return
-        val gestor = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        val lista = gestor.getHistoricalProcessExitReasons(packageName, 0, 8)
-        if (lista.isEmpty()) {
-            Registro.anota(this, "CIERRES", "Android no ha registrado ningún cierre del proceso")
-            return
-        }
-        val formato = SimpleDateFormat("dd HH:mm:ss", Locale.ROOT)
-        for (c in lista) {
-            Registro.anota(
-                this, "CIERRES",
-                "cierre a las " + formato.format(Date(c.timestamp)) + " motivo=" + nombreMotivoCierre(c.reason) +
-                    " importancia=" + nombreImportancia(c.importance) + " detalle=" + c.description
-            )
-        }
-    }
-
-    private fun aviso(t: String) {
-        Toast.makeText(this, t, Toast.LENGTH_LONG).show()
+        fila.addView(arreglar)
+        return fila
     }
 }

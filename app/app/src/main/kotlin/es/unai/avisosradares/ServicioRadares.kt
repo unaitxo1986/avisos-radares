@@ -56,6 +56,17 @@ class ServicioRadares : Service() {
         var estadoTexto = ""
             private set
 
+        /** Para el cuentarrevoluciones de la pantalla principal: velocidad, aviso en curso y si es una simulación. */
+        @Volatile
+        var velocidadKmh: Double? = null
+            private set
+        @Volatile
+        var avisoActual: AvisoActivo? = null
+            private set
+        @Volatile
+        var simulando = false
+            private set
+
         /** Recorrido que se reproducirá en lugar del GPS en el próximo arranque, con su factor de velocidad. */
         private var recorridoPendiente: List<Posicion>? = null
         private var descripcionPendiente = ""
@@ -121,6 +132,7 @@ class ServicioRadares : Service() {
         }
         Registro.anota(this, "SERVICIO", "inicio desde $origen | " + Diagnostico.estado(this))
         recorrido = recorridoPendiente
+        simulando = recorrido != null
         descripcionRecorrido = descripcionPendiente
         val factor = factorPendiente
         recorridoPendiente = null
@@ -173,6 +185,9 @@ class ServicioRadares : Service() {
         quitarVentana()
         enMarcha = false
         estadoTexto = ""
+        velocidadKmh = null
+        avisoActual = null
+        simulando = false
         super.onDestroy()
     }
 
@@ -425,6 +440,9 @@ class ServicioRadares : Service() {
 
     private fun pintar(velocidadKmh: Double?, aviso: AvisoActivo? = null) {
         val textoVel = velocidadKmh?.let { "${it.toInt()}" } ?: "--"
+        Companion.velocidadKmh = velocidadKmh
+        avisoActual = aviso
+        simulando = recorrido != null
         estadoTexto = "$textoVel km/h" +
             (aviso?.let {
                 if (it.enTramo) " · TRAMO, ${textosAviso(it).first} km/h, ${textosAviso(it).second}, límite ${it.radar.limite ?: "desconocido"}"

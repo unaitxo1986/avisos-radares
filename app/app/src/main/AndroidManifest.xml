@@ -11,12 +11,14 @@
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <!-- Para pedir "batería sin restricciones" con el diálogo directo de Android (pantalla principal). -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
     <application
         android:name=".AppRadares"
         android:allowBackup="false"
         android:label="Avisos radares"
-        android:theme="@android:style/Theme.DeviceDefault.Light.NoActionBar">
+        android:theme="@android:style/Theme.DeviceDefault.NoActionBar">
 
         <activity
             android:name=".MainActivity"
@@ -26,6 +28,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Modo pro: lista, permisos uno a uno, sonidos, simulaciones, viajes y registro. -->
+        <activity
+            android:name=".ModoProActivity"
+            android:exported="false" />
 
         <!-- Arranque con el Bluetooth del coche (vía A, fase 2.1). Los avisos de conexión los envía la aplicación
              Bluetooth del sistema (no el propio Android), así que el receptor tiene que estar exportado; si no, el
