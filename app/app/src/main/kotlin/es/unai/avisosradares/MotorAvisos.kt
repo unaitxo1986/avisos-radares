@@ -71,6 +71,8 @@ class ParametrosMotor(
     val segundosAvisoSinConfirmar: Double = 10.0,
     val velocidadSupuestaSinLimiteKmh: Double = 50.0,
     val radioMinimoSinConfirmarM: Double = 100.0,
+    /** Radares a menos de esto entre sí cuentan como el mismo punto: solo suena el primero. */
+    val radioMismoPuntoM: Double = 30.0,
     /** Tras pasar o cancelar un radar no se vuelve a avisar de él hasta alejarse esto. */
     val distanciaDesbloqueoM: Double = 1000.0,
     /** Se ignoran las posiciones con peor precisión que esta. */
@@ -190,7 +192,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
             seg.exceso = limite != null && velocidad != null && velocidad > limite + p.toleranciaExcesoKmh
             if (seg.distancia <= seg.distanciaUltimoPaso - p.pasoPitidoExcesoM) {
                 while (seg.distancia <= seg.distanciaUltimoPaso - p.pasoPitidoExcesoM) seg.distanciaUltimoPaso -= p.pasoPitidoExcesoM
-                if (seg.exceso) {
+                if (seg.exceso && !seg.silencioso) {
                     eventos += Evento(TipoEvento.EXCESO, seg.r.radar, seg.distancia, "${velocidad!!.toInt()} km/h con límite $limite")
                 }
             }
@@ -199,7 +201,9 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
     }
 
     private fun avisoActual(): AvisoActivo? {
-        val seg = seguimientos.values.filter { it.avisado }.minByOrNull { it.distancia }
+        // A igual distancia (radares repetidos en el mismo punto), mejor el inicio de un tramo.
+        val seg = seguimientos.values.filter { it.avisado }
+            .minWithOrNull(compareBy<Seguimiento>({ it.distancia }, { if (it.r.radar.tipo == "tramo") 0 else 1 }))
         if (seg != null) return AvisoActivo(seg.r.radar, seg.distancia, seg.r.radar.porCarretera, seg.exceso)
         val t = enTramo.values.minByOrNull { it.t.largo - it.sUltimo } ?: return null
         return AvisoActivo(t.t.radar, max(0.0, t.t.largo - t.sUltimo), true, t.exceso, t.media, enTramo = true)
@@ -376,10 +380,23 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         }
     }
 
+    /**
+     * Evento AVISO, salvo que ya haya otro radar avisado en el mismo punto (a menos de
+     * [ParametrosMotor.radioMismoPuntoM]): la DGT lista a veces varias cabinas con las mismas coordenadas y la
+     * cámara de inicio de un tramo también como radar fijo (22 puntos el 18/11). Así suena una sola vez.
+     */
+    private fun avisa(seg: Seguimiento, eventos: MutableList<Evento>) {
+        val r = seg.r.radar
+        seg.silencioso = seguimientos.values.any {
+            it !== seg && it.avisado && distanciaM(it.r.radar.lat, it.r.radar.lon, r.lat, r.lon) <= p.radioMismoPuntoM
+        }
+        if (!seg.silencioso) eventos += Evento(TipoEvento.AVISO, r, seg.distancia)
+    }
+
     private fun termina(seg: Seguimiento, tipo: TipoEvento?, motivo: String, eventos: MutableList<Evento>) {
         seguimientos.remove(seg.r.radar.id)
         bloqueados[seg.r.radar.id] = seg.r
-        if (seg.avisado && tipo != null) eventos += Evento(tipo, seg.r.radar, seg.distancia, motivo)
+        if (seg.avisado && !seg.silencioso && tipo != null) eventos += Evento(tipo, seg.r.radar, seg.distancia, motivo)
     }
 
     private fun porCarretera(r: Preparado, pos: Posicion, margen: Double, eventos: MutableList<Evento>) {
@@ -412,7 +429,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         if (!seg.avisado && seg.sMax - seg.sEntrada >= p.avanceParaAvisarM && pr.s >= seg.sUltimo - 5.0) {
             seg.avisado = true
             seg.distanciaUltimoPaso = seg.distancia
-            eventos += Evento(TipoEvento.AVISO, r.radar, seg.distancia)
+            avisa(seg, eventos)
         }
         seg.sUltimo = pr.s
     }
@@ -448,7 +465,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         if (!seg.avisado && seg.acercandose >= 2 && d <= radio) {
             seg.avisado = true
             seg.distanciaUltimoPaso = d
-            eventos += Evento(TipoEvento.AVISO, r.radar, d)
+            avisa(seg, eventos)
         }
     }
 
@@ -464,6 +481,8 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         var dMin = Double.MAX_VALUE
         var dUltima = Double.MAX_VALUE
         var acercandose = 0
+        /** Radar repetido en el mismo punto que otro ya avisado: se sigue, pero no suena (ver [avisa]). */
+        var silencioso = false
     }
 
     private class Proyeccion(val distanciaM: Double, val s: Double, val pasadoM: Double)

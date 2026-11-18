@@ -77,7 +77,8 @@ class DatosRealesTest {
                 }
                 anterior = d
             }
-            val propio = ev.filter { it.radar.id == radar.id }
+            // Un radar repetido en el mismo punto que otro no suena por separado: cuenta el aviso del otro.
+            val propio = ev.filter { mismoPunto(it.radar, radar) }
             val aviso = propio.firstOrNull { it.tipo == TipoEvento.AVISO }
             if (aviso == null) sinAviso += radar.id else distancias += aviso.distanciaM
             if (propio.none { it.tipo == TipoEvento.PASADO }) sinPasado += radar.id
@@ -102,6 +103,28 @@ class DatosRealesTest {
         assertTrue("el aviso debe llegar a unos 450 m o más; mediana $mediana", mediana >= 420.0)
     }
 
+    private fun mismoPunto(a: Radar, b: Radar) = a.id == b.id || distanciaM(a.lat, a.lon, b.lat, b.lon) <= 30.0
+
+    /**
+     * Radares repetidos en el mismo punto (la DGT lista a veces varias cabinas con las mismas coordenadas, y la
+     * cámara de inicio de un tramo también como radar fijo): al pasar por ellos suena un solo aviso.
+     */
+    @Test
+    fun losRadaresRepetidosSuenanUnaVez() {
+        val grupos = lista.radares.filter { it.porCarretera }.groupBy { Pair(Math.round(it.lat * 1e5), Math.round(it.lon * 1e5)) }
+            .values.filter { it.size > 1 }
+        assertTrue("debería haber radares repetidos en la lista", grupos.isNotEmpty())
+        val repetidos = mutableListOf<String>()
+        for (g in grupos) {
+            val m = MotorAvisos(lista.radares)
+            val avisos = recorridoSimulado(g[0].linea!!, 100.0).flatMap { m.procesa(it).eventos }
+                .count { it.tipo == TipoEvento.AVISO && g.any { r -> mismoPunto(r, it.radar) } }
+            if (avisos != 1) repetidos += "${g.map { it.id }}: $avisos avisos"
+        }
+        println("Radares repetidos en el mismo punto: ${grupos.size} grupos; con más de un aviso: $repetidos")
+        assertTrue("suenan varias veces: $repetidos", repetidos.isEmpty())
+    }
+
     /** ¿Pasa la línea a menos de 40 m de su primer punto después de haber recorrido 60 m? */
     private fun vuelveSobreSiMisma(l: List<DoubleArray>): Boolean {
         var recorrido = 0.0
@@ -119,7 +142,7 @@ class DatosRealesTest {
         for (radar in sinLinea) {
             val m = MotorAvisos(lista.radares)
             val ev = recorridoRectoPor(radar.lat, radar.lon, 45.0, 100.0).flatMap { m.procesa(it).eventos }
-            if (ev.none { it.radar.id == radar.id && it.tipo == TipoEvento.AVISO }) sinAviso += radar.id
+            if (ev.none { mismoPunto(it.radar, radar) && it.tipo == TipoEvento.AVISO }) sinAviso += radar.id
         }
         println("Simulación sobre ${sinLinea.size} radares sin línea (cercanía): sin aviso ${sinAviso.size} ${sinAviso.take(10)}")
         assertTrue("radares sin aviso: $sinAviso", sinAviso.isEmpty())

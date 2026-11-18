@@ -252,4 +252,13 @@ class MotorAvisosTest {
         }
         assertEquals("RADAR? sin confirmar", etiquetaAviso(camara(null), porCarretera = false))
     }
+
+    @Test
+    fun dosRadaresEnElMismoPuntoSuenanUnaVez() {
+        // La DGT lista a veces dos cabinas con las mismas coordenadas (A-2 km 15,04 tiene tres).
+        val motor = MotorAvisos(listOf(radar(id = "r1"), radar(id = "r2")))
+        val ev = pasa(motor, recorridoSimulado(linea, 110.0))
+        assertEquals(listOf(TipoEvento.AVISO, TipoEvento.EXCESO, TipoEvento.EXCESO, TipoEvento.EXCESO, TipoEvento.EXCESO, TipoEvento.PASADO), tipos(ev))
+        assertTrue(ev.all { it.radar.id == ev[0].radar.id })
+    }
 }
