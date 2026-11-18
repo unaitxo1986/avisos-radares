@@ -297,11 +297,12 @@ class ServicioRadares : Service() {
             when (e.tipo) {
                 TipoEvento.AVISO -> {
                     avisos++
-                    Sonido.radar(this, "AVISO")
+                    // Volumen subido solo en viajes reales, no en simulaciones ni reproducciones (Unai, 18/11).
+                    Sonido.radar(this, "AVISO", subirVolumen = recorrido == null)
                 }
                 // Decisión de Unai (18/11): el aviso de radar suena siempre la primera vez; después, cada 100 m,
                 // 3 pitidos agudos si la velocidad supera el límite.
-                TipoEvento.EXCESO -> Sonido.exceso(this, "AVISO")
+                TipoEvento.EXCESO -> Sonido.exceso(this, "AVISO", subirVolumen = recorrido == null)
                 else -> {}
             }
         }

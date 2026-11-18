@@ -55,4 +55,12 @@ class PitidoTest {
     fun sonidoDeExcesoSonTresPitidosCortos() {
         assertEquals(3 * 1984 + 2 * 1323, sonidoExceso(22050).size)
     }
+
+    @Test
+    fun volumenDeLosAvisosAlMenosDosTercios() {
+        assertEquals(10, volumenParaAviso(2, 15))
+        assertEquals(10, volumenParaAviso(10, 15))
+        assertEquals(14, volumenParaAviso(14, 15))
+        assertEquals(17, volumenParaAviso(3, 25))
+    }
 }

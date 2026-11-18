@@ -7,6 +7,7 @@ import android.media.AudioFocusRequest
 import android.media.AudioFormat
 import android.media.AudioManager
 import android.media.AudioTrack
+import android.os.Build
 import android.os.Handler
 import android.os.Looper
 
@@ -50,6 +51,9 @@ fun generarSecuencia(cuantos: Int, frecuenciaHz: Int, duracionMs: Int, silencioM
     return salida
 }
 
+/** Volumen para un aviso: al menos 2/3 del máximo (10 de 15 en el S23); si ya está más alto, se deja. */
+fun volumenParaAviso(actual: Int, maximo: Int): Int = maxOf(actual, (maximo * 2 + 2) / 3)
+
 /**
  * Sonidos de la app: arranque (1 pitido suave), parada (2), radar (5 agudos, el mismo que se probó en la
  * fase 2) y exceso de velocidad (3 muy agudos y rápidos, distinto del de radar para reconocerlo sin mirar).
@@ -75,13 +79,61 @@ object Sonido {
     fun desconexion(contexto: Context, origen: String) =
         reproducir(contexto, origen, "desconexión (2 pitidos)", sonidoDesconexion(MUESTREO))
 
-    fun radar(contexto: Context, origen: String) =
-        reproducir(contexto, origen, "radar (5 pitidos)", sonidoRadar(MUESTREO))
+    /** Con [subirVolumen] (avisos de viajes reales, no simulaciones) sube el volumen a un mínimo mientras suena. */
+    fun radar(contexto: Context, origen: String, subirVolumen: Boolean = false) =
+        reproducir(contexto, origen, "radar (5 pitidos)", sonidoRadar(MUESTREO), subirVolumen)
 
-    fun exceso(contexto: Context, origen: String) =
-        reproducir(contexto, origen, "exceso (3 pitidos)", sonidoExceso(MUESTREO))
+    fun exceso(contexto: Context, origen: String, subirVolumen: Boolean = false) =
+        reproducir(contexto, origen, "exceso (3 pitidos)", sonidoExceso(MUESTREO), subirVolumen)
 
-    private fun reproducir(contexto: Context, origen: String, nombre: String, muestras: ShortArray) {
+    // Volumen subido para los avisos: el original se guarda al subir el primero y se devuelve al terminar el
+    // último (los avisos pueden solaparse).
+    private var avisosSonando = 0
+    private var volumenOriginal = -1
+
+    /**
+     * Decisión de Unai (18/11): para los avisos, subir el volumen y luego bajarlo, pero no en las simulaciones.
+     * Solo se toca si el sonido de navegación va al altavoz del móvil: si Android lo enviaría a un Bluetooth (el
+     * coche), el volumen multimedia que se cambia es el del coche y no el del altavoz, así que no se toca.
+     */
+    private fun subir(ctx: Context, origen: String, audio: AudioManager, atributos: AudioAttributes) {
+        val max = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
+        val actual = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
+        val objetivo = volumenParaAviso(actual, max)
+        if (objetivo == actual && avisosSonando == 0) return
+        if (Build.VERSION.SDK_INT >= 33) {
+            val destinos = audio.getAudioDevicesForAttributes(atributos)
+            if (destinos.any { it.type != AudioDeviceInfo.TYPE_BUILTIN_SPEAKER }) {
+                Registro.anota(ctx, origen, "volumen: no se sube (el volumen multimedia es ahora el de " +
+                    destinos.joinToString { nombreSalidaAudio(it.type) } + ", no el del altavoz)")
+                return
+            }
+        }
+        try {
+            if (avisosSonando == 0) volumenOriginal = actual
+            avisosSonando++
+            if (objetivo > actual) audio.setStreamVolume(AudioManager.STREAM_MUSIC, objetivo, 0)
+            Registro.anota(ctx, origen, "volumen: subido de $actual a $objetivo de $max para el aviso")
+        } catch (e: Throwable) {
+            avisosSonando = maxOf(0, avisosSonando - 1)
+            Registro.anota(ctx, origen, "volumen: no se pudo subir (${e.javaClass.simpleName}: ${e.message})")
+        }
+    }
+
+    private fun bajar(ctx: Context, origen: String, audio: AudioManager) {
+        if (avisosSonando == 0) return
+        avisosSonando--
+        if (avisosSonando > 0 || volumenOriginal < 0) return
+        try {
+            audio.setStreamVolume(AudioManager.STREAM_MUSIC, volumenOriginal, 0)
+            Registro.anota(ctx, origen, "volumen: devuelto a $volumenOriginal")
+        } catch (e: Throwable) {
+            Registro.anota(ctx, origen, "volumen: no se pudo devolver (${e.javaClass.simpleName}: ${e.message})")
+        }
+        volumenOriginal = -1
+    }
+
+    private fun reproducir(contexto: Context, origen: String, nombre: String, muestras: ShortArray, subirVolumen: Boolean = false) {
         val ctx = contexto.applicationContext
         val audio = ctx.getSystemService(Context.AUDIO_SERVICE) as AudioManager
         val atributos = AudioAttributes.Builder()
@@ -92,6 +144,12 @@ object Sonido {
             .setAudioAttributes(atributos)
             .build()
         val foco = audio.requestAudioFocus(peticion)
+        var subido = false
+        if (subirVolumen) {
+            val antes = avisosSonando
+            subir(ctx, origen, audio, atributos)
+            subido = avisosSonando > antes
+        }
         val textoFoco = if (foco == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) "concedido" else "denegado($foco)"
         val volumen = audio.getStreamVolume(AudioManager.STREAM_MUSIC)
         val volumenMax = audio.getStreamMaxVolume(AudioManager.STREAM_MUSIC)
@@ -129,10 +187,12 @@ object Sonido {
                 val destino = if (salida == null) "desconocida" else nombreSalidaAudio(salida.type) + " (" + salida.productName + ")"
                 Registro.anota(ctx, origen, "sonido [$nombre]: reproducidas $posicion de ${muestras.size} muestras, SALIDA USADA=$destino$aviso")
                 pista.release()
+                if (subido) bajar(ctx, origen, audio)
                 audio.abandonAudioFocusRequest(peticion)
             }, duracionMs + 300)
         } catch (e: Throwable) {
             Registro.anota(ctx, origen, "sonido: ERROR ${e.javaClass.name}: ${e.message}")
+            if (subido) bajar(ctx, origen, audio)
             audio.abandonAudioFocusRequest(peticion)
         }
     }
