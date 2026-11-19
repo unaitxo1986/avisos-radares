@@ -1,9 +1,11 @@
 {
- "generado": "2026-11-19T13:17:09Z",
+ "generado": "2026-11-19T13:31:36Z",
  "ok": true,
  "avisos": [
   "Trafikoa no se pudo leer (no se pudo descargar https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo: <urlopen error timed out>); se usa la copia guardada: Copia de la página oficial de Trafikoa leída con Chrome el 2026-11-15 (98 radares).",
-  "Municipales (donostia_radares) no se pudo leer (no se pudo descargar https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query?where=1%3D1&outFields=%2A&returnGeometry=true&outSR=4326&f=json: <urlopen error _ssl.c:994: Th); se usa la copia del 2026-11-18"
+  "Municipales (vitoria_cabinas) no se pudo leer (no se pudo descargar https://www.vitoria-gasteiz.org/arcgis/rest/services/internet/10_capas_geovitoria/MapServer/identify?geometry=523000%2C4741500%2C530500%2C4747500&geometryType=esriGeometryEnvelope); se usa la copia del 2026-11-18",
+  "Municipales (donostia_radares) no se pudo leer (no se pudo descargar https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query?where=1%3D1&outFields=%2A&returnGeometry=true&outSR=4326&f=json: <urlopen error _ssl.c:994: Th); se usa la copia del 2026-11-18",
+  "Foto rojo (santacruz) no se pudo leer (no se pudo descargar https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson: <urlopen error t); no hay copia: no entra"
  ],
  "fuentes": {
   "dgt": {
@@ -26,6 +28,7 @@
    "ok": true,
    "radares": 38,
    "copia_usada": [
+    "vitoria_cabinas",
     "donostia_radares",
     "vitoria_fotorrojo",
     "bilbao_cabinas"
@@ -34,9 +37,21 @@
   "osm": {
    "ok": true,
    "radares": 54
+  },
+  "fotorrojo": {
+   "ok": true,
+   "radares": 43,
+   "por_fuente": {
+    "madrid": 37,
+    "malaga": 6,
+    "santacruz": 0
+   },
+   "copia_usada": [
+    "santacruz"
+   ]
   }
  },
- "radares_publicados": 927,
+ "radares_publicados": 970,
  "contraste": {
   "trafikoa": 98,
   "detector_radar": 98
