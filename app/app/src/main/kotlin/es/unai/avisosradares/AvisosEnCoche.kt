@@ -82,7 +82,7 @@ class AvisosEnCoche(contexto: Context) {
             val abrirApp = CarPendingIntent.getCarApp(
                 ctx, 0, Intent(Intent.ACTION_VIEW).setComponent(ComponentName(ctx, CocheServicio::class.java)), 0,
             )
-            val senal = imagenSenal(aviso.radar.limite)
+            val senal = imagenSenal(aviso.radar.limite, aviso.radar.semaforo)
             val notificacion = NotificationCompat.Builder(ctx, CANAL)
                 .setSmallIcon(R.drawable.ic_lanzador_monocromo)
                 .setContentTitle(titulo)
@@ -116,10 +116,10 @@ class AvisosEnCoche(contexto: Context) {
         }
     }
 
-    private fun imagenSenal(limite: Int?): Bitmap {
+    private fun imagenSenal(limite: Int?, semaforo: Boolean): Bitmap {
         val lado = 192
         val b = Bitmap.createBitmap(lado, lado, Bitmap.Config.ARGB_8888)
-        dibujarSenal(Canvas(b), lado / 2f, lado / 2f, lado.toFloat(), limite)
+        dibujarSenal(Canvas(b), lado / 2f, lado / 2f, lado.toFloat(), limite, semaforo)
         return b
     }
 

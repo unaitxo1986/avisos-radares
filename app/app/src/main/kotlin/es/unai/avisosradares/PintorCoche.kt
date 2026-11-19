@@ -71,7 +71,7 @@ object PintorCoche {
         val d = min(zona.height() * 0.42f, zona.width() * 0.42f)
         val cxSenal = zona.centerX()
         val cySenal = zona.top + zona.height() * 0.08f + d / 2
-        dibujarSenal(c, cxSenal, cySenal, d, aviso.radar.limite)
+        dibujarSenal(c, cxSenal, cySenal, d, aviso.radar.limite, aviso.radar.semaforo)
         val yDist = cySenal + d / 2 + zona.height() * 0.22f
         texto(c, arriba.uppercase(), zona.centerX(), yDist, min(zona.height() * 0.19f, zona.width() * 0.16f), Color.WHITE, Estilo.RACING)
         texto(c, abajo.uppercase(), zona.centerX(), yDist + zona.height() * 0.14f, min(zona.height() * 0.08f, zona.width() * 0.07f), Color.WHITE, Estilo.ESTRECHA, 0.1f)

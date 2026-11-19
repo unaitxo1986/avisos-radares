@@ -463,6 +463,7 @@ class ServicioRadares : Service() {
                 columna.visibility = View.GONE
             } else {
                 senal?.limite = aviso.radar.limite
+                senal?.semaforo = aviso.radar.semaforo
                 val (arriba, abajo) = textosAviso(aviso)
                 vistaDistancia?.text = arriba
                 textoEtiqueta?.text = abajo

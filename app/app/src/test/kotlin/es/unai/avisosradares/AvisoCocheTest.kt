@@ -18,6 +18,11 @@ class AvisoCocheTest {
         assertEquals("¡POR ENCIMA! · Límite 80 · vas a 92 km/h", textosAvisoCoche(aviso(exceso = true), 92.0).second)
         assertEquals("TRAMO · media 97 · fin a 2,3 km", textosAvisoCoche(tramo(2310.0, 97.6), null).first)
         assertEquals("TRAMO · media -- · fin a 3,0 km", textosAvisoCoche(tramo(2990.0, null), null).first)
+        val semaforo = Radar("s", "fotorrojo", null, null, null, 43.0, -3.0, null, null, null, null)
+        assertEquals(
+            "SEMÁFORO? · 120 m" to "Cámara de semáforo en rojo · vas a 40 km/h",
+            textosAvisoCoche(AvisoActivo(semaforo, 120.0, porCarretera = false, exceso = false), 40.0),
+        )
     }
 
     @Test

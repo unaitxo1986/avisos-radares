@@ -26,8 +26,9 @@ fun distanciaM(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
  * - [linea]: tramo de aproximación (puntos `[lat, lon]` en el orden de la marcha, termina en el radar). Solo
  *   viene si su fiabilidad es `alta`; entonces el aviso se da **por carretera y sentido**. Si es nula, el aviso
  *   se da **por cercanía en cualquier sentido** (tramo dudoso, sentido sin resolver, radares de tramo).
- * - [limite]: el que se muestra y con el que se compara la velocidad. Es nulo si no se conoce **o si su
- *   fiabilidad es `baja`** (decisión de Unai del 18/11: en los `osm_cercana` se avisa sin límite).
+ * - [limite]: el que se muestra y con el que se compara la velocidad. Es nulo si no se conoce, **si su
+ *   fiabilidad es `baja`** (decisión de Unai del 18/11: en los `osm_cercana` se avisa sin límite) **o si es
+ *   una cámara de semáforo en rojo** (no mide la velocidad; 19/11).
  * - [fuente] `municipal`: radares de listas oficiales de ayuntamientos (3.7); avisan por cercanía con un radio
  *   menor (150 m, decisión de Unai del 18/11). [rotatoria]: cabina que puede estar vacía (Vitoria-Gasteiz); se
  *   avisa igual que las demás y la ventana lo indica (decisión de Unai del 18/11).
@@ -56,6 +57,9 @@ class Radar(
     val tramoLargoM: Double? = null,
 ) {
     val municipal: Boolean get() = fuente == "municipal"
+
+    /** Cámara de semáforo en rojo: avisa igual que un radar, sin límite ni exceso, con un semáforo dibujado. */
+    val semaforo: Boolean get() = tipo == "fotorrojo"
 
     val porCarretera: Boolean get() = linea != null && linea.size >= 2
 
@@ -100,10 +104,12 @@ fun leerRadares(texto: String): ListaRadares {
         val tramo = if (r.texto("tramo_fiab") == "alta") puntos(r["tramo"]) else null
         val tramoLargo = if (tramo != null) r.numero("tramo_largo") else null
         val limiteFiab = r.texto("limite_fiab")
-        val limite = if (limiteFiab == "baja") null else r.entero("limite")
+        val tipo = r.texto("tipo") ?: "fijo"
+        // Semáforo en rojo (19/11): la cámara no mide la velocidad, así que no hay límite que enseñar ni exceso.
+        val limite = if (limiteFiab == "baja" || tipo == "fotorrojo") null else r.entero("limite")
         radares += Radar(
             id = id,
-            tipo = r.texto("tipo") ?: "fijo",
+            tipo = tipo,
             nombre = r.texto("nombre"),
             carretera = r.texto("carretera"),
             pk = r.numero("pk"),

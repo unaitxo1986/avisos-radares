@@ -24,7 +24,7 @@ fun textosAvisoCoche(aviso: AvisoActivo, velocidadKmh: Double?): Pair<String, St
     } else {
         "${etiquetaAviso(aviso.radar, aviso.porCarretera)} · ${textoDistancia(aviso.distanciaM)}"
     }
-    val limite = aviso.radar.limite?.let { "Límite $it" } ?: "Límite desconocido"
+    val limite = if (aviso.radar.semaforo) "Cámara de semáforo en rojo" else aviso.radar.limite?.let { "Límite $it" } ?: "Límite desconocido"
     val vas = velocidadKmh?.let { " · vas a ${it.toInt()} km/h" } ?: ""
     val exceso = if (aviso.exceso) "¡POR ENCIMA! · " else ""
     return titulo to "$exceso$limite$vas"
