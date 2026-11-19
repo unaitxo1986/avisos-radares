@@ -1,0 +1,31 @@
+name: Exploración de cámaras de semáforo en rojo (datos abiertos)
+
+# Tarea puntual (19/11/2026): busca en datos.gob.es las cámaras de semáforo en rojo publicadas oficialmente y
+# descarga sus ficheros a datos/exploracion/fotorrojo/. No publica nada.
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/explorar-fotorrojo.yml"
+      - "datos/pipeline/explorar_fotorrojo.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Buscar y descargar
+        run: timeout 15m python3 -I datos/pipeline/explorar_fotorrojo.py datos/exploracion/fotorrojo
+      - name: Guardar lo encontrado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/exploracion
+          git diff --cached --quiet && exit 0
+          git commit -m "Exploración: cámaras de semáforo en rojo en datos abiertos (automático)"
+          git pull --rebase origin main
+          git push origin HEAD:main
