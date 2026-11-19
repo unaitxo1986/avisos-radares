@@ -1,4 +1,1256 @@
 {
+"cat-a-2-445-35": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-477-4": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-510": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-522-046": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-524": {
+"candidatas": 0,
+"motivo": "ninguna calzada de OpenStreetMap a menos de 50 m",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-534-15": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-560-25": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-570-3": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-579-4": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-597-45": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-602-75": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-603-2": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-608-2": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-609-075": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-2-707-467": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-26-69-729": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-26-74-64": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-a-26-82-641": {
+"candidatas": 0,
+"motivo": "ninguna calzada de OpenStreetMap a menos de 50 m",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-ap-2-154-85": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-ap-2-164-967": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-ap-2-173-857": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-ap-7-164": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-ap-7-294-48": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-ap-7-308-608": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-ap-7-337-045": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-10-18-5": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-10-18-5-2": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-124-4-7": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-140-3-12": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-20-18-1": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-20-21-5": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-23-11-65": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-23-3-35": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+41.375817,
+2.070806
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 83,
+"sentido_km": null,
+"via": 28117187
+},
+"cat-b-23-4-76": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-b-23-9-26": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-bv-1248-4": {
+"candidatas": 0,
+"motivo": "ninguna calzada de OpenStreetMap a menos de 50 m",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-bv-1433-2-01": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-bv-1435-9-57": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-bv-1462-6-567": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-bv-2113-1-432": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-bv-5001-11-596": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-bv-5001-7-89": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-12-120-26": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-12-14-259": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-12-144-96": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-12-147-509": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-12-21-411": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-12-30-719": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-12-65-729": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-13-27-925": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-13-89-686": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-14-120-628": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-14-13-916": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-14-154-33": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-14-161-016": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-14-20-029": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-14-28-15": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-14-4-35": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-1412a-19-3": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-1412a-39-873": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-1412a-41-618": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-1412a-53-235": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-1413a-2-4": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-15-24-238": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-155-10-35": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-155-14-7": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-16-113-555": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-16-51-088": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-16-51-183": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-16-63-29": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-16-68-294": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-16-78": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-16-94-219": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-17-33-546": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-17-42-662": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-17-42-717": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-17-7-9": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-244-22-113": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-245-4-067": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-25-111-635": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-25-128-724": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-25-143-359": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-25-162-76": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-25-180-551": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+41.956897,
+2.245652
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 50,
+"sentido_km": null,
+"via": 14606145
+},
+"cat-c-25-230-075": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-251-12-28": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-251-5-156": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-26-30-613": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-26-8-45": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-26-89-335": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31-137-457": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31-186-068": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31-186-84": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31-191-207": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31-194-688": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+41.334706,
+2.09357
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 245,
+"sentido_km": null,
+"via": 278193165
+},
+"cat-c-31-312-787": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31-319-775": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31-336-13": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31-376-51": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31a-366": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-31b-8-235": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-32-50-07": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-32-51-97": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-32-53-777": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-32-9-17": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-32-nord-85": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-32-sud-48-085": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-33-80-048": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-35-29-15": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-35-52-1": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-35-69-887": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-35-91-2": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-37-3-2": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-37z-71-485": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-38-1-635": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-55-15-297": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-55-18-52": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-55-25-5": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-55-27": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-55-3-89": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-55-39-129": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-55-53-74": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-55-68-193": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-58-15-726": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-58-25-38": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-58-26-85": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-58-29-27": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-58-29-8": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-58-30-95": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-58-38-15": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-58-5-89": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-59-11-05": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-59-15-354": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-59-19-014": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-59-37-365": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-60-3-364": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-60-3-413": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-63-10-778": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-63-21-194": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-63-4-1": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-63-4-8": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-65-22-613": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-65-6-662": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-66-38-107": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-66-38-147": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-66-5-57": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-c-66-54-117": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-gi-512-2-69": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-gi-552-13-345": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-gi-623-6-249": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-gi-682-18-468": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-gi-682-3-55": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-l-200-1-733": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-l-310-13-81": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-l-310-5-403": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-141a-108-811": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-150-15-555": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-150-3-318": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-2-687-863": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-2-736-539": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-2-761": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-230-130-157": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-230-186-7": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-230-27-505": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-240-118-16": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-240-15-7": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+41.256668,
+1.248384
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 177,
+"sentido_km": null,
+"via": 1436642535
+},
+"cat-n-240-39-638": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-240-53-188": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-240-71-95": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-240-80-475": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-260-121-497": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-260-199-075": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-260-209-105": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-260-233-302": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-260-26-32": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-260-50": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1068-355": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1084-318": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1091-842": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1104-766": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1125-327": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1137-838": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1176-25": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1200-703": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1208-271": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1226-862": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-340-1242-245": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-420-825-428": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-420-856-97": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-420-862-945": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-420a-879-314": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-ii-453-514": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-ii-636-415": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-ii-642-608": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-ii-648-355": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-ii-657-9": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-n-ii-665-159": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-t-11-2-337": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-t-11-5-87": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-t-310-2-8": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-t-310-9-296": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-tp-2031-4-766": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-tp-2125-4-795": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"cat-tv-3141-5-224": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
 "dgt-CABINACINEMOMETRO_120001": {
 "candidatas": 1,
 "motivo": "la calzada elegida se aleja del destino oficial (162° de diferencia, a 96 km)",
@@ -1535,17 +2787,16 @@
 },
 "dgt-CABINACINEMOMETRO_120136": {
 "candidatas": 2,
-"destino_a_m": 14623,
-"margen_m": 2978,
-"origen": "destino",
+"margen_m": 1601,
+"origen": "oficial",
 "punto": [
 41.974862,
 0.485799
 ],
-"regla": "c",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 37,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 1304207137
 },
 "dgt-CABINACINEMOMETRO_120137": {
@@ -1579,17 +2830,16 @@
 },
 "dgt-CABINACINEMOMETRO_120139": {
 "candidatas": 2,
-"destino_a_m": 4880,
-"margen_m": 119,
-"origen": "destino",
+"margen_m": 186,
+"origen": "oficial",
 "punto": [
 41.52023,
 0.201794
 ],
-"regla": "e",
+"regla": "a",
 "resultado": "resuelto",
-"rumbo": 276,
-"sentido_km": null,
+"rumbo": 96,
+"sentido_km": "creciente",
 "via": 678246649
 },
 "dgt-CABINACINEMOMETRO_120140": {
@@ -2345,18 +3595,16 @@
 },
 "dgt-CABINACINEMOMETRO_120214": {
 "candidatas": 2,
-"destino_a_m": 27868,
-"margen_m": 62,
-"motivo": "ninguna regla de confianza se cumple",
-"origen": "destino",
+"margen_m": 429,
+"origen": "oficial",
 "punto": [
 41.017087,
 0.199284
 ],
-"regla": null,
-"resultado": "ambos",
+"regla": "a",
+"resultado": "resuelto",
 "rumbo": 278,
-"sentido_km": null,
+"sentido_km": "decreciente",
 "via": 887795621
 },
 "dgt-CABINACINEMOMETRO_120215": {
@@ -6417,7 +7665,7 @@
 },
 "dgt-CABINACINEMOMETRO_120610": {
 "candidatas": 2,
-"margen_m": 21789,
+"margen_m": 20953,
 "origen": "oficial",
 "punto": [
 40.469709,
@@ -8397,17 +9645,16 @@
 },
 "dgt-CABINACINEMOMETRO_167034": {
 "candidatas": 2,
-"destino_a_m": 2466,
-"margen_m": 405,
-"origen": "destino",
+"margen_m": 1705,
+"origen": "oficial",
 "punto": [
 42.405372,
 0.164057
 ],
-"regla": "e",
+"regla": "a",
 "resultado": "resuelto",
 "rumbo": 300,
-"sentido_km": null,
+"sentido_km": "creciente",
 "via": 1089683110
 },
 "dgt-CABINACINEMOMETRO_167035": {
@@ -11116,6 +12363,268 @@
 "mun-donostia-9": {
 "motivo": "tipo fijo",
 "resultado": "no_aplica"
+},
+"mun-madrid-1": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-10": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.386807,
+-3.694969
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 317,
+"sentido_km": null,
+"via": 217347929
+},
+"mun-madrid-11": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.391196,
+-3.6996
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 324,
+"sentido_km": null,
+"via": 23061845
+},
+"mun-madrid-12": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-13": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-madrid-14": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.39653,
+-3.708132
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 295,
+"sentido_km": null,
+"via": 217347936
+},
+"mun-madrid-15": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.397132,
+-3.709689
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 299,
+"sentido_km": null,
+"via": 217347936
+},
+"mun-madrid-16": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.403122,
+-3.722931
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 169,
+"sentido_km": null,
+"via": 242694726
+},
+"mun-madrid-17": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.409383,
+-3.721445
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 343,
+"sentido_km": null,
+"via": 214257065
+},
+"mun-madrid-18": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.413926,
+-3.731115
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 64,
+"sentido_km": null,
+"via": 4085376
+},
+"mun-madrid-19": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.413929,
+-3.731106
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 64,
+"sentido_km": null,
+"via": 4085376
+},
+"mun-madrid-2": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-20": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-21": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-22": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-23": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.427661,
+-3.734786
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 328,
+"sentido_km": null,
+"via": 704359728
+},
+"mun-madrid-24": {
+"candidatas": 1,
+"origen": "unica",
+"punto": [
+40.427661,
+-3.734786
+],
+"regla": "d",
+"resultado": "resuelto",
+"rumbo": 328,
+"sentido_km": null,
+"via": 704359728
+},
+"mun-madrid-25": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-26": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-27": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-madrid-28": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-29": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-3": {
+"motivo": "tipo fijo",
+"resultado": "no_aplica"
+},
+"mun-madrid-30": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-31": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-32": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-33": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-34": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-35": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-36": {
+"motivo": "tipo tramo",
+"resultado": "no_aplica"
+},
+"mun-madrid-4": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-5": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-6": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-7": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-8": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
+},
+"mun-madrid-9": {
+"candidatas": 2,
+"motivo": "sin destino ni sentido creciente/decreciente utilizable",
+"regla": null,
+"resultado": "ambos"
 },
 "mun-vitoria-cabina-3": {
 "motivo": "tipo fijo",
