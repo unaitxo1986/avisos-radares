@@ -1,8 +1,9 @@
 {
- "generado": "2026-11-18T18:28:05Z",
+ "generado": "2026-11-19T13:17:09Z",
  "ok": true,
  "avisos": [
-  "Trafikoa no se pudo leer (no se pudo descargar https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo: <urlopen error timed out>); se usa la copia guardada: Copia de la página oficial de Trafikoa leída con Chrome el 2026-11-15 (98 radares)."
+  "Trafikoa no se pudo leer (no se pudo descargar https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo: <urlopen error timed out>); se usa la copia guardada: Copia de la página oficial de Trafikoa leída con Chrome el 2026-11-15 (98 radares).",
+  "Municipales (donostia_radares) no se pudo leer (no se pudo descargar https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query?where=1%3D1&outFields=%2A&returnGeometry=true&outSR=4326&f=json: <urlopen error _ssl.c:994: Th); se usa la copia del 2026-11-18"
  ],
  "fuentes": {
   "dgt": {
@@ -25,6 +26,7 @@
    "ok": true,
    "radares": 38,
    "copia_usada": [
+    "donostia_radares",
     "vitoria_fotorrojo",
     "bilbao_cabinas"
    ]
