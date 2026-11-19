@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?><feed xmlns="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:georss="http://www.georss.org/georss">
+    <title>Tráfico. Semáforos con control foto-rojo</title>
+    <link href="https://datos.madrid.es/egob/catalogo/205193-0-semaforos-foto-rojo" rel="self"/>
+    <link href="https://datos.madrid.es" rel="alternate" type="text/html"/>
+    <id>205193-2</id>
+    <icon>https://datos.madrid.es/favicon.ico</icon>
+    <generator uri="https://datos.madrid.es">https://datos.madrid.es</generator>
+    <entry>
+        <title>ALBERTO AGUILERA - BALTASAR GRACI�N</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4300319733 -3.7109220647</georss:point>
+        <geo:lat>40.4300319733</geo:lat>
+        <geo:long>-3.7109220647</geo:long>
+    </entry>
+    <entry>
+        <title>MEN�NDEZ PELAYO - NI�O JES�S</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4146537827 -3.6775372425</georss:point>
+        <geo:lat>40.4146537827</geo:lat>
+        <geo:long>-3.6775372425</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. MEDITERR�NEO, 32</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4069424564 -3.673091969</georss:point>
+        <geo:lat>40.4069424564</geo:lat>
+        <geo:long>-3.673091969</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. CIUDAD BARCELONA - MEN�NDEZ PELAYO</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4041263295 -3.6804097668</georss:point>
+        <geo:lat>40.4041263295</geo:lat>
+        <geo:long>-3.6804097668</geo:long>
+    </entry>
+    <entry>
+        <title>FRANCISCO SILVELA, 62</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4352122061 -3.6750225366</georss:point>
+        <geo:lat>40.4352122061</geo:lat>
+        <geo:long>-3.6750225366</geo:long>
+    </entry>
+    <entry>
+        <title>O'DONNELL CARRIL CENTRAL</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4210668083 -3.6681907945</georss:point>
+        <geo:lat>40.4210668083</geo:lat>
+        <geo:long>-3.6681907945</geo:long>
+    </entry>
+    <entry>
+        <title>JOAQUIN COSTA - VELAZQUEZ</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4429457244 -3.6833071686</georss:point>
+        <geo:lat>40.4429457244</geo:lat>
+        <geo:long>-3.6833071686</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. AMERICA - CARTAGENA</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4392447733 -3.6729404308</georss:point>
+        <geo:lat>40.4392447733</geo:lat>
+        <geo:long>-3.6729404308</geo:long>
+    </entry>
+    <entry>
+        <title>JOAQUIN COSTA, 36</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4409330874 -3.6811544193</georss:point>
+        <geo:lat>40.4409330874</geo:lat>
+        <geo:long>-3.6811544193</geo:long>
+    </entry>
+    <entry>
+        <title>FRANCISCO SILVELA, 99</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4394873905 -3.6797031586</georss:point>
+        <geo:lat>40.4394873905</geo:lat>
+        <geo:long>-3.6797031586</geo:long>
+    </entry>
+    <entry>
+        <title>PO CASTELLANA, 167</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4622331742 -3.6898008507</georss:point>
+        <geo:lat>40.4622331742</geo:lat>
+        <geo:long>-3.6898008507</geo:long>
+    </entry>
+    <entry>
+        <title>PO CASTELLANA, 105</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4546415783 -3.6905586181</georss:point>
+        <geo:lat>40.4546415783</geo:lat>
+        <geo:long>-3.6905586181</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. FILIPINAS, 18</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4400855314 -3.7101321157</georss:point>
+        <geo:lat>40.4400855314</geo:lat>
+        <geo:long>-3.7101321157</geo:long>
+    </entry>
+    <entry>
+        <title>JOSE ABASCAL - SANTA ENGRACIA</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4385439218 -3.7008300961</georss:point>
+        <geo:lat>40.4385439218</geo:lat>
+        <geo:long>-3.7008300961</geo:long>
+    </entry>
+    <entry>
+        <title>CEA BERM�DEZ - VALLEHERMOSO</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4388499083 -3.7086700995</georss:point>
+        <geo:lat>40.4388499083</geo:lat>
+        <geo:long>-3.7086700995</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. CARDENAL HERRERA ORIA, 83</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4892018945 -3.7010164871</georss:point>
+        <geo:lat>40.4892018945</geo:lat>
+        <geo:long>-3.7010164871</geo:long>
+    </entry>
+    <entry>
+        <title>CARDENAL HERRERA ORIA - LA MAS�</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.483268463 -3.7138248378</georss:point>
+        <geo:lat>40.483268463</geo:lat>
+        <geo:long>-3.7138248378</geo:long>
+    </entry>
+    <entry>
+        <title>SINESIO DELGADO GTA P. CEBRERO</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4712392555 -3.7111492504</georss:point>
+        <geo:lat>40.4712392555</geo:lat>
+        <geo:long>-3.7111492504</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. ILUSTRACI�N - BETANZOS</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4805258079 -3.7121073462</georss:point>
+        <geo:lat>40.4805258079</geo:lat>
+        <geo:long>-3.7121073462</geo:long>
+    </entry>
+    <entry>
+        <title>VENTISQUERO DE LA CONDESA, 42</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4940829958 -3.7174549089</georss:point>
+        <geo:lat>40.4940829958</geo:lat>
+        <geo:long>-3.7174549089</geo:long>
+    </entry>
+    <entry>
+        <title>MONFORTE DE LEMOS - FINISTERRE</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4798344986 -3.7022643634</georss:point>
+        <geo:lat>40.4798344986</geo:lat>
+        <geo:long>-3.7022643634</geo:long>
+    </entry>
+    <entry>
+        <title>CNO BARRIAL - FDO LAZARO CARRETER</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4622719402 -3.7933020812</georss:point>
+        <geo:lat>40.4622719402</geo:lat>
+        <geo:long>-3.7933020812</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. DE LOS POBLADOS, 45</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.3840856059 -3.7597718446</georss:point>
+        <geo:lat>40.3840856059</geo:lat>
+        <geo:long>-3.7597718446</geo:long>
+    </entry>
+    <entry>
+        <title>CTRA. CARABANCHEL ARAVACA - VILLAVICIOSA</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.3969437376 -3.7743349565</georss:point>
+        <geo:lat>40.3969437376</geo:lat>
+        <geo:long>-3.7743349565</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. DE LA PESETA - CTRA  BARRIO FORTUNA</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.3695005251 -3.7658350497</georss:point>
+        <geo:lat>40.3695005251</geo:lat>
+        <geo:long>-3.7658350497</geo:long>
+    </entry>
+    <entry>
+        <title>GRAL RICARDOS - PSO QUINCE DE MAYO</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.3968891906 -3.7173362328</georss:point>
+        <geo:lat>40.3968891906</geo:lat>
+        <geo:long>-3.7173362328</geo:long>
+    </entry>
+    <entry>
+        <title>VIA LUSITANA - PL EL�PTICA</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.3846754884 -3.7184266162</georss:point>
+        <geo:lat>40.3846754884</geo:lat>
+        <geo:long>-3.7184266162</geo:long>
+    </entry>
+    <entry>
+        <title>CAMINO DE LOS VINATEROS, 47</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4107437065 -3.6547944705</georss:point>
+        <geo:lat>40.4107437065</geo:lat>
+        <geo:long>-3.6547944705</geo:long>
+    </entry>
+    <entry>
+        <title>FUENTE CARRANTONA - HACIENDA PAVONES</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4005139447 -3.6364171274</georss:point>
+        <geo:lat>40.4005139447</geo:lat>
+        <geo:long>-3.6364171274</geo:long>
+    </entry>
+    <entry>
+        <title>ASCAO - EMILIO FERRARI</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4305566417 -3.6400923957</georss:point>
+        <geo:lat>40.4305566417</geo:lat>
+        <geo:long>-3.6400923957</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. MARQU�S CORBERA - RICARDO ORTIZ</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.422857274 -3.6559439952</georss:point>
+        <geo:lat>40.422857274</geo:lat>
+        <geo:long>-3.6559439952</geo:long>
+    </entry>
+    <entry>
+        <title>FRANCISCO PI Y MARGALL ESQ. ANA DE AUSTRIA</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4910061217 -3.6597406438</georss:point>
+        <geo:lat>40.4910061217</geo:lat>
+        <geo:long>-3.6597406438</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. ANDALUC�A - METRO SAN CRISTOBAL</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.3417520665 -3.692869844</georss:point>
+        <geo:lat>40.3417520665</geo:lat>
+        <geo:long>-3.692869844</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. ANDALUC�A - ALCOCER</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.3506812408 -3.6930234935</georss:point>
+        <geo:lat>40.3506812408</geo:lat>
+        <geo:long>-3.6930234935</geo:long>
+    </entry>
+    <entry>
+        <title>HNOS. GARC�A NOBLEJAS 123</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.420342866 -3.625218726</georss:point>
+        <geo:lat>40.420342866</geo:lat>
+        <geo:long>-3.625218726</geo:long>
+    </entry>
+    <entry>
+        <title>ALCALA - SAN ROMUALDO</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.441637274 -3.6240829937</georss:point>
+        <geo:lat>40.441637274</geo:lat>
+        <geo:long>-3.6240829937</geo:long>
+    </entry>
+    <entry>
+        <title>AVDA. LOGRO�O, 44</title>
+        <id/>
+        <content type="html"/>
+        <georss:point>40.4602447254 -3.5936820013</georss:point>
+        <geo:lat>40.4602447254</geo:lat>
+        <geo:long>-3.5936820013</geo:long>
+    </entry>
+</feed>

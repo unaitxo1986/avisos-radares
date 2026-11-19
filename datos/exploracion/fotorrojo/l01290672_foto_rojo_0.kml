@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:ns2="http://www.google.com/kml/ext/2.2" xmlns:ns3="http://www.w3.org/2005/Atom" xmlns:ns4="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0">
+    <Document>
+        <Schema name="da_transporteFotoRojo_1" id="da_transporteFotoRojo_1">
+            <SimpleField type="string" name="ID"/>
+            <SimpleField type="string" name="NOMBRE"/>
+            <SimpleField type="string" name="DESCRIPCION"/>
+            <SimpleField type="string" name="DIRECCION"/>
+            <SimpleField type="string" name="URL"/>
+            <SimpleField type="string" name="EMAIL"/>
+            <SimpleField type="string" name="CONTACTO"/>
+            <SimpleField type="string" name="HORARIOS"/>
+            <SimpleField type="string" name="PRECIOS"/>
+            <SimpleField type="string" name="TITULARIDAD"/>
+            <SimpleField type="string" name="TARJETAJOVEN"/>
+            <SimpleField type="string" name="ACCESOPMR"/>
+        </Schema>
+        <Folder>
+            <name>da_transporteFotoRojo</name>
+            <Placemark id="da_transporteFotoRojo.fid--175d4967_1a1f1e77f16_42fb">
+                <ExtendedData>
+                    <SchemaData schemaUrl="#da_transporteFotoRojo_1">
+                        <SimpleData name="ID">79133</SimpleData>
+                        <SimpleData name="NOMBRE">Foto-Rojo Jiménez Fraud dirección Hospital Clínico</SimpleData>
+                        <SimpleData name="DESCRIPCION">C/ Jiménez Fraud nº 5 dirección Hospital Clínico</SimpleData>
+                        <SimpleData name="DIRECCION">CALLE DE JIMÉNEZ FRAUD, 5 </SimpleData>
+                        <SimpleData name="TITULARIDAD">MUNICIPAL</SimpleData>
+                        <SimpleData name="TARJETAJOVEN">No</SimpleData>
+                        <SimpleData name="ACCESOPMR">No</SimpleData>
+                    </SchemaData>
+                </ExtendedData>
+                <Point>
+                    <coordinates>-4.475607482816217,36.71642190674621</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark id="da_transporteFotoRojo.fid--175d4967_1a1f1e77f16_42fc">
+                <ExtendedData>
+                    <SchemaData schemaUrl="#da_transporteFotoRojo_1">
+                        <SimpleData name="ID">79132</SimpleData>
+                        <SimpleData name="NOMBRE">Foto-Rojo Jiménez Fraud dirección dirección centro ciudad</SimpleData>
+                        <SimpleData name="DESCRIPCION">C/ Jiménez Fraud nº 5 dirección centro ciudad</SimpleData>
+                        <SimpleData name="DIRECCION">CALLE DE JIMÉNEZ FRAUD, 5 </SimpleData>
+                        <SimpleData name="TITULARIDAD">MUNICIPAL</SimpleData>
+                        <SimpleData name="TARJETAJOVEN">No</SimpleData>
+                        <SimpleData name="ACCESOPMR">No</SimpleData>
+                    </SchemaData>
+                </ExtendedData>
+                <Point>
+                    <coordinates>-4.47603336555357,36.71666042075416</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark id="da_transporteFotoRojo.fid--175d4967_1a1f1e77f16_42fd">
+                <ExtendedData>
+                    <SchemaData schemaUrl="#da_transporteFotoRojo_1">
+                        <SimpleData name="ID">80734</SimpleData>
+                        <SimpleData name="NOMBRE">AFECTACION_00000451_277314</SimpleData>
+                        <SimpleData name="DESCRIPCION">Corte de tráfico en c/ Ceuta en el tramo comprendido entre c/ Moclinejo y c/ Manuel&#13;
+Bartolomé de Cossío, para realizar operaciones de Montaje de grúa torre.</SimpleData>
+                        <SimpleData name="DIRECCION">CALLE CEUTA, 18 </SimpleData>
+                        <SimpleData name="TITULARIDAD">MUNICIPAL</SimpleData>
+                        <SimpleData name="TARJETAJOVEN">No</SimpleData>
+                        <SimpleData name="ACCESOPMR">No</SimpleData>
+                    </SchemaData>
+                </ExtendedData>
+                <Point>
+                    <coordinates>-4.454660326022433,36.71299645529678,4064020.94364307</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark id="da_transporteFotoRojo.fid--175d4967_1a1f1e77f16_42fe">
+                <ExtendedData>
+                    <SchemaData schemaUrl="#da_transporteFotoRojo_1">
+                        <SimpleData name="ID">79136</SimpleData>
+                        <SimpleData name="NOMBRE">Foto-Rojo Av. Valle-Inclán, nº9, sentido este</SimpleData>
+                        <SimpleData name="DESCRIPCION">Avda. Valle-Inclán nº 9 sentido este (intersección Avda. Simón Bolívar)</SimpleData>
+                        <SimpleData name="DIRECCION">AVENIDA DE VALLE-INCLÁN, 9 </SimpleData>
+                        <SimpleData name="TITULARIDAD">MUNICIPAL</SimpleData>
+                        <SimpleData name="TARJETAJOVEN">No</SimpleData>
+                        <SimpleData name="ACCESOPMR">No</SimpleData>
+                    </SchemaData>
+                </ExtendedData>
+                <Point>
+                    <coordinates>-4.433243699197672,36.736172953368836</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark id="da_transporteFotoRojo.fid--175d4967_1a1f1e77f16_42ff">
+                <ExtendedData>
+                    <SchemaData schemaUrl="#da_transporteFotoRojo_1">
+                        <SimpleData name="ID">79138</SimpleData>
+                        <SimpleData name="NOMBRE">Foto-Rojo Av. Valle-Inclán, nº 3, sentido este</SimpleData>
+                        <SimpleData name="DESCRIPCION">Avda. Valle-Inclán nº 3 sentido este (intersección Avda. de la Palmilla)</SimpleData>
+                        <SimpleData name="DIRECCION">AVENIDA DE VALLE-INCLÁN, 3 </SimpleData>
+                        <SimpleData name="TITULARIDAD">MUNICIPAL</SimpleData>
+                        <SimpleData name="TARJETAJOVEN">No</SimpleData>
+                        <SimpleData name="ACCESOPMR">No</SimpleData>
+                    </SchemaData>
+                </ExtendedData>
+                <Point>
+                    <coordinates>-4.42696024664834,36.73743971537102</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark id="da_transporteFotoRojo.fid--175d4967_1a1f1e77f16_4300">
+                <ExtendedData>
+                    <SchemaData schemaUrl="#da_transporteFotoRojo_1">
+                        <SimpleData name="ID">79137</SimpleData>
+                        <SimpleData name="NOMBRE">Foto-Rojo Av. Valle-Inclán, nº 12, sentido oeste</SimpleData>
+                        <SimpleData name="DESCRIPCION">Avda. Valle-Inclán nº 12 sentido oeste (intersección Avda. Simón Bolívar)</SimpleData>
+                        <SimpleData name="DIRECCION">AVENIDA DE VALLE-INCLÁN, 12 </SimpleData>
+                        <SimpleData name="TITULARIDAD">MUNICIPAL</SimpleData>
+                        <SimpleData name="TARJETAJOVEN">No</SimpleData>
+                        <SimpleData name="ACCESOPMR">No</SimpleData>
+                    </SchemaData>
+                </ExtendedData>
+                <Point>
+                    <coordinates>-4.433348541249914,36.73640190950839</coordinates>
+                </Point>
+            </Placemark>
+            <Placemark id="da_transporteFotoRojo.fid--175d4967_1a1f1e77f16_4301">
+                <ExtendedData>
+                    <SchemaData schemaUrl="#da_transporteFotoRojo_1">
+                        <SimpleData name="ID">79134</SimpleData>
+                        <SimpleData name="NOMBRE">Foto-Rojo Av. Valle-Inclán, nº 20, sentido este</SimpleData>
+                        <SimpleData name="DESCRIPCION">Avda. Valle-Inclán nº 20 sentido este (intersección Camino Suárez)</SimpleData>
+                        <SimpleData name="DIRECCION">AVENIDA DE VALLE-INCLÁN, 20 </SimpleData>
+                        <SimpleData name="TITULARIDAD">MUNICIPAL</SimpleData>
+                        <SimpleData name="TARJETAJOVEN">No</SimpleData>
+                        <SimpleData name="ACCESOPMR">No</SimpleData>
+                    </SchemaData>
+                </ExtendedData>
+                <Point>
+                    <coordinates>-4.444644377869437,36.72900941925736</coordinates>
+                </Point>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>

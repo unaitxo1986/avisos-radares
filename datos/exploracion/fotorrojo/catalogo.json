@@ -1,0 +1,811 @@
+{
+ "https://datos.gob.es/catalogo/l01280796-trafico-semaforos-con-control-foto-rojo1": {
+  "titulo": "Tráfico. Semáforos con control foto-rojo",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "El llamado sistema de foto-rojo consiste en la instalación de cámaras en determinados semáforos con la finalidad de comprobar el cumplimiento de la detención de los vehículos en pasos de peatones con semáforo de la ciudad.\n****\nLas cámaras se instalan en un soporte tipo báculo a 25 metros de la línea de detención para permitir encuadrar completamente el paso de peatones y la propia cabeza del semá",
+  "distribuciones": [
+   {
+    "url": "https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-5-semaforos-foto-rojo-xlsx/download/205193-5-semaforos-foto-rojo-xlsx.xlsx",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+    "titulo": "205193-5-semaforos-foto-rojo-xlsx"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-1-semaforos-foto-rojo-csv/download/205193-1-semaforos-foto-rojo-csv.csv",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/CSV",
+    "titulo": "205193-1-semaforos-foto-rojo-csv"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-0-semaforos-foto-rojo-geo/download/205193-0-semaforos-foto-rojo-geo.geo",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/RSS",
+    "titulo": "205193-0-semaforos-foto-rojo-geo"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-3-semaforos-foto-rojo/download/manualvisualizapuntosmedidatrafico.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "205193-3-semaforos-foto-rojo"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-2-semaforos-foto-rojo/download/estructura_ds_archivos_foto_rojo.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "205193-2-semaforos-foto-rojo"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205193-0-semaforos-foto-rojo/resource/205193-4-semaforos-foto-rojo-zip/download/205193-4-semaforos-foto-rojo-zip.zip",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/ZIP",
+    "titulo": "205193-4-semaforos-foto-rojo-zip"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/foto-rojo.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01380380-foto-rojo1": {
+  "titulo": "Foto Rojo",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01380380",
+  "descripcion": "Geolocalización de cámaras en determinados semáforos para comprobar  el cumplimiento de la detención de los vehículos en pasos de peatones con control semafórico",
+  "distribuciones": [
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/4ec8fb26-94a8-401c-ac4a-d8f7b6cbf346/download/foto_rojo.xls",
+    "formato": "application/vnd.ms-excel",
+    "titulo": "Foto Rojo XLS"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/0f4da739-969a-4c9b-a5e2-6cad6beef9fd/download/foto_rojo.json",
+    "formato": "application/json",
+    "titulo": "Foto Rojo JSON"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson",
+    "formato": "application/json",
+    "titulo": "Foto Rojo GeoJSON"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/0f4da739-969a-4c9b-a5e2-6cad6beef9fd/download/foto_rojo.json",
+    "formato": "application/json",
+    "titulo": "Foto Rojo JSON"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/fd17c3b0-2566-4a3d-a642-9ec75ef5ad98/download/doc.kml",
+    "formato": "application/vnd.google-earth.kml+xml",
+    "titulo": "Foto Rojo KML"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/fd17c3b0-2566-4a3d-a642-9ec75ef5ad98/download/doc.kml",
+    "formato": "application/vnd.google-earth.kml+xml",
+    "titulo": "Foto Rojo KML"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson",
+    "formato": "application/json",
+    "titulo": "Foto Rojo GeoJSON"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/4ec8fb26-94a8-401c-ac4a-d8f7b6cbf346/download/foto_rojo.xls",
+    "formato": "application/vnd.ms-excel",
+    "titulo": "Foto Rojo XLS"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/ba2b41e1-d093-471b-a697-7939081954ad/download/foto_rojo.csv",
+    "formato": "text/csv",
+    "titulo": "Foto Rojo CSV"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/fd428525-5351-4fe3-b5fc-9f717cf9778c/download/fotorojo.zip",
+    "formato": "application/x-zipped-shp",
+    "titulo": "Foto Rojo SHP"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/9c674e30-abc1-43e8-8ee8-f4fd2689a047/download/foto_rojo.kmz",
+    "formato": "application/vnd.google-earth.kmz",
+    "titulo": "Foto Rojo KMZ"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/9c674e30-abc1-43e8-8ee8-f4fd2689a047/download/foto_rojo.kmz",
+    "formato": "application/vnd.google-earth.kmz",
+    "titulo": "Foto Rojo KMZ"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/fd428525-5351-4fe3-b5fc-9f717cf9778c/download/fotorojo.zip",
+    "formato": "application/x-zipped-shp",
+    "titulo": "Foto Rojo SHP"
+   },
+   {
+    "url": "https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/ba2b41e1-d093-471b-a697-7939081954ad/download/foto_rojo.csv",
+    "formato": "text/csv",
+    "titulo": "Foto Rojo CSV"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/foto%20rojo.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01290672-foto-rojo": {
+  "titulo": "Foto Rojo",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01290672",
+  "descripcion": "Ubicación de los radares Foto Rojo",
+  "distribuciones": [
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-25830.kml",
+    "formato": "application/vnd.google-earth.kml+xml",
+    "titulo": "KML Sistema Referencia EPSG 25830"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.zip",
+    "formato": "application/zip",
+    "titulo": "ZIP Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.kml",
+    "formato": "application/vnd.google-earth.kml+xml",
+    "titulo": "KML Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-25830.gml",
+    "formato": "application/gml+xml",
+    "titulo": "GML Sistema Referencia EPSG 25830"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.csv",
+    "formato": "text/csv",
+    "titulo": "CSV Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.gml",
+    "formato": "application/gml+xml",
+    "titulo": "GML Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-25830.zip",
+    "formato": "application/zip",
+    "titulo": "ZIP Sistema Referencia EPSG 25830"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-4326.geojson",
+    "formato": "application/json",
+    "titulo": "GEOJSON Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-25830.geojson",
+    "formato": "application/json",
+    "titulo": "GEOJSON Sistema Referencia EPSG 25830"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_transporteFotoRojo-25830.csv",
+    "formato": "text/csv",
+    "titulo": "CSV Sistema Referencia EPSG 25830"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/foto%20rojo.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/e05068001-datos-de-radares": {
+  "titulo": "Datos de radares ",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/E05068001",
+  "descripcion": "Tiempo casi real en intervalos de cinco minutos (o intervalo más corto disponible)\n\nImágenes de reflectividad correspondientes a la elevación más baja de la exploración radar (0,5° sobre el plano horizontal). Intervalos de reflectividad en decibelios Z.\n\nImágenes de la altura del tope de ecos (echotop) con una reflectividad superior a 12 decibelios (dBZ). La escala de color señala intervalos de al",
+  "distribuciones": [
+   {
+    "url": "https://catalogo.datosabiertos.miteco.gob.es/catalogo/dataset/471b4014-34dd-4fc0-b7bd-0df42e403f65/resource/d58415c5-da88-4296-a1f4-2cabc8522bfc",
+    "formato": "text/API",
+    "titulo": "Imagen composición nacional radares. Tiempo actual estándar."
+   },
+   {
+    "url": "https://catalogo.datosabiertos.miteco.gob.es/catalogo/dataset/471b4014-34dd-4fc0-b7bd-0df42e403f65/resource/623bfd53-dc32-4b7f-a722-7b245e1170cc",
+    "formato": "text/API",
+    "titulo": "Observación Radar"
+   },
+   {
+    "url": "https://catalogo.datosabiertos.miteco.gob.es/catalogo/dataset/471b4014-34dd-4fc0-b7bd-0df42e403f65/resource/e5fe6c01-1872-4d32-ad82-42a646a3f3dd",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/HTML",
+    "titulo": "Visualizador Radar"
+   },
+   {
+    "url": "https://catalogo.datosabiertos.miteco.gob.es/catalogo/dataset/471b4014-34dd-4fc0-b7bd-0df42e403f65/resource/a5685610-2bfd-478a-bc91-efdf51dcaa29",
+    "formato": "text/API",
+    "titulo": "Imagen gráfica radar regional. Tiempo actual estándar."
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radares.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/a09002970-radares-fijos-de-cataluna": {
+  "titulo": "Radares fijos de Cataluña",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/A09002970",
+  "descripcion": "Ubicació dels radars fixos del Servei Català de Trànsit a les carreteres de Catalunya. El fitxer conté el nom de la via, les coordenades UTM i la velocitat màxima del tram.",
+  "distribuciones": [
+   {
+    "url": "http://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt",
+    "formato": "text/plain",
+    "titulo": "Radares fijos de Cataluña"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radares.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/e00130502-evolucion-de-denuncias-e-ingresos-50-radares-fijos-y-de-tramo-que-menos-se-respetan1": {
+  "titulo": "Evolución de denuncias e ingresos. 50 radares fijos y de tramo que menos se respetan.",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/E00130502",
+  "descripcion": "Esta sección recoge los datos de los 50 radares fijos y de tramo que menos se respetaron en el periodo 2017-2025.",
+  "distribuciones": [
+   {
+    "url": "https://www.dgt.es/export/sites/web-DGT/.galleries/downloads/dgt-en-cifras/denuncias/evolucion-de-denuncias-e-ingresos/50-radares-fijos-y-de-tramo-que-menos-se-respetan-Anos-2017-2025.xlsx",
+    "formato": "application/vnd.ms-excel",
+    "titulo": "Microsoft Excel"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radares.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280796-radares1": {
+  "titulo": "Radares",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "Se presenta información georregerenciada de radares fijos.\n****\n  * **Información optimizada para Google Earth** (datos de longitud y latitud)\n****\n  * Las **coordenadas X e Y** , se muestran en **WGS84** : Sistema Geodésico Mundial 1984 (World Geodetic System 84).\n****\n  * En el caso del radar, situado en Avda. de Córdoba con Calle Doctor Tolosa Latour, sentido Glorieta de Málaga, el tramo es con",
+  "distribuciones": [
+   {
+    "url": "https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-1-radares-fijos-moviles-csv/download/300049-1-radares-fijos-moviles-csv.csv",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/CSV",
+    "titulo": "300049-1-radares-fijos-moviles-csv"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-0-radares-fijos-moviles-geo/download/300049-0-radares-fijos-moviles-geo.geo",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/RSS",
+    "titulo": "300049-0-radares-fijos-moviles-geo"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-2-radares-fijos-moviles-xlsx/download/300049-2-radares-fijos-moviles-xlsx.xlsx",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+    "titulo": "300049-2-radares-fijos-moviles-xlsx"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radares.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/a05003423-poblacion-de-18-y-mas-anos-que-no-tiene-instalada-en-su-telefono-movil-la-aplicacion-radar-covid-segun-motivos-por-comarcas-de-canarias-2020": {
+  "titulo": "Población de 18 y más años que no tiene instalada en su teléfono móvil la aplicación Radar COVID según motivos por comarcas de Canarias. 2020",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/A05003423",
+  "descripcion": "Población de 18 y más años que no tiene instalada en su teléfono móvil la aplicación Radar COVID según motivos por comarcas de Canarias. 2020.",
+  "distribuciones": [
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/9374fe79-d1a5-4e8a-981d-b5fba0a29682/resource/1d875d70-4348-4913-aca9-1eea8014cc68/download/c00086a_0341.json",
+    "formato": "application/json",
+    "titulo": "Cubo estadístico. C00086A-DSC-0341 (JSON)"
+   },
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/9374fe79-d1a5-4e8a-981d-b5fba0a29682/resource/dc68ac60-efbe-41e5-9b2d-c20997708bce/download/pcaxis-88351913.px",
+    "formato": "text/pc-axis",
+    "titulo": "Cubo estadístico. C00086A-DSC-0341 (PC-Axis)"
+   },
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/9374fe79-d1a5-4e8a-981d-b5fba0a29682/resource/9df89afc-0820-4f47-b20c-5ce105d73c04/download/c00086a_0341.csv",
+    "formato": "text/csv",
+    "titulo": "Cubo estadístico. C00086A-DSC-0341 (CSV)"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/a05003423-poblacion-de-18-y-mas-anos-que-no-tiene-instalada-en-su-telefono-movil-la-aplicacion-radar-covid-segun-motivos-sexos-y-grupos-de-edad-canarias-2020": {
+  "titulo": "Población de 18 y más años que no tiene instalada en su teléfono móvil la aplicación Radar COVID según motivos, sexos y grupos de edad. Canarias. 2020",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/A05003423",
+  "descripcion": "Población de 18 y más años que no tiene instalada en su teléfono móvil la aplicación Radar COVID según motivos, sexos y grupos de edad. Canarias. 2020.",
+  "distribuciones": [
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/17cef3f6-e71c-431b-9aac-797f99cb05f4/resource/8dd9bd65-5421-428f-947a-09e2ff667d13/download/c00086a_0340.json",
+    "formato": "application/json",
+    "titulo": "Cubo estadístico. C00086A-DSC-0340 (JSON)"
+   },
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/17cef3f6-e71c-431b-9aac-797f99cb05f4/resource/c7003d6e-6837-425b-9800-639d25ab3a58/download/c00086a_0340.csv",
+    "formato": "text/csv",
+    "titulo": "Cubo estadístico. C00086A-DSC-0340 (CSV)"
+   },
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/17cef3f6-e71c-431b-9aac-797f99cb05f4/resource/bc5d4895-3a2e-4e69-8ec3-836ba4305507/download/pcaxis-1437251750.px",
+    "formato": "text/pc-axis",
+    "titulo": "Cubo estadístico. C00086A-DSC-0340 (PC-Axis)"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/a05003423-poblacion-de-18-y-mas-anos-segun-tiene-instalada-en-su-telefono-movil-la-aplicacion-radar-covid-por-comarcas-de-canarias-2020": {
+  "titulo": "Población de 18 y más años según tiene instalada en su teléfono móvil la aplicación Radar COVID por comarcas de Canarias. 2020",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/A05003423",
+  "descripcion": "Población de 18 y más años según tiene instalada en su teléfono móvil la aplicación Radar COVID por comarcas de Canarias. 2020.",
+  "distribuciones": [
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/4a788b2e-dde2-4a8c-a32d-cdfdb85cb69e/resource/51993547-b231-4922-b870-37236a325a05/download/c00086a_0339.json",
+    "formato": "application/json",
+    "titulo": "Cubo estadístico. C00086A-DSC-0339 (JSON)"
+   },
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/4a788b2e-dde2-4a8c-a32d-cdfdb85cb69e/resource/9cc443f5-ea05-41f9-afa8-8a5693589f63/download/c00086a_0339.csv",
+    "formato": "text/csv",
+    "titulo": "Cubo estadístico. C00086A-DSC-0339 (CSV)"
+   },
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/4a788b2e-dde2-4a8c-a32d-cdfdb85cb69e/resource/3a0587d9-32d0-42fd-92cd-47bfad735f70/download/pcaxis-2104418151.px",
+    "formato": "text/pc-axis",
+    "titulo": "Cubo estadístico. C00086A-DSC-0339 (PC-Axis)"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/a05003423-poblacion-de-18-y-mas-anos-segun-tiene-instalada-en-su-telefono-movil-la-aplicacion-radar-covid-sexos-y-grupos-de-edad-canarias-2020": {
+  "titulo": "Población de 18 y más años según tiene instalada en su teléfono móvil la aplicación Radar COVID, sexos y grupos de edad. Canarias. 2020",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/A05003423",
+  "descripcion": "Población de 18 y más años según tiene instalada en su teléfono móvil la aplicación Radar COVID, sexos y grupos de edad. Canarias. 2020.",
+  "distribuciones": [
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/a351a98f-091b-4141-a074-b8267cac7b48/resource/d357564c-325d-4758-bc91-21a7a6e8243c/download/pcaxis-1924322004.px",
+    "formato": "text/pc-axis",
+    "titulo": "Cubo estadístico. C00086A-DSC-0338 (PC-Axis)"
+   },
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/a351a98f-091b-4141-a074-b8267cac7b48/resource/8a3d9de3-e20b-4e45-baf2-fc8233dd2fc9/download/c00086a_0338.json",
+    "formato": "application/json",
+    "titulo": "Cubo estadístico. C00086A-DSC-0338 (JSON)"
+   },
+   {
+    "url": "https://datos.canarias.es/catalogos/estadisticas/dataset/a351a98f-091b-4141-a074-b8267cac7b48/resource/9da8ac52-fe21-4237-8ba0-dea5a40391c8/download/c00086a_0338.csv",
+    "formato": "text/csv",
+    "titulo": "Cubo estadístico. C00086A-DSC-0338 (CSV)"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280066-seguridad-vial-denuncias-tramitadas-excepto-radar-desde-el-ano-2008-historico1": {
+  "titulo": "Seguridad vial. Denuncias tramitadas (excepto radar) desde el año 2008. Histórico",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280066",
+  "descripcion": "Ayuntamiento del Alcobendas. Información relativa al numero de denuncias de tráfico tramitadas desde el año 2008, sin contabilizar las denuncias por radar.",
+  "distribuciones": [
+   {
+    "url": "https://datos.alcobendas.org/dataset/e8a2dbd9-45c6-4f4e-ad21-fc2e9606d021/resource/5ff0ce9c-e366-4cf9-b943-def07442d32c/download/denuncias-de-trafico-excluido-radar.xls",
+    "formato": "application/vnd.ms-excel",
+    "titulo": "Denuncias tramitadas, excluido radar, desde 2008"
+   },
+   {
+    "url": "https://datos.alcobendas.org/dataset/e8a2dbd9-45c6-4f4e-ad21-fc2e9606d021/resource/8ba84011-f64d-4768-bb4b-26b64184d4f0/download/denuncias-de-trafico-excluido-radar.csv",
+    "formato": "text/csv",
+    "titulo": "Denuncias tramitadas, excluido radar, desde 2008"
+   },
+   {
+    "url": "https://datos.alcobendas.org/dataset/e8a2dbd9-45c6-4f4e-ad21-fc2e9606d021/resource/da78e46f-be5d-4ed8-9b7e-ca7c0187538b/download/denuncias-de-trafico-excluido-radar.xml",
+    "formato": "text/xml",
+    "titulo": "Denuncias tramitadas, excluido radar, desde 2008"
+   },
+   {
+    "url": "https://datos.alcobendas.org/dataset/e8a2dbd9-45c6-4f4e-ad21-fc2e9606d021/resource/feab020f-a93e-4169-b9c3-0ce016a9f6e2/download/denuncias-de-trafico-excluido-radar.json",
+    "formato": "application/json",
+    "titulo": "Denuncias tramitadas, excluido radar, desde 2008"
+   },
+   {
+    "url": "https://datos.alcobendas.org/dataset/e8a2dbd9-45c6-4f4e-ad21-fc2e9606d021/resource/9a75bd31-84f4-490a-aa74-2b7074259fcd/download/denuncias-de-trafico-excluido-radar.ods",
+    "formato": "application/vnd.oasis.opendocument.spreadsheet",
+    "titulo": "Denuncias tramitadas, excluido radar, desde 2008"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280066-seguridad-vial-denuncias-tramitadas-por-la-unidad-de-radar-desde-el-ano-2013-historico": {
+  "titulo": "Seguridad vial. Denuncias tramitadas por la Unidad de Radar desde el año 2013. Histórico",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280066",
+  "descripcion": "Ayuntamiento de Alcobendas. Información sobre el número de denuncias por radar tramitadas desde el año 2013. \n\nEspecificaciones de la información contenida en los recursos\n\nDIGI-CAM: sistema de radar portátil\n\nMULTACAR: sistema de lector de matrículas y cámara digital, instalado en un vehículo, para tomar, de forma automatizada, fotografías de vehículos mal estacionados y sus matrículas, generando",
+  "distribuciones": [
+   {
+    "url": "https://datos.alcobendas.org/dataset/8dfbb415-3022-448f-8f8a-0d973eba6a8b/resource/ad391941-6035-4424-85ff-8bedf62fff45/download/denuncias-de-radar.ods",
+    "formato": "application/vnd.oasis.opendocument.spreadsheet",
+    "titulo": "Denuncias tramitadas por la Unidad de Radar desde el año 2013"
+   },
+   {
+    "url": "https://datos.alcobendas.org/dataset/8dfbb415-3022-448f-8f8a-0d973eba6a8b/resource/8ff6784f-859b-484b-96c1-4571a2c3c570/download/denuncias-de-radar.xml",
+    "formato": "text/xml",
+    "titulo": "Denuncias tramitadas por la Unidad de Radar desde el año 2013"
+   },
+   {
+    "url": "https://datos.alcobendas.org/dataset/8dfbb415-3022-448f-8f8a-0d973eba6a8b/resource/884e219e-b7e7-4d6a-9587-216102b61b76/download/denuncias-de-radar.csv",
+    "formato": "text/csv",
+    "titulo": "Denuncias tramitadas por la Unidad de Radar desde el año 2013"
+   },
+   {
+    "url": "https://datos.alcobendas.org/dataset/8dfbb415-3022-448f-8f8a-0d973eba6a8b/resource/b3996f2d-2b7f-41d8-a7ca-1d6ef3339a09/download/denuncias-de-radar.json",
+    "formato": "application/json",
+    "titulo": "Denuncias tramitadas por la Unidad de Radar desde el año 2013"
+   },
+   {
+    "url": "https://datos.alcobendas.org/dataset/8dfbb415-3022-448f-8f8a-0d973eba6a8b/resource/d52198dc-d17a-4e94-bc7d-c65e102e7248/download/denuncias-de-radar.xls",
+    "formato": "application/vnd.ms-excel",
+    "titulo": "Denuncias tramitadas por la Unidad de Radar desde el año 2013"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/ea0041268-estimaciones-de-contenido-de-humedad-de-combustible-en-vivo-en-los-ee-uu-occidentales-mediante-sinergia-radiometer-radar-lidar-traduccion-automatica": {
+  "titulo": "Estimaciones de contenido de humedad de combustible en vivo en los EE.UU. occidentales mediante sinergia radiometer-radar-lidar (Traducción automática)",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/EA0041268",
+  "descripcion": "Este conjunto de datos contiene estimaciones de contenido de humedad de combustible vivo (LFMC) en los Estados Unidos occidentales. LFMC es el porcentaje de masa de agua vegetal sobre la biomasa seca de las plantas. Aquí, LFMC se recupera aislando el componente de agua de la señal de profundidad óptica de la vegetación de microondas pasivas (VOD) a tres frecuencias: banda L (1.4 GHz), banda X (10.",
+  "distribuciones": [
+   {
+    "url": "https://digital.csic.es/bitstream/10261/357931/3/README.txt",
+    "formato": "",
+    "titulo": "README.txt"
+   },
+   {
+    "url": "https://digital.csic.es/bitstream/10261/357931/1/10479628.zip",
+    "formato": "",
+    "titulo": "10479628.zip"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/ea0041268-material-suplementario-para-potencial-de-energia-geotermica-de-baja-inhalacion-para-degradar-contaminantes-organicos-de-creciente-preocupacion-en-las-aguas-subterraneas-urbanas-traduccion-automatica": {
+  "titulo": "Material suplementario para: Potencial de energía geotérmica de baja inhalación para degradar contaminantes orgánicos de creciente preocupación en las aguas subterráneas urbanas (Traducción automática)",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/EA0041268",
+  "descripcion": "14 páginas. - A1. Enfoque sintético. - A1.1. Descripción general. - A1.2. Enfoque numérico. -- A1.3. escenarios de GWHP. -- A1.4. Resultados. -- A1.4.1. Concentración y temperatura de las aguas subterráneas a través del acuífero. -- A1.4.2. Evolución de la concentración y la temperatura de las aguas subterráneas en el límite degradado. -- Apéndice B. -- B1. Análisis de sensibilidad. - B1.1. Conduc",
+  "distribuciones": [
+   {
+    "url": "https://digital.csic.es/bitstream/10261/338898/2/README.txt",
+    "formato": "",
+    "titulo": "README.txt"
+   },
+   {
+    "url": "https://digital.csic.es/bitstream/10261/338898/1/Potential_low-enthalpy_supplement_info.pdf",
+    "formato": "",
+    "titulo": "Potential_low-enthalpy_supplement_info.pdf"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/title/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/ea0041268-plan-de-analisis-estadistico-protocolo-de-estudio-para-un-ensayo-clinico-aleatorizado-para-evaluar-7-versus-14-dias-de-tratamiento-para-las-infecciones-del-torrente-sanguineo-pseudomonas-aeruginosa-ensayo-shat-2-traduccion-automatica": {
+  "titulo": "Plan de análisis estadístico. Protocolo de estudio para un ensayo clínico aleatorizado para evaluar 7 versus 14 días de tratamiento para las infecciones del torrente sanguíneo Pseudomonas aeruginosa (ensayo SHAT-2) (Traducción automática)",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/EA0041268",
+  "descripcion": "Eficacia y seguridad de 7 versus 14 días de tratamiento antibiótico para Pseudomonas aeruginosa bacteremia: un ensayo clínico multicéntrico y aleatorizado (SHORTEN-2) con un análisis DOOR/RADAR. (Traducción automática)",
+  "distribuciones": [
+   {
+    "url": "https://digital.csic.es/bitstream/10261/331702/2/README.txt",
+    "formato": "",
+    "titulo": "README.txt"
+   },
+   {
+    "url": "https://digital.csic.es/bitstream/10261/331702/1/Statistical-analysis-plan.docx",
+    "formato": "",
+    "titulo": "Statistical-analysis-plan.docx"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/ea0041268-protocolo-de-estudio-de-longitud-completa-espanol-protocolo-de-estudio-para-un-ensayo-clinico-aleatorizado-para-evaluar-7-versus-14-dias-de-tratamiento-para-las-infecciones-del-torrente-sanguineo-pseudomonas-aeruginosa-ensayo-shat-2-traduccion-automatica-full-length-study-protocol-spa": {
+  "titulo": "Protocolo de estudio de longitud completa (español). Protocolo de estudio para un ensayo clínico aleatorizado para evaluar 7 versus 14 días de tratamiento para las infecciones del torrente sanguíneo Pseudomonas aeruginosa (ensayo SHAT-2) (Traducción automática) | Full-length study protocol (Spanish). Study protocol for a randomized clinical trial to assess 7 versus 14-days of treatment for Pseudomonas aeruginosa bloodstream infections (SHORTEN-2 trial)",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/EA0041268",
+  "descripcion": "Eficacia y seguridad de 7 versus 14 días de tratamiento antibiótico para la bacteriemia producida por Pseudomonas aeruginosa: un ensayo clínico multicéntrico, aleatorizado (SHORTEN-2) con un análisis DOOR/RADAR.",
+  "distribuciones": [
+   {
+    "url": "https://digital.csic.es/bitstream/10261/331713/1/study-protocol-ES.pdf",
+    "formato": "",
+    "titulo": "study-protocol-ES.pdf"
+   },
+   {
+    "url": "https://digital.csic.es/bitstream/10261/331713/2/README.txt",
+    "formato": "",
+    "titulo": "README.txt"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/ea0041268-protocolo-de-estudio-de-longitud-completa-ingles-protocolo-de-estudio-para-un-ensayo-clinico-aleatorizado-para-evaluar-7-versus-14-dias-de-tratamiento-para-las-infecciones-del-torrente-sanguineo-pseudomonas-aeruginosa-ensayo-shat-2-traduccion-automatica": {
+  "titulo": "Protocolo de estudio de longitud completa (inglés). Protocolo de estudio para un ensayo clínico aleatorizado para evaluar 7 versus 14 días de tratamiento para las infecciones del torrente sanguíneo Pseudomonas aeruginosa (ensayo SHAT-2) (Traducción automática)",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/EA0041268",
+  "descripcion": "Eficacia y seguridad de 7 versus 14 días de tratamiento antibiótico para Pseudomonas aeruginosa bacteremia: un ensayo clínico multicéntrico y aleatorizado (SHORTEN-2) con un análisis DOOR/RADAR. (Traducción automática)",
+  "distribuciones": [
+   {
+    "url": "https://digital.csic.es/bitstream/10261/331709/2/README.txt",
+    "formato": "",
+    "titulo": "README.txt"
+   },
+   {
+    "url": "https://digital.csic.es/bitstream/10261/331709/1/study-protocol.pdf",
+    "formato": "",
+    "titulo": "study-protocol.pdf"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/radar.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280796-trafico-cabezas-semaforos": {
+  "titulo": "Tráfico. Cabezas semáforos",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "Información relativa a las cabezas de semáforos instaladas en la ciudad de Madrid. Las cabezas de semáforos son elementos donde se sitúan los focos del conjunto semafórico. Se utilizan para señalizar y regular el tránsito de peatones, bicicletas o vehículos a motor y pueden constar de uno o más focos.\n****\nEste conjunto de datos incluye información de las características técnicas en cuanto a uso, ",
+  "distribuciones": [
+   {
+    "url": "https://datos.madrid.es/dataset/207240-0-trafico-cabezas-semaforos/resource/207240-2-trafico-cabezas-semaforos-zip/download/cabezas_semaforo_10-2026.zip",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/ZIP",
+    "titulo": "207240-2-trafico-cabezas-semaforos-zip"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/207240-0-trafico-cabezas-semaforos/resource/207240-0-trafico-cabezas-semaforos-csv/download/cabezas_semaforo_10-2026.csv",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/CSV",
+    "titulo": "207240-0-trafico-cabezas-semaforos-csv"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/207240-0-trafico-cabezas-semaforos/resource/207240-3-trafico-cabezas-semaforos/download/estructura_ds_datos_abiertos_cabezas_semaforos.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "207240-3-trafico-cabezas-semaforos"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/207240-0-trafico-cabezas-semaforos/resource/207240-4-trafico-cabezas-semaforos/download/manualvisualizapuntosmedidatrafico.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "207240-4-trafico-cabezas-semaforos"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/207240-0-trafico-cabezas-semaforos/resource/207240-1-trafico-cabezas-semaforos-xlsx/download/cabezas_semaforo_10-2026.xlsx",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+    "titulo": "207240-1-trafico-cabezas-semaforos-xlsx"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/207240-0-trafico-cabezas-semaforos/resource/207240-5-trafico-cabezas-semaforos/download/informacioncapacabezassemaforosbase.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "207240-5-trafico-cabezas-semaforos"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280796-bici-cruces-semaforizados-para-bici1": {
+  "titulo": "Bici. Cruces semaforizados para bici",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "Información relativa a las cabezas de semáforos instaladas en la ciudad de Madrid que incluyen una señal específica para bici. Las cabezas de semáforos son elementos donde se sitúan los focos del conjunto semafórico. Se utilizan para señalizar y regular el tránsito de peatones, bicicletas o vehículos a motor.\n****\nEste conjunto de datos incluye información de las características técnicas en cuanto",
+  "distribuciones": [
+   {
+    "url": "https://datos.madrid.es/dataset/205159-0-bici-cruces-semaforizados/resource/205159-3-bici-cruces-semaforizados-xlsx/download/cabezas_semaforo_bici_10-2026.xlsx",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+    "titulo": "205159-3-bici-cruces-semaforizados-xlsx"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205159-0-bici-cruces-semaforizados/resource/205159-2-bici-cruces-semaforizados-geo/download/cabezas_semaforo_bici_10-2026.geo",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/RSS",
+    "titulo": "205159-2-bici-cruces-semaforizados-geo"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205159-0-bici-cruces-semaforizados/resource/205159-4-bici-cruces-semaforizados/download/estructura_ds_20cabezas20_semaforos_bici.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "205159-4-bici-cruces-semaforizados"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205159-0-bici-cruces-semaforizados/resource/205159-1-bici-cruces-semaforizados-csv/download/cabezas_semaforo_bici_10-2026.csv",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/CSV",
+    "titulo": "205159-1-bici-cruces-semaforizados-csv"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/205159-0-bici-cruces-semaforizados/resource/205159-0-bici-cruces-semaforizados-zip/download/cabezas_semaforo_bici_10-2026.zip",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/ZIP",
+    "titulo": "205159-0-bici-cruces-semaforizados-zip"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280796-trafico-semaforos-apagados-o-en-destellos-en-tiempo-real1": {
+  "titulo": "Tráfico. Semáforos apagados o en destellos en tiempo real",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "Información relativa a los cruces semafóricos en situación de apagados o en destellos.\nEn la ciudad de Madrid existen más de 2300 cruces semafóricos. Desde el CGM se actúa sobre ellos y en función de las condiciones del tráfico se modifican en tiempo real el ciclo, reparto y/o desfase de cada cruce. La existencia de un semáforo apagado o en destellos de forma no programada es una circunstancia que",
+  "distribuciones": [
+   {
+    "url": "https://informo.madrid.es/informo/tmadrid/EstadosCruces.xml",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XML",
+    "titulo": "202974-0-trafico-semaforos"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/202974-0-trafico-semaforos/resource/202974-1-trafico-semaforos/download/estructura_ds_semaforos_apagados_destellos.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "202974-1-trafico-semaforos"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280796-trafico-cruces-semaforizados": {
+  "titulo": "Tráfico. Cruces semaforizados",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "Este conjunto de datos contiene la ubicación de los cruces semaforizados de la ciudad y la fecha de la primera instalación del cruce.\n****\nAdemás de su valor en sí mismo, permite asociar a sus elementos otros dispositivos que se recogen en otros conjuntos de datos, por ejemplo:\n****\n  * [Tráfico. Cabezas semáforos](https://datos.madrid.es/dataset/207240-0-trafico-cabezas-semaforos)\n****\n  * [Tráfi",
+  "distribuciones": [
+   {
+    "url": "https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-4-cruces-semaforizados-geo/download/cruces_10-2026.geo",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/RSS",
+    "titulo": "300275-4-cruces-semaforizados-geo"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-2-cruces-semaforizados-zip/download/cruces_10-2026.zip",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/ZIP",
+    "titulo": "300275-2-cruces-semaforizados-zip"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-3-cruces-semaforizados/download/estructura_ds_crucessemaforos.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "300275-3-cruces-semaforizados"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-0-cruces-semaforizados-csv/download/cruces_10-2026.csv",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/CSV",
+    "titulo": "300275-0-cruces-semaforizados-csv"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/300275-0-cruces-semaforizados/resource/300275-1-cruces-semaforizados-xlsx/download/cruces_10-2026.xlsx",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+    "titulo": "300275-1-cruces-semaforizados-xlsx"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280796-trafico-semaforos-con-avisadores-acusticos-a-demanda1": {
+  "titulo": "Tráfico. Semáforos con avisadores acústicos a demanda",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "Información relativa a las características y localización de los avisadores acústicos instalados en la ciudad de Madrid con posibilidad de configuración a demanda que pueden ser activados mediante mando estándar ONCE.\n****\nLas entidades públicas están obligadas por la normativa de accesibilidad vigente a facilitar el uso de los cruces semaforizados mediante dispositivos acústicos. De esta forma, l",
+  "distribuciones": [
+   {
+    "url": "https://datos.madrid.es/dataset/900011-0-semaforos-avisadores-once/resource/900011-2-semaforos-avisadores-once/download/estructura_datos_datos20abiertos20avisadores20acusticos20demanda.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "900011-2-semaforos-avisadores-once"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/900011-0-semaforos-avisadores-once/resource/900011-3-semaforos-avisadores-once-zip/download/avisadores_acusticos_demanda_10-2026.zip",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/ZIP",
+    "titulo": "900011-3-semaforos-avisadores-once-zip"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/900011-0-semaforos-avisadores-once/resource/900011-0-semaforos-avisadores-once-csv/download/avisadores_acusticos_demanda_10-2026.csv",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/CSV",
+    "titulo": "900011-0-semaforos-avisadores-once-csv"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/900011-0-semaforos-avisadores-once/resource/900011-1-semaforos-avisadores-once-xlsx/download/avisadores_acusticos_demanda_10-2026.xlsx",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+    "titulo": "900011-1-semaforos-avisadores-once-xlsx"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280796-trafico-semaforos-que-no-comunican1": {
+  "titulo": "Tráfico. Semáforos que no comunican",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "Información relativa a los cruces semafóricos que no comunican con el Centro de Gestión de la Movilidad (CGM).\n****\nEn la ciudad de Madrid existen más de 2300 cruces semafóricos. Desde el CGM se actúa sobre ellos y en función de las condiciones del tráfico se modifican en tiempo real el ciclo, reparto y/o desfase de cada cruce. La falta de comunicación podría ser indicio de algún problema, con la ",
+  "distribuciones": [
+   {
+    "url": "https://datos.madrid.es/dataset/208426-0-trafico-semaforos-no-comunican/resource/208426-1-trafico-semaforos-no-comunican/download/estructura_ds_semaforos_no_comunican.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "208426-1-trafico-semaforos-no-comunican"
+   },
+   {
+    "url": "https://informo.madrid.es/informo/tmadrid/CrucesNoComunican.xml",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XML",
+    "titulo": "208426-0-trafico-semaforos-no-comunican"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01280796-trafico-semaforos-con-avisadores-acusticos1": {
+  "titulo": "Tráfico. Semáforos con avisadores acústicos",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01280796",
+  "descripcion": "Información relativa a las características y localización de los avisadores acústicos instalados en la ciudad de Madrid.\n****\nLas entidades públicas están obligadas por la normativa de accesibilidad vigente a facilitar el uso de los cruces semaforizados mediante dispositivos acústicos. De esta forma, las personas con problemas de visión o cualquier otro colectivo que pudiera necesitarlos, pueden u",
+  "distribuciones": [
+   {
+    "url": "https://datos.madrid.es/dataset/202539-0-semaforos-avisadores/resource/202539-3-semaforos-avisadores-zip/download/avisadores_acusticos_entidad_10-2026.zip",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/ZIP",
+    "titulo": "202539-3-semaforos-avisadores-zip"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/202539-0-semaforos-avisadores/resource/202539-5-semaforos-avisadores/download/manualvisualizapuntosmedidatrafico.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "202539-5-semaforos-avisadores"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/202539-0-semaforos-avisadores/resource/202539-2-semaforos-avisadores-csv/download/avisadores_acusticos_entidad_10-2026.csv",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/CSV",
+    "titulo": "202539-2-semaforos-avisadores-csv"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/202539-0-semaforos-avisadores/resource/202539-7-semaforos-avisadores/download/directiva_its_sist_transp_intelig_2010_40_ue.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "202539-7-semaforos-avisadores"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/202539-0-semaforos-avisadores/resource/202539-1-semaforos-avisadores-geo/download/avisadores_acusticos_entidad_10-2026.geo",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/RSS",
+    "titulo": "202539-1-semaforos-avisadores-geo"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/202539-0-semaforos-avisadores/resource/202539-6-semaforos-avisadores/download/boe_a_2012-5043.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "202539-6-semaforos-avisadores"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/202539-0-semaforos-avisadores/resource/202539-4-semaforos-avisadores/download/estructura_datos_datos20abiertos20avisadores20acusticos.pdf",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/PDF",
+    "titulo": "202539-4-semaforos-avisadores"
+   },
+   {
+    "url": "https://datos.madrid.es/dataset/202539-0-semaforos-avisadores/resource/202539-0-semaforos-avisadores-xlsx/download/avisadores_acusticos_entidad_10-2026.xlsx",
+    "formato": "http://publications.europa.eu/resource/authority/file-type/XLSX",
+    "titulo": "202539-0-semaforos-avisadores-xlsx"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01502973-semaforos-1": {
+  "titulo": "Semáforos 1",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01502973",
+  "descripcion": "Grupos semafóricos de la ciudad.",
+  "distribuciones": [
+   {
+    "url": "https://idezar-sig.zaragoza.es/servicios/geoserver/movilidad/wfs?service=WFS&version=2.0.0&request=GetCapabilities",
+    "formato": "text/wfs",
+    "titulo": "WFS"
+   },
+   {
+    "url": "https://idezar-sig.zaragoza.es/servicios/geoserver/movilidad/wms?service=WMS&version=1.3.0&request=GetCapabilities",
+    "formato": "text/wms",
+    "titulo": "WMS"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01502973-semaforos-2": {
+  "titulo": "Semáforos 2",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01502973",
+  "descripcion": "Grupos semafafóricos de la ciudad.",
+  "distribuciones": [
+   {
+    "url": "https://idezar-sig.zaragoza.es/servicios/geoserver/movilidad/wms?service=WMS&version=1.3.0&request=GetCapabilities",
+    "formato": "text/wms",
+    "titulo": "WMS"
+   },
+   {
+    "url": "https://idezar-sig.zaragoza.es/servicios/geoserver/movilidad/wfs?service=WFS&version=2.0.0&request=GetCapabilities",
+    "formato": "text/wfs",
+    "titulo": "WFS"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/sem%C3%A1foros.json?_pageSize=50"
+ },
+ "https://datos.gob.es/catalogo/l01290672-semaforos": {
+  "titulo": "Semáforos",
+  "editor": "http://datos.gob.es/recurso/sector-publico/org/Organismo/L01290672",
+  "descripcion": "Información acerca de los semáforos Previsualización disponible en la siguiente URL de Geoportal https://callejero.malaga.eu/?gplayers=semaforo-acustico&gp=o",
+  "distribuciones": [
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-4326.csv",
+    "formato": "text/csv",
+    "titulo": "CSV Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-25830.gml",
+    "formato": "application/gml+xml",
+    "titulo": "GML Sistema Referencia EPSG 25830"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-4326.gml",
+    "formato": "application/gml+xml",
+    "titulo": "GML Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-4326.zip",
+    "formato": "application/x-zipped-shp",
+    "titulo": "SHP Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-25830.geojson",
+    "formato": "application/json",
+    "titulo": "GEOJSON Sistema Referencia EPSG 25830"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-25830.zip",
+    "formato": "application/x-zipped-shp",
+    "titulo": "SHP Sistema Referencia EPSG 25830"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-25830.kml",
+    "formato": "application/vnd.google-earth.kml+xml",
+    "titulo": "KML Sistema Referencia EPSG 25830"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-4326.kml",
+    "formato": "application/vnd.google-earth.kml+xml",
+    "titulo": "KML Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-4326.geojson",
+    "formato": "application/json",
+    "titulo": "GEOJSON Sistema Referencia EPSG 4326"
+   },
+   {
+    "url": "https://datosabiertos.malaga.eu/recursos/transporte/trafico/da_semaforosAcusticos-25830.csv",
+    "formato": "text/csv",
+    "titulo": "CSV Sistema Referencia EPSG 25830"
+   }
+  ],
+  "consulta": "https://datos.gob.es/apidata/catalog/dataset/keyword/semaforos.json?_pageSize=50"
+ }
+}
