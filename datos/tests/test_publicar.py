@@ -48,8 +48,8 @@ class PruebasConstruir(unittest.TestCase):
 
 
 class PruebasComprobar(unittest.TestCase):
-    def _rs(self, n, **kw):
-        return [dict(publicar.construir([radar(f"r{i}")], {}, {f"r{i}": {"fiab": "alta", "puntos": LINEA}}, {})[0], **kw)
+    def _rs(self, n, pre="dgt", **kw):
+        return [dict(publicar.construir([radar(f"{pre}-{i}")], {}, {f"{pre}-{i}": {"fiab": "alta", "puntos": LINEA}}, {})[0], **kw)
                 for i in range(n)]
 
     def test_bien(self):
@@ -60,6 +60,16 @@ class PruebasComprobar(unittest.TestCase):
 
     def test_variacion_frente_a_lo_publicado(self):
         self.assertTrue(publicar.comprobar(self._rs(700), {}, self._rs(900)))
+
+    def test_una_fuente_nueva_no_cuenta_como_variacion(self):
+        # 19/11: entran Cataluña (cat-) y Madrid; lo que ya estaba no cambia.
+        self.assertEqual(publicar.comprobar(self._rs(700) + self._rs(300, pre="cat"), {}, self._rs(700)), [])
+        # Pero si una fuente que ya estaba cae, sí.
+        self.assertTrue(publicar.comprobar(self._rs(700) + self._rs(10, pre="cat"), {}, self._rs(700) + self._rs(300, pre="cat")))
+
+    def test_grupos(self):
+        self.assertEqual([publicar.grupo(i) for i in ("dgt-CABINA_1", "mun-vitoria-cabina-3", "fr-madrid-109", "osm-123", "cat-c-32-85000")],
+                         ["dgt", "mun-vitoria", "fr-madrid", "osm", "cat"])
 
     def test_limite_raro(self):
         rs = self._rs(700)

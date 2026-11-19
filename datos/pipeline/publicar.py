@@ -87,6 +87,13 @@ def construir(crudos, sentido, aprox, limites, tramos=None):
     return out
 
 
+def grupo(ident):
+    """Grupo de un radar para comparar con lo publicado: el prefijo del id (`dgt`, `eus`, `osm`, `cat`...) y, en
+    los municipales y los semáforos, también la ciudad (`mun-vitoria`, `fr-madrid`...)."""
+    partes = ident.split("-")
+    return "-".join(partes[:2]) if partes[0] in ("mun", "fr") and len(partes) > 1 else partes[0]
+
+
 def comprobar(radares, fuentes, previo=None):
     """Problemas que impiden publicar (lista vacía si todo cuadra)."""
     p = []
@@ -97,9 +104,14 @@ def comprobar(radares, fuentes, previo=None):
     if len(set(ids)) != len(ids):
         p.append("identificadores repetidos")
     if previo:
-        antes = len(previo)
-        if antes and abs(n - antes) / antes > MAX_VARIACION:
-            p.append(f"{n} radares frente a {antes} publicados (variación mayor del {MAX_VARIACION:.0%})")
+        # Se compara cada grupo de radares (fuente y, en los municipales, la ciudad) con lo publicado: un grupo que
+        # baja o sube más de un 10 % (y en más de 3 radares) indica una lectura rota. Un grupo que no estaba antes
+        # es una fuente nueva y no se compara (19/11/2026: Cataluña y Madrid).
+        antes_g, ahora_g = Counter(grupo(r["id"]) for r in previo), Counter(grupo(r["id"]) for r in radares)
+        for g, antes in sorted(antes_g.items()):
+            ahora = ahora_g.get(g, 0)
+            if abs(ahora - antes) > 3 and abs(ahora - antes) / antes > MAX_VARIACION:
+                p.append(f"{g}: {ahora} radares frente a {antes} publicados (variación mayor del {MAX_VARIACION:.0%})")
     resueltos = [r for r in radares if r["fuente"] in ("dgt", "trafikoa") and r["tipo"] != "tramo"]
     if resueltos:
         con = sum(1 for r in resueltos if r["aproximacion_fiab"] is not None)
@@ -166,6 +178,10 @@ def main(argv=None):
             "municipal": {"ok": True, "radares": f.get("municipal", {}).get("radares", 0),
                           "copia_usada": f.get("municipal", {}).get("copia_usada", [])},
             "osm": {"ok": True, "radares": f.get("osm", {}).get("radares", 0)},
+            "sct": {"ok": True, "radares": f.get("sct", {}).get("radares", 0),
+                    "usada_copia": f.get("sct", {}).get("usada_copia", False)},
+            "madrid": {"ok": True, "radares": f.get("madrid", {}).get("radares", 0),
+                       "usada_copia": f.get("madrid", {}).get("usada_copia", False)},
             "fotorrojo": {"ok": True, "radares": f.get("fotorrojo", {}).get("radares", 0),
                           "por_fuente": f.get("fotorrojo", {}).get("por_fuente", {}),
                           "copia_usada": f.get("fotorrojo", {}).get("copia_usada", [])},

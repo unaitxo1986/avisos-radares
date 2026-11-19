@@ -19,7 +19,7 @@ import urllib.request
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
-from datos.pipeline import dgt, fotorrojo, manual, municipales, osm_confirmados, trafikoa  # noqa: E402
+from datos.pipeline import dgt, fotorrojo, madrid, manual, municipales, osm_confirmados, sct, trafikoa  # noqa: E402
 from datos.pipeline.dgt import ErrorLectura  # noqa: E402
 
 # Cajas de sanidad (lat_min, lat_max, lon_min, lon_max) para detectar coordenadas rotas.
@@ -145,6 +145,14 @@ def main(argv=None):
         fr = fotorrojo.leer(None if (a.sin_municipales_red or a.dgt) else descargar,
                             hoy=datetime.date.today().isoformat(), avisos=avisos)
         problemas += comprobar("Foto rojo", fr["radares"], CAJA_ESPANA, {})
+
+        # Cataluña (19/11): la DGT no la cubre; radares fijos del Servei Català de Trànsit.
+        ct = sct.leer(None if a.dgt else descargar, avisos=avisos)
+        problemas += comprobar("Servei Català de Trànsit", ct["radares"], sct.CAJA, {})
+
+        # Radares municipales de Madrid (19/11): fijos y de tramo de los datos abiertos del Ayuntamiento.
+        md = madrid.leer(None if (a.sin_municipales_red or a.dgt) else descargar, avisos=avisos)
+        problemas += comprobar("Madrid", md["radares"], CAJA_ESPANA, {})
     except (ErrorLectura, OSError) as e:
         print(f"ERROR: {e}", file=sys.stderr)
         return 2
@@ -158,7 +166,8 @@ def main(argv=None):
         RUTA_COPIA_DGT.parent.mkdir(parents=True, exist_ok=True)
         RUTA_COPIA_DGT.write_bytes(gzip.compress(xml_dgt, 9, mtime=0))
 
-    radares = d["radares"] + t["radares"] + m["radares"] + mu["radares"] + oc["radares"] + fr["radares"]
+    radares = (d["radares"] + t["radares"] + m["radares"] + mu["radares"] + oc["radares"] + fr["radares"]
+               + ct["radares"] + md["radares"])
     ids = [r["id"] for r in radares]
     if len(set(ids)) != len(ids):
         print("ERROR: identificadores repetidos entre fuentes", file=sys.stderr)
@@ -173,6 +182,8 @@ def main(argv=None):
             "municipal": {"radares": len(mu["radares"]), "copia_usada": mu["copia_usada"],
                           "url": "datos/pipeline/municipales.py"},
             "osm": {"radares": len(oc["radares"]), "url": "datos/fuentes/osm_confirmados.json"},
+            "sct": {"radares": len(ct["radares"]), "url": sct.URL, "usada_copia": ct["usada_copia"]},
+            "madrid": {"radares": len(md["radares"]), "url": madrid.URL, "usada_copia": md["usada_copia"]},
             "fotorrojo": {"radares": len(fr["radares"]), "por_fuente": fr["por_fuente"],
                           "copia_usada": fr["copia_usada"], "url": "datos/pipeline/fotorrojo.py"},
         },
@@ -183,7 +194,7 @@ def main(argv=None):
     Path(a.salida).write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
     for av in avisos:
         print(f"AVISO: {av}", file=sys.stderr)
-    print(f"OK: {len(radares)} radares (DGT {len(d['radares'])}, Trafikoa {len(t['radares'])}, manual {len(m['radares'])}, municipales {len(mu['radares'])}, OSM confirmados {len(oc['radares'])}, foto rojo {len(fr['radares'])} {fr['por_fuente']})")
+    print(f"OK: {len(radares)} radares (DGT {len(d['radares'])}, Trafikoa {len(t['radares'])}, manual {len(m['radares'])}, municipales {len(mu['radares'])}, OSM confirmados {len(oc['radares'])}, foto rojo {len(fr['radares'])} {fr['por_fuente']}, Cataluña {len(ct['radares'])}, Madrid {len(md['radares'])})")
     return 0
 
 
