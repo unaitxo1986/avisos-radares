@@ -1,0 +1,30 @@
+name: Exploración de fuentes nuevas (descargas)
+
+# Tarea puntual: descarga ficheros de fuentes nuevas a datos/exploracion/descargas/ para estudiar su formato.
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/explorar-descargas.yml"
+      - "datos/pipeline/explorar_descargas.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  explorar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar
+        run: timeout 10m python3 -I datos/pipeline/explorar_descargas.py datos/exploracion/descargas
+      - name: Guardar lo descargado
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/exploracion
+          git diff --cached --quiet && exit 0
+          git commit -m "Exploración: descargas de fuentes nuevas (automático)"
+          git pull --rebase origin main
+          git push origin HEAD:main
