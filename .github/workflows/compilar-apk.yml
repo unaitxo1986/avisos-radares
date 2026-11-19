@@ -87,23 +87,27 @@ jobs:
           APKSIGNER=$(ls "$ANDROID_HOME"/build-tools/*/apksigner | sort -V | tail -1)
           "$APKSIGNER" verify --print-certs app/build/outputs/apk/release/app-release.apk
           cp app/build/outputs/apk/release/app-release.apk "$RUNNER_TEMP/avisos-radares.apk"
+          # Copia con la versión en el nombre (Unai, 19/11): versionName es 0.1.<número de compilación>.
+          cp app/build/outputs/apk/release/app-release.apk "$RUNNER_TEMP/avisos-radares-0.1.$GITHUB_RUN_NUMBER.apk"
           rm -f "$RUNNER_TEMP/release.jks"
 
       - uses: actions/upload-artifact@v4
         with:
-          name: avisos-radares-apk
-          path: ${{ runner.temp }}/avisos-radares.apk
+          name: avisos-radares-0.1.${{ github.run_number }}
+          path: ${{ runner.temp }}/avisos-radares-0.1.${{ github.run_number }}.apk
           retention-days: 30
 
       # Enlace fijo y público (sin iniciar sesión) para bajar el APK desde el móvil:
       # https://github.com/unaitxo1986/avisos-radares/releases/download/latest/avisos-radares.apk
+      # Desde el 19/11 la release lleva además el mismo APK con la versión en el nombre
+      # (avisos-radares-0.1.<compilación>.apk), que es el que se ve en la página de la release.
       - name: Publicar en la release "latest"
         working-directory: ${{ github.workspace }}
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release delete latest --cleanup-tag --yes || true
-          gh release create latest "$RUNNER_TEMP/avisos-radares.apk" \
+          gh release create latest "$RUNNER_TEMP/avisos-radares-0.1.$GITHUB_RUN_NUMBER.apk" "$RUNNER_TEMP/avisos-radares.apk" \
             --target "$GITHUB_SHA" --prerelease \
-            --title "Última compilación (n.º $GITHUB_RUN_NUMBER)" \
-            --notes "Compilación $GITHUB_RUN_NUMBER, commit $GITHUB_SHA. Firmada con la clave fija del proyecto."
+            --title "Versión 0.1.$GITHUB_RUN_NUMBER" \
+            --notes "Versión 0.1.$GITHUB_RUN_NUMBER (compilación $GITHUB_RUN_NUMBER), commit $GITHUB_SHA. Firmada con la clave fija del proyecto. avisos-radares-0.1.$GITHUB_RUN_NUMBER.apk y avisos-radares.apk son el mismo fichero; el segundo es el del enlace fijo."
