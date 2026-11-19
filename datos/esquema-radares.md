@@ -14,8 +14,8 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 
 | Campo | Tipo | Descripción |
 |---|---|---|
-| `id` | texto | Identificador estable. Prefijo de la fuente: `dgt-`, `eus-`, `man-`, `mun-` (municipales, desde el 18/11/2026), `osm-` (cámaras de OpenStreetMap confirmadas por Unai) |
-| `tipo` | texto | `fijo`, `tramo` o `fotorrojo`. (`tramo_extremo` solo si un extremo de tramo de Trafikoa queda sin emparejar; desde la fase 5 los dos de Trabakua salen como dos `tramo`, uno por sentido, con el id del extremo por el que se entra) |
+| `id` | texto | Identificador estable. Prefijo de la fuente: `dgt-`, `eus-`, `man-`, `mun-` (municipales, desde el 18/11/2026), `osm-` (cámaras de OpenStreetMap confirmadas por Unai), `fr-` (cámaras de semáforo en rojo de listas oficiales de ayuntamientos de España, desde el 19/11/2026: `fr-madrid-`, `fr-malaga-`, `fr-santacruz-`; fuente `municipal`, tipo `fotorrojo`, `datos/pipeline/fotorrojo.py`) |
+| `tipo` | texto | `fijo`, `tramo` o `fotorrojo` (cámara de semáforo en rojo: no mide la velocidad; la app no enseña límite ni avisa de exceso en ellas, 19/11/2026). (`tramo_extremo` solo si un extremo de tramo de Trafikoa queda sin emparejar; desde la fase 5 los dos de Trabakua salen como dos `tramo`, uno por sentido, con el id del extremo por el que se entra) |
 | `nombre` | texto | Nombre o ubicación |
 | `fuente` | texto | `dgt`, `trafikoa`, `manual`, `municipal` (publicación de un ayuntamiento, ver abajo) u `osm` (solo en OpenStreetMap, confirmada por Unai: `datos/fuentes/osm_confirmados.json`) |
 | `lat`, `lon` | número | WGS84 (en tramos, punto de inicio) |

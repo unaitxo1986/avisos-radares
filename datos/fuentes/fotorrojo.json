@@ -1,0 +1,275 @@
+{
+ "_nota": "Copia buena de las cámaras de semáforo en rojo oficiales (datos/pipeline/fotorrojo.py). Primera versión: exploración del 19/11/2026.",
+ "madrid": {
+  "leido": "2026-11-19",
+  "registros": [
+   {
+    "id": "109",
+    "nombre": "AVDA. CARDENAL HERRERA ORIA, 83",
+    "lat": 40.489202,
+    "lon": -3.701016
+   },
+   {
+    "id": "1465",
+    "nombre": "AVDA. MARQUÉS CORBERA - RICARDO ORTIZ",
+    "lat": 40.422857,
+    "lon": -3.655944
+   },
+   {
+    "id": "1466",
+    "nombre": "ALCALA - SAN ROMUALDO",
+    "lat": 40.441637,
+    "lon": -3.624083
+   },
+   {
+    "id": "1467",
+    "nombre": "ASCAO - EMILIO FERRARI",
+    "lat": 40.430557,
+    "lon": -3.640092
+   },
+   {
+    "id": "1468",
+    "nombre": "JOSE ABASCAL - SANTA ENGRACIA",
+    "lat": 40.438544,
+    "lon": -3.70083
+   },
+   {
+    "id": "1469",
+    "nombre": "AVDA. CIUDAD BARCELONA - MENÉNDEZ PELAYO",
+    "lat": 40.404126,
+    "lon": -3.68041
+   },
+   {
+    "id": "1470",
+    "nombre": "MONFORTE DE LEMOS - FINISTERRE",
+    "lat": 40.479834,
+    "lon": -3.702264
+   },
+   {
+    "id": "1471",
+    "nombre": "AVDA. AMERICA - CARTAGENA",
+    "lat": 40.439245,
+    "lon": -3.67294
+   },
+   {
+    "id": "1472",
+    "nombre": "CNO BARRIAL - FDO LAZARO CARRETER",
+    "lat": 40.462272,
+    "lon": -3.793302
+   },
+   {
+    "id": "1473",
+    "nombre": "CTRA. CARABANCHEL ARAVACA - VILLAVICIOSA",
+    "lat": 40.396944,
+    "lon": -3.774335
+   },
+   {
+    "id": "1474",
+    "nombre": "AVDA. DE LA PESETA - CTRA BARRIO FORTUNA",
+    "lat": 40.369501,
+    "lon": -3.765835
+   },
+   {
+    "id": "1475",
+    "nombre": "GRAL RICARDOS - PSO QUINCE DE MAYO",
+    "lat": 40.396889,
+    "lon": -3.717336
+   },
+   {
+    "id": "1547",
+    "nombre": "CEA BERMÚDEZ - VALLEHERMOSO",
+    "lat": 40.43885,
+    "lon": -3.70867
+   },
+   {
+    "id": "1550",
+    "nombre": "JOAQUIN COSTA, 36",
+    "lat": 40.440933,
+    "lon": -3.681154
+   },
+   {
+    "id": "1551",
+    "nombre": "FRANCISCO SILVELA, 99",
+    "lat": 40.439487,
+    "lon": -3.679703
+   },
+   {
+    "id": "220",
+    "nombre": "HNOS. GARCÍA NOBLEJAS 123",
+    "lat": 40.420343,
+    "lon": -3.625219
+   },
+   {
+    "id": "436",
+    "nombre": "AVDA. DE LOS POBLADOS, 45",
+    "lat": 40.384086,
+    "lon": -3.759772
+   },
+   {
+    "id": "439",
+    "nombre": "PO CASTELLANA, 105",
+    "lat": 40.454642,
+    "lon": -3.690559
+   },
+   {
+    "id": "535",
+    "nombre": "CAMINO DE LOS VINATEROS, 47",
+    "lat": 40.410744,
+    "lon": -3.654794
+   },
+   {
+    "id": "536",
+    "nombre": "AVDA. LOGROÑO, 44",
+    "lat": 40.460245,
+    "lon": -3.593682
+   },
+   {
+    "id": "538",
+    "nombre": "VENTISQUERO DE LA CONDESA, 42",
+    "lat": 40.494083,
+    "lon": -3.717455
+   },
+   {
+    "id": "539",
+    "nombre": "AVDA. FILIPINAS, 18",
+    "lat": 40.440086,
+    "lon": -3.710132
+   },
+   {
+    "id": "541",
+    "nombre": "AVDA. ILUSTRACIÓN - BETANZOS",
+    "lat": 40.480526,
+    "lon": -3.712107
+   },
+   {
+    "id": "542",
+    "nombre": "AVDA. ANDALUCÍA - METRO SAN CRISTOBAL",
+    "lat": 40.341752,
+    "lon": -3.69287
+   },
+   {
+    "id": "545",
+    "nombre": "PO CASTELLANA, 167",
+    "lat": 40.462233,
+    "lon": -3.689801
+   },
+   {
+    "id": "618",
+    "nombre": "O'DONNELL CARRIL CENTRAL",
+    "lat": 40.421067,
+    "lon": -3.668191
+   },
+   {
+    "id": "718",
+    "nombre": "CARDENAL HERRERA ORIA - LA MASÓ",
+    "lat": 40.483268,
+    "lon": -3.713825
+   },
+   {
+    "id": "720",
+    "nombre": "FUENTE CARRANTONA - HACIENDA PAVONES",
+    "lat": 40.400514,
+    "lon": -3.636417
+   },
+   {
+    "id": "722",
+    "nombre": "FRANCISCO PI Y MARGALL ESQ. ANA DE AUSTRIA",
+    "lat": 40.491006,
+    "lon": -3.659741
+   },
+   {
+    "id": "724",
+    "nombre": "ALBERTO AGUILERA - BALTASAR GRACIÁN",
+    "lat": 40.430032,
+    "lon": -3.710922
+   },
+   {
+    "id": "728",
+    "nombre": "JOAQUIN COSTA - VELAZQUEZ",
+    "lat": 40.442946,
+    "lon": -3.683307
+   },
+   {
+    "id": "734",
+    "nombre": "VIA LUSITANA - PL ELÍPTICA",
+    "lat": 40.384675,
+    "lon": -3.718427
+   },
+   {
+    "id": "746",
+    "nombre": "SINESIO DELGADO GTA P. CEBRERO",
+    "lat": 40.471239,
+    "lon": -3.711149
+   },
+   {
+    "id": "768",
+    "nombre": "MENÉNDEZ PELAYO - NIÑO JESÚS",
+    "lat": 40.414654,
+    "lon": -3.677537
+   },
+   {
+    "id": "769",
+    "nombre": "AVDA. MEDITERRÁNEO, 32",
+    "lat": 40.406942,
+    "lon": -3.673092
+   },
+   {
+    "id": "770",
+    "nombre": "FRANCISCO SILVELA, 62",
+    "lat": 40.435212,
+    "lon": -3.675023
+   },
+   {
+    "id": "832",
+    "nombre": "AVDA. ANDALUCÍA - ALCOCER",
+    "lat": 40.350681,
+    "lon": -3.693023
+   }
+  ]
+ },
+ "malaga": {
+  "leido": "2026-11-19",
+  "registros": [
+   {
+    "id": "79132",
+    "nombre": "Jiménez Fraud dirección dirección centro ciudad",
+    "lat": 36.71666,
+    "lon": -4.476033
+   },
+   {
+    "id": "79133",
+    "nombre": "Jiménez Fraud dirección Hospital Clínico",
+    "lat": 36.716422,
+    "lon": -4.475607
+   },
+   {
+    "id": "79134",
+    "nombre": "Av. Valle-Inclán, nº 20, sentido este",
+    "lat": 36.729009,
+    "lon": -4.444644
+   },
+   {
+    "id": "79136",
+    "nombre": "Av. Valle-Inclán, nº9, sentido este",
+    "lat": 36.736173,
+    "lon": -4.433244
+   },
+   {
+    "id": "79137",
+    "nombre": "Av. Valle-Inclán, nº 12, sentido oeste",
+    "lat": 36.736402,
+    "lon": -4.433349
+   },
+   {
+    "id": "79138",
+    "nombre": "Av. Valle-Inclán, nº 3, sentido este",
+    "lat": 36.73744,
+    "lon": -4.42696
+   }
+  ]
+ },
+ "santacruz": {
+  "leido": null,
+  "registros": []
+ }
+}

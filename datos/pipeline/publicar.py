@@ -166,6 +166,9 @@ def main(argv=None):
             "municipal": {"ok": True, "radares": f.get("municipal", {}).get("radares", 0),
                           "copia_usada": f.get("municipal", {}).get("copia_usada", [])},
             "osm": {"ok": True, "radares": f.get("osm", {}).get("radares", 0)},
+            "fotorrojo": {"ok": True, "radares": f.get("fotorrojo", {}).get("radares", 0),
+                          "por_fuente": f.get("fotorrojo", {}).get("por_fuente", {}),
+                          "copia_usada": f.get("fotorrojo", {}).get("copia_usada", [])},
         },
         "radares_publicados": len(previo) if problemas and previo else len(radares),
     }
