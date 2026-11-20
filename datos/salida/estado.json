@@ -1,10 +1,9 @@
 {
- "generado": "2026-11-19T15:42:10Z",
+ "generado": "2026-11-20T12:02:17Z",
  "ok": true,
  "avisos": [
   "Trafikoa no se pudo leer (no se pudo descargar https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo: <urlopen error timed out>); se usa la copia guardada: Copia de la página oficial de Trafikoa leída con Chrome el 2026-11-15 (98 radares).",
-  "Municipales (vitoria_cabinas) no se pudo leer (no se pudo descargar https://www.vitoria-gasteiz.org/arcgis/rest/services/internet/10_capas_geovitoria/MapServer/identify?geometry=523000%2C4741500%2C530500%2C4747500&geometryType=esriGeometryEnvelope); se usa la copia del 2026-11-18",
-  "Municipales (donostia_radares) no se pudo leer (no se pudo descargar https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query?where=1%3D1&outFields=%2A&returnGeometry=true&outSR=4326&f=json: <urlopen error _ssl.c:994: Th); se usa la copia del 2026-11-18",
+  "Municipales (donostia_radares) no se pudo leer (no se pudo descargar https://www.donostia.eus/geozerbitzuak/rest/services/ext/GARRAIOA/MapServer/41/query?where=1%3D1&outFields=%2A&returnGeometry=true&outSR=4326&f=json: <urlopen error [Errno 111] Co); se usa la copia del 2026-11-18",
   "Foto rojo (santacruz) no se pudo leer (no se pudo descargar https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b/resource/c72047bc-3e4b-409a-8997-d1f1a1f11772/download/foto_rojo.geojson: <urlopen error t); no hay copia: no entra",
   "Servei Català de Trànsit: 43 filas no entran (tramos y coordenadas rotas): A-2 pk 501,5-506,5 (tramo); A-2 pk 506,3-501,5 (tramo); A-2 pk 539,2-545,1 (tramo); A-2 pk 545,1-539,2 (tramo); A-2 pk 563,2-570,1 (tramo); A-7 pk 1159-1163 (tramo); A-7 pk 1163-1159 (tramo); AP-7 pk 146,6-140,6 (tramo); AP-7 pk 343-325 (tramo); C-14 pk 124,7-134,3 (tramo); C-14 pk 134,3-124,8 (tramo); C-16 pk 11,85-8,325 (tramo); C-16 pk 2,103-5,148 (tramo); C-16 pk 5,150-2,101 (tramo); C-16 pk 8,675-11,22 (tramo); C-17 pk 18,17-16,21 (tramo); C-17 pk 19,77-18,17 (tramo); C-17 pk 37,79-41,0 (tramo); C-17 pk 41,1-37,83 (tramo); C-31 pk 150,4-157,0 (tramo); C-31 pk 157,0-150,4 (tramo); C-31 pk 212,2-215 (tramo); C-31 pk 214,8-211,4 (tramo); C-58 pk 14,97-13,49 (tramo); C-58cc pk 1,8 -3,0 (tramo)"
  ],
@@ -29,7 +28,6 @@
    "ok": true,
    "radares": 38,
    "copia_usada": [
-    "vitoria_cabinas",
     "donostia_radares",
     "vitoria_fotorrojo",
     "bilbao_cabinas"
