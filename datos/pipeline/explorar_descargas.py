@@ -1,7 +1,7 @@
 """Exploración puntual: descarga ficheros de fuentes nuevas a `datos/exploracion/descargas/` para estudiar su
 formato antes de escribir el lector (el entorno de Claude no llega a esas webs; GitHub Actions sí).
 
-19/11/2026: radares fijos del Servei Català de Trànsit (Cataluña no está en el fichero de la DGT) y radares fijos
+20/11/2026: geometría alrededor de la cabina Derio Loiu. 19/11/2026: radares fijos del Servei Català de Trànsit (Cataluña no está en el fichero de la DGT) y radares fijos
 municipales de Madrid (datos abiertos del Ayuntamiento).
 """
 import sys
@@ -11,11 +11,9 @@ from pathlib import Path
 SALIDA = Path(sys.argv[1] if len(sys.argv) > 1 else "datos/exploracion/descargas")
 UA = {"User-Agent": "avisos-radares/1.0 (https://github.com/unaitxo1986/avisos-radares)"}
 DESCARGAS = {
-    "sct_radars.txt": "http://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt",
-    "sct_radars_https.txt": "https://transit.gencat.cat/web/.content/documents/seguretat_viaria/radars.txt",
-    "madrid_radares.csv": "https://datos.madrid.es/dataset/300049-0-radares-fijos-moviles/resource/300049-1-radares-fijos-moviles-csv/download/300049-1-radares-fijos-moviles-csv.csv",
-    "madrid_radares_ckan.json": "https://datos.madrid.es/api/3/action/package_show?id=300049-0-radares-fijos-moviles",
-    "sct_ckan.json": "https://analisi.transparenciacatalunya.cat/api/views/metadata/v1?search=radars",
+    # 20/11/2026: cabina "Derio Loiu" (N-637 ramal R-02) que avisó a Unai yendo hacia Bilbao: carreteras de
+    # OpenStreetMap en unos 600 x 600 m alrededor de la cabina (43.286086, -2.892918).
+    "loiu_osm.json": "https://api.openstreetmap.org/api/0.6/map.json?bbox=-2.8965,43.2834,-2.8890,43.2888",
 }
 
 
