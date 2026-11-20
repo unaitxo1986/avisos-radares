@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Android Auto (fase 7): app hecha con plantillas de la librería de coches. -->
+<!-- Android Auto (fase 7): app hecha con plantillas de la librería de coches y, desde el 20/11, avisos como
+     mensajes (para que salgan en la columna de la derecha sin quitar Google Maps). -->
 <automotiveApp>
     <uses name="template" />
+    <uses name="notification" />
 </automotiveApp>

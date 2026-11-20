@@ -71,6 +71,11 @@
             </intent-filter>
         </service>
 
+        <!-- Acciones del mensaje de Android Auto ("Responder", "Marcar como leído"). -->
+        <receiver
+            android:name=".AccionesMensajeCoche"
+            android:exported="false" />
+
         <service
             android:name=".ServicioRadares"
             android:exported="false"
