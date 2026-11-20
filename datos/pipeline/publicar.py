@@ -67,7 +67,10 @@ def construir(crudos, sentido, aprox, limites, tramos=None):
             "pk": _km(r.get("pk_m")),
             "sentido": r.get("destino") or r.get("sentido_oficial"),
             "sentido_km": sk if sk in SENTIDOS_KM else None,
-            "aproximacion": linea if fiab == "alta" or (fiab == "manual" and linea) else None,
+            # 21/11: también la línea dudosa (cruce ambiguo, túnel largo, rotonda), para que la app avise solo en la
+            # carretera y el sentido del radar en lugar de por cercanía en cualquier sentido (Unai: "Miraflores" de
+            # la A-8 le avisó yendo en sentido contrario).
+            "aproximacion": linea if fiab in ("alta", "dudosa") or (fiab == "manual" and linea) else None,
             "aproximacion_fiab": fiab,
             "limite": lim.get("limite"),
             "limite_origen": lim.get("origen"),

@@ -25,7 +25,7 @@ La app **no usa el rumbo de la brújula**: ubica el coche sobre la carretera y d
 | `sentido` | texto o nulo | Sentido oficial tal como lo da la fuente: destino (`CANTABRIA`) si lo hay; si no, `creciente`/`decreciente` |
 | `sentido_km` | `creciente`, `decreciente` o nulo | Sentido en que crece o decrece el kilometraje, deducido en 3.2 sobre la carretera. Nulo si la carretera es de sentido único o no se pudo resolver. En tramos, sale del orden inicio → fin (`pk` → `pk_fin`). Informativo para la app |
 | `aproximacion` | lista de `[lat, lon]` o nulo | Línea de la carretera por la que se llega al radar en el sentido que vigila (**500 m**, decisión de Unai del 15/11/2026), en el orden de la marcha; termina en el radar. Geometría de OpenStreetMap. Solo se publica si `aproximacion_fiab` es `alta` |
-| `aproximacion_fiab` | texto o nulo | `alta`, `dudosa` o nulo (no calculada, por ejemplo en tramos). Con `dudosa` o nulo la app avisa por cercanía en cualquier sentido |
+| `aproximacion_fiab` | texto o nulo | `alta`, `dudosa` o nulo (no calculada, por ejemplo en tramos). Desde el 21/11/2026 la línea `dudosa` también se publica y la app la usa como la `alta` (aviso solo en la carretera y el sentido del radar); sin línea, la app avisa por cercanía en cualquier sentido |
 | `limite` | entero o nulo | km/h. Nulo si no se conoce: la app avisa sin límite |
 | `limite_origen` | texto o nulo | `oficial`, `manual`, `osm` (calzada elegida en 3.2; en tramos, el valor de al menos el 80 % de los puntos muestreados), `osm_cercana` (vía próxima de la misma carretera) `osm_tramo_minimo` (tramo cuyo límite cambia en OpenStreetMap: el más bajo) u `osm_relacion` (tramo sin límite fiable en la carretera: el de su relación de radar de tramo de OpenStreetMap, `datos/fuentes/osm_tramos.json`). Prioridad: oficial, manual, OpenStreetMap |
 | `limite_fiab` | texto o nulo | `alta` (oficial o manual), `media` (`osm`) o `baja` (`osm_cercana`). Qué hace la app con `baja` se decide en 4.3 (recomendación: no mostrar el límite) |
@@ -117,7 +117,7 @@ Lo escribe `datos/pipeline/calcular_aproximacion.py` (algoritmo en `aproximacion
 
 | Campo | Notas |
 |---|---|
-| `fiab` | `alta` o `dudosa`. Con `dudosa` (o sin `puntos`) la app avisa por cercanía en cualquier sentido |
+| `fiab` | `alta` o `dudosa`. Desde el 21/11/2026 la app usa también las `dudosa` si tienen `puntos`; sin `puntos`, avisa por cercanía en cualquier sentido |
 | `puntos` | Lista `[lat, lon]` en el orden de la marcha, **termina en el punto de la calzada junto a la cabina** (el `punto` de `sentido.json`) y empieza 500 m antes siguiendo la carretera. Simplificada (tolerancia de 2 m). `null` si no hay línea (radar sin sentido fiable o sin datos) |
 | `largo_m` | Metros recorridos hacia atrás (500 si la carretera continúa lo suficiente) |
 | `tunel_m` | Metros de la línea que van en túnel (etiqueta `tunnel` de OpenStreetMap) |

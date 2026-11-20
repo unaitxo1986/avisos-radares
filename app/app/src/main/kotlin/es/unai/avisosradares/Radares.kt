@@ -100,7 +100,9 @@ fun leerRadares(texto: String): ListaRadares {
         val id = r.texto("id") ?: continue
         val lat = r.numero("lat") ?: continue
         val lon = r.numero("lon") ?: continue
-        val linea = if (r.texto("aproximacion_fiab") == "alta") puntos(r["aproximacion"]) else null
+        // 21/11: también las líneas dudosas (cruce ambiguo, túnel largo, rotonda): mejor avisar solo en la carretera y
+        // el sentido del radar que por cercanía en cualquier sentido (Unai: "Miraflores", A-8, avisó al revés).
+        val linea = if (r.texto("aproximacion_fiab") in setOf("alta", "dudosa")) puntos(r["aproximacion"]) else null
         val tramo = if (r.texto("tramo_fiab") == "alta") puntos(r["tramo"]) else null
         val tramoLargo = if (tramo != null) r.numero("tramo_largo") else null
         val limiteFiab = r.texto("limite_fiab")

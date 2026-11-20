@@ -32,9 +32,10 @@ class PruebasConstruir(unittest.TestCase):
         r = publicar.construir([radar("a", destino="CANTABRIA", sentido_oficial=None)], {}, {}, {})[0]
         self.assertEqual(r["sentido"], "CANTABRIA")
 
-    def test_dudosa_no_publica_linea(self):
+    def test_dudosa_tambien_publica_linea(self):
+        # 21/11: la app avisa por la línea (carretera y sentido) también si es dudosa.
         r = publicar.construir([radar("a")], {}, {"a": {"fiab": "dudosa", "puntos": LINEA}}, {})[0]
-        self.assertIsNone(r["aproximacion"])
+        self.assertEqual(r["aproximacion"], LINEA)
         self.assertEqual(r["aproximacion_fiab"], "dudosa")
 
     def test_ambos_sin_puntos_es_dudosa(self):
