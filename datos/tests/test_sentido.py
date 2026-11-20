@@ -160,3 +160,17 @@ class PruebasSentido(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class PruebasCabinaPegada(unittest.TestCase):
+    """20/11: "Derio Loiu", cabina a 3 m de un ramal y calzada elegida a 49 m."""
+
+    def test_conflicto(self):
+        c = [{"d": 49.0}, {"d": 3.0}]
+        self.assertEqual(sentido.conflicto_cabina(c, 0), 1)
+        self.assertIsNone(sentido.conflicto_cabina(c, 1))
+        # Cabina en la mediana (distancias parecidas): sin conflicto.
+        self.assertIsNone(sentido.conflicto_cabina([{"d": 18.0}, {"d": 9.0}], 0))
+        # La otra no está pegada a la cabina: sin conflicto.
+        self.assertIsNone(sentido.conflicto_cabina([{"d": 60.0}, {"d": 14.0}], 0))
+        self.assertIsNone(sentido.conflicto_cabina([{"d": 40.0}], 0))

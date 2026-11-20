@@ -45,6 +45,30 @@ VETO_DEST_MIN_M = 15000.0
 VETO_DEST_MAX_M = 300000.0
 
 
+# Cabina pegada a otra vía (20/11): la cabina está junto a la calzada que controla. Si la elegida está lejos y
+# otra candidata pegada a la cabina, algo falla. Caso real: "Derio Loiu" (N-637 ramal R-02), con la cabina a 3 m
+# de un ramal y la calzada elegida (la principal, por la regla del destino) a 49 m: avisaba a Unai yendo por la
+# principal hacia Bilbao. Ver `conflicto_cabina`.
+CERCA_CABINA_M = 10.0
+LEJOS_CABINA_M = 25.0
+RAZON_CABINA = 3.0
+# Reglas débiles, que ceden ante la cercanía de la cabina: c (margen de las rutas al destino).
+REGLAS_CEDEN_A_CABINA = ("c",)
+
+
+def conflicto_cabina(cands, elegida):
+    """Índice de la candidata pegada a la cabina (a 10 m o menos) cuando la elegida está a 25 m o más y al menos
+    a tres veces esa distancia; None si no hay conflicto."""
+    if elegida is None or len(cands) < 2:
+        return None
+    e = cands[elegida]
+    k = min((k for k in range(len(cands)) if k != elegida), key=lambda k: cands[k]["d"])
+    o = cands[k]
+    if o["d"] <= CERCA_CABINA_M and e["d"] >= LEJOS_CABINA_M and e["d"] >= RAZON_CABINA * max(o["d"], 1.0):
+        return k
+    return None
+
+
 def norm_ref(s):
     return re.sub(r"[^A-Z0-9]", "", (s or "").upper())
 
@@ -349,6 +373,17 @@ def calcular(radares, serv):
                                "candidatas": len(i["cands"])}
             continue
         regla = _confianza(i)
+        # Cabina pegada a otra calzada (20/11): con una regla débil manda la cercanía; con una fuerte (indicador
+        # oficial, grupo coherente), dos indicios fuertes se contradicen y el radar pasa a "ambos sentidos".
+        pegada = conflicto_cabina(i["cands"], i["elegida"]) if regla else None
+        conflicto = None
+        if pegada is not None:
+            lejos, cerca = i["cands"][i["elegida"]]["d"], i["cands"][pegada]["d"]
+            if regla in REGLAS_CEDEN_A_CABINA:
+                i["elegida"], regla = pegada, "p"
+            else:
+                conflicto = (f"la cabina está a {round(cerca)} m de otra calzada y la elegida (regla {regla}) "
+                             f"a {round(lejos)} m")
         c = i["cands"][i["elegida"]]
         res = {
             "resultado": "resuelto" if regla else "ambos",
@@ -367,7 +402,7 @@ def calcular(radares, serv):
             res["grupo"] = i["grupo"]
         if not regla:
             res["motivo"] = "ninguna regla de confianza se cumple"
-        veto = veto_destino(i["r"], res, serv)
+        veto = conflicto or veto_destino(i["r"], res, serv)
         if veto:
             res.update(resultado="ambos", motivo=veto, regla_vetada=res["regla"], regla=None)
         resultados[id_] = res
