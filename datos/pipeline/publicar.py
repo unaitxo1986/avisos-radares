@@ -20,6 +20,32 @@ import sys
 from collections import Counter
 from pathlib import Path
 
+try:
+    from .geo import dif_ang, haversine, rumbo
+    from .tramos import vuelve
+except ImportError:  # ejecutado como programa
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from datos.pipeline.geo import dif_ang, haversine, rumbo
+    from datos.pipeline.tramos import vuelve
+
+# Líneas dudosas que la app usa igual que las fiables (21/11): no las que vuelven sobre sí mismas (rotondas, bucles),
+# ni las cortas, ni las que giran más de 100° de golpe (un cambio de sentido). Con la lista real, las que no pasan
+# estos filtros avisaban mal en la simulación de la app (DatosRealesTest); ninguna línea fiable gira más de 65°.
+DUDOSA_LARGO_MIN_M = 450.0
+DUDOSA_GIRO_MAX = 100.0
+
+
+def dudosa_util(a):
+    """¿Sirve para avisar por la carretera una línea de aproximación dudosa?"""
+    linea = a.get("puntos") or []
+    motivos = " ".join(a.get("motivos") or [])
+    if len(linea) < 2 or "vuelve" in motivos or "deja de estar" in motivos:
+        return False
+    if (a.get("largo_m") or 0) < DUDOSA_LARGO_MIN_M or vuelve(linea):
+        return False
+    rumbos = [rumbo(p[0], p[1], q[0], q[1]) for p, q in zip(linea, linea[1:]) if haversine(p[0], p[1], q[0], q[1]) > 3]
+    return all(dif_ang(x, y) <= DUDOSA_GIRO_MAX for x, y in zip(rumbos, rumbos[1:]))
+
 # Mínimos para publicar (proporción de radares con resultado y variación máxima frente a lo publicado).
 MIN_RADARES = 600
 MAX_VARIACION = 0.10
@@ -70,7 +96,8 @@ def construir(crudos, sentido, aprox, limites, tramos=None):
             # 21/11: también la línea dudosa (cruce ambiguo, túnel largo, rotonda), para que la app avise solo en la
             # carretera y el sentido del radar en lugar de por cercanía en cualquier sentido (Unai: "Miraflores" de
             # la A-8 le avisó yendo en sentido contrario).
-            "aproximacion": linea if fiab in ("alta", "dudosa") or (fiab == "manual" and linea) else None,
+            "aproximacion": linea if fiab == "alta" or (fiab == "dudosa" and not t and dudosa_util(a))
+            or (fiab == "manual" and linea) else None,
             "aproximacion_fiab": fiab,
             "limite": lim.get("limite"),
             "limite_origen": lim.get("origen"),

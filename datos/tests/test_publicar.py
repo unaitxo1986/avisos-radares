@@ -33,9 +33,17 @@ class PruebasConstruir(unittest.TestCase):
         self.assertEqual(r["sentido"], "CANTABRIA")
 
     def test_dudosa_tambien_publica_linea(self):
-        # 21/11: la app avisa por la línea (carretera y sentido) también si es dudosa.
-        r = publicar.construir([radar("a")], {}, {"a": {"fiab": "dudosa", "puntos": LINEA}}, {})[0]
+        # 21/11: la app avisa por la línea (carretera y sentido) también si es dudosa, salvo bucles y giros bruscos.
+        r = publicar.construir([radar("a")], {}, {"a": {"fiab": "dudosa", "puntos": LINEA, "largo_m": 500,
+                                                       "motivos": ["400 m de túnel"]}}, {})[0]
         self.assertEqual(r["aproximacion"], LINEA)
+        bucle = publicar.construir([radar("a")], {}, {"a": {"fiab": "dudosa", "puntos": LINEA, "largo_m": 500,
+                                                           "motivos": ["la carretera vuelve sobre sí misma (rotonda o bucle)"]}}, {})[0]
+        self.assertIsNone(bucle["aproximacion"])
+        corta = publicar.construir([radar("a")], {}, {"a": {"fiab": "dudosa", "puntos": LINEA, "largo_m": 300}}, {})[0]
+        self.assertIsNone(corta["aproximacion"])
+        media_vuelta = [[43.0, -2.0], [43.002, -2.0], [43.0021, -2.0002], [43.0001, -2.0002]]
+        self.assertFalse(publicar.dudosa_util({"puntos": media_vuelta, "largo_m": 500}))
         self.assertEqual(r["aproximacion_fiab"], "dudosa")
 
     def test_ambos_sin_puntos_es_dudosa(self):
