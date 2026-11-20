@@ -3246,13 +3246,15 @@
 "dgt-CABINACINEMOMETRO_120181": {
 "candidatas": 2,
 "margen_m": 1683,
+"motivo": "la cabina está a 5 m de otra calzada y la elegida (regla a) a 45 m",
 "origen": "oficial",
 "punto": [
 37.363362,
 -6.034592
 ],
-"regla": "a",
-"resultado": "resuelto",
+"regla": null,
+"regla_vetada": "a",
+"resultado": "ambos",
 "rumbo": 261,
 "sentido_km": "decreciente",
 "via": 194914972
@@ -6738,13 +6740,15 @@
 "dgt-CABINACINEMOMETRO_120531": {
 "candidatas": 2,
 "margen_m": 13736,
+"motivo": "la cabina está a 9 m de otra calzada y la elegida (regla a) a 28 m",
 "origen": "oficial",
 "punto": [
 42.073502,
 -5.697114
 ],
-"regla": "a",
-"resultado": "resuelto",
+"regla": null,
+"regla_vetada": "a",
+"resultado": "ambos",
 "rumbo": 129,
 "sentido_km": "decreciente",
 "via": 97101981
@@ -11675,13 +11679,15 @@
 "territorio": "Gipuzkoa"
 },
 "margen_m": 4756,
+"motivo": "la cabina está a 9 m de otra calzada y la elegida (regla b) a 34 m",
 "origen": "destino",
 "punto": [
 43.304559,
 -1.969618
 ],
-"regla": "b",
-"resultado": "resuelto",
+"regla": null,
+"regla_vetada": "b",
+"resultado": "ambos",
 "rumbo": 203,
 "sentido_km": "creciente",
 "via": 164405991
@@ -12119,14 +12125,14 @@
 "margen_m": 3916,
 "origen": "destino",
 "punto": [
-43.286404,
--2.892504
+43.286076,
+-2.892949
 ],
-"regla": "c",
+"regla": "p",
 "resultado": "resuelto",
-"rumbo": 313,
+"rumbo": 157,
 "sentido_km": null,
-"via": 25946597
+"via": 28597270
 },
 "fr-madrid-109": {
 "motivo": "tipo fotorrojo",
