@@ -11440,32 +11440,38 @@
 },
 "eus-bi-3234-45620-ibarrangelu": {
 "candidatas": 2,
-"destino_a_m": 381788,
-"margen_m": 190,
+"destino_a_m": 1996,
+"margen_m": 1723,
 "origen": "destino",
 "punto": [
 43.4066,
 -2.679843
 ],
-"regla": "e",
+"regla": "c",
 "resultado": "resuelto",
-"rumbo": 229,
+"rumbo": 49,
 "sentido_km": null,
 "via": 230905468
 },
 "eus-bi-625-376300-arrankudiaga": {
 "candidatas": 2,
 "destino_a_m": 10398,
+"indicios": [
+"cámara de OpenStreetMap",
+"destino en línea recta"
+],
 "margen_m": 137,
-"origen": "destino",
+"motivo_previo": "la calzada elegida se aleja del destino oficial (176° de diferencia, a 10 km)",
+"origen": "indicios",
 "punto": [
 43.170074,
 -2.920658
 ],
-"regla": "e",
+"regla": "o",
+"regla_vetada": "e",
 "resultado": "resuelto",
-"rumbo": 178,
-"sentido_km": "decreciente",
+"rumbo": 358,
+"sentido_km": "creciente",
 "via": 290747479
 },
 "eus-bi-633-36990-trabakua-tramo-1": {
@@ -11580,19 +11586,20 @@
 "via": 489092173
 },
 "eus-gi-11-1370-usurbil-madrid": {
+"arcen": true,
 "candidatas": 2,
 "destino_a_m": 347756,
 "margen_m": 6772,
 "origen": "destino",
 "punto": [
-43.281608,
--2.01858
+43.281609,
+-2.018722
 ],
-"regla": "c",
+"regla": "p",
 "resultado": "resuelto",
-"rumbo": 3,
-"sentido_km": "creciente",
-"via": 26743121
+"rumbo": 185,
+"sentido_km": "decreciente",
+"via": 8223704
 },
 "eus-gi-11-1700-usurbil-irun": {
 "candidatas": 2,
@@ -11711,13 +11718,15 @@
 "candidatas": 2,
 "destino_a_m": 3063,
 "margen_m": 300,
+"motivo": "la cámara de OpenStreetMap vigila el sentido contrario (174°)",
 "origen": "destino",
 "punto": [
 43.364264,
 -1.801571
 ],
-"regla": "e",
-"resultado": "resuelto",
+"regla": null,
+"regla_vetada": "e",
+"resultado": "ambos",
 "rumbo": 153,
 "sentido_km": "creciente",
 "via": 39990765
@@ -11908,17 +11917,24 @@
 "via": 1312815732
 },
 "eus-n-104-356080-arkaute": {
-"candidatas": 1,
-"origen": "unica",
-"punto": [
-42.857342,
--2.615261
+"candidatas": 2,
+"indicios": [
+"cámara de OpenStreetMap",
+"destino en línea recta",
+"arcén de la cabina"
 ],
-"regla": "d",
+"motivo_previo": "la calzada elegida se aleja del destino oficial (179° de diferencia, a 4 km)",
+"origen": "indicios",
+"punto": [
+42.857409,
+-2.615277
+],
+"regla": "o",
+"regla_vetada": "d",
 "resultado": "resuelto",
-"rumbo": 78,
+"rumbo": 257,
 "sentido_km": null,
-"via": 502428754
+"via": 502656181
 },
 "eus-n-240-16120-legutio": {
 "candidatas": 2,
@@ -12100,9 +12116,21 @@
 },
 "eus-n-637-8600-enlace-cruces": {
 "candidatas": 2,
-"motivo": "destino no localizable",
-"regla": null,
-"resultado": "ambos"
+"indicios": [
+"cámara de OpenStreetMap",
+"arcén de la cabina"
+],
+"motivo_previo": "destino no localizable",
+"origen": "indicios",
+"punto": [
+43.28753,
+-2.985885
+],
+"regla": "o",
+"resultado": "resuelto",
+"rumbo": 10,
+"sentido_km": "creciente",
+"via": 500990971
 },
 "eus-n-637-8900-bec": {
 "candidatas": 2,
