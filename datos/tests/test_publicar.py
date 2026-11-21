@@ -18,6 +18,11 @@ LINEA = [[43.0, -2.01], [43.0, -2.0]]
 
 
 class PruebasConstruir(unittest.TestCase):
+    def test_linea_manual(self):
+        r = publicar.construir([radar("man-a", fuente="manual", carretera=None, aproximacion_manual=LINEA)],
+                               {}, {}, {})[0]
+        self.assertEqual((r["aproximacion"], r["aproximacion_fiab"]), (LINEA, "manual"))
+
     def test_campos_y_pk_en_km(self):
         r = publicar.construir([radar("a")], {"a": {"sentido_km": "decreciente"}},
                                {"a": {"fiab": "alta", "puntos": LINEA}},

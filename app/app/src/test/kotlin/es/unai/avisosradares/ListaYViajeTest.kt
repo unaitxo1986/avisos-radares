@@ -87,4 +87,24 @@ class ListaYViajeTest {
         // Un grado de latitud son unos 111,2 km.
         assertEquals(111_195.0, distanciaM(43.0, -2.0, 44.0, -2.0), 50.0)
     }
+
+    /** 21/11: semáforo de Iparraguirre con Gran Vía (Bilbao), visto por Unai, con línea revisada a mano. */
+    @Test
+    fun semaforoConLineaManualAvisaSoloBajandoPorLaCalle() {
+        val texto = """{"radares":[{"id":"man-bilbao-iparraguirre-granvia","tipo":"fotorrojo","fuente":"manual",
+            "lat":43.2631849,"lon":-2.9364498,"aproximacion":[[43.2618921, -2.9369707], [43.2619071, -2.9369644], [43.2621347, -2.9368692], [43.2622496, -2.9368193], [43.2623288, -2.9367895], [43.2627074, -2.9366471], [43.2629475, -2.9365479], [43.2631849, -2.9364498]],"aproximacion_fiab":"manual"}]}"""
+        val r = leerRadares(texto).radares.single()
+        assertTrue("la línea manual se usa", r.porCarretera)
+        val avisos = { pos: List<Posicion> ->
+            val m = MotorAvisos(listOf(r))
+            pos.flatMap { m.procesa(it).eventos }.filter { it.tipo == TipoEvento.AVISO }
+        }
+        assertEquals("bajando por Iparraguirre", 1, avisos(recorridoSimulado(r.linea!!, 30.0)).size)
+        assertEquals("subiendo (calle de sentido único, por si acaso)", 0,
+            avisos(recorridoSimulado(r.linea!!, 30.0, alReves = true)).size)
+        // Gran Vía pasa por el cruce de oeste a este (y al revés), 16 m al norte de la cámara.
+        for (rumbo in listOf(105.0, 285.0)) {
+            assertEquals("por Gran Vía, rumbo $rumbo", 0, avisos(recorridoRectoPor(43.2633218, -2.9363933, rumbo, 40.0, 400.0)).size)
+        }
+    }
 }

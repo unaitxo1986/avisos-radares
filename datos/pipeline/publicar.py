@@ -66,6 +66,8 @@ def construir(crudos, sentido, aprox, limites, tramos=None):
         s = sentido.get(i) or {}
         t = tramos.get(i)
         a = t.get("aprox") if t else aprox.get(i)
+        if r.get("aproximacion_manual") and not t:  # 21/11: línea revisada a mano (radar visto por Unai)
+            a = {"fiab": "manual", "puntos": r["aproximacion_manual"]}
         lim = limites.get(i) or {}
         if t and lim.get("limite") is None:
             tl = t.get("limite") or {}

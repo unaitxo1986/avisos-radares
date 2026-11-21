@@ -1,4 +1,49 @@
 {
-  "comentario": "Radares añadidos a mano (municipales) y revisiones (tramo de aproximación, límite que falte). Solo rellena lo que la fuente oficial no da. Formato en datos/esquema-radares.md",
-  "radares": []
+ "comentario": "Radares añadidos a mano (municipales) y revisiones (tramo de aproximación, límite que falte). Solo rellena lo que la fuente oficial no da. Formato en datos/esquema-radares.md",
+ "radares": [
+  {
+   "id": "man-bilbao-iparraguirre-granvia",
+   "tipo": "fotorrojo",
+   "nombre": "Bilbao, Iparraguirre al llegar a Gran Vía (foto rojo)",
+   "municipio": "Bilbao",
+   "provincia": "Bizkaia",
+   "lat": 43.2631849,
+   "lon": -2.9364498,
+   "visto": "2026-11-21: Unai la ha visto (\"cruce bajando Iparraguirre justo al llegar a Gran Vía\"). No está en ninguna fuente oficial ni en OpenStreetMap. Posición: línea de detención de Iparraguirre, 16 m antes del centro de Gran Vía (nodo de OpenStreetMap); vigila a los coches que bajan por Iparraguirre (calle de sentido único hacia el norte).",
+   "aproximacion": [
+    [
+     43.2618921,
+     -2.9369707
+    ],
+    [
+     43.2619071,
+     -2.9369644
+    ],
+    [
+     43.2621347,
+     -2.9368692
+    ],
+    [
+     43.2622496,
+     -2.9368193
+    ],
+    [
+     43.2623288,
+     -2.9367895
+    ],
+    [
+     43.2627074,
+     -2.9366471
+    ],
+    [
+     43.2629475,
+     -2.9365479
+    ],
+    [
+     43.2631849,
+     -2.9364498
+    ]
+   ]
+  }
+ ]
 }

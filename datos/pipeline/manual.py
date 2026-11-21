@@ -8,7 +8,11 @@ Dos usos (ver datos/esquema-radares.md):
 
 Formato de cada entrada: el del esquema (id `man-...`, tipo, lat, lon, lat_fin,
 lon_fin, carretera, pk en km, sentido, limite, nombre) más `enlace_oficial`
-(obligatorio en radares nuevos) y `completa` (opcional). Si el fichero no existe
+(obligatorio en radares nuevos, salvo los vistos por Unai), `completa` (opcional),
+`visto` (21/11: cámara que ningún organismo publica y que Unai ha visto en persona:
+texto con la fecha y lo que dijo; sustituye a `enlace_oficial`) y `aproximacion`
+(opcional: línea de aproximación revisada a mano, lista de [lat, lon] en el orden de
+la marcha que acaba en la cámara; se publica con fiabilidad `manual`). Si el fichero no existe
 o `radares` está vacío, devuelve una lista vacía (los municipales son opcionales, 3.7).
 """
 import json
@@ -27,6 +31,16 @@ def _num(v, campo, n):
     if isinstance(v, bool) or not isinstance(v, (int, float)):
         raise ErrorLectura(f"manual, entrada {n}: '{campo}' no es un número ({v!r})")
     return v
+
+
+def _linea(v, n):
+    if v is None:
+        return None
+    if not isinstance(v, list) or len(v) < 2 or not all(
+            isinstance(p, list) and len(p) == 2 and all(isinstance(x, (int, float)) and not isinstance(x, bool)
+                                                       for x in p) for p in v):
+        raise ErrorLectura(f"manual, entrada {n}: 'aproximacion' debe ser una lista de al menos dos [lat, lon]")
+    return [[float(a), float(b)] for a, b in v]
 
 
 def leer(ruta) -> dict:
@@ -51,8 +65,10 @@ def leer(ruta) -> dict:
         if e["tipo"] not in TIPOS:
             raise ErrorLectura(f"manual, entrada {n}: tipo '{e['tipo']}' no válido")
         enlace = (e.get("enlace_oficial") or "").strip()
-        if not e.get("completa") and not enlace.startswith("http"):
-            raise ErrorLectura(f"manual, entrada {n}: un radar nuevo necesita 'enlace_oficial' (URL)")
+        visto = (e.get("visto") or "").strip()
+        if not e.get("completa") and not enlace.startswith("http") and not visto:
+            raise ErrorLectura(f"manual, entrada {n}: un radar nuevo necesita 'enlace_oficial' (URL) o 'visto'")
+        linea = _linea(e.get("aproximacion"), n)
         sentido = e.get("sentido")
         pk = _num(e.get("pk"), "pk", n)
         radares.append({
@@ -76,5 +92,7 @@ def leer(ruta) -> dict:
             "tipo_via": None,
             "enlace_oficial": enlace or None,
             "completa": e.get("completa"),
+            "visto": visto or None,
+            "aproximacion_manual": linea,
         })
     return {"radares": radares}

@@ -313,8 +313,17 @@ class PruebasManual(unittest.TestCase):
                                      "completa": "dgt-CABINACINEMOMETRO_120001", "limite": 90}]})
         self.assertEqual(r[0]["completa"], "dgt-CABINACINEMOMETRO_120001")
 
+    def test_visto_por_unai_con_linea(self):
+        r = self._leer({"radares": [{"id": "man-bilbao-1", "tipo": "fotorrojo", "lat": 43.26, "lon": -2.93,
+                                     "visto": "2026-11-21: Unai", "aproximacion": [[43.259, -2.931], [43.26, -2.93]]}]})
+        self.assertEqual(r[0]["visto"], "2026-11-21: Unai")
+        self.assertIsNone(r[0]["enlace_oficial"])
+        self.assertEqual(r[0]["aproximacion_manual"], [[43.259, -2.931], [43.26, -2.93]])
+
     def test_errores(self):
         malos = [
+            {"radares": [{"id": "man-a", "tipo": "fijo", "lat": 1, "lon": 2, "visto": "x",
+                          "aproximacion": [[1, 2]]}]},                                                # línea de un punto
             {"radares": [{"id": "man-a", "tipo": "fijo", "lat": 1, "lon": 2}]},                      # sin enlace
             {"radares": [{"id": "man-a", "tipo": "fijo", "lat": 1, "lon": 2, "enlace_oficial": "x"}]},  # no URL
             {"radares": [{"id": "a", "tipo": "fijo", "lat": 1, "lon": 2, "enlace_oficial": "https://e.invalid"}]},  # id sin man-

@@ -24,7 +24,8 @@ fun distanciaM(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {
  * Un radar tal como lo usa la app, leído de `radares.json` (formato en `datos/esquema-radares.md`).
  *
  * - [linea]: tramo de aproximación (puntos `[lat, lon]` en el orden de la marcha, termina en el radar). Solo
- *   viene si su fiabilidad es `alta`; entonces el aviso se da **por carretera y sentido**. Si es nula, el aviso
+ *   viene si su fiabilidad es `alta`, `dudosa` (las que el proceso de datos publica) o `manual` (revisada a
+ *   mano); entonces el aviso se da **por carretera y sentido**. Si es nula, el aviso
  *   se da **por cercanía en cualquier sentido** (tramo dudoso, sentido sin resolver, radares de tramo).
  * - [limite]: el que se muestra y con el que se compara la velocidad. Es nulo si no se conoce, **si su
  *   fiabilidad es `baja`** (decisión de Unai del 18/11: en los `osm_cercana` se avisa sin límite) **o si es
@@ -102,7 +103,8 @@ fun leerRadares(texto: String): ListaRadares {
         val lon = r.numero("lon") ?: continue
         // 21/11: también las líneas dudosas (cruce ambiguo, túnel largo, rotonda): mejor avisar solo en la carretera y
         // el sentido del radar que por cercanía en cualquier sentido (Unai: "Miraflores", A-8, avisó al revés).
-        val linea = if (r.texto("aproximacion_fiab") in setOf("alta", "dudosa")) puntos(r["aproximacion"]) else null
+        // También las revisadas a mano (`manual`, 21/11: semáforo de Iparraguirre con Gran Vía visto por Unai).
+        val linea = if (r.texto("aproximacion_fiab") in setOf("alta", "dudosa", "manual")) puntos(r["aproximacion"]) else null
         val tramo = if (r.texto("tramo_fiab") == "alta") puntos(r["tramo"]) else null
         val tramoLargo = if (tramo != null) r.numero("tramo_largo") else null
         val limiteFiab = r.texto("limite_fiab")
