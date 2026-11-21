@@ -25,6 +25,8 @@ def main(argv=None):
     ap.add_argument("--sin-red", action="store_true")
     ap.add_argument("--cache", default="datos/cache")
     ap.add_argument("--salida", default="datos/cache/sentido.json")
+    ap.add_argument("--camaras", default="datos/fuentes/osm_camaras.json",
+                    help="cámaras de OpenStreetMap con relación de control (pista para el sentido)")
     a = ap.parse_args(argv)
 
     radares = json.loads(Path(a.radares).read_text(encoding="utf-8"))["radares"]
@@ -32,7 +34,10 @@ def main(argv=None):
         radares = [r for r in radares if r["fuente"] == ("trafikoa" if a.fuente == "trafikoa" else "dgt")]
     serv = Servicios(a.cache, sin_red=a.sin_red)
     try:
-        res = sentido.calcular(radares, serv)
+        camaras = None
+        if a.camaras and Path(a.camaras).exists():
+            camaras = json.loads(Path(a.camaras).read_text(encoding="utf-8"))["camaras"]
+        res = sentido.calcular(radares, serv, camaras)
     finally:
         serv.guardar()
     Path(a.salida).parent.mkdir(parents=True, exist_ok=True)

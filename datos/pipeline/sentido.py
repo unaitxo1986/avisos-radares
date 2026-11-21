@@ -16,6 +16,7 @@ Pasos por radar:
  5. Confianza: reglas a-e; lo que no cumple ninguna sale como "ambos".
 Los radares de tramo no se calculan aquí (fase 5).
 """
+import math
 import re
 import unicodedata
 from collections import defaultdict
@@ -41,7 +42,11 @@ MAX_VECINOS = 4
 # Veto por destino (fase 5, 18/11): si la calzada elegida se aleja del destino oficial en línea recta, el radar
 # pasa a "ambos sentidos". Solo veta, nunca elige calzada, y solo con destinos fiables (en España, 15-300 km).
 VETO_ANGULO = 150.0
-VETO_DEST_MIN_M = 15000.0
+# 21/11: desde 3 km (antes 15). Con 15 km se escapaban Arkaute (N-104, una sola calzada a menos de 50 m, la que va
+# hacia Salvatierra, con destino Vitoria a 4 km) y Arrankudiaga (BI-625 hacia el sur con destino Bilbao a 10 km).
+# En toda España solo cambian esos dos (y Derio Loiu, que por eso queda fuera con su regla p, ver abajo).
+VETO_DEST_MIN_M = 3000.0
+VETO_DEST_MIN_P_M = 15000.0  # regla p (cabina pegada a la calzada): indicio físico, más fuerte que la línea recta
 VETO_DEST_MAX_M = 300000.0
 
 
@@ -54,6 +59,92 @@ LEJOS_CABINA_M = 25.0
 RAZON_CABINA = 3.0
 # Reglas débiles, que ceden ante la cercanía de la cabina: c (margen de las rutas al destino).
 REGLAS_CEDEN_A_CABINA = ("c",)
+
+
+# Indicios independientes (21/11, Unai: "asegura el sentido en los radares vascos"). Tres pistas que no dependen
+# de las rutas: (1) el arcén donde está la cabina: en una autovía, si la cabina queda a la derecha de una calzada y
+# por fuera (la otra calzada, a su izquierda, está más lejos), vigila esa calzada (la cabina de la mediana no dice
+# nada); (2) la cámara de OpenStreetMap con su relación de control (de `from` a `to`), solo en Euskadi
+# (`datos/fuentes/osm_camaras.json`); (3) la dirección en línea recta al destino oficial. Medidas el 21/11 en
+# Euskadi: el arcén coincide con el sentido calculado en 45 de 47 radares (los 2 que no, mal calculados) y la
+# cámara de OpenStreetMap en 75 de 85 (en 8 de los 10 que no, falla OpenStreetMap: el kilometraje y el lado de la
+# cabina dan la razón al cálculo). Por eso ninguna pista elige sola contra el dato oficial:
+#  - el arcén corrige las reglas débiles de ruta (c, e), como la cabina pegada;
+#  - la cámara de OpenStreetMap que contradice una regla débil (c, d, e) pasa el radar a "ambos sentidos";
+#  - un radar en "ambos" sin indicador creciente/decreciente oficial se resuelve (regla o) si dos pistas
+#    coinciden en una calzada y ninguna la contradice.
+ARCEN_MIN_M = 5.0          # más cerca, el lado de la cabina es ruido (en la DGT falla 6 de 100 aun así)
+ARCEN_MAX_M = 25.0
+ARCEN_MIN_INDICIO_M = 2.0  # como pista que necesita otra a favor, vale desde 2 m (Enlace Cruces: 3 m)
+ARCEN_SEPARACION_M = 5.0   # la otra calzada, al menos esto más lejos
+RADIO_AMPLIADO_M = 120.0   # rescate de una sola calzada candidata: la del otro sentido, más lejos (Arkaute)
+CAMARA_OSM_M = 40.0        # cámara de OpenStreetMap a menos de esto de la cabina (y una sola)
+DEST_INDICIO_MIN_M = 3000.0
+ACUERDO_GRADOS = 45.0
+CONTRA_GRADOS = 135.0
+REGLAS_CEDEN_AL_ARCEN = ("c", "e")
+REGLAS_CEDEN_A_CAMARA = ("c", "d", "e")
+
+
+def lado_cabina(r, c):
+    """Distancia con signo de la cabina a la calzada candidata: positiva a la izquierda del sentido de marcha."""
+    ky = 111_320.0
+    kx = ky * math.cos(math.radians(r["lat"]))
+    dx, dy = (r["lon"] - c["p"][1]) * kx, (r["lat"] - c["p"][0]) * ky
+    rb = math.radians(c["rumbo"])
+    return math.sin(rb) * dy - math.cos(rb) * dx
+
+
+def arcen_exterior(r, cands, minimo=ARCEN_MIN_M):
+    """Índice de la calzada en cuyo arcén exterior (a la derecha, por fuera) está la cabina, o None."""
+    if len(cands) != 2 or not all(c["unico"] for c in cands):
+        return None
+    if dif_ang(cands[0]["rumbo"], cands[1]["rumbo"]) <= 150:
+        return None
+    a = min((0, 1), key=lambda k: cands[k]["d"])
+    b = 1 - a
+    if not minimo <= cands[a]["d"] <= ARCEN_MAX_M or cands[b]["d"] - cands[a]["d"] < ARCEN_SEPARACION_M:
+        return None
+    if lado_cabina(r, cands[a]) < 0 < lado_cabina(r, cands[b]):
+        return a
+    return None
+
+
+def rumbo_camara(r, camaras):
+    """Rumbo controlado por la única cámara de OpenStreetMap con relación de control junto a la cabina, o None."""
+    cerca = [c for c in camaras or [] if haversine(r["lat"], r["lon"], c["lat"], c["lon"]) <= CAMARA_OSM_M]
+    if len(cerca) != 1:
+        return None
+    c = cerca[0]
+    if not c.get("desde") or not c.get("hacia") or haversine(*c["desde"], *c["hacia"]) < 8:
+        return None
+    return rumbo_entre(c["desde"][0], c["desde"][1], c["hacia"][0], c["hacia"][1])
+
+
+def indicios(r, cands, camaras, serv):
+    """Para cada candidata, (pistas a favor, pistas en contra)."""
+    pistas = []
+    ac = arcen_exterior(r, cands, ARCEN_MIN_INDICIO_M)
+    rc = rumbo_camara(r, camaras)
+    if rc is not None:
+        pistas.append(("cámara de OpenStreetMap", rc))
+    if r.get("destino"):
+        try:
+            g = punto_destino(r, serv)
+        except Pendiente:
+            g = None
+        if g and "España" in (g.get("nombre") or ""):
+            d = haversine(r["lat"], r["lon"], g["lat"], g["lon"])
+            if DEST_INDICIO_MIN_M <= d <= VETO_DEST_MAX_M:
+                pistas.append(("destino en línea recta", rumbo_entre(r["lat"], r["lon"], g["lat"], g["lon"])))
+    out = []
+    for k, c in enumerate(cands):
+        a_favor = [n for n, rb in pistas if dif_ang(rb, c["rumbo"]) <= ACUERDO_GRADOS]
+        en_contra = [n for n, rb in pistas if dif_ang(rb, c["rumbo"]) >= CONTRA_GRADOS]
+        if ac is not None:
+            (a_favor if ac == k else en_contra).append("arcén de la cabina")
+        out.append((a_favor, en_contra))
+    return out
 
 
 def conflicto_cabina(cands, elegida):
@@ -94,7 +185,7 @@ def sentido_unico(t):
     return 0
 
 
-def candidatas(r, vias):
+def candidatas(r, vias, radio=RADIO_CAND_M):
     """Hasta dos calzadas candidatas (una por dirección) junto a la cabina del radar."""
     carretera = r.get("carretera") or ""
     oficiales = {norm_ref(carretera), norm_ref(carretera.split()[0] if carretera.split() else "")} - {""}
@@ -105,7 +196,7 @@ def candidatas(r, vias):
             d, p, rb = proyectar(r["lat"], r["lon"], a, b)
             if mejor is None or d < mejor[0]:
                 mejor = (d, p, rb)
-        if mejor is None or mejor[0] > RADIO_CAND_M:
+        if mejor is None or mejor[0] > radio:
             continue
         d, p, rb = mejor
         u = sentido_unico(v["t"])
@@ -230,11 +321,15 @@ def punto_destino(r, serv):
         if q and q not in vistos:
             vistos.append(q)
     for q in vistos:
-        res = [x for x in serv.geocodificar(q) if x.get("cat") in ("place", "boundary")]
+        todos = serv.geocodificar(q)
+        res = [x for x in todos if x.get("cat") in ("place", "boundary")]
+        # 21/11: un lugar natural cercano también vale (destino "LAGA" de Ibarrangelu: es la playa de Laga, a 2 km;
+        # sin esto se tomaba Laga de Lugo, a 382 km, y el radar avisaba hacia el lado contrario).
+        cerca = [x for x in todos if x.get("cat") in ("place", "boundary", "natural")
+                 and haversine(r["lat"], r["lon"], x["lat"], x["lon"]) <= RADIO_DEST_CERCA_M]
+        if cerca:
+            return min(cerca, key=lambda x: haversine(r["lat"], r["lon"], x["lat"], x["lon"]))
         if res:
-            cerca = [x for x in res if haversine(r["lat"], r["lon"], x["lat"], x["lon"]) <= RADIO_DEST_CERCA_M]
-            if cerca:
-                return min(cerca, key=lambda x: haversine(r["lat"], r["lon"], x["lat"], x["lon"]))
             return max(res, key=lambda x: x["imp"])
     return None
 
@@ -330,7 +425,8 @@ def veto_destino(r, res, serv):
     if not g or "España" not in (g.get("nombre") or ""):
         return None
     d = haversine(r["lat"], r["lon"], g["lat"], g["lon"])
-    if not VETO_DEST_MIN_M <= d <= VETO_DEST_MAX_M:
+    minimo = VETO_DEST_MIN_P_M if res.get("regla") == "p" else VETO_DEST_MIN_M
+    if not minimo <= d <= VETO_DEST_MAX_M:
         return None
     ang = dif_ang(res["rumbo"], rumbo_entre(r["lat"], r["lon"], g["lat"], g["lon"]))
     if ang > VETO_ANGULO:
@@ -338,8 +434,10 @@ def veto_destino(r, res, serv):
     return None
 
 
-def calcular(radares, serv):
-    """Calcula el sentido de cada radar. Devuelve {id: resultado}."""
+def calcular(radares, serv, camaras=None):
+    """Calcula el sentido de cada radar. Devuelve {id: resultado}.
+
+    `camaras`: cámaras de OpenStreetMap con su relación de control (lat, lon, desde, hacia), solo como pista."""
     infos = {}
     for r in radares:
         if r["tipo"] in TIPOS_CALCULABLES and r.get("carretera"):
@@ -376,6 +474,9 @@ def calcular(radares, serv):
         # Cabina pegada a otra calzada (20/11): con una regla débil manda la cercanía; con una fuerte (indicador
         # oficial, grupo coherente), dos indicios fuertes se contradicen y el radar pasa a "ambos sentidos".
         pegada = conflicto_cabina(i["cands"], i["elegida"]) if regla else None
+        arcen = arcen_exterior(i["r"], i["cands"]) if regla in REGLAS_CEDEN_AL_ARCEN else None
+        if pegada is None and arcen is not None and arcen != i["elegida"]:
+            i["elegida"], regla, i["por_arcen"] = arcen, "p", True
         conflicto = None
         if pegada is not None:
             lejos, cerca = i["cands"][i["elegida"]]["d"], i["cands"][pegada]["d"]
@@ -402,10 +503,48 @@ def calcular(radares, serv):
             res["grupo"] = i["grupo"]
         if not regla:
             res["motivo"] = "ninguna regla de confianza se cumple"
+        if i.get("por_arcen"):
+            res["arcen"] = True
         veto = conflicto or veto_destino(i["r"], res, serv)
+        if not veto and regla in REGLAS_CEDEN_A_CAMARA:
+            rc = rumbo_camara(i["r"], camaras)
+            if rc is not None and dif_ang(rc, res["rumbo"]) >= CONTRA_GRADOS:
+                veto = f"la cámara de OpenStreetMap vigila el sentido contrario ({round(dif_ang(rc, res['rumbo']))}°)"
         if veto:
             res.update(resultado="ambos", motivo=veto, regla_vetada=res["regla"], regla=None)
         resultados[id_] = res
+    # 6. Rescate por indicios independientes (regla o): solo sin indicador creciente/decreciente oficial.
+    for id_, i in infos.items():
+        res = resultados[id_]
+        if res.get("resultado") != "ambos" or not i["cands"] or i.get("pendiente"):
+            continue
+        if i["r"].get("sentido_oficial") in ("creciente", "decreciente"):
+            continue
+        cands = i["cands"]
+        ind = indicios(i["r"], cands, camaras, serv)
+        buenas = [k for k, (a, e) in enumerate(ind) if len(a) >= 2 and not e]
+        if not buenas and len(cands) == 1 and cands[0]["unico"] and len(ind[0][1]) >= 2:
+            # Una sola calzada a menos de 50 m y dos pistas en contra (Arkaute, N-104 hacia Vitoria): se busca la
+            # del otro sentido, de la misma carretera, hasta 120 m.
+            try:
+                otras = [c for c in candidatas(i["r"], serv.vias_aprox(i["r"]["lat"], i["r"]["lon"]),
+                                               RADIO_AMPLIADO_M)
+                         if c["unico"] and c["coincide"] and dif_ang(c["rumbo"], cands[0]["rumbo"]) > 150]
+            except Pendiente:
+                otras = []
+            if otras:
+                cands = [cands[0], min(otras, key=lambda c: c["d"])]
+                ind = indicios(i["r"], cands, camaras, serv)
+                buenas = [k for k, (a, e) in enumerate(ind) if len(a) >= 2 and not e]
+        if len(buenas) != 1:
+            continue
+        k = buenas[0]
+        c = cands[k]
+        res.update({"resultado": "resuelto", "regla": "o", "origen": "indicios", "via": c["via"],
+                    "rumbo": round(c["rumbo"]), "punto": [round(c["p"][0], 6), round(c["p"][1], 6)],
+                    "sentido_km": _sentido_km(i, k) if cands is i["cands"] else None, "candidatas": len(cands),
+                    "indicios": ind[k][0], "motivo_previo": res.get("motivo")})
+        res.pop("motivo", None)
     return resultados
 
 

@@ -92,7 +92,7 @@ class PruebasSentido(unittest.TestCase):
         fuera = {"Oeste": [dict(lejos_oeste["Oeste"][0], nombre="Oeste, Francia")]}
         a = sentido.calcular(rs, ServicioFalso(via_doble(), fuera))["a"]
         self.assertEqual(a["resultado"], "resuelto")
-        cerca = {"Oeste": [dict(lejos_oeste["Oeste"][0], lon=_lon(-5000))]}
+        cerca = {"Oeste": [dict(lejos_oeste["Oeste"][0], lon=_lon(-1000))]}  # a 2 km (el mínimo es 3 km desde el 21/11)
         a = sentido.calcular(rs, ServicioFalso(via_doble(), cerca))["a"]
         self.assertEqual(a["resultado"], "resuelto")
 
@@ -157,6 +157,76 @@ class PruebasSentido(unittest.TestCase):
         a = sentido.calcular([radar("a", 1000, 1000)], Sin([]))["a"]
         self.assertEqual(a["resultado"], "pendiente")
 
+
+
+M_POR_GRADO_LAT = 111195.0
+
+
+def autovia(norte_m=10.0, separacion_m=12.0):
+    """Dos calzadas de sentido único: la que va al este a `norte_m` al norte de la cabina (la cabina queda a su
+    derecha, por fuera) y la que va al oeste `separacion_m` más al norte."""
+    la, lb = 43.0 + norte_m / M_POR_GRADO_LAT, 43.0 + (norte_m + separacion_m) / M_POR_GRADO_LAT
+    return [{"id": 10, "t": {"highway": "motorway", "ref": "N-1", "oneway": "yes"},
+             "n": [[la, _lon(-2000)], [la, _lon(12000)]]},
+            {"id": 11, "t": {"highway": "motorway", "ref": "N-1", "oneway": "yes"},
+             "n": [[lb, _lon(12000)], [lb, _lon(-2000)]]}]
+
+
+def camara(x_m, hacia_este=True):
+    a, b = [43.0, _lon(x_m - 50)], [43.0, _lon(x_m + 50)]
+    return {"id": 1, "lat": 43.0, "lon": _lon(x_m), "desde": a if hacia_este else b, "hacia": b if hacia_este else a}
+
+
+class PruebasIndicios(unittest.TestCase):
+    """21/11: arcén de la cabina, cámara de OpenStreetMap y destino en línea recta (Unai: "asegura el sentido en
+    los radares vascos")."""
+
+    def test_arcen_corrige_la_regla_del_margen(self):
+        # Como Usurbil (GI-11): la ruta al destino lejano elige la calzada del oeste, pero la cabina está en el arcén
+        # exterior de la del este.
+        lejos = {"Lejos": [{"lat": 43.0, "lon": _lon(-350000), "imp": 0.5, "cat": "place", "nombre": "Lejos, España"}]}
+        a = sentido.calcular([radar("a", 1000, 1000, destino="Lejos")], ServicioFalso(autovia(), lejos))["a"]
+        self.assertEqual((a["resultado"], a["regla"], a.get("arcen")), ("resuelto", "p", True), a)
+        self.assertAlmostEqual(a["rumbo"], 90, delta=2)
+        # En la mediana (a la izquierda de las dos) no dice nada: se queda la regla del margen.
+        mediana = autovia(norte_m=-8.0, separacion_m=12.0)
+        a = sentido.calcular([radar("a", 1000, 1000, destino="Lejos")], ServicioFalso(mediana, lejos))["a"]
+        self.assertEqual(a["regla"], "c")
+
+    def test_camara_en_contra_de_una_regla_debil(self):
+        este = {"Este": [{"lat": 43.0, "lon": _lon(400000), "imp": 0.5, "cat": "place", "nombre": "Este, España"}]}
+        rs = [radar("a", 1000, 1000, destino="Este")]
+        a = sentido.calcular(rs, ServicioFalso(via_doble(), este), [camara(1000, hacia_este=False)])["a"]
+        self.assertEqual(a["resultado"], "ambos")
+        self.assertIn("cámara de OpenStreetMap", a["motivo"])
+        a = sentido.calcular(rs, ServicioFalso(via_doble(), este), [camara(1000, hacia_este=True)])["a"]
+        self.assertEqual((a["resultado"], a["regla"]), ("resuelto", "c"))
+
+    def test_rescate_con_dos_pistas(self):
+        # Como Enlace Cruces (N-637): destino oficial no localizable, cabina a 3 m del arcén exterior de una calzada
+        # y la cámara de OpenStreetMap en el mismo sentido: se resuelve (regla o).
+        rs = [radar("a", 1000, 1000, destino="Nada")]
+        a = sentido.calcular(rs, ServicioFalso(autovia(norte_m=3.0)), [camara(1000)])["a"]
+        self.assertEqual((a["resultado"], a["regla"]), ("resuelto", "o"), a)
+        self.assertAlmostEqual(a["rumbo"], 90, delta=2)
+        self.assertEqual(sorted(a["indicios"]), ["arcén de la cabina", "cámara de OpenStreetMap"])
+        # Con una sola pista, sigue en ambos.
+        a = sentido.calcular(rs, ServicioFalso(autovia(norte_m=3.0)))["a"]
+        self.assertEqual(a["resultado"], "ambos")
+        # Con el indicador oficial creciente/decreciente no se rescata (manda el dato oficial).
+        rs = [radar("a", 1000, 1000, sentido_oficial="creciente", destino="Nada")]
+        a = sentido.calcular(rs, ServicioFalso(autovia(norte_m=3.0)), [camara(1000)])["a"]
+        self.assertNotEqual(a.get("regla"), "o")
+
+    def test_destino_natural_cercano(self):
+        # "LAGA" (Ibarrangelu): la playa a 2 km, no la aldea de Lugo a 380 km.
+        destinos = {"Laga": [{"lat": 43.0, "lon": _lon(2000), "imp": 0.3, "cat": "natural", "nombre": "Laga, España"},
+                             {"lat": 43.0, "lon": _lon(-380000), "imp": 0.1, "cat": "place", "nombre": "Laga, Lugo"}]}
+        g = sentido.punto_destino(radar("a", 0, 0, destino="Laga"), ServicioFalso([], destinos))
+        self.assertAlmostEqual(g["lon"], _lon(2000))
+        lejos = {"Laga": destinos["Laga"][1:] + [dict(destinos["Laga"][0], lon=_lon(-90000))]}
+        g = sentido.punto_destino(radar("a", 0, 0, destino="Laga"), ServicioFalso([], lejos))
+        self.assertEqual(g["cat"], "place")  # un lugar natural lejano no vale
 
 if __name__ == "__main__":
     unittest.main()
