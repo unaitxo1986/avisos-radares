@@ -1,0 +1,1096 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-21T07:10:51Z",
+    "timestamp_areas_base": "2026-11-21T00:23:55Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "way",
+  "id": 11503698,
+  "bounds": {
+    "minlat": 43.2647146,
+    "minlon": -2.9444445,
+    "maxlat": 43.2650808,
+    "maxlon": -2.9427810
+  },
+  "geometry": [
+    { "lat": 43.2650808, "lon": -2.9444445 },
+    { "lat": 43.2648092, "lon": -2.9432161 },
+    { "lat": 43.2647755, "lon": -2.9430644 },
+    { "lat": 43.2647583, "lon": -2.9429849 },
+    { "lat": 43.2647146, "lon": -2.9427810 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "primary",
+    "horse": "designated",
+    "lanes": "4",
+    "lanes:backward": "2",
+    "lanes:forward": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "no",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "smoothness": "excellent",
+    "surface": "asphalt",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 22876071,
+  "bounds": {
+    "minlat": 43.2593796,
+    "minlon": -2.9380072,
+    "maxlat": 43.2603546,
+    "maxlon": -2.9376229
+  },
+  "geometry": [
+    { "lat": 43.2593796, "lon": -2.9380072 },
+    { "lat": 43.2594577, "lon": -2.9379924 },
+    { "lat": 43.2595455, "lon": -2.9379621 },
+    { "lat": 43.2602114, "lon": -2.9376781 },
+    { "lat": 43.2603546, "lon": -2.9376229 }
+  ],
+  "tags": {
+    "highway": "living_street",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 41551073,
+  "bounds": {
+    "minlat": 43.2615148,
+    "minlon": -2.9289140,
+    "maxlat": 43.2616805,
+    "maxlon": -2.9281656
+  },
+  "geometry": [
+    { "lat": 43.2615148, "lon": -2.9281656 },
+    { "lat": 43.2615417, "lon": -2.9282823 },
+    { "lat": 43.2615857, "lon": -2.9284826 },
+    { "lat": 43.2616183, "lon": -2.9286309 },
+    { "lat": 43.2616805, "lon": -2.9289140 }
+  ],
+  "tags": {
+    "access": "no",
+    "bicycle": "yes",
+    "busway:both": "lane",
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "tertiary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "oneway:bus": "no",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "surface": "asphalt",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 41578898,
+  "bounds": {
+    "minlat": 43.2618276,
+    "minlon": -2.9330409,
+    "maxlat": 43.2625899,
+    "maxlon": -2.9295762
+  },
+  "geometry": [
+    { "lat": 43.2618276, "lon": -2.9295762 },
+    { "lat": 43.2618807, "lon": -2.9298039 },
+    { "lat": 43.2622477, "lon": -2.9314880 },
+    { "lat": 43.2622721, "lon": -2.9315996 },
+    { "lat": 43.2622975, "lon": -2.9317153 },
+    { "lat": 43.2624084, "lon": -2.9322185 },
+    { "lat": 43.2624310, "lon": -2.9323209 },
+    { "lat": 43.2625899, "lon": -2.9330409 }
+  ],
+  "tags": {
+    "access": "no",
+    "bicycle": "yes",
+    "bus": "yes",
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "living_street",
+    "horse": "no",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "20",
+    "motor_vehicle": "no",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "no",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "smoothness": "excellent",
+    "source:width": "ARCore",
+    "surface": "asphalt",
+    "width": "6.5",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 81062112,
+  "bounds": {
+    "minlat": 43.2574597,
+    "minlon": -2.9388778,
+    "maxlat": 43.2575201,
+    "maxlon": -2.9388694
+  },
+  "geometry": [
+    { "lat": 43.2574597, "lon": -2.9388694 },
+    { "lat": 43.2575201, "lon": -2.9388778 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 81062118,
+  "bounds": {
+    "minlat": 43.2643226,
+    "minlon": -2.9359651,
+    "maxlat": 43.2661621,
+    "maxlon": -2.9352265
+  },
+  "geometry": [
+    { "lat": 43.2643226, "lon": -2.9359651 },
+    { "lat": 43.2645896, "lon": -2.9358580 },
+    { "lat": 43.2653358, "lon": -2.9355587 },
+    { "lat": 43.2653887, "lon": -2.9355382 },
+    { "lat": 43.2654157, "lon": -2.9355267 },
+    { "lat": 43.2655287, "lon": -2.9354767 },
+    { "lat": 43.2660618, "lon": -2.9352654 },
+    { "lat": 43.2661384, "lon": -2.9352357 },
+    { "lat": 43.2661621, "lon": -2.9352265 }
+  ],
+  "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "shared_lane",
+    "cycleway:right:lane": "pictogram",
+    "highway": "residential",
+    "horse": "designated",
+    "lanes": "1",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 85681699,
+  "bounds": {
+    "minlat": 43.2566325,
+    "minlon": -2.9389390,
+    "maxlat": 43.2574597,
+    "maxlon": -2.9388694
+  },
+  "geometry": [
+    { "lat": 43.2566325, "lon": -2.9389390 },
+    { "lat": 43.2566858, "lon": -2.9389374 },
+    { "lat": 43.2573665, "lon": -2.9388776 },
+    { "lat": 43.2574597, "lon": -2.9388694 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 148386665,
+  "bounds": {
+    "minlat": 43.2575201,
+    "minlon": -2.9388778,
+    "maxlat": 43.2593796,
+    "maxlon": -2.9380072
+  },
+  "geometry": [
+    { "lat": 43.2575201, "lon": -2.9388778 },
+    { "lat": 43.2575613, "lon": -2.9388590 },
+    { "lat": 43.2575955, "lon": -2.9388422 },
+    { "lat": 43.2581360, "lon": -2.9385868 },
+    { "lat": 43.2582609, "lon": -2.9385278 },
+    { "lat": 43.2583351, "lon": -2.9384883 },
+    { "lat": 43.2584126, "lon": -2.9384572 },
+    { "lat": 43.2587703, "lon": -2.9382929 },
+    { "lat": 43.2592719, "lon": -2.9380529 },
+    { "lat": 43.2593796, "lon": -2.9380072 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "sidewalk:both": "yes",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 225469291,
+  "bounds": {
+    "minlat": 43.2672829,
+    "minlon": -2.9347351,
+    "maxlat": 43.2674018,
+    "maxlon": -2.9347222
+  },
+  "geometry": [
+    { "lat": 43.2672829, "lon": -2.9347351 },
+    { "lat": 43.2673346, "lon": -2.9347254 },
+    { "lat": 43.2674018, "lon": -2.9347222 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "1",
+    "lit": "yes",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "no",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 225469292,
+  "bounds": {
+    "minlat": 43.2667197,
+    "minlon": -2.9349811,
+    "maxlat": 43.2672829,
+    "maxlon": -2.9347351
+  },
+  "geometry": [
+    { "lat": 43.2672829, "lon": -2.9347351 },
+    { "lat": 43.2671872, "lon": -2.9347834 },
+    { "lat": 43.2667197, "lon": -2.9349811 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "horse": "designated",
+    "lanes": "1",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 225469603,
+  "bounds": {
+    "minlat": 43.2603546,
+    "minlon": -2.9376229,
+    "maxlat": 43.2612832,
+    "maxlon": -2.9372280
+  },
+  "geometry": [
+    { "lat": 43.2603546, "lon": -2.9376229 },
+    { "lat": 43.2604453, "lon": -2.9375793 },
+    { "lat": 43.2606357, "lon": -2.9375006 },
+    { "lat": 43.2611776, "lon": -2.9372766 },
+    { "lat": 43.2612832, "lon": -2.9372280 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "30",
+    "maxspeed:type": "ES:zone30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparragirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 308544362,
+  "bounds": {
+    "minlat": 43.2650890,
+    "minlon": -2.9449396,
+    "maxlat": 43.2651203,
+    "maxlon": -2.9444838
+  },
+  "geometry": [
+    { "lat": 43.2651074, "lon": -2.9449396 },
+    { "lat": 43.2651203, "lon": -2.9447869 },
+    { "lat": 43.2651168, "lon": -2.9446911 },
+    { "lat": 43.2651136, "lon": -2.9446315 },
+    { "lat": 43.2650890, "lon": -2.9444838 }
+  ],
+  "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "separate",
+    "highway": "primary",
+    "horse": "designated",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "sidewalk:right:surface": "paving_stones",
+    "smoothness": "good",
+    "surface": "asphalt",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 359617709,
+  "bounds": {
+    "minlat": 43.2631950,
+    "minlon": -2.9377305,
+    "maxlat": 43.2636107,
+    "maxlon": -2.9358313
+  },
+  "geometry": [
+    { "lat": 43.2636107, "lon": -2.9377305 },
+    { "lat": 43.2635680, "lon": -2.9375767 },
+    { "lat": 43.2634527, "lon": -2.9370224 },
+    { "lat": 43.2633631, "lon": -2.9365920 },
+    { "lat": 43.2633218, "lon": -2.9363933 },
+    { "lat": 43.2632753, "lon": -2.9361892 },
+    { "lat": 43.2632427, "lon": -2.9360438 },
+    { "lat": 43.2632047, "lon": -2.9358748 },
+    { "lat": 43.2631950, "lon": -2.9358313 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "primary",
+    "horse": "designated",
+    "lanes": "4",
+    "lanes:backward": "2",
+    "lanes:forward": "2",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "no",
+    "shoulder": "no",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "surface": "asphalt",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 359617710,
+  "bounds": {
+    "minlat": 43.2644127,
+    "minlon": -2.9427810,
+    "maxlat": 43.2647146,
+    "maxlon": -2.9413704
+  },
+  "geometry": [
+    { "lat": 43.2647146, "lon": -2.9427810 },
+    { "lat": 43.2646870, "lon": -2.9426525 },
+    { "lat": 43.2644127, "lon": -2.9413704 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "primary",
+    "horse": "designated",
+    "lanes": "4",
+    "lanes:backward": "2",
+    "lanes:forward": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "no",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "smoothness": "excellent",
+    "surface": "asphalt",
+    "turn:lanes:backward": "left|through",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 359639560,
+  "bounds": {
+    "minlat": 43.2650890,
+    "minlon": -2.9446701,
+    "maxlat": 43.2651681,
+    "maxlon": -2.9444838
+  },
+  "geometry": [
+    { "lat": 43.2650890, "lon": -2.9444838 },
+    { "lat": 43.2651422, "lon": -2.9446191 },
+    { "lat": 43.2651474, "lon": -2.9446316 },
+    { "lat": 43.2651681, "lon": -2.9446701 }
+  ],
+  "tags": {
+    "cycleway:right": "no",
+    "foot": "yes",
+    "highway": "primary",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "surface": "asphalt",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 542617856,
+  "bounds": {
+    "minlat": 43.2633218,
+    "minlon": -2.9363933,
+    "maxlat": 43.2643226,
+    "maxlon": -2.9359651
+  },
+  "geometry": [
+    { "lat": 43.2633218, "lon": -2.9363933 },
+    { "lat": 43.2640250, "lon": -2.9361054 },
+    { "lat": 43.2640604, "lon": -2.9360909 },
+    { "lat": 43.2643226, "lon": -2.9359651 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "highway": "residential",
+    "horse": "designated",
+    "lanes": "2",
+    "lit": "yes",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "smoothness": "good",
+    "surface": "asphalt",
+    "turn:lanes": "slight_left|through"
+  }
+},
+{
+  "type": "way",
+  "id": 542617857,
+  "bounds": {
+    "minlat": 43.2627074,
+    "minlon": -2.9366471,
+    "maxlat": 43.2633218,
+    "maxlon": -2.9363933
+  },
+  "geometry": [
+    { "lat": 43.2627074, "lon": -2.9366471 },
+    { "lat": 43.2629475, "lon": -2.9365479 },
+    { "lat": 43.2631849, "lon": -2.9364498 },
+    { "lat": 43.2633218, "lon": -2.9363933 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "highway": "residential",
+    "horse": "designated",
+    "lanes": "2",
+    "lit": "yes",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Iparraguirre kalea / Calle Iparraguirre",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "smoothness": "intermediate",
+    "surface": "asphalt",
+    "turn:lanes": "left;through|through;right"
+  }
+},
+{
+  "type": "way",
+  "id": 542617859,
+  "bounds": {
+    "minlat": 43.2619071,
+    "minlon": -2.9369644,
+    "maxlat": 43.2627074,
+    "maxlon": -2.9366471
+  },
+  "geometry": [
+    { "lat": 43.2619071, "lon": -2.9369644 },
+    { "lat": 43.2621347, "lon": -2.9368692 },
+    { "lat": 43.2622496, "lon": -2.9368193 },
+    { "lat": 43.2623288, "lon": -2.9367895 },
+    { "lat": 43.2627074, "lon": -2.9366471 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "highway": "residential",
+    "horse": "designated",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "30",
+    "maxspeed:type": "ES:zone30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 555456884,
+  "bounds": {
+    "minlat": 43.2661621,
+    "minlon": -2.9352265,
+    "maxlat": 43.2667197,
+    "maxlon": -2.9349811
+  },
+  "geometry": [
+    { "lat": 43.2661621, "lon": -2.9352265 },
+    { "lat": 43.2662716, "lon": -2.9351713 },
+    { "lat": 43.2666192, "lon": -2.9350297 },
+    { "lat": 43.2667042, "lon": -2.9349903 },
+    { "lat": 43.2667197, "lon": -2.9349811 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "horse": "designated",
+    "lanes": "1",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 623203026,
+  "bounds": {
+    "minlat": 43.2613350,
+    "minlon": -2.9281656,
+    "maxlat": 43.2615148,
+    "maxlon": -2.9273598
+  },
+  "geometry": [
+    { "lat": 43.2613350, "lon": -2.9273598 },
+    { "lat": 43.2613881, "lon": -2.9276162 },
+    { "lat": 43.2615148, "lon": -2.9281656 }
+  ],
+  "tags": {
+    "busway:both": "lane",
+    "cycleway:both": "no",
+    "highway": "tertiary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "oneway:bus": "no",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 628258191,
+  "bounds": {
+    "minlat": 43.2639200,
+    "minlon": -2.9413704,
+    "maxlat": 43.2644127,
+    "maxlon": -2.9391621
+  },
+  "geometry": [
+    { "lat": 43.2644127, "lon": -2.9413704 },
+    { "lat": 43.2643961, "lon": -2.9413042 },
+    { "lat": 43.2643618, "lon": -2.9411500 },
+    { "lat": 43.2643399, "lon": -2.9410515 },
+    { "lat": 43.2642291, "lon": -2.9405530 },
+    { "lat": 43.2641801, "lon": -2.9403324 },
+    { "lat": 43.2641689, "lon": -2.9402821 },
+    { "lat": 43.2639651, "lon": -2.9393655 },
+    { "lat": 43.2639200, "lon": -2.9391621 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "primary",
+    "horse": "designated",
+    "lanes": "4",
+    "lanes:backward": "2",
+    "lanes:forward": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "no",
+    "sidewalk": "both",
+    "surface": "asphalt",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 630336882,
+  "bounds": {
+    "minlat": 43.2636107,
+    "minlon": -2.9391621,
+    "maxlat": 43.2639200,
+    "maxlon": -2.9377305
+  },
+  "geometry": [
+    { "lat": 43.2639200, "lon": -2.9391621 },
+    { "lat": 43.2636573, "lon": -2.9379340 },
+    { "lat": 43.2636477, "lon": -2.9378912 },
+    { "lat": 43.2636345, "lon": -2.9378351 },
+    { "lat": 43.2636107, "lon": -2.9377305 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "primary",
+    "horse": "no",
+    "lanes": "4",
+    "lanes:backward": "2",
+    "lanes:forward": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "maxweight": "20",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "no",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "surface": "asphalt",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 812523296,
+  "bounds": {
+    "minlat": 43.2650808,
+    "minlon": -2.9444838,
+    "maxlat": 43.2650890,
+    "maxlon": -2.9444445
+  },
+  "geometry": [
+    { "lat": 43.2650890, "lon": -2.9444838 },
+    { "lat": 43.2650808, "lon": -2.9444445 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "primary",
+    "horse": "designated",
+    "lanes": "4",
+    "lanes:backward": "2",
+    "lanes:forward": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "no",
+    "sidewalk": "both",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 896981590,
+  "bounds": {
+    "minlat": 43.2616805,
+    "minlon": -2.9295762,
+    "maxlat": 43.2618276,
+    "maxlon": -2.9289140
+  },
+  "geometry": [
+    { "lat": 43.2616805, "lon": -2.9289140 },
+    { "lat": 43.2617629, "lon": -2.9292807 },
+    { "lat": 43.2617771, "lon": -2.9293511 },
+    { "lat": 43.2617857, "lon": -2.9293883 },
+    { "lat": 43.2618276, "lon": -2.9295762 }
+  ],
+  "tags": {
+    "access": "no",
+    "bicycle": "yes",
+    "busway:both": "lane",
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "tertiary",
+    "lanes": "3",
+    "lanes:bus": "1",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "oneway:bus": "no",
+    "sidewalk": "both",
+    "sidewalk:both:surface": "paving_stones",
+    "surface": "asphalt",
+    "turn:lanes": "left|left|none",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 1124146228,
+  "bounds": {
+    "minlat": 43.2627873,
+    "minlon": -2.9344163,
+    "maxlat": 43.2628359,
+    "maxlon": -2.9341567
+  },
+  "geometry": [
+    { "lat": 43.2627873, "lon": -2.9344163 },
+    { "lat": 43.2628150, "lon": -2.9343408 },
+    { "lat": 43.2628320, "lon": -2.9342637 },
+    { "lat": 43.2628359, "lon": -2.9341567 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "foot": "yes",
+    "highway": "living_street",
+    "horse": "no",
+    "lanes": "1",
+    "lit": "yes",
+    "maxspeed": "20",
+    "motor_vehicle": "designated",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "smoothness": "excellent",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1124146229,
+  "bounds": {
+    "minlat": 43.2628359,
+    "minlon": -2.9343596,
+    "maxlat": 43.2629239,
+    "maxlon": -2.9341567
+  },
+  "geometry": [
+    { "lat": 43.2628359, "lon": -2.9341567 },
+    { "lat": 43.2628580, "lon": -2.9342351 },
+    { "lat": 43.2628786, "lon": -2.9342868 },
+    { "lat": 43.2629239, "lon": -2.9343596 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "bus": "yes",
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "living_street",
+    "horse": "no",
+    "lanes": "1",
+    "lit": "yes",
+    "maxspeed": "20",
+    "motor_vehicle": "designated",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "smoothness": "excellent",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1124146231,
+  "bounds": {
+    "minlat": 43.2631936,
+    "minlon": -2.9358313,
+    "maxlat": 43.2632060,
+    "maxlon": -2.9356259
+  },
+  "geometry": [
+    { "lat": 43.2632060, "lon": -2.9356259 },
+    { "lat": 43.2631936, "lon": -2.9356863 },
+    { "lat": 43.2631946, "lon": -2.9357528 },
+    { "lat": 43.2631950, "lon": -2.9358313 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "primary",
+    "horse": "designated",
+    "lanes": "2",
+    "lanes:backward": "2",
+    "lanes:forward": "2",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "sidewalk:both": "separate",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1124146232,
+  "bounds": {
+    "minlat": 43.2630880,
+    "minlon": -2.9358313,
+    "maxlat": 43.2631950,
+    "maxlon": -2.9356760
+  },
+  "geometry": [
+    { "lat": 43.2631950, "lon": -2.9358313 },
+    { "lat": 43.2631621, "lon": -2.9357681 },
+    { "lat": 43.2631216, "lon": -2.9357060 },
+    { "lat": 43.2630880, "lon": -2.9356760 }
+  ],
+  "tags": {
+    "cycleway:both": "no",
+    "highway": "primary",
+    "horse": "designated",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "30",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran vía Don Diego López de Haro",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "sidewalk:both": "separate",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1208433872,
+  "bounds": {
+    "minlat": 43.2651681,
+    "minlon": -2.9448875,
+    "maxlat": 43.2653054,
+    "maxlon": -2.9446701
+  },
+  "geometry": [
+    { "lat": 43.2651681, "lon": -2.9446701 },
+    { "lat": 43.2652200, "lon": -2.9447670 },
+    { "lat": 43.2653054, "lon": -2.9448875 }
+  ],
+  "tags": {
+    "cycleway:left": "no",
+    "cycleway:right": "separate",
+    "foot": "yes",
+    "highway": "primary",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "50",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "yes",
+    "sidewalk": "right",
+    "surface": "asphalt",
+    "wikidata": "Q3297828"
+  }
+},
+{
+  "type": "way",
+  "id": 1208695689,
+  "bounds": {
+    "minlat": 43.2612832,
+    "minlon": -2.9372280,
+    "maxlat": 43.2619071,
+    "maxlon": -2.9369644
+  },
+  "geometry": [
+    { "lat": 43.2612832, "lon": -2.9372280 },
+    { "lat": 43.2613287, "lon": -2.9372071 },
+    { "lat": 43.2613512, "lon": -2.9371968 },
+    { "lat": 43.2619071, "lon": -2.9369644 }
+  ],
+  "tags": {
+    "highway": "residential",
+    "horse": "designated",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "30",
+    "maxspeed:type": "ES:zone30",
+    "name": "Iparraguirre kalea",
+    "name:es": "Calle Iparraguirre",
+    "name:etymology:wikidata": "Q3186448",
+    "name:eu": "Iparraguirre kalea",
+    "official_name": "Calle Iparraguirre / Iparraguirre kalea",
+    "oneway": "yes",
+    "sidewalk": "both",
+    "smoothness": "intermediate",
+    "surface": "asphalt"
+  }
+},
+{
+  "type": "way",
+  "id": 1208711554,
+  "bounds": {
+    "minlat": 43.2625899,
+    "minlon": -2.9341567,
+    "maxlat": 43.2628359,
+    "maxlon": -2.9330409
+  },
+  "geometry": [
+    { "lat": 43.2625899, "lon": -2.9330409 },
+    { "lat": 43.2626162, "lon": -2.9331623 },
+    { "lat": 43.2627121, "lon": -2.9335965 },
+    { "lat": 43.2627153, "lon": -2.9336111 },
+    { "lat": 43.2628226, "lon": -2.9340965 },
+    { "lat": 43.2628359, "lon": -2.9341567 }
+  ],
+  "tags": {
+    "bicycle": "yes",
+    "bus": "yes",
+    "cycleway:both": "no",
+    "foot": "yes",
+    "highway": "living_street",
+    "horse": "no",
+    "lanes": "2",
+    "lit": "yes",
+    "maxspeed": "20",
+    "motor_vehicle": "designated",
+    "name": "On Diego Lopez Haroko kale nagusia",
+    "name:es": "Gran Vía Don Diego López de Haro",
+    "name:etymology:wikidata": "Q2706087",
+    "name:eu": "On Diego Lopez Haroko kale nagusia",
+    "official_name": "Gran Vía Don Diego López de Haro / On Diego Lopez Haroko kale nagusia",
+    "oneway": "no",
+    "sidewalk": "both",
+    "smoothness": "excellent",
+    "source:width": "ARCore",
+    "surface": "asphalt",
+    "width": "6.5",
+    "wikidata": "Q3297828"
+  }
+}
+
+  ]
+}
