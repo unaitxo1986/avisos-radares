@@ -23,12 +23,14 @@ class DatosRealesTest {
         assertEquals(r.size, r.map { it.id }.toSet().size)
         val conLinea = r.count { it.porCarretera }
         assertTrue("con línea: $conLinea", conLinea >= r.size / 2)
-        // Ninguna línea demasiado corta ni demasiado larga (500 m, decisión de Unai).
+        // Ninguna línea demasiado corta ni demasiado larga (500 m, decisión de Unai; en ciudad, sin carretera, las
+        // revisadas a mano miden 150 m, como el aviso por cercanía urbano: semáforo de Iparraguirre, 21/11).
         for (radar in r.filter { it.porCarretera }) {
             val l = radar.linea!!
             var largo = 0.0
             for (i in 1 until l.size) largo += distanciaM(l[i - 1][0], l[i - 1][1], l[i][0], l[i][1])
-            assertTrue("${radar.id}: línea de $largo m", largo in 400.0..560.0)
+            val rango = if (radar.carretera.isNullOrBlank()) 100.0..560.0 else 400.0..560.0
+            assertTrue("${radar.id}: línea de $largo m", largo in rango)
             assertTrue("${radar.id}: la línea no acaba junto al radar",
                 distanciaM(l.last()[0], l.last()[1], radar.lat, radar.lon) < 150.0)
         }
