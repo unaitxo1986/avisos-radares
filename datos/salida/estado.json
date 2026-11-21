@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-20T23:38:01Z",
+ "generado": "2026-11-21T07:18:29Z",
  "ok": true,
  "avisos": [
   "Trafikoa no se pudo leer (no se pudo descargar https://apps.trafikoa.euskadi.eus/lfr/web/trafikoa/cabinas-de-radar-fijo: <urlopen error timed out>); se usa la copia guardada: Copia de la página oficial de Trafikoa leída con Chrome el 2026-11-15 (98 radares).",
@@ -21,7 +21,7 @@
   },
   "manual": {
    "ok": true,
-   "radares": 0
+   "radares": 1
   },
   "municipal": {
    "ok": true,
@@ -58,7 +58,7 @@
    ]
   }
  },
- "radares_publicados": 1210,
+ "radares_publicados": 1211,
  "contraste": {
   "trafikoa": 98,
   "detector_radar": 98
