@@ -79,7 +79,7 @@ class PruebasTramos(unittest.TestCase):
         self.assertAlmostEqual(xy(res["linea"][0])[1], -15, delta=1)  # calzada sur, hacia el este
         self.assertEqual(tramos.distancia_fin(res), 5)
         self.assertEqual(res["aprox"]["fiab"], "alta", res["aprox"])
-        self.assertAlmostEqual(xy(res["aprox"]["puntos"][0])[0], -500, delta=3)  # 500 m antes del inicio
+        self.assertAlmostEqual(xy(res["aprox"]["puntos"][0])[0], -1000, delta=3)  # 1000 m antes del inicio (desde el 23/11)
         self.assertEqual((res["limite"]["limite"], res["limite"]["origen"], res["limite"]["fiab"]), (120, "osm", "media"))
 
     def test_si_la_ruta_no_cuadra_con_el_kilometraje_es_dudosa(self):

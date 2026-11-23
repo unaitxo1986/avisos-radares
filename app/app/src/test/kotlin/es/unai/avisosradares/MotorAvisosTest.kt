@@ -165,8 +165,8 @@ class MotorAvisosTest {
         // Media vuelta y vuelta a pasar 30 s después, sin haberse alejado 1 km: no repite.
         val otra = recorridoSimulado(linea, 90.0, t0Ms = ida.last().tMs + 30_000, antesM = 0.0)
         assertEquals(0, pasa(motor, otra).count { it.tipo == TipoEvento.AVISO })
-        // Tras alejarse más de 1 km, sí vuelve a avisar.
-        val lejos = Posicion(otra.last().tMs + 60_000, latR + 1500 / mLat, lonR, 5.0, 90.0)
+        // Tras alejarse más de 1,5 km, sí vuelve a avisar.
+        val lejos = Posicion(otra.last().tMs + 60_000, latR + 2000 / mLat, lonR, 5.0, 90.0)
         motor.procesa(lejos)
         val otraVez = recorridoSimulado(linea, 90.0, t0Ms = lejos.tMs + 90_000)
         assertEquals(1, pasa(motor, otraVez).count { it.tipo == TipoEvento.AVISO })
@@ -177,9 +177,9 @@ class MotorAvisosTest {
         val sinLinea = radar(conLinea = false)
         for (rumbo in listOf(0.0, 180.0, 90.0)) {
             val motor = MotorAvisos(listOf(sinLinea))
-            val ev = pasa(motor, recorridoRectoPor(latR, lonR, rumbo, 90.0))
+            val ev = pasa(motor, recorridoRectoPor(latR, lonR, rumbo, 90.0, mitadM = 1300.0))
             assertEquals("rumbo $rumbo", listOf(TipoEvento.AVISO, TipoEvento.PASADO), tipos(ev))
-            assertTrue(ev[0].distanciaM <= 500.0)
+            assertTrue("aviso a ${ev[0].distanciaM} m", ev[0].distanciaM in 900.0..1000.0)
         }
         // Alejándose desde el radar: nada.
         val motor = MotorAvisos(listOf(sinLinea))
@@ -242,12 +242,12 @@ class MotorAvisosTest {
     @Test
     fun unSoloCriterioDeDistanciaEnCarreteraYEnCiudad() {
         // Unai, 18/11: en ciudad (sin carretera) a 150 m, sean municipales o cámaras de OpenStreetMap; en carretera
-        // a 500 m, también una cámara de OpenStreetMap si está en una carretera (BI-631).
+        // a 1000 m desde el 23/11 (antes 500), también una cámara de OpenStreetMap si está en una carretera (BI-631).
         fun camara(carretera: String?, limite: Int?) =
             Radar("osm-1", "fijo", "Gorliz", carretera, null, latR, lonR, null, limite, null, null, fuente = "osm", sinConfirmar = true)
-        for ((r, radio) in listOf(camara(null, 50) to 150.0, camara(null, null) to 150.0, camara("BI-631", null) to 500.0)) {
+        for ((r, radio) in listOf(camara(null, 50) to 150.0, camara(null, null) to 150.0, camara("BI-631", null) to 1000.0)) {
             val motor = MotorAvisos(listOf(r))
-            val ev = pasa(motor, recorridoRectoPor(latR, lonR, 0.0, 40.0, mitadM = 800.0))
+            val ev = pasa(motor, recorridoRectoPor(latR, lonR, 0.0, 40.0, mitadM = 1300.0))
             assertEquals("${r.carretera}", listOf(TipoEvento.AVISO, TipoEvento.PASADO), tipos(ev))
             // El aviso llega dos posiciones después de entrar en el radio (hay que confirmar que se acerca).
             assertTrue("${r.carretera}: aviso a ${ev[0].distanciaM} m, radio $radio", ev[0].distanciaM in (radio - 35.0)..radio)

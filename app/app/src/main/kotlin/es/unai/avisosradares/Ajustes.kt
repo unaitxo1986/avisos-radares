@@ -49,6 +49,11 @@ class Ajustes(contexto: Context) {
         get() = p.getBoolean("sonidosCiclo", true)
         set(valor) { p.edit().putBoolean("sonidosCiclo", valor).apply() }
 
+    /** Volumen de los avisos en % (selector de la pantalla principal, 23/11): ver [volumenParaAviso]. */
+    var volumenAvisos: Int
+        get() = volumenAvisosValido(p.getInt("volumenAvisos", VOLUMEN_AVISOS_DEFECTO))
+        set(valor) { p.edit().putInt("volumenAvisos", volumenAvisosValido(valor)).apply() }
+
     var ventana: Boolean
         get() = p.getBoolean("ventana", true)
         set(valor) { p.edit().putBoolean("ventana", valor).apply() }

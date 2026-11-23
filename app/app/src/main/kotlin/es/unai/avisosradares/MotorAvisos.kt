@@ -61,16 +61,17 @@ class ParametrosMotor(
     val pasadoM: Double = 10.0,
     /**
      * Aviso por cercanía (radares sin tramo de aproximación fiable), con un solo criterio para todos (Unai, 18/11:
-     * "unificar criterios"): en carretera (el radar tiene carretera: DGT, Trafikoa) a 500 m, como el tramo de
-     * aproximación de los que se siguen por la carretera; en ciudad (sin carretera: municipales y cámaras urbanas
-     * de OpenStreetMap) a 150 m, para no avisar desde calles paralelas.
+     * "unificar criterios"): en carretera (el radar tiene carretera: DGT, Trafikoa) a 1000 m (500 m hasta el
+     * 23/11; Iker: "los radares de carretera se avisen a 1000 m"), como el tramo de aproximación de los que se
+     * siguen por la carretera; en ciudad (sin carretera: municipales y cámaras urbanas de OpenStreetMap) a 150 m,
+     * para no avisar desde calles paralelas.
      */
-    val radioCercaniaM: Double = 500.0,
+    val radioCercaniaM: Double = 1000.0,
     val radioUrbanoM: Double = 150.0,
     /** Radares a menos de esto entre sí cuentan como el mismo punto: solo suena el primero. */
     val radioMismoPuntoM: Double = 30.0,
-    /** Tras pasar o cancelar un radar no se vuelve a avisar de él hasta alejarse esto. */
-    val distanciaDesbloqueoM: Double = 1000.0,
+    /** Tras pasar o cancelar un radar no se vuelve a avisar de él hasta alejarse esto (más que el radio de aviso). */
+    val distanciaDesbloqueoM: Double = 1500.0,
     /** Se ignoran las posiciones con peor precisión que esta. */
     val precisionMaximaM: Double = 50.0,
     /** Sin posiciones durante este tiempo (túnel largo, GPS perdido) se olvida el seguimiento. */

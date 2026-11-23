@@ -8,8 +8,10 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Gravity
 import android.view.View
+import android.content.res.ColorStateList
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import android.widget.SeekBar
 import android.widget.TextView
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -110,6 +112,53 @@ class MainActivity : Activity() {
         }
         Estilo.margenes(tarjetaCoche, arriba = dp(18f))
         raiz.addView(tarjetaCoche)
+
+        // Volumen de los avisos (23/11, a petición de Iker): selector y botón para oírlo.
+        val tarjetaVolumen = Estilo.tarjeta(this)
+        val filaTitulo = LinearLayout(this)
+        filaTitulo.orientation = LinearLayout.HORIZONTAL
+        filaTitulo.gravity = Gravity.CENTER_VERTICAL
+        val textosVolumen = LinearLayout(this)
+        textosVolumen.orientation = LinearLayout.VERTICAL
+        textosVolumen.addView(Estilo.etiqueta(this, "Volumen de los avisos"))
+        val valorVolumen = Estilo.texto(this, textoVolumenAvisos(ajustes.volumenAvisos), 20f, Estilo.TEXTO, Estilo.RACING)
+        valorVolumen.setPadding(0, dp(4f), 0, 0)
+        textosVolumen.addView(valorVolumen)
+        filaTitulo.addView(textosVolumen, LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f))
+        val probar = Estilo.texto(this, "PROBAR", 13f, Estilo.FONDO, Estilo.RACING)
+        probar.letterSpacing = 0.1f
+        probar.background = Estilo.redondeado(Estilo.CIAN, dp(16f).toFloat())
+        probar.setPadding(dp(14f), dp(9f), dp(14f), dp(9f))
+        probar.setOnClickListener {
+            Estilo.vibra(probar)
+            Sonido.radar(this, "PANTALLA", subirVolumen = true)
+        }
+        filaTitulo.addView(probar)
+        tarjetaVolumen.addView(filaTitulo)
+        val selector = SeekBar(this)
+        selector.max = (VOLUMEN_AVISOS_MAX - VOLUMEN_AVISOS_MIN) / 10
+        selector.progress = (ajustes.volumenAvisos - VOLUMEN_AVISOS_MIN) / 10
+        selector.progressTintList = ColorStateList.valueOf(Estilo.ROJO)
+        selector.thumbTintList = ColorStateList.valueOf(Estilo.TEXTO)
+        selector.setPadding(dp(4f), dp(14f), dp(4f), dp(6f))
+        selector.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+            override fun onProgressChanged(s: SeekBar, progreso: Int, delUsuario: Boolean) {
+                val v = VOLUMEN_AVISOS_MIN + progreso * 10
+                valorVolumen.text = textoVolumenAvisos(v)
+                valorVolumen.setTextColor(if (v > 100) Estilo.ROJO else Estilo.TEXTO)
+                if (delUsuario) ajustes.volumenAvisos = v
+            }
+            override fun onStartTrackingTouch(s: SeekBar) {}
+            override fun onStopTrackingTouch(s: SeekBar) {
+                Registro.anota(this@MainActivity, "PANTALLA", "volumen de los avisos: ${ajustes.volumenAvisos} %")
+                Sonido.radar(this@MainActivity, "PANTALLA", subirVolumen = true)
+            }
+        })
+        valorVolumen.setTextColor(if (ajustes.volumenAvisos > 100) Estilo.ROJO else Estilo.TEXTO)
+        tarjetaVolumen.addView(selector)
+        tarjetaVolumen.addView(Estilo.texto(this, "Al soltar suena el aviso. Por encima de 100 % suena más que el máximo del móvil, también con el Bluetooth del coche conectado.", 12f, Estilo.GRIS))
+        Estilo.margenes(tarjetaVolumen, arriba = dp(14f))
+        raiz.addView(tarjetaVolumen)
 
         // Puesta a punto: solo aparece si falta algo.
         tarjetaPuesta = Estilo.tarjeta(this, Estilo.AMARILLO)

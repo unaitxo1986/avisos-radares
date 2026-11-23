@@ -65,8 +65,18 @@ def calcular(radares, sentido, serv, ids=None):
             salida[r["id"]] = {"fiab": "dudosa", "puntos": None,
                                "motivos": [f"no se pudo descargar OpenStreetMap: {str(e)[:80]}"]}
             continue
-        salida[r["id"]] = aproximacion.construir(r, s, vias)
+        salida[r["id"]] = aproximacion.construir(r, s, vias, mas_vias=mas_vias(serv))
     return salida
+
+
+def mas_vias(serv):
+    """Otro recuadro de OpenStreetMap alrededor de un punto, para prolongar la línea hasta 1000 m (23/11)."""
+    def pedir(lat, lon):
+        try:
+            return serv.vias_aprox(round(lat, 5), round(lon, 5))
+        except (Pendiente, OSError):
+            return None
+    return pedir
 
 
 def main(argv=None):

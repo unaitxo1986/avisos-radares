@@ -213,7 +213,8 @@ def calcular_uno(t, serv, rel=None):
         res["aprox"] = None
         if c is not None and linea:
             res["aprox"] = aproximacion.construir(
-                t, {"via": c["via"], "rumbo": c["rumbo"], "punto": c["p"]}, serv.vias_aprox(t["lat"], t["lon"]))
+                t, {"via": c["via"], "rumbo": c["rumbo"], "punto": c["p"]}, serv.vias_aprox(t["lat"], t["lon"]),
+                mas_vias=_mas_vias(serv))
         res["limite"] = limite_tramo(t, linea, serv, rel)
     except Pendiente as e:
         return dict(base, fiab="dudosa", linea=None, aprox=None, limite=limite_tramo(t, None, serv, rel),
@@ -236,3 +237,13 @@ def distancia_fin(res):
         return None
     p = res["linea"][-1]
     return round(haversine(p[0], p[1], res["lat_fin"], res["lon_fin"]))
+
+
+def _mas_vias(serv):
+    """Otro recuadro alrededor de un punto, para prolongar la aproximación al inicio hasta 1000 m (23/11)."""
+    def pedir(lat, lon):
+        try:
+            return serv.vias_aprox(round(lat, 5), round(lon, 5))
+        except (Pendiente, OSError):
+            return None
+    return pedir

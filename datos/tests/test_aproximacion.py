@@ -34,22 +34,22 @@ class PruebasAproximacion(unittest.TestCase):
                 via(2, [(600, 0), (2000, 0)], oneway="yes", ref="A-1")]
         r = aproximacion.construir(RADAR, res(2, 1000, 90), vias)
         self.assertEqual(r["fiab"], "alta", r)
-        self.assertEqual(r["largo_m"], 500)
+        self.assertEqual(r["largo_m"], 1000)  # 1000 m desde el 23/11 (antes 500)
         self.assertEqual(len(r["puntos"]), 2)  # recta: se simplifica a los extremos
-        self.assertAlmostEqual(x_de(r["puntos"][0]), 500, delta=2)
+        self.assertAlmostEqual(x_de(r["puntos"][0]), 0, delta=2)
         self.assertAlmostEqual(x_de(r["puntos"][-1]), 1000, delta=2)
 
     def test_doble_sentido_hacia_el_oeste(self):
         vias = [via(1, [(0, 0), (3000, 0)], highway="primary", oneway="no", ref="A-1")]
         r = aproximacion.construir(RADAR, res(1, 1500, 270), vias)
         self.assertEqual(r["fiab"], "alta", r)
-        self.assertAlmostEqual(x_de(r["puntos"][0]), 2000, delta=2)  # se viene desde el este
+        self.assertAlmostEqual(x_de(r["puntos"][0]), 2500, delta=2)  # se viene desde el este
         self.assertAlmostEqual(x_de(r["puntos"][-1]), 1500, delta=2)
 
     def test_sentido_unico_inverso_recorre_los_nodos_al_reves(self):
         vias = [via(1, [(0, 0), (3000, 0)], oneway="-1", ref="A-1")]
         r = aproximacion.construir(RADAR, res(1, 1500, 270), vias)
-        self.assertAlmostEqual(x_de(r["puntos"][0]), 2000, delta=2)
+        self.assertAlmostEqual(x_de(r["puntos"][0]), 2500, delta=2)
 
     def test_curva_se_conserva(self):
         # Recta hasta x=700, curva hacia el norte; radar en el tramo norte.
@@ -75,7 +75,7 @@ class PruebasAproximacion(unittest.TestCase):
         r = aproximacion.construir(RADAR, res(2, 1300, 90), vias)
         self.assertEqual(r["fiab"], "alta", r)
         self.assertEqual(r["cruces"], 1)
-        self.assertAlmostEqual(x_de(r["puntos"][0]), 800, delta=2)
+        self.assertAlmostEqual(x_de(r["puntos"][0]), 300, delta=2)
 
     def test_dos_entradas_equivalentes_son_ambiguas(self):
         # dos autovías con la misma referencia que confluyen con un ángulo de 10 grados
@@ -85,6 +85,31 @@ class PruebasAproximacion(unittest.TestCase):
         r = aproximacion.construir(RADAR, res(3, 1300, 90), vias)
         self.assertEqual(r["fiab"], "dudosa")
         self.assertEqual(r["ambiguos"], 1)
+
+    def test_la_prolongacion_acaba_en_el_primer_cruce_dudoso(self):
+        # 23/11: el mismo cruce ambiguo a 700 m del radar (más allá de los 500 m) no hace dudosa la línea: la
+        # prolongación se corta ahí.
+        vias = [via(1, [(0, 0), (1000, 0)], oneway="yes", ref="A-1"),
+                via(2, [(0, 180), (1000, 0)], oneway="yes", ref="A-1"),
+                via(3, [(1000, 0), (2000, 0)], oneway="yes", ref="A-1")]
+        r = aproximacion.construir(RADAR, res(3, 1700, 90), vias)
+        self.assertEqual((r["fiab"], r["largo_m"], r["ambiguos"]), ("alta", 700, 0), r)
+        self.assertAlmostEqual(x_de(r["puntos"][0]), 1000, delta=2)
+
+    def test_la_prolongacion_pide_otro_recuadro(self):
+        # Los datos descargados acaban a 600 m del radar (borde del recuadro): se piden más alrededor de ese punto.
+        vias = [via(2, [(900, 0), (2000, 0)], oneway="yes", ref="A-1")]
+        pedidos = []
+
+        def mas(lat, lon):
+            pedidos.append(x_de([lat, lon]))
+            return [via(1, [(0, 0), (900, 0)], oneway="yes", ref="A-1")]
+        r = aproximacion.construir(RADAR, res(2, 1500, 90), vias, mas_vias=mas)
+        self.assertEqual((r["fiab"], r["largo_m"]), ("alta", 1000), r)
+        self.assertEqual(pedidos, [900])
+        # Sin más datos, la línea se queda en lo que hay (600 m), y sigue siendo buena.
+        r = aproximacion.construir(RADAR, res(2, 1500, 90), vias, mas_vias=lambda lat, lon: None)
+        self.assertEqual((r["fiab"], r["largo_m"]), ("alta", 600))
 
     def test_el_enlace_de_otro_tipo_no_cuenta_como_ambiguo_aunque_gire_poco(self):
         vias = [via(1, [(0, 0), (1000, 0)], oneway="yes", ref="A-1"),

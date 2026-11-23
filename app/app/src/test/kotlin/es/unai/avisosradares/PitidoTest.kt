@@ -58,9 +58,22 @@ class PitidoTest {
 
     @Test
     fun volumenDeLosAvisosAlMenosDosTercios() {
-        assertEquals(10, volumenParaAviso(2, 15))
-        assertEquals(10, volumenParaAviso(10, 15))
-        assertEquals(14, volumenParaAviso(14, 15))
-        assertEquals(17, volumenParaAviso(3, 25))
+        // Selector de volumen de los avisos (23/11): 70 % es casi lo de antes (10 de 15).
+        assertEquals(11, volumenParaAviso(70, 15))
+        assertEquals(15, volumenParaAviso(100, 15))
+        assertEquals(15, volumenParaAviso(200, 15))
+        assertEquals(2, volumenParaAviso(10, 15))
+        assertEquals(1, volumenParaAviso(0, 5))
+        assertEquals(0, refuerzoAviso(100))
+        assertEquals(750, refuerzoAviso(150))
+        assertEquals(1500, refuerzoAviso(200))
+        assertEquals(1500, refuerzoAviso(500))
+        assertEquals(70, volumenAvisosValido(73))
+        assertEquals(10, volumenAvisosValido(-5))
+        assertEquals("150 % · más alto que el máximo del móvil", textoVolumenAvisos(150))
+        assertEquals("70 %", textoVolumenAvisos(70))
+        // Los avisos suenan más fuerte que antes (0,9 del máximo; los de arranque y parada, 0,6).
+        assertTrue(sonidoRadar(22050).maxOf { kotlin.math.abs(it.toInt()) } > 28000)
+        assertTrue(sonidoConexion(22050).maxOf { kotlin.math.abs(it.toInt()) } < 20000)
     }
 }

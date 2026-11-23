@@ -3,7 +3,11 @@
 A partir de la calzada y el sentido ya elegidos en 3.2 (`sentido.json`: vía de OpenStreetMap,
 rumbo de marcha y punto de la calzada junto a la cabina), recorre la carretera **hacia atrás**
 desde el radar hasta `LARGO_M` metros (500, decisión de Unai del 15/11/2026) y devuelve esa
-línea en el orden de la marcha, terminando en el radar.
+línea en el orden de la marcha, terminando en el radar. Desde el 23/11/2026 (Iker: "los radares de
+carretera se avisen a 1000 m") la línea sigue hasta `LARGO_MAX_M` (1000 m) mientras la carretera continúe
+sin dudas: la fiabilidad se decide con los primeros 500 m, como antes, y la prolongación se corta sin más
+en el primer cruce dudoso, rotonda o final de los datos (si se sale del recuadro descargado, se pide otro
+recuadro alrededor de ese punto).
 
 La app no compara rumbos: comprueba si el coche está sobre esta línea y avanza a lo largo
 de ella hacia el radar (ver plan, "Cómo decide la app").
@@ -21,7 +25,9 @@ import math
 from .geo import dif_ang, haversine, proyectar, rumbo as rumbo_entre, simplificar
 from .sentido import norm_ref, sentido_unico
 
-LARGO_M = 500.0        # longitud del tramo de aproximación
+LARGO_M = 500.0        # tramo de aproximación con el que se decide la fiabilidad
+LARGO_MAX_M = 1000.0   # longitud máxima de la línea publicada (23/11): prolongación solo si la carretera sigue clara
+RECUADRO_NUEVO_M = 400.0  # si la prolongación se corta a más de esto del radar, puede ser el borde del recuadro
 MIN_ALTA_M = 450.0     # menos que esto de carretera continua: dudosa
 GIRO_AMBIGUO = 25.0    # dos entradas equivalentes cuyo giro difiere menos de esto: ambiguo
 GIRO_MAX = 100.0       # entrada con un giro mayor: tampoco es una continuación creíble
@@ -38,17 +44,21 @@ class _Arista:
 
 
 def _aristas_que_entran(vias):
-    """{nodo: [aristas que terminan en él]}, respetando los sentidos únicos."""
+    """{nodo: [aristas que terminan en él]}, respetando los sentidos únicos (sin repetir aristas: dos recuadros
+    descargados comparten las vías del borde)."""
     entran = {}
+    vistas = set()
     for v in vias:
         u = sentido_unico(v["t"])
         pts = [tuple(p) for p in v["n"]]
         for a, b in zip(pts, pts[1:]):
             if a == b:
                 continue
-            if u >= 0:
+            if u >= 0 and (a, b) not in vistas:
+                vistas.add((a, b))
                 entran.setdefault(b, []).append(_Arista(a, b, v))
-            if u <= 0:
+            if u <= 0 and (b, a) not in vistas:
+                vistas.add((b, a))
                 entran.setdefault(a, []).append(_Arista(b, a, v))
     return entran
 
@@ -126,12 +136,14 @@ def _simplificar(pts, tol=SIMPLIFICAR_M):
     return simplificar(pts, tol)
 
 
-def construir(radar, res, vias, largo=LARGO_M):
+def construir(radar, res, vias, largo=LARGO_M, largo_max=LARGO_MAX_M, mas_vias=None):
     """Tramo de aproximación de un radar resuelto.
 
     `res` es la entrada de `sentido.json` (necesita `via`, `rumbo`, `punto`). Devuelve un dict:
     `fiab` ('alta' o 'dudosa'), `puntos` (lista [lat, lon] en el orden de la marcha, o None),
-    `largo_m`, `tunel_m`, `cruces`, `ambiguos` y `motivos` (por qué es dudosa).
+    `largo_m`, `tunel_m`, `cruces`, `ambiguos` y `motivos` (por qué es dudosa). La fiabilidad se decide con
+    los primeros `largo` m; la línea sigue hasta `largo_max` mientras la carretera continúe sin dudas.
+    `mas_vias(lat, lon)`: vías de otro recuadro alrededor de un punto (o None), para prolongar la línea.
     """
     base = {"puntos": None, "largo_m": 0, "tunel_m": 0, "cruces": 0, "ambiguos": 0}
     punto = res["punto"]
@@ -143,7 +155,9 @@ def construir(radar, res, vias, largo=LARGO_M):
     if dif_ang(rb_ini, res["rumbo"]) > RUMBO_TOL:
         motivos.append(f"el rumbo de la calzada ({round(rb_ini)}°) no cuadra con el de 3.2 ({res['rumbo']}°)")
 
-    entran = _aristas_que_entran(vias)
+    todas = list(vias)
+    entran = _aristas_que_entran(todas)
+    recuadros = set()
     ref_carretera = norm_ref((radar.get("carretera") or "").split()[0]) if radar.get("carretera") else ""
     p = tuple(ini["p"])
     pts_rev = [p]
@@ -153,24 +167,37 @@ def construir(radar, res, vias, largo=LARGO_M):
     nodo, destino, via = ini["o"], ini["d"], ini["via"]
     visitados = {nodo, destino}
     leg = haversine(p[0], p[1], nodo[0], nodo[1])
+    objetivo = max(largo, largo_max)
     while True:
-        if recorrido + leg >= largo:
-            resto = largo - recorrido
+        if recorrido + leg >= objetivo:
+            resto = objetivo - recorrido
             f = resto / leg if leg > 0 else 0.0
             prev = pts_rev[-1]
             pts_rev.append((prev[0] + (nodo[0] - prev[0]) * f, prev[1] + (nodo[1] - prev[1]) * f))
             if _es_tunel(via):
-                tunel += resto
-            recorrido = largo
+                tunel += max(0.0, min(resto, largo - recorrido))
+            recorrido = objetivo
             break
-        recorrido += leg
         if _es_tunel(via):
-            tunel += leg
+            tunel += max(0.0, min(leg, largo - recorrido))  # el túnel solo cuenta en los primeros `largo` m
+        recorrido += leg
         pts_rev.append(nodo)
+        prolongando = recorrido >= largo
         e, ambiguo, n = _elegir_predecesor(nodo, destino, via, entran, ref_carretera)
+        if e is None and prolongando and mas_vias is not None and nodo not in recuadros \
+                and haversine(punto[0], punto[1], nodo[0], nodo[1]) > RECUADRO_NUEVO_M:
+            recuadros.add(nodo)
+            otras = mas_vias(nodo[0], nodo[1])
+            if otras:
+                todas.extend(otras)
+                entran = _aristas_que_entran(todas)
+                e, ambiguo, n = _elegir_predecesor(nodo, destino, via, entran, ref_carretera)
         if e is None:
-            corte = f"la carretera deja de estar en los datos a {round(recorrido)} m del radar"
+            if not prolongando:
+                corte = f"la carretera deja de estar en los datos a {round(recorrido)} m del radar"
             break
+        if prolongando and (ambiguo or e.o in visitados):
+            break  # la prolongación acaba en el primer cruce dudoso o rotonda; la línea sigue siendo buena
         if n > 1:
             cruces += 1
         if ambiguo:
