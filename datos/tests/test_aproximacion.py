@@ -111,6 +111,20 @@ class PruebasAproximacion(unittest.TestCase):
         r = aproximacion.construir(RADAR, res(2, 1500, 90), vias, mas_vias=lambda lat, lon: None)
         self.assertEqual((r["fiab"], r["largo_m"]), ("alta", 600))
 
+    def test_la_prolongacion_no_da_la_vuelta(self):
+        # Curva de herradura a 600 m: la carretera vuelve paralela a 20 m. La prolongación se corta antes.
+        vias = [via(1, [(1000, 20), (300, 20), (280, 10), (300, 0), (2000, 0)], highway="primary", oneway="yes", ref="A-1")]
+        r = aproximacion.construir(RADAR, res(1, 1000, 90), vias)
+        self.assertEqual(r["fiab"], "alta", r)
+        self.assertLess(r["largo_m"], 800)
+        self.assertGreaterEqual(r["largo_m"], 500)
+
+    def test_la_linea_dudosa_no_se_prolonga(self):
+        vias = [via(1, [(0, 0), (1000, 0)], oneway="yes", ref="A-1", tunnel="yes"),
+                via(2, [(1000, 0), (3000, 0)], oneway="yes", ref="A-1")]
+        r = aproximacion.construir(RADAR, res(2, 1100, 90), vias)
+        self.assertEqual((r["fiab"], r["largo_m"]), ("dudosa", 500))
+
     def test_el_enlace_de_otro_tipo_no_cuenta_como_ambiguo_aunque_gire_poco(self):
         vias = [via(1, [(0, 0), (1000, 0)], oneway="yes", ref="A-1"),
                 via(2, [(0, 180), (1000, 0)], highway="motorway_link", oneway="yes"),

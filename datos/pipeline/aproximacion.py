@@ -28,6 +28,8 @@ from .sentido import norm_ref, sentido_unico
 LARGO_M = 500.0        # tramo de aproximación con el que se decide la fiabilidad
 LARGO_MAX_M = 1000.0   # longitud máxima de la línea publicada (23/11): prolongación solo si la carretera sigue clara
 RECUADRO_NUEVO_M = 400.0  # si la prolongación se corta a más de esto del radar, puede ser el borde del recuadro
+VUELVE_LEJOS_M = 200.0    # la prolongación se corta donde pase a menos de VUELVE_CERCA_M de un trozo de la línea
+VUELVE_CERCA_M = 40.0     # que quedó más de VUELVE_LEJOS_M atrás (curvas de herradura: la app se confundiría)
 MIN_ALTA_M = 450.0     # menos que esto de carretera continua: dudosa
 GIRO_AMBIGUO = 25.0    # dos entradas equivalentes cuyo giro difiere menos de esto: ambiguo
 GIRO_MAX = 100.0       # entrada con un giro mayor: tampoco es una continuación creíble
@@ -209,16 +211,59 @@ def construir(radar, res, vias, largo=LARGO_M, largo_max=LARGO_MAX_M, mas_vias=N
         leg = haversine(nodo[0], nodo[1], e.o[0], e.o[1])
         destino, nodo, via = nodo, e.o, e.via
 
-    puntos = _simplificar(list(reversed(pts_rev)))
     if recorrido < MIN_ALTA_M:
         motivos.append(corte or f"solo {round(recorrido)} m de recorrido")
     if ambiguos:
         motivos.append(f"{ambiguos} cruce(s) sin una continuación clara")
     if tunel > TUNEL_DUDOSO_M:
         motivos.append(f"{round(tunel)} m de túnel")
+    # La prolongación más allá de `largo` solo en las líneas buenas, y cortada antes de que vuelva sobre sí misma.
+    pts_rev = recortar_prolongacion(pts_rev, largo, prolongar=not motivos)
+    recorrido = min(recorrido, _largo(pts_rev))
+    puntos = _simplificar(list(reversed(pts_rev)))
     return {
         "fiab": "dudosa" if motivos else "alta",
         "puntos": [[round(a, 6), round(b, 6)] for a, b in puntos],
         "largo_m": round(recorrido), "tunel_m": round(tunel),
         "cruces": cruces, "ambiguos": ambiguos, "motivos": motivos,
     }
+
+
+def _largo(pts):
+    return sum(haversine(a[0], a[1], b[0], b[1]) for a, b in zip(pts, pts[1:]))
+
+
+def recortar_prolongacion(pts_rev, largo=LARGO_M, prolongar=True):
+    """Línea desde el radar hacia atrás: hasta `largo` m se deja como está; lo que pase de ahí se quita si
+    `prolongar` es falso (líneas dudosas) y, si no, se corta en el primer punto que pase a menos de
+    `VUELVE_CERCA_M` de un trozo de la línea que quedó más de `VUELVE_LEJOS_M` atrás (23/11: curvas de herradura
+    en la GR-3303, la LR-250 o la AC-12)."""
+    acum = [0.0]
+    for a, b in zip(pts_rev, pts_rev[1:]):
+        acum.append(acum[-1] + haversine(a[0], a[1], b[0], b[1]))
+    if acum[-1] <= largo:
+        return list(pts_rev)
+
+    def hasta(m):
+        """Puntos hasta `m` m, interpolando el último."""
+        out = [pts_rev[0]]
+        for i in range(1, len(pts_rev)):
+            if acum[i] >= m:
+                a, b = pts_rev[i - 1], pts_rev[i]
+                f = (m - acum[i - 1]) / (acum[i] - acum[i - 1]) if acum[i] > acum[i - 1] else 0.0
+                out.append((a[0] + (b[0] - a[0]) * f, a[1] + (b[1] - a[1]) * f))
+                return out
+            out.append(pts_rev[i])
+        return out
+
+    if not prolongar:
+        return hasta(largo)
+    for i in range(1, len(pts_rev)):
+        if acum[i] <= largo:
+            continue
+        for j in range(len(pts_rev) - 1):
+            if acum[j + 1] > acum[i] - VUELVE_LEJOS_M:
+                break
+            if proyectar(pts_rev[i][0], pts_rev[i][1], pts_rev[j], pts_rev[j + 1])[0] < VUELVE_CERCA_M:
+                return hasta(max(largo, acum[i - 1]))
+    return list(pts_rev)
