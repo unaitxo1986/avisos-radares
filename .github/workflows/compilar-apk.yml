@@ -111,3 +111,13 @@ jobs:
             --target "$GITHUB_SHA" --prerelease \
             --title "Versión 0.1.$GITHUB_RUN_NUMBER" \
             --notes "Versión 0.1.$GITHUB_RUN_NUMBER (compilación $GITHUB_RUN_NUMBER), commit $GITHUB_SHA. Firmada con la clave fija del proyecto. avisos-radares-0.1.$GITHUB_RUN_NUMBER.apk y avisos-radares.apk son el mismo fichero; el segundo es el del enlace fijo."
+          # 23/11: la compilación 42 se quedó como borrador (enlaces de descarga en 404) aunque el paso salió bien.
+          # Se comprueba y, si hace falta, se publica.
+          for intento in 1 2 3 4 5; do
+            borrador=$(gh release view latest --json isDraft -q .isDraft || echo true)
+            [ "$borrador" = "false" ] && { echo "release publicada"; exit 0; }
+            echo "::warning title=Release::la release está como borrador; se publica (intento $intento)"
+            gh release edit latest --draft=false --prerelease || true
+            sleep 5
+          done
+          echo "::error title=Release::la release sigue como borrador"; exit 1
