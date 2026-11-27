@@ -46,6 +46,9 @@ class ModoProActivity : Activity() {
     private lateinit var botonArranque: TextView
     private lateinit var botonCiclo: TextView
     private lateinit var botonVentana: TextView
+    private lateinit var textoTomTom: TextView
+    private lateinit var botonComprobarTomTom: TextView
+    private lateinit var botonLimiteVia: TextView
     private val manejador = Handler(Looper.getMainLooper())
     private val refrescoPeriodico = object : Runnable {
         override fun run() {
@@ -119,6 +122,14 @@ class ModoProActivity : Activity() {
         botonVentana = boton("") { ajustes.ventana = !ajustes.ventana }
         boton("Oír el aviso de radar (5 pitidos)") { Sonido.radar(this, "PANTALLA") }
         boton("Oír el pitido de exceso, cada 100 m (3 pitidos)") { Sonido.exceso(this, "PANTALLA") }
+
+        // TomTom (7.2)
+        titulo("TomTom")
+        textoTomTom = texto("", 13f)
+        raiz.addView(textoTomTom)
+        botonComprobarTomTom = boton("") { ajustes.comprobarTomTom = !ajustes.comprobarTomTom }
+        botonLimiteVia = boton("") { ajustes.limiteViaTomTom = !ajustes.limiteViaTomTom }
+        boton("Probar TomTom aquí (límite de la vía donde estás)") { probarTomTom() }
 
         // Pruebas sin conducir
         titulo("Probar sin conducir")
@@ -256,6 +267,11 @@ class ModoProActivity : Activity() {
         botonArranque.text = "Arrancar y parar solo con el coche: " + (if (ajustes.arranqueBluetooth) "SÍ" else "NO")
         botonCiclo.text = "Pitidos al arrancar (1) y al parar (2): " + (if (ajustes.sonidosCiclo) "SÍ" else "NO")
         botonVentana.text = "Ventana flotante con la velocidad: " + (if (ajustes.ventana) "SÍ" else "NO")
+        textoTomTom.text = (if (ClienteTomTom.hayClave) "Clave de TomTom incluida en la app." else "Esta compilación no lleva clave de TomTom: no se le pregunta nada.") +
+            "\nConsultas hoy desde este móvil: ${ajustes.consultasHoy("snap")} de ${ClienteTomTom.MAX_SNAP_DIA} comprobaciones, " +
+            "${ajustes.consultasHoy("via")} de ${ClienteTomTom.MAX_VIA_DIA} límites de la vía. Pasado el tope, la app avisa como antes."
+        botonComprobarTomTom.text = "Comprobar la carretera con TomTom antes de avisar: " + (if (ajustes.comprobarTomTom) "SÍ" else "NO")
+        botonLimiteVia.text = "Límite de la vía en la ventana (TomTom): " + (if (ajustes.limiteViaTomTom) "SÍ" else "NO")
 
         val energia = getSystemService(Context.POWER_SERVICE) as PowerManager
         val p = StringBuilder()
@@ -390,4 +406,26 @@ class ModoProActivity : Activity() {
     }
 
     private fun aviso(t: String) = Acciones.aviso(this, t)
+
+    /** Pregunta a TomTom el límite de la vía en la última posición conocida, para ver que la clave funciona. */
+    @android.annotation.SuppressLint("MissingPermission")
+    private fun probarTomTom() {
+        if (!ClienteTomTom.hayClave) { aviso("Esta compilación no lleva clave de TomTom"); return }
+        if (!Diagnostico.concedido(this, android.Manifest.permission.ACCESS_FINE_LOCATION)) { aviso("Falta el permiso de ubicación"); return }
+        val gestor = getSystemService(Context.LOCATION_SERVICE) as android.location.LocationManager
+        val ultima = listOf(android.location.LocationManager.GPS_PROVIDER, android.location.LocationManager.NETWORK_PROVIDER)
+            .mapNotNull { try { gestor.getLastKnownLocation(it) } catch (e: Throwable) { null } }
+            .maxByOrNull { it.time }
+        if (ultima == null) { aviso("No hay ninguna posición conocida todavía; arranca la app un momento con el GPS"); return }
+        val p = Posicion(ultima.time, ultima.latitude, ultima.longitude)
+        val cliente = ClienteTomTom(this)
+        aviso("Preguntando a TomTom…")
+        cliente.limiteVia(p, if (ultima.hasBearing()) ultima.bearing.toDouble() else null) { ok, via, detalle ->
+            cliente.cierra()
+            Registro.anota(this, "TOMTOM", "prueba desde el modo pro: $detalle")
+            aviso(if (ok) "TomTom responde: ${via?.numeros?.joinToString("/")?.ifEmpty { null } ?: via?.calle ?: "sin nombre"}, " +
+                "límite ${via?.limiteKmh?.let { "$it km/h" } ?: "desconocido"}" else "TomTom no responde: $detalle")
+            refrescar()
+        }
+    }
 }

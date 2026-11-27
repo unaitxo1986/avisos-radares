@@ -20,6 +20,14 @@ android {
         targetSdk = 35
         versionCode = numeroCompilacion
         versionName = "0.1.$numeroCompilacion"
+        // Clave común de TomTom (7.2): sale del secreto TOMTOM_API_KEY de GitHub al compilar; nunca está en el
+        // repositorio. Sin ella (compilación local o de prueba) la app no pregunta a TomTom.
+        val claveTomTom = (System.getenv("TOMTOM_API_KEY") ?: "").trim().replace("\"", "")
+        buildConfigField("String", "TOMTOM_CLAVE", "\"$claveTomTom\"")
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     // La clave de firma NUNCA está en el repositorio: el workflow la restaura desde

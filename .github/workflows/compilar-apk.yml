@@ -80,7 +80,11 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew --no-daemon assembleRelease
+          # Clave común de TomTom (7.2, 27/11). Va dentro del APK; si falta, la app funciona sin TomTom.
+          TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
+        run: |
+          if [ -z "$TOMTOM_API_KEY" ]; then echo "::warning title=TomTom::falta el secreto TOMTOM_API_KEY; la app no preguntará a TomTom"; fi
+          ./gradlew --no-daemon assembleRelease
 
       - name: Verificar firma y mostrar huella del certificado
         run: |

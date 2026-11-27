@@ -13,6 +13,7 @@
 | Ayuntamiento de Málaga, conjunto "Foto Rojo", https://datosabiertos.malaga.eu/dataset/foto-rojo | Cámaras de semáforo en rojo de Málaga | CC BY 4.0 según el portal de Málaga (datos.gob.es indica CC BY-SA 4.0). Fuente: Ayuntamiento de Málaga |
 | Ayuntamiento de Santa Cruz de Tenerife, conjunto "Foto Rojo", https://www.santacruzdetenerife.es/opendata/dataset/3e0ec029-2efe-42e6-bbd2-5edc7fde283b | Cámaras de semáforo en rojo de Santa Cruz de Tenerife (cuando se pueda descargar) | Licencia del portal de datos abiertos de Santa Cruz de Tenerife [sin verificar]. Fuente: Ayuntamiento de Santa Cruz de Tenerife |
 | Ayuntamiento de Bilbao, notas de prensa de 2017 (bilbao.eus) y contratos (Bilbao Open Data) | Existencia de las cabinas de radar de Zumalakarregi y Alameda Rekalde; su posición sale de OpenStreetMap | Se cita la fuente |
+| TomTom (Snap to Roads API y Reverse Geocoding API), consultadas desde la app | Comprobación de la carretera por la que va el coche antes de un aviso y límite de velocidad de la vía; no se guardan ni se publican | Términos de TomTom (plan gratuito). © TomTom |
 | detector-radar.com | Solo contraste para detectar si la lectura de Trafikoa se ha roto; no se publican sus datos | No oficial |
 
 Los ficheros publicados en `datos/salida/` derivan de estas fuentes y mantienen estas atribuciones. Los datos derivados de OpenStreetMap se distribuyen bajo ODbL.

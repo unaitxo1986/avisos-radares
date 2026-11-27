@@ -109,6 +109,17 @@ class ServicioRadares : Service() {
     /** Aviso emergente en Android Auto (fase 7). */
     private var avisosCoche: AvisosEnCoche? = null
 
+    // TomTom (7.2): comprobación de la carretera antes de avisar y límite de la vía.
+    private var tomtom: ClienteTomTom? = null
+    /** Posiciones del último minuto y medio, para decir a TomTom por dónde va el coche. */
+    private val historial = ArrayDeque<Posicion>()
+    /** Radares con la comprobación en curso, con la tarea que avisa si TomTom tarda demasiado. */
+    private val pendientes = HashMap<String, Runnable>()
+    private val planVia = PlanLimiteVia()
+    private var consultandoVia = false
+    private var limiteVia: Int? = null
+    private var limiteViaAnotado: Int? = null
+
     // Ventana flotante
     private var ventana: LinearLayout? = null
     private var textoVelocidad: TextView? = null
@@ -158,6 +169,15 @@ class ServicioRadares : Service() {
         }
         arrancarVentana()
         avisosCoche = AvisosEnCoche(this).also { it.empezar() }
+        tomtom = ClienteTomTom(this).also {
+            val a = Ajustes(this)
+            Registro.anota(
+                this, "TOMTOM",
+                "clave ${if (ClienteTomTom.hayClave) "incluida" else "NO incluida (no se pregunta nada)"}; " +
+                    "comprobación ${if (a.comprobarTomTom) "sí" else "no"} (hoy ${a.consultasHoy("snap")} de ${ClienteTomTom.MAX_SNAP_DIA}); " +
+                    "límite de la vía ${if (a.limiteViaTomTom) "sí" else "no"} (hoy ${a.consultasHoy("via")} de ${ClienteTomTom.MAX_VIA_DIA})"
+            )
+        }
 
         val r = recorrido
         if (r != null) {
@@ -188,6 +208,10 @@ class ServicioRadares : Service() {
         quitarVentana()
         avisosCoche?.terminar()
         avisosCoche = null
+        tomtom?.cierra()
+        tomtom = null
+        pendientes.clear()
+        historial.clear()
         enMarcha = false
         estadoTexto = ""
         velocidadKmh = null
@@ -304,6 +328,8 @@ class ServicioRadares : Service() {
             pintar(p.velocidadKmh, null)
             return
         }
+        historial.addLast(p)
+        while (historial.size > 2 && p.tMs - historial.first().tMs > 90_000L) historial.removeFirst()
         val resultado = m.procesa(p)
         for (e in resultado.eventos) {
             grabador?.linea(FormatoViaje.evento(p.tMs, e))
@@ -318,7 +344,8 @@ class ServicioRadares : Service() {
                 TipoEvento.AVISO -> {
                     avisos++
                     // Volumen subido solo en viajes reales, no en simulaciones ni reproducciones (Unai, 18/11).
-                    Sonido.radar(this, "AVISO", subirVolumen = recorrido == null)
+                    // Si se comprueba con TomTom (7.2), suena al confirmar o si TomTom tarda; se calla si dice otra carretera.
+                    if (!comprobarConTomTom(e, p)) Sonido.radar(this, "AVISO", subirVolumen = recorrido == null)
                 }
                 // Decisión de Unai (18/11): el aviso de radar suena siempre la primera vez; después, cada 100 m,
                 // 3 pitidos agudos si la velocidad supera el límite.
@@ -327,7 +354,78 @@ class ServicioRadares : Service() {
                 else -> {}
             }
         }
+        actualizarLimiteVia(p, resultado.velocidadKmh)
         pintar(resultado.velocidadKmh, resultado.aviso)
+    }
+
+    // ---------- TomTom (7.2) ----------
+
+    /**
+     * Comprobación antes de avisar (Unai, 20/11): solo en los radares con carretera que se avisan por cercanía
+     * (los que pueden saltar desde una carretera paralela, un puente o un ramal; los que se siguen por su línea ya
+     * van sobre la carretera y el sentido del radar). Devuelve false si no se comprueba (y el aviso suena ya).
+     */
+    private fun comprobarConTomTom(e: Evento, p: Posicion): Boolean {
+        val t = tomtom ?: return false
+        val m = motor ?: return false
+        val carretera = e.radar.carretera
+        if (carretera.isNullOrBlank() || e.radar.porCarretera || !t.puedeComprobar()) return false
+        val puntos = TomTom.puntosParaSnap(historial.toList()) ?: return false
+        val id = e.radar.id
+        if (!m.retiene(id)) return false
+        val subir = recorrido == null
+        val plazo = Runnable {
+            if (pendientes.remove(id) != null && m.libera(id)) {
+                anotaTomTom(p.tMs, "$id ($carretera): TomTom no contesta a tiempo; se avisa")
+                Sonido.radar(this, "AVISO", subirVolumen = subir)
+            }
+        }
+        pendientes[id] = plazo
+        manejador.postDelayed(plazo, TomTom.TIEMPO_MAXIMO_MS + 500L)
+        t.carretera(puntos) { c, detalle ->
+            if (!enMarcha || motor !== m) return@carretera
+            val aTiempo = pendientes.remove(id)?.also { manejador.removeCallbacks(it) } != null
+            when (TomTom.veredicto(carretera, c)) {
+                TomTom.Veredicto.OTRA_CARRETERA -> if (m.descarta(id)) {
+                    anotaTomTom(p.tMs, "$id ($carretera): CALLADO, TomTom dice $detalle" + if (aTiempo) "" else " (ya había sonado)")
+                }
+                TomTom.Veredicto.CONFIRMADA -> if (aTiempo && m.libera(id)) {
+                    anotaTomTom(p.tMs, "$id ($carretera): confirmado, TomTom dice $detalle")
+                    Sonido.radar(this, "AVISO", subirVolumen = subir)
+                }
+                TomTom.Veredicto.DESCONOCIDA -> if (aTiempo && m.libera(id)) {
+                    anotaTomTom(p.tMs, "$id ($carretera): TomTom no lo sabe ($detalle); se avisa")
+                    Sonido.radar(this, "AVISO", subirVolumen = subir)
+                }
+            }
+        }
+        return true
+    }
+
+    /** Límite de la vía (7.2): pregunta a TomTom cada cierto tiempo y distancia; lo enseña la ventana sin aviso. */
+    private fun actualizarLimiteVia(p: Posicion, velocidad: Double?) {
+        val t = tomtom
+        if (t != null && !consultandoVia && t.puedeLimiteVia() && planVia.tocaPreguntar(p, velocidad)) {
+            val atras = historial.lastOrNull { distanciaM(it.lat, it.lon, p.lat, p.lon) >= 15.0 && p.tMs - it.tMs <= 20_000L }
+            val rumbo = atras?.let { TomTom.rumbo(it, p) }
+            planVia.pregunta(p)
+            consultandoVia = true
+            t.limiteVia(p, rumbo) { ok, via, detalle ->
+                consultandoVia = false
+                if (!enMarcha) return@limiteVia
+                planVia.respuesta(p, ok, via?.limiteKmh)
+                if (!ok || via?.limiteKmh != limiteViaAnotado) {
+                    limiteViaAnotado = via?.limiteKmh
+                    anotaTomTom(p.tMs, "límite de la vía: $detalle")
+                }
+            }
+        }
+        limiteVia = planVia.vigente(p)
+    }
+
+    private fun anotaTomTom(tMs: Long, texto: String) {
+        Registro.anota(this, "TOMTOM", texto)
+        grabador?.linea("# TOMTOM $tMs $texto")
     }
 
     // ---------- Ventana flotante ----------
@@ -454,18 +552,28 @@ class ServicioRadares : Service() {
                 if (it.enTramo) " · TRAMO, ${textosAviso(it).first} km/h, ${textosAviso(it).second}, límite ${it.radar.limite ?: "desconocido"}"
                 else " · ${etiquetaAviso(it.radar, it.porCarretera)} a ${textoDistancia(it.distanciaM)}, límite ${it.radar.limite ?: "desconocido"}"
             } ?: "") +
+            (if (aviso == null && limiteVia != null) " · límite de la vía $limiteVia" else "") +
             (if (recorrido != null) " (simulación)" else "")
         val v = textoVelocidad ?: return
         v.text = textoVel
         val columna = columnaAviso
         if (columna != null) {
-            if (aviso == null) {
+            val via = limiteVia
+            if (aviso == null && via == null) {
                 columna.visibility = View.GONE
-            } else {
+            } else if (aviso == null && via != null) {
+                // Sin radar cerca: la señal con el límite de la vía según TomTom (7.2).
+                senal?.limite = via
+                senal?.semaforo = false
+                vistaDistancia?.visibility = View.GONE
+                textoEtiqueta?.text = "VÍA"
+                columna.visibility = View.VISIBLE
+            } else if (aviso != null) {
                 senal?.limite = aviso.radar.limite
                 senal?.semaforo = aviso.radar.semaforo
                 val (arriba, abajo) = textosAviso(aviso)
                 vistaDistancia?.text = arriba
+                vistaDistancia?.visibility = View.VISIBLE
                 textoEtiqueta?.text = abajo
                 columna.visibility = View.VISIBLE
             }

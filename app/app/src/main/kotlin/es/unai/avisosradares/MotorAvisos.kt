@@ -146,6 +146,18 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
 
     val numeroRadares: Int get() = preparados.size
 
+    /**
+     * Comprobación con TomTom (7.2): mientras se pregunta, el aviso de [radarId] queda **retenido** (ni se enseña ni
+     * pita por exceso); después se **libera** (se avisa) o se **descarta** (TomTom dice que el coche va por otra
+     * carretera: se sigue en silencio hasta pasarlo o alejarse, sin enseñarlo ni pitar). Devuelven si el radar
+     * sigue en seguimiento (si ya se pasó o se canceló, no hay nada que hacer).
+     */
+    fun retiene(radarId: String): Boolean = seguimientos[radarId]?.let { it.retenido = true; true } ?: false
+
+    fun libera(radarId: String): Boolean = seguimientos[radarId]?.let { it.retenido = false; true } ?: false
+
+    fun descarta(radarId: String): Boolean = seguimientos[radarId]?.let { it.retenido = false; it.descartado = true; true } ?: false
+
     /** Si se pone, recibe una línea por cada radar seguido y posición (para depurar; no se usa en la app). */
     var depuracion: ((String) -> Unit)? = null
 
@@ -184,7 +196,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         // Exceso de velocidad en los radares avisados con límite conocido: la ventana se pone roja enseguida y,
         // cada 100 m de avance hacia el radar desde el aviso, si en ese momento hay exceso, evento EXCESO (pitido).
         for (seg in seguimientos.values) {
-            if (!seg.avisado) continue
+            if (!seg.avisado || seg.retenido || seg.descartado) continue
             val limite = seg.r.radar.limite
             seg.exceso = limite != null && velocidad != null && velocidad > limite + p.toleranciaExcesoKmh
             if (seg.distancia <= seg.distanciaUltimoPaso - p.pasoPitidoExcesoM) {
@@ -199,7 +211,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
 
     private fun avisoActual(): AvisoActivo? {
         // A igual distancia (radares repetidos en el mismo punto), mejor el inicio de un tramo.
-        val seg = seguimientos.values.filter { it.avisado }
+        val seg = seguimientos.values.filter { it.avisado && !it.retenido && !it.descartado }
             .minWithOrNull(compareBy<Seguimiento>({ it.distancia }, { if (it.r.radar.tipo == "tramo") 0 else 1 }))
         if (seg != null) return AvisoActivo(seg.r.radar, seg.distancia, seg.r.radar.porCarretera, seg.exceso)
         val t = enTramo.values.minByOrNull { it.t.largo - it.sUltimo } ?: return null
@@ -385,7 +397,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
     private fun avisa(seg: Seguimiento, eventos: MutableList<Evento>) {
         val r = seg.r.radar
         seg.silencioso = seguimientos.values.any {
-            it !== seg && it.avisado && distanciaM(it.r.radar.lat, it.r.radar.lon, r.lat, r.lon) <= p.radioMismoPuntoM
+            it !== seg && it.avisado && !it.descartado && distanciaM(it.r.radar.lat, it.r.radar.lon, r.lat, r.lon) <= p.radioMismoPuntoM
         }
         if (!seg.silencioso) eventos += Evento(TipoEvento.AVISO, r, seg.distancia)
     }
@@ -393,7 +405,7 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
     private fun termina(seg: Seguimiento, tipo: TipoEvento?, motivo: String, eventos: MutableList<Evento>) {
         seguimientos.remove(seg.r.radar.id)
         bloqueados[seg.r.radar.id] = seg.r
-        if (seg.avisado && !seg.silencioso && tipo != null) eventos += Evento(tipo, seg.r.radar, seg.distancia, motivo)
+        if (seg.avisado && !seg.silencioso && !seg.descartado && tipo != null) eventos += Evento(tipo, seg.r.radar, seg.distancia, motivo)
     }
 
     private fun porCarretera(r: Preparado, pos: Posicion, margen: Double, eventos: MutableList<Evento>) {
@@ -480,6 +492,10 @@ class MotorAvisos(radares: List<Radar>, private val p: ParametrosMotor = Paramet
         var acercandose = 0
         /** Radar repetido en el mismo punto que otro ya avisado: se sigue, pero no suena (ver [avisa]). */
         var silencioso = false
+        /** Comprobación con TomTom en curso (ver [retiene]). */
+        var retenido = false
+        /** TomTom dice que el coche va por otra carretera: se sigue en silencio (ver [descarta]). */
+        var descartado = false
     }
 
     private class Proyeccion(val distanciaM: Double, val s: Double, val pasadoM: Double)

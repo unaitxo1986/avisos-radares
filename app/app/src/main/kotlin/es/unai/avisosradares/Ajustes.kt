@@ -67,6 +67,33 @@ class Ajustes(contexto: Context) {
         get() = p.getInt("ventanaY", 200)
         set(valor) { p.edit().putInt("ventanaY", valor).apply() }
 
+    /** TomTom (7.2): comprobar la carretera antes de avisar de un radar y enseñar el límite de la vía. */
+    var comprobarTomTom: Boolean
+        get() = p.getBoolean("tomtomComprobar", true)
+        set(valor) { p.edit().putBoolean("tomtomComprobar", valor).apply() }
+
+    var limiteViaTomTom: Boolean
+        get() = p.getBoolean("tomtomLimiteVia", true)
+        set(valor) { p.edit().putBoolean("tomtomLimiteVia", valor).apply() }
+
+    /** Consultas a TomTom hechas hoy desde este móvil ([tipo]: "snap" o "via"), para no gastar la cuota común. */
+    fun consultasHoy(tipo: String): Int =
+        if (p.getString("tomtomDia", "") == hoy()) p.getInt("tomtom_$tipo", 0) else 0
+
+    fun sumaConsulta(tipo: String) {
+        val dia = hoy()
+        val e = p.edit()
+        if (p.getString("tomtomDia", "") != dia) {
+            e.putString("tomtomDia", dia).putInt("tomtom_snap", 0).putInt("tomtom_via", 0)
+            e.putInt("tomtom_$tipo", 1)
+        } else {
+            e.putInt("tomtom_$tipo", p.getInt("tomtom_$tipo", 0) + 1)
+        }
+        e.apply()
+    }
+
+    private fun hoy(): String = java.text.SimpleDateFormat("yyyyMMdd", java.util.Locale.ROOT).format(java.util.Date())
+
     /** Lista de radares: etiqueta HTTP de la última descarga y momento de la última comprobación que funcionó. */
     var etiquetaLista: String
         get() = p.getString("etag", "") ?: ""
