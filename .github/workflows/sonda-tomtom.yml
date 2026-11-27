@@ -1,0 +1,36 @@
+name: Sonda TomTom
+
+# 7.2 (27/11): prueba puntual de las respuestas de TomTom con la clave del secreto TOMTOM_API_KEY.
+# Guarda las respuestas en datos/exploracion/tomtom/sonda.json (sin la clave). No cambia los datos publicados.
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/sonda-tomtom.yml"
+      - ".github/sonda/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sonda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Llamadas a TomTom
+        env:
+          TOMTOM_API_KEY: ${{ secrets.TOMTOM_API_KEY }}
+        run: python3 -I .github/sonda/sonda_tomtom.py
+      - name: Guardar las respuestas en el repositorio
+        run: |
+          if grep -q "${{ secrets.TOMTOM_API_KEY }}" datos/exploracion/tomtom/sonda.json; then
+            echo "::error::la salida contiene la clave; no se guarda"; exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add datos/exploracion/tomtom/sonda.json
+          git commit -m "Sonda de TomTom: respuestas de prueba (automático)" || exit 0
+          for i in 1 2 3; do git pull --rebase origin main && git push origin HEAD:main && exit 0; sleep 5; done
+          exit 1
